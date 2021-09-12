@@ -5,6 +5,8 @@ repositories:
     url: https://charts.jetstack.io
   - name: bitnami
     url: https://charts.bitnami.com/bitnami
+  - name: ingress-nginx
+    url: https://kubernetes.github.io/ingress-nginx
 
 values:
   - argo-cd:
@@ -33,3 +35,10 @@ releases:
     condition: argo-cd.enabled 
     values:
       - ../k8s-infra/argo/argocd-applicationset/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-argocd-applicationset-values.yaml 
+
+  - name: ingress-nginx
+    namespace: ingress-nginx
+    chart: ingress-nginx/ingress-nginx
+    version: 3.34.0
+    values:
+      - ../k8s-infra/dns-infra/ingress-nginx/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-ingress-nginx-values.yaml 
