@@ -1,0 +1,11 @@
+image:
+  # The image repository
+  # repository: quay.io/argocdapplicationset/argocd-applicationset #production
+  repository: quay.io/argoproj/argocd-applicationset #dev
+  # Image pull policy
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v0.2.0"
+
+args:
+  namespace: argo

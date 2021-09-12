@@ -1,0 +1,31 @@
+controller:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+                - nginx-ingress
+            - key: component
+              operator: In
+              values:
+                - controller
+          topologyKey: "kubernetes.io/hostname"
+  metrics:
+    enabled: true
+  publishService:
+    enabled: true
+  replicaCount: 3
+  stats:
+    enabled: true
+
+rbac:
+  create: true
+
+service:
+  externalTrafficPolicy: Local
+
+config:
+  use-forwarded-headers: "true"

@@ -1,0 +1,35 @@
+repositories:
+  - name: argo
+    url: https://argoproj.github.io/argo-helm
+  - name: jetstack
+    url: https://charts.jetstack.io
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+
+values:
+  - argo-cd:
+      enabled: true 
+      
+environments:
+  demo:
+    values:
+      - argo-cd:
+          enabled: true
+
+
+releases:
+  - name: argo-cd
+    namespace: argo
+    chart: argo/argo-cd
+    version: 3.17.5
+    condition: argo-cd.enabled
+    values:
+      - values/{{ requiredEnv "CLIENT_ENVIRONMENT" }}/argo-cd.yaml
+
+  - name: argocd-applicationset
+    namespace: argo
+    chart: argo/argocd-applicationset
+    version: 1.4.0
+    condition: argo-cd.enabled 
+    values:
+      - ../k8s-infra/argo/argocd-applicationset/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-argocd-applicationset-values.yaml 
