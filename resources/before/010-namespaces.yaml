@@ -14,3 +14,8 @@ kind: Namespace
 metadata:
   name: dns-infra
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: keptn
+---
