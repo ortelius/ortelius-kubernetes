@@ -36,6 +36,13 @@ releases:
     values:
       - ../k8s-infra/argo/argocd-applicationset/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-argocd-applicationset-values.yaml 
 
+  - name: cert-manager
+    namespace: dns-infra
+    chart: jetstack/cert-manager
+    version: 1.4.0
+    values:
+      - ../k8s-infra/dns-infra/cert-manager/common-cert-manager-values.yaml
+
   - name: ingress-nginx
     namespace: ingress-nginx
     chart: ingress-nginx/ingress-nginx

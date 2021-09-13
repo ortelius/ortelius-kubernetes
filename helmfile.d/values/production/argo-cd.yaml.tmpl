@@ -3,13 +3,16 @@ server:
   service:
     type: NodePort
 
+  extraArgs:
+    - --insecure
+
   ingress: 
     enabled: true
     https: false
     annotations: 
       kubernetes.io/ingress.class: addon-http-application-routing
-  extraArgs:
-    - --insecure
+      #service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+  
     
   config:
     repositories: |
@@ -21,5 +24,3 @@ server:
         sshPrivateKeySecret:
           name: ortelius-github-ssh-credentials
           key: SSH_PRIVATE_KEY        
-
-          https://github.com/ortelius/ortelius-kubernetes
