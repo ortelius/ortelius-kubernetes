@@ -4,16 +4,16 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
-  name: keptn-ingress
-  namespace: keptn
+  name: argo-ingress
+  namespace: argo
 spec:
   rules:
   - http:
       paths:
       - backend:
           service:
-            name: api-gateway-nginx
+            name: argo-cd-argocd-server
             port:
               number: 80
-        path: /keptn
+        path: /
         pathType: Prefix
