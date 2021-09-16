@@ -16,10 +16,3 @@ server:
   config:
     repositories: |
       - url: github.com/ortelius/ortelius-kubernetes.git
-        sshPrivateKeySecret:
-          name: ortelius-github-ssh-credentials
-          key: SSH_PRIVATE_KEY
-      - url: git@github.com/ortelius/ortelius-kubernetes.git
-        sshPrivateKeySecret:
-          name: ortelius-github-ssh-credentials
-          key: SSH_PRIVATE_KEY        
