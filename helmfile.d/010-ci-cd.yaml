@@ -21,27 +21,20 @@ environments:
 
 releases:
   - name: argo-cd
-    namespace: argo
+    namespace: ci-cd
     chart: argo/argo-cd
     version: 3.17.5
     condition: argo-cd.enabled
     values:
-      - values/{{ requiredEnv "CLIENT_ENVIRONMENT" }}/argo-cd.yaml
+      - ../kube-infra/ci-cd/argo-cd/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-argo-cd-values.yaml    
 
   - name: argocd-applicationset
-    namespace: argo
+    namespace: ci-cd
     chart: argo/argocd-applicationset
     version: 1.4.0
     condition: argo-cd.enabled 
     values:
-      - ../k8s-infra/argo/argocd-applicationset/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-argocd-applicationset-values.yaml 
-
-  - name: cert-manager
-    namespace: dns-infra
-    chart: jetstack/cert-manager
-    version: 1.4.0
-    values:
-      - ../k8s-infra/dns-infra/cert-manager/common-cert-manager-values.yaml
+      - ../kube-infra/ci-cd/argocd-applicationset/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-argocd-applicationset-values.yaml 
 
   - name: ingress-nginx
     namespace: ingress-nginx

@@ -1,7 +1,7 @@
 apiVersion: v2
 name: argocd-applicationset
-namespace: argo
-description: argocd-applicationsets Helm chart for Kubernetes
+namespace: ci-cd
+description: argocd-applicationset Helm chart for Kubernetes
 type: application
 version: 1.4.0
 appVersion: "v0.2.0"
@@ -12,3 +12,4 @@ dependencies:
   version: 1.4.0
   condition: argocd-applicationset.enabled
   repository: https://argoproj.github.io/argo-helm
+

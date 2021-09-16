@@ -8,7 +8,7 @@ spec:
   - matrix:
       generators:
       - git:
-          repoURL: git@github.com:ortelius/ortelius-kubernetes.git
+          repoURL: https://github.com/ortelius/ortelius-kubernetes.git
           revision: HEAD
           directories:
           - path: kube-infra/dns-infra/*
@@ -25,7 +25,7 @@ spec:
     spec:
       project: ortelius
       source:
-        repoURL: git@github.com:ortelius/ortelius-kubernetes.git
+        repoURL: https://github.com/ortelius/ortelius-kubernetes.git
         targetRevision: HEAD
         path: '{{path}}'
         helm:
