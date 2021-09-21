@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    argocd.argoproj.io/hook: Sync
   labels:
     app.kubernetes.io/name: ingress
     app.kubernetes.io/part-of: keptn-default
@@ -18,4 +20,3 @@ spec:
                 name: api-gateway-nginx
                 port:
                   number: 80
-                  

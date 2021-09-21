@@ -13,10 +13,10 @@ dependencies:
   repository: https://storage.googleapis.com/keptn-installer
   values:
     - common-keptn-values.yaml
-  hooks:
-      - events: ["post-install"]
-        command: "kubectl"
-        args: ["apply", "--validate=true", "--filename=ingress.yaml"]
+  # hooks:
+  #     - events: ["post-install"]
+  #       command: "kubectl"
+  #       args: ["apply", "--validate=true", "--filename=ingress.yaml"]
 
 - name: jmeter-service
   chart: keptn/jmeter-service
