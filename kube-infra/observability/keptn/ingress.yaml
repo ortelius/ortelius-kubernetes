@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  labels:
+    app.kubernetes.io/name: ingress
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+spec:
+  rules:
+    - host: keptn.ortelius.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: api-gateway-nginx
+                port:
+                  number: 80
+                  
