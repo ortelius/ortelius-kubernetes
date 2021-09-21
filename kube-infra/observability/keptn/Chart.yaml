@@ -14,11 +14,9 @@ dependencies:
   values:
     - common-keptn-values.yaml
   hooks:
-      - events: ["prepare"]
+      - events: ["post-install"]
         command: "kubectl"
         args: ["apply", "--validate=true", "--filename=ingress.yaml"]
-
-
 
 - name: jmeter-service
   chart: keptn/jmeter-service
