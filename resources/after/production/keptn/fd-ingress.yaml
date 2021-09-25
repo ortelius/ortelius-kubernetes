@@ -8,12 +8,13 @@ metadata:
   namespace: keptn
 spec:
   rules:
-  - http:
+  - host: "kept.ortelius.io"
+    http:
       paths:
       - backend:
           service:
             name: api-gateway-nginx
             port:
               number: 80
-        path: /keptn
+        path: /
         pathType: Prefix
