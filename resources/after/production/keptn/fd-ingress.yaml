@@ -18,3 +18,22 @@ spec:
               number: 80
         path: /
         pathType: Prefix
+  - host: "ortelius.z01.azurefd.net"
+    http:
+      paths:
+      - backend:
+          service:
+            name: api-gateway-nginx
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  - http:
+      paths:
+      - backend:
+          service:
+            name: api-gateway-nginx
+            port:
+              number: 80
+        path: /keptn
+        pathType: Prefix
