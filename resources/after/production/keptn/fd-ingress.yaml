@@ -8,7 +8,7 @@ metadata:
   namespace: keptn
 spec:
   rules:
-  - host: "kept.ortelius.io"
+  - host: "keptn.ortelius.io"
     http:
       paths:
       - backend:
