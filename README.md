@@ -1,62 +1,16 @@
 # ortelius-kubernetes
-This Project Is for The Ortelius GitOps working group
+This Project Is for The Ortelius Kubernetes manifests, helm charts, deployments etc
 
-It contains Kubernetes Helm charts required for research
+## Become a contributor
 
-ingress:
-  enabled: false
-  annotations: {}
-  host: {}
-  path: /
-  pathType: Prefix
-  tls:
-    []
+1) Review the [Ortelius Contributor Guide](https://docs.ortelius.io/guides/contributorguide/)
+2) Add yourself to the [Ortelius Google Group](https://groups.google.com/g/ortelius-dev)
+3) Join the [Discord community channel](https://discord.gg/ZtXU74x)
 
-{{- if .Values.ingress.enabled -}}
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-{{- if .Values.ingress.annotations }}
-  annotations:
-  {{- range $key, $value := .Values.ingress.annotations }}
-    {{ $key }}: {{ $value | quote }}
-  {{- end }}
-{{- end }}
-  name: keptn-ingress
-  namespace: keptn
-  labels:
-    app.kubernetes.io/name: ingress
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
-    app.kubernetes.io/part-of: keptn-{{ .Release.Namespace }}
-    app.kubernetes.io/component: {{ include "control-plane.name" . }}
-    helm.sh/chart: {{ include "control-plane.chart" . }}
-spec:
-  rules:
-  {{- if .Values.ingress.host }}
-    - host: {{ .Values.ingress.host }}
-      http:
-        paths:
-          - path: {{ .Values.ingress.path }}
-            pathType: {{ .Values.ingress.pathType }}
-            backend:
-              service:
-                name: api-gateway-nginx
-                port:
-                  number: {{ .Values.apiGatewayNginx.port }}
-  {{- else }}
-    - http:
-        paths:
-          - path: {{ .Values.ingress.path }}
-            pathType: {{ .Values.ingress.pathType }}
-            backend:
-              service:
-                name: api-gateway-nginx
-                port:
-                  number: {{ .Values.apiGatewayNginx.port }}
-  {{- end -}}
-  {{- if .Values.ingress.tls }}
-  tls:
-    {{- toYaml .Values.ingress.tls | nindent 4 }}
-  {{- end -}}
-{{- end -}}
+Contributors:
+* Brad McCoy ([@bradmccoydev](https://github.com/bradmccoydev)), Moula
+* Amit Dsouza ([@checksumz](https://github.com/checksumz)), Odysseycloud
+
+## Support
+
+https://github.com/ortelius/ortelius/issues
