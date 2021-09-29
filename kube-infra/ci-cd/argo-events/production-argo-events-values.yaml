@@ -1,9 +1,0 @@
-argo-events:
-
-  serviceAccount: argo-events-sa
-  singleNamespace: false
-
-  sensorController:
-    extraEnv: 
-    - name: DEBUG_LOG
-      value: "true"
