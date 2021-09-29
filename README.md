@@ -10,6 +10,7 @@ This Project Is for The Ortelius Kubernetes manifests, helm charts, deployments 
 Contributors:
 * Brad McCoy ([@bradmccoydev](https://github.com/bradmccoydev)), Moula
 * Amit Dsouza ([@checksumz](https://github.com/checksumz)), Odysseycloud
+* Ben Poh ([@benhpoh](https://github.com/benhpoh)), Moula
 
 ## Support
 
