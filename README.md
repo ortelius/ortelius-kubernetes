@@ -14,3 +14,14 @@ Contributors:
 ## Support
 
 https://github.com/ortelius/ortelius/issues
+
+ortelius/ortelius-ms-dep-pkg-r
+ortelius/ortelius-ms-textfile-crud
+ortelius/ortelius-ms-compitem-crud
+ortelius/ortelius-ms-dep-pkg-cud
+ortelius/ortelius-ms-validate-user
+ortelius/ortelius-ms-pyutil
+ortelius/ortelius-ms-bs
+ortelius/ortelius-ms-rpt-comp2env
+ortelius/ortelius-ms-rpt-env2app
+ortelius/ortelius-ms-rpt-env2comp
