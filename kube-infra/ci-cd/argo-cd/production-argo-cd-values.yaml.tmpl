@@ -35,9 +35,14 @@ server:
   rbacConfig:
     policy.default: role:readonly
     policy.csv: |
-      g, bradmccoydev@gmail.com, role:admin
-      g, amit@odysseycloud.io, role:admin
-    scopes: '[email,group]'
+      p, role:org-admin, applications, *, */*, allow
+      p, role:org-admin, clusters, get, *, allow
+      p, role:org-admin, repositories, get, *, allow
+      p, role:org-admin, repositories, create, *, allow
+      p, role:org-admin, repositories, update, *, allow
+      p, role:org-admin, repositories, delete, *, allow
+      g, "9611561b-0599-4b2e-b4e2-a190faa1d388", role:org-admin # (azure group assigned to role)
+    scopes: '[roles, email]'`
 
   config:
     url: https://argocd.$CLIENT_DOMAIN_URL
