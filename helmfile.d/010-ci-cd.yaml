@@ -41,4 +41,4 @@ releases:
     chart: ingress-nginx/ingress-nginx
     version: 3.34.0
     values:
-      - ../k8s-infra/dns-infra/ingress-nginx/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-ingress-nginx-values.yaml 
+      - ../kube-infra/dns-infra/ingress-nginx/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-ingress-nginx-values.yaml 
