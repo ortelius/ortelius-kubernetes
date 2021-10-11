@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: ortelius-apps
-  namespace: argo
+  namespace: ci-cd
 spec:
   generators:
   - matrix:
