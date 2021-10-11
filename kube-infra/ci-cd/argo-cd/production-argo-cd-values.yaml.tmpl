@@ -35,28 +35,25 @@ server:
   rbacConfig:
     policy.default: role:readonly
     policy.csv: |
-      g, brad@odysseycloud.io, role:admin
+      g, bradmccoydev@gmail.com, role:admin
       g, amit@odysseycloud.io, role:admin
     scopes: '[email,group]'
 
   config:
     url: https://argocd.$CLIENT_DOMAIN_URL
-
-    dex.config: | 
-      connectors:
-        - type: saml
-          id: saml
-          name: saml
-          config:
-            ssoURL: https://accounts.google.com/o/saml2/idp?idpid=C02ihwbf4
-            entityIssuer: https://argocd.odysseycloud.io/api/dex/callback
-            caData: |
-              LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURkRENDQWx5Z0F3SUJBZ0lHQVhmdHRKRURNQTBHQ1NxR1NJYjNEUUVCQ3dVQU1Ic3hGREFTQmdOVkJBb1RDMGR2YjJkc1pTQkoKYm1NdU1SWXdGQVlEVlFRSEV3MU5iM1Z1ZEdGcGJpQldhV1YzTVE4d0RRWURWUVFERXdaSGIyOW5iR1V4R0RBV0JnTlZCQXNURDBkdgpiMmRzWlNCR2IzSWdWMjl5YXpFTE1Ba0dBMVVFQmhNQ1ZWTXhFekFSQmdOVkJBZ1RDa05oYkdsbWIzSnVhV0V3SGhjTk1qRXdNekF4Ck1USXhNalEzV2hjTk1qWXdNakk0TVRJeE1qUTNXakI3TVJRd0VnWURWUVFLRXd0SGIyOW5iR1VnU1c1akxqRVdNQlFHQTFVRUJ4TU4KVFc5MWJuUmhhVzRnVm1sbGR6RVBNQTBHQTFVRUF4TUdSMjl2WjJ4bE1SZ3dGZ1lEVlFRTEV3OUhiMjluYkdVZ1JtOXlJRmR2Y21zeApDekFKQmdOVkJBWVRBbFZUTVJNd0VRWURWUVFJRXdwRFlXeHBabTl5Ym1saE1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBCk1JSUJDZ0tDQVFFQTYrejZMb1FXN0VuWm8xdjdjSzgwRHpTZitGM3NRY3FycE5pcjBjSDVOcktkZnpSUzRFeFMwUGtUMW1pYmt3dDIKZ0ZJUjhBeW1IY2w1YU0vakM2Mk90MFduY1dFMkpwYXVrZ21URFk4Sy8rQ0JBc3NmdjBWZ2RHM2huWHJ6ZTY5TmNhYlVLZEkwaE1Kegp4NVhQblJhV0RsNUxHUUJUaU5JeEJIMnV5QnhQTm40OFdYRzd5Vno4NVlxZ2xlN3d3ZnBaZFdNNVgvV2p4N05TYVh4K0V1b2toeXkyCjd6RHZaa3BWa3NqTGZCMWNieVRQSlFHZHIvYUc5MWxhK011TGRSR3J2ZS9CVkYzSlZrcDhlYWFsaklCTlFsMmJuVStlMFdGYTN4VWEKNXArazZreUZ2Y0xsK0x3OURMT0xTRVVtU1RVbzhMZHhoVzVtWWFXeTdGZW9YMDREc3dJREFRQUJNQTBHQ1NxR1NJYjNEUUVCQ3dVQQpBNElCQVFCOVVqb2hmNnNIU2U3VG9kTDYrLzlZeEhNYm9hL0loNnVKSnZEWmRkdDZaNE5jbTBqKzZWcHdiOS9SWisxcE9ZdHkyQzk0CkpTK3J2cExWMVV0WXVkdFVRNWFuV1JIamphbE1zZG90bE1sUHlSaUlRYVl1MldkTWd2dENQM3BzVm4xL3lSMk5MOTJyRVMydzhDbkkKdi9LWHJqM2Uya0hvc3lnZFBLRXU5M0p4bmRBVVlSVDVSUDhXVmxUOC9STG0vdWdUNlFrbVA3NnpSMkFDUUVLWWRZOGlrTzZpN0REKwphcVkwWnQ3ajZDTVprR0ZaWlF5QWF4MDdzTzd0ajhWQXU4cGJ6MEYxUFNXS25pZmdSRkVtV1dhS3ZhdDRQTnRYbGoxM3RpT0xTaG1qCnpDMVYxOWFXNFlOaFRPdHdQZmxxUGFvUWFHWjU2OUx1YnRSWXlSMzlPTVQyCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0=
-            redirectURI: https://argocd.odysseycloud.io/api/dex/callback
-            usernameAttr: name
-            emailAttr: email
-            # optional
-            ssoIssuer: https://accounts.google.com/o/saml2?idpid=C02ihwbf4
+    oidc.config: | 
+      name: Azure
+        issuer: https://login.microsoftonline.com/57ebf52b-400a-4db6-a524-b07f4888055a/v2.0
+        clientID: adcae61e-8c4f-4146-b845-cc5ff47f3027
+        clientSecret: $oidc.azure.clientSecret
+        requestedIDTokenClaims:
+            groups:
+                essential: true
+        requestedScopes:
+            - openid
+            - profile
+            - email
+        
 
           
     
