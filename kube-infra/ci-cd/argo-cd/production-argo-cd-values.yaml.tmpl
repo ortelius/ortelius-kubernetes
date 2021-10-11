@@ -46,18 +46,16 @@ server:
 
   config:
     url: https://argocd.ortelius.io
-    oidc.config: | 
-      name: Azure
-        issuer: https://login.microsoftonline.com/57ebf52b-400a-4db6-a524-b07f4888055a/v2.0
-        clientID: adcae61e-8c4f-4146-b845-cc5ff47f3027
-        clientSecret:
-          name: argocd-secret
-          key: oidc.azure.clientSecret
-        requestedIDTokenClaims:
-            groups:
-                essential: true
-        requestedScopes:
-            - openid
-            - profile
-            - email
+    dex.config: |
+      connectors:
+      - type: microsoft
+        id: microsoft
+        name: Ortelius
+        config:
+          clientID: adcae61e-8c4f-4146-b845-cc5ff47f3027
+          clientSecret: $MICROSOFT_CLIENT_SECRET
+          redirectURI: https://argocd.ortelius.io/api/dex/callback
+          tenant: 57ebf52b-400a-4db6-a524-b07f4888055a
+          groups:
+            - AKS-Cluster-Admins
         
