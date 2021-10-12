@@ -16,8 +16,8 @@ spec:
             # Reference to a Secret containing an access token. (optional)         
           cloneProtocol: https
           filters: 
-          - pathsExist: [chart/deppkg-cud]
-            #repositoryMatch: ^ortelius-ms- 
+          - pathsExist: [chart/*]
+            repositoryMatch: ^ortelius-ms- 
             branchMatch: deploy  
       - list:
           elements:
@@ -33,7 +33,7 @@ spec:
       source:
         repoURL: '{{ url }}'
         targetRevision: deploy
-        path: chart
+        path: chart/*
         helm:
           valueFiles:
             # - 'common-{{path.basename}}-values.yaml'
