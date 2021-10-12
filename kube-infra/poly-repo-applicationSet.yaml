@@ -16,7 +16,7 @@ spec:
             # Reference to a Secret containing an access token. (optional)         
           cloneProtocol: https
           filters: 
-          - pathsExist: [chart]
+          - pathsExist: [chart/deppkg-cud]
             repositoryMatch: ^ortelius-ms- 
             branchMatch: deploy  
       - list:

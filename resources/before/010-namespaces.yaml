@@ -19,3 +19,8 @@ kind: Namespace
 metadata:
   name: keptn
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ortelius
+---
