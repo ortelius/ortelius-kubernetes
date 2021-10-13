@@ -17,7 +17,7 @@ spec:
           cloneProtocol: https
           filters: 
           - pathsExist: [chart/ms-dep-pkg-cud]
-            repositoryMatch: ^ortelius-ms- 
+            #repositoryMatch: ^ortelius-ms- 
             branchMatch: deploy  
       - list:
           elements:

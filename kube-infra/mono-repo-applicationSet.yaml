@@ -9,7 +9,7 @@ spec:
       generators:
       - git:
           repoURL: https://github.com/ortelius/ortelius.git
-          revision: HEAD
+          revision: svc_cat
           directories:
           - path: chart/*
       - list:
@@ -25,7 +25,7 @@ spec:
       project: ortelius
       source:
         repoURL: https://github.com/ortelius/ortelius.git
-        targetRevision: HEAD
+        targetRevision: svc_cat
         path: '{{path}}'
         helm:
           valueFiles:
