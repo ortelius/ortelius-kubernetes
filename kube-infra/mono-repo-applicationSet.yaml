@@ -12,6 +12,8 @@ spec:
           revision: svc_cat
           directories:
           - path: chart/*
+          - path: chart/ortelius-console
+            exclude: true
       - list:
           elements:
           - cluster: production
