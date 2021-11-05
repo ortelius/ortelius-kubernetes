@@ -37,7 +37,7 @@ releases:
     hooks:
       - events: ["prepare"]
         command: "kubectl"
-        args: ["apply", "--validate=true", "--filename=values/common/argocd-applicationset-crds.yaml"]
+        args: ["apply", "--validate=true", "--../kube-infra/ci-cd/argocd-applicationset/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-argocd-applicationset-crds.yaml"]
 
   - name: ingress-nginx
     namespace: ingress-nginx
