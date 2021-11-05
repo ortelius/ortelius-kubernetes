@@ -3,13 +3,13 @@ name: argo-cd
 namespace: ci-cd
 description: argo-cd Helm chart for Kubernetes
 type: application
-version: 3.17.5
-appVersion: "2.1.1"
+version: 3.26.5
+appVersion: "2.1.6"
 
 dependencies:
 - name: argo-cd
   chart: argo/argo-cd
-  version: 3.17.5
+  version: 3.26.5
   condition: argo-cd.enabled
   repository: https://argoproj.github.io/argo-helm
 

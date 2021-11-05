@@ -1,0 +1,2878 @@
+NAME: my-keptn
+LAST DEPLOYED: Fri Nov  5 16:35:18 2021
+NAMESPACE: default
+STATUS: pending-install
+REVISION: 1
+TEST SUITE: None
+HOOKS:
+MANIFEST:
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: keptn-default
+  labels:
+    app.kubernetes.io/name: keptn-default
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: keptn-configuration-service
+  labels:
+    app.kubernetes.io/name: keptn-configuration-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: keptn-shipyard-controller
+  labels:
+    app.kubernetes.io/name: keptn-shipyard-controller
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: keptn-secret-service
+  labels:
+    app.kubernetes.io/name: keptn-secret-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: keptn-lighthouse-service
+  labels:
+    app.kubernetes.io/name: keptn-lighthouse-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: keptn-api-service
+  labels:
+    app.kubernetes.io/name: keptn-api-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: keptn-webhook-service
+  labels:
+    app.kubernetes.io/name: keptn-api-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: keptn-api-token
+  labels:
+    app.kubernetes.io/name: keptn-api-token
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+type: Opaque
+data:
+  keptn-api-token: "QVpZMXp4UkFRd1lFRVVWNzltdHQ5M3BrS2kwblJkdWVKYVRNckR2OVVmaDJv"
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: bridge-credentials
+  labels:
+    app.kubernetes.io/name: bridge-credentials
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+type: Opaque
+data:
+  BASIC_AUTH_USERNAME: 'a2VwdG4='
+  BASIC_AUTH_PASSWORD: "d05DNzYwVWFYMDA5UmhNc2laQTc="
+---
+# Source: keptn/charts/control-plane/templates/mongodb-credentials.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mongodb-credentials
+  labels:
+    app.kubernetes.io/name: mongodb-credentials
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0     
+type: Opaque
+data:
+  user: "dXNlcg=="
+  password: "eHc5YnZBV29NQXFrdENXaVBUTUI="
+  admin_password: "SDVadlRnWVhZaXdibE5pbjMwQUZlVEJzZThrYnJManl0Q1ZZbFFIek5EWHRo"
+  external_connection_string: ""
+---
+# Source: keptn/charts/continuous-delivery/templates/ingress-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ingress-config
+  labels:
+    app.kubernetes.io/name: continuous-delivery-cm
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: continuous-delivery
+    helm.sh/chart: continuous-delivery-0.1.0
+data:
+  ingress_hostname_suffix: "svc.cluster.local"
+  ingress_protocol: "http"
+  ingress_port: "80"
+  istio_gateway: "public-gateway.istio-system"
+---
+# Source: keptn/charts/control-plane/charts/nats/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keptn-nats-cluster-config
+  labels:
+    app: keptn-nats-cluster
+    chart: nats-0.7.4
+data:
+  nats.conf: |
+    # PID file shared with configuration reloader.
+    pid_file: "/var/run/nats/nats.pid"
+
+    ###############
+    #             #
+    # Monitoring  #
+    #             #
+    ###############
+    http: 8222
+    server_name: $POD_NAME
+---
+# Source: keptn/charts/control-plane/templates/api-gateway-nginx.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-nginx-config
+  labels:
+    app.kubernetes.io/name: api-nginx-config-cm
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0         
+data:
+  nginx.conf: |
+    worker_processes  3;
+    pid /tmp/nginx.pid;
+    error_log /dev/stdout info;
+    events {
+      worker_connections  10240;
+    }
+
+    http {
+      log_format  main
+              'remote_addr:$remote_addr\t'
+              'time_local:$time_local\t'
+              'method:$request_method\t'
+              'uri:$request_uri\t'
+              'host:$host\t'
+              'status:$status\t'
+              'bytes_sent:$body_bytes_sent\t'
+              'referer:$http_referer\t'
+              'useragent:$http_user_agent\t'
+              'forwardedfor:$http_x_forwarded_for\t'
+              'request_time:$request_time';
+      access_log /dev/stdout;
+      # rewrite_log on;
+      absolute_redirect off;
+
+      # https://www.nginx.com/blog/websocket-nginx/
+      map $http_upgrade $connection_upgrade {
+        default upgrade;
+        '' close;
+      }
+
+      map $http_x_forwarded_proto $forward_proto {
+        default $scheme;
+        https https;
+      }
+
+      server {
+          listen       8080;
+          server_name  _;
+
+          include /etc/nginx/keptn-endpoints-pre-0-7.conf;
+          include /etc/nginx/keptn-endpoints.conf;
+      }
+    }
+  keptn-endpoints.conf: |
+    rewrite ^/$ /bridge/ permanent;
+    rewrite ^/api$ /api/swagger-ui/ permanent;
+
+    # special configuration for /v1/auth to always use POST requests
+    location /api/v1/auth {
+      rewrite /api/v1/auth /v1/auth break;
+
+      proxy_method POST;
+      proxy_pass_request_body off;
+      proxy_pass http://api-service:8080;
+      proxy_http_version 1.1;
+      proxy_pass_request_headers on; # only pass request headers to this service
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /bridge {
+      rewrite /bridge(/.*) $1 break;
+      proxy_pass http://bridge:8080;
+      proxy_http_version 1.1;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $forward_proto;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "Upgrade";
+      proxy_set_header Host $host;
+      proxy_buffer_size 128k;
+      proxy_buffers 4 256k;
+      proxy_busy_buffers_size 256k;
+    }
+
+    # health check
+    location /nginx-health {
+        access_log off;
+        return 200 "OK\n";
+    }
+
+    location /api/mongodb-datastore/swagger-ui/swagger.yaml {
+     # auth via backend (if the subrequest returns a 2xx response code, the access is allowed. If it returns 401 or 403,
+     # the access is denied) before we store the file
+     # see http://nginx.org/en/docs/http/ngx_http_auth_request_module.html
+      rewrite /api/mongodb-datastore/(.*) /$1  break;
+      proxy_pass         http://mongodb-datastore:8080;
+      proxy_redirect     off;
+      proxy_set_header   Host $host;
+      proxy_http_version 1.1;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location  /api/mongodb-datastore {
+      # auth via backend (if the subrequest returns a 2xx response code, the access is allowed. If it returns 401 or 403,
+      # the access is denied) before we store the file
+      # see http://nginx.org/en/docs/http/ngx_http_auth_request_module.html
+      auth_request               /api/v1/auth;
+
+      rewrite /api/mongodb-datastore/(.*) /$1  break;
+      proxy_pass         http://mongodb-datastore:8080;
+      proxy_redirect     off;
+      proxy_set_header   Host $host;
+      proxy_http_version 1.1;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /api/controlPlane/swagger-ui/swagger.yaml {
+      # auth via backend (if the subrequest returns a 2xx response code, the access is allowed. If it returns 401 or 403,
+      # the access is denied) before we store the file
+      # see http://nginx.org/en/docs/http/ngx_http_auth_request_module.
+
+      rewrite /api/controlPlane/(.*) /$1  break;
+      proxy_pass         http://shipyard-controller:8080;
+      proxy_redirect     off;
+      proxy_set_header   Host $host;
+      proxy_http_version 1.1;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location  /api/controlPlane {
+      # auth via backend (if the subrequest returns a 2xx response code, the access is allowed. If it returns 401 or 403,
+      # the access is denied) before we store the file
+      # see http://nginx.org/en/docs/http/ngx_http_auth_request_module.html
+      auth_request               /api/v1/auth;
+
+      rewrite /api/controlPlane/(.*) /$1  break;
+      proxy_pass         http://shipyard-controller:8080;
+      proxy_redirect     off;
+      proxy_set_header   Host $host;
+      proxy_http_version 1.1;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /api/secrets/swagger-ui/swagger.yaml {
+      # auth via backend (if the subrequest returns a 2xx response code, the access is allowed. If it returns 401 or 403,
+      # the access is denied) before we store the file
+      # see http://nginx.org/en/docs/http/ngx_http_auth_request_module.
+
+      rewrite /api/secrets/(.*) /$1  break;
+      proxy_pass         http://secret-service:8080;
+      proxy_redirect     off;
+      proxy_set_header   Host $host;
+      proxy_http_version 1.1;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location  /api/secrets/ {
+      # auth via backend (if the subrequest returns a 2xx response code, the access is allowed. If it returns 401 or 403,
+      # the access is denied) before we store the file
+      # see http://nginx.org/en/docs/http/ngx_http_auth_request_module.html
+      auth_request               /api/v1/auth;
+
+      rewrite /api/secrets/(.*) /$1  break;
+      proxy_pass         http://secret-service:8080;
+      proxy_redirect     off;
+      proxy_set_header   Host $host;
+      proxy_http_version 1.1;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /api/statistics/swagger-ui/swagger.yaml {
+      # auth via backend (if the subrequest returns a 2xx response code, the access is allowed. If it returns 401 or 403,
+      # the access is denied) before we store the file
+      # see http://nginx.org/en/docs/http/ngx_http_auth_request_module.
+
+      rewrite /api/statistics/(.*) /$1  break;
+      proxy_pass         http://statistics-service:8080;
+      proxy_redirect     off;
+      proxy_set_header   Host $host;
+      proxy_http_version 1.1;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location  /api/statistics {
+      # auth via backend (if the subrequest returns a 2xx response code, the access is allowed. If it returns 401 or 403,
+      # the access is denied) before we store the file
+      # see http://nginx.org/en/docs/http/ngx_http_auth_request_module.html
+      auth_request               /api/v1/auth;
+
+      rewrite /api/statistics/(.*) /$1  break;
+      proxy_pass         http://statistics-service:8080;
+      proxy_redirect     off;
+      proxy_set_header   Host $host;
+      proxy_http_version 1.1;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /api/configuration-service/swagger-ui/swagger.yaml {
+      # auth via backend (if the subrequest returns a 2xx response code, the access is allowed. If it returns 401 or 403,
+      # the access is denied) before we store the file
+      # see http://nginx.org/en/docs/http/ngx_http_auth_request_module.
+
+      rewrite /api/configuration-service/(.*) /$1  break;
+      proxy_pass         http://configuration-service:8080;
+      proxy_redirect     off;
+      proxy_set_header   Host $host;
+      proxy_http_version 1.1;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location  /api/configuration-service {
+      # auth via backend (if the subrequest returns a 2xx response code, the access is allowed. If it returns 401 or 403,
+      # the access is denied) before we store the file
+      # see http://nginx.org/en/docs/http/ngx_http_auth_request_module.html
+      auth_request               /api/v1/auth;
+
+      rewrite /api/configuration-service/(.*) /$1  break;
+      proxy_pass         http://configuration-service:8080;
+      proxy_redirect     off;
+      proxy_set_header   Host $host;
+      proxy_http_version 1.1;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /api {
+      rewrite /api/(.*) /$1 break;
+      rewrite /api / break;
+      proxy_pass http://api-service:8080;
+      proxy_http_version 1.1;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "Upgrade";
+      proxy_set_header Host $host;
+    }
+
+  keptn-endpoints-pre-0-7.conf: |
+    rewrite ^/project/(.*) /bridge/project/$1 permanent;
+    rewrite ^/trace/(.*) /bridge/trace/$1 permanent;
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+# secret-service
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: secret-service-config
+  labels:
+    app.kubernetes.io/name: secret-service-config-cm
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+data:
+  scopes.yaml: |
+    Scopes:
+      keptn-default:
+        Capabilities:
+          keptn-secrets-default-read:
+            Permissions:
+              - get
+      keptn-webhook-service:
+        Capabilities:
+          keptn-webhook-svc-read:
+            Permissions:
+              - get
+      dynatrace-service:
+        Capabilities:
+          keptn-dynatrace-svc-read:
+            Permissions:
+              - get
+---
+# Source: keptn/charts/control-plane/charts/mongodb/templates/pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongodata
+  labels:
+    app.kubernetes.io/name: mongodata
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: mongodb
+    helm.sh/chart: mongodb-0.1.0    
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage:  5Gi
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+# configuration-service
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  name: configuration-volume
+  labels:
+    app.kubernetes.io/name: configuration-volume
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage:  100Mi
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: keptn-manage-secrets
+  labels:
+    app.kubernetes.io/name: keptn-manage-secrets
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - create
+      - get
+      - delete
+      - update
+      - list
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: keptn-get-secrets
+  labels:
+    app.kubernetes.io/name: keptn-get-secrets
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - get
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: keptn-manage-roles
+  labels:
+    app.kubernetes.io/name: keptn-manage-roles
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+rules:
+  - apiGroups:
+      - rbac.authorization.k8s.io
+    resources:
+      - roles
+    verbs:
+      - create
+      - get
+      - delete
+      - update
+      - deletecollection
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: keptn-manage-rolebindings
+  labels:
+    app.kubernetes.io/name: keptn-manage-rolebindings
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+rules:
+  - apiGroups:
+      - rbac.authorization.k8s.io
+    resources:
+      - rolebindings
+    verbs:
+      - create
+      - get
+      - delete
+      - update
+      - deletecollection
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: keptn-read-metadata
+  labels:
+    app.kubernetes.io/name: keptn-read-metadata
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0 
+rules:
+  - apiGroups:
+      - extensions
+      - apps
+    resources:
+      - deployments
+    verbs:
+      - get
+      - list
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: keptn-manage-configmaps
+  labels:
+    app.kubernetes.io/name: keptn-manage-configmaps
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - create
+      - update
+      - get
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: keptn-delete-bridge-pod
+  labels:
+    app.kubernetes.io/name: keptn-delete-bridge-pod
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+    verbs:
+      - get
+      - delete
+      - deletecollection
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: keptn-lighthouse-service
+  labels:
+    app.kubernetes.io/name: keptn-lighthouse-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: keptn-manage-configmaps
+subjects:
+  - kind: ServiceAccount
+    name: keptn-lighthouse-service
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: keptn-api-service-metadata
+  labels:
+    app.kubernetes.io/name: keptn-api-service-metadata
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: keptn-read-metadata
+subjects:
+  - kind: ServiceAccount
+    name: keptn-api-service
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: keptn-configuration-service-get-secrets
+  labels:
+    app.kubernetes.io/name: keptn-configuration-service-get-secrets
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: keptn-get-secrets
+subjects:
+  - kind: ServiceAccount
+    name: keptn-configuration-service
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: keptn-shipyard-controller-manage-secrets
+  labels:
+    app.kubernetes.io/name: keptn-shipyard-controller-manage-secrets
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: keptn-manage-secrets
+subjects:
+  - kind: ServiceAccount
+    name: keptn-shipyard-controller
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: keptn-secret-service-manage-secrets
+  labels:
+    app.kubernetes.io/name: keptn-secret-service-manage-secrets
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: keptn-manage-secrets
+subjects:
+  - kind: ServiceAccount
+    name: keptn-secret-service
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: keptn-secret-service-manage-roles
+  labels:
+    app.kubernetes.io/name: keptn-secret-service-manage-roles
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: keptn-manage-roles
+subjects:
+  - kind: ServiceAccount
+    name: keptn-secret-service
+---
+# Source: keptn/charts/control-plane/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: keptn-secret-service-manage-rolebindings
+  labels:
+    app.kubernetes.io/name: keptn-secret-service-manage-secrets
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: keptn-manage-rolebindings
+subjects:
+  - kind: ServiceAccount
+    name: keptn-secret-service
+---
+# Source: keptn/charts/control-plane/charts/mongodb/templates/svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  labels:
+    app.kubernetes.io/name: mongodb
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: mongodb
+    helm.sh/chart: mongodb-0.1.0  
+spec:
+  ports:
+  - name: "27017"
+    port: 27017
+    targetPort: 27017
+  selector:
+    app.kubernetes.io/name: mongodb
+    app.kubernetes.io/instance: my-keptn
+---
+# Source: keptn/charts/control-plane/charts/nats/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: keptn-nats-cluster
+  labels:
+    app: keptn-nats-cluster
+    chart: nats-0.7.4
+spec:
+  selector:
+    app: keptn-nats-cluster
+  clusterIP: None
+  ports:
+  - name: client
+    port: 4222
+  - name: cluster
+    port: 6222
+  - name: monitor
+    port: 8222
+  - name: metrics
+    port: 7777
+  - name: leafnodes
+    port: 7422
+  - name: gateways
+    port: 7522
+---
+# Source: keptn/charts/control-plane/templates/api-gateway-nginx.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-gateway-nginx
+  labels:
+    app.kubernetes.io/name: api-gateway-nginx
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0       
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      name: http
+      targetPort: 8080
+      
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: api-gateway-nginx
+    app.kubernetes.io/instance: my-keptn
+---
+# Source: keptn/charts/control-plane/templates/continuous-operations.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: remediation-service
+  labels:
+    app.kubernetes.io/name: remediation-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0               
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app.kubernetes.io/name: remediation-service
+    app.kubernetes.io/instance: my-keptn
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-service
+  labels:
+    app.kubernetes.io/name: api-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  ports:
+    - port: 8080
+      name: http
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: api-service
+    app.kubernetes.io/instance: my-keptn
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: bridge
+  labels:
+    app.kubernetes.io/name: bridge
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  ports:
+    - port: 8080
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: bridge
+    app.kubernetes.io/instance: my-keptn
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: shipyard-controller
+  labels:
+    app.kubernetes.io/name: shipyard-controller
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: shipyard-controller
+    app.kubernetes.io/instance: my-keptn
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: secret-service
+  labels:
+    app.kubernetes.io/name: secret-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: secret-service
+    app.kubernetes.io/instance: my-keptn
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: configuration-service
+  labels:
+    app.kubernetes.io/name: configuration-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: configuration-service
+    app.kubernetes.io/instance: my-keptn
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: statistics-service
+  labels:
+    app.kubernetes.io/name: statistics-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: statistics-service
+    app.kubernetes.io/instance: my-keptn
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: approval-service
+  labels:
+    app.kubernetes.io/name: approval-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: approval-service
+    app.kubernetes.io/instance: my-keptn
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: webhook-service
+  labels:
+    app.kubernetes.io/name: webhook-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: webhook-service
+    app.kubernetes.io/instance: my-keptn
+---
+# Source: keptn/charts/control-plane/templates/mongodb-datastore.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-datastore
+  labels:
+    app.kubernetes.io/name: mongodb-datastore
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0         
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    app.kubernetes.io/name: mongodb-datastore
+    app.kubernetes.io/instance: my-keptn
+---
+# Source: keptn/charts/control-plane/templates/quality-gates.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: lighthouse-service
+  labels:
+    app.kubernetes.io/name: lighthouse-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane    
+    helm.sh/chart: control-plane-0.1.0 
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: lighthouse-service
+    app.kubernetes.io/instance: my-keptn
+---
+# Source: keptn/charts/control-plane/charts/mongodb/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  labels:
+    app.kubernetes.io/name: mongodb
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: mongodb
+    app.kubernetes.io/version: "1"
+    helm.sh/chart: mongodb-0.1.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:      
+      app.kubernetes.io/name: mongodb
+      app.kubernetes.io/instance: my-keptn      
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: mongodb
+        app.kubernetes.io/instance: my-keptn
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: keptn-default
+        app.kubernetes.io/component: mongodb
+        app.kubernetes.io/version: "1"
+        helm.sh/chart: mongodb-0.1.0
+    spec:
+      serviceAccountName: keptn-default
+      securityContext:
+        fsGroup: 184
+      containers:
+        - image: docker.io/centos/mongodb-36-centos7:1
+          name: mongodb
+          env:
+            - name: MONGODB_DATABASE
+              value: "keptn"
+            - name: MONGODB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-credentials
+                  key: user
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                    name: mongodb-credentials
+                    key: password
+            - name: MONGODB_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                    name: mongodb-credentials
+                    key: admin_password
+          ports:
+            - containerPort: 27017
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "512Mi"
+              cpu: "200m"
+          volumeMounts:
+            - mountPath: /var/lib/mongodb/data
+              name: mongodata
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 184
+            readOnlyRootFilesystem: false
+            allowPrivilegeEscalation: false
+      restartPolicy: Always
+      volumes:
+        - name: mongodata
+          persistentVolumeClaim:
+            claimName: mongodata
+---
+# Source: keptn/charts/control-plane/templates/api-gateway-nginx.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway-nginx
+  labels:
+    app.kubernetes.io/name: api-gateway-nginx
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    app.kubernetes.io/version: 1.21.3-alpine
+    helm.sh/chart: control-plane-0.1.0   
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: api-gateway-nginx
+      app.kubernetes.io/instance: my-keptn
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: api-gateway-nginx
+        app.kubernetes.io/instance: my-keptn
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: keptn-default
+        app.kubernetes.io/component: control-plane
+        app.kubernetes.io/version: 1.21.3-alpine
+        helm.sh/chart: control-plane-0.1.0
+      annotations: # add randomizer to restart the deployment if anything changes - see https://github.com/keptn/keptn/issues/3320
+        rollme: "uIwjj"
+    spec:
+      securityContext:
+        fsGroup: 101
+      containers:
+        - name: api-gateway-nginx
+          image: docker.io/nginxinc/nginx-unprivileged:1.21.3-alpine
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /nginx-health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /nginx-health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          volumeMounts:
+            - mountPath: /etc/nginx/nginx.conf # mount api-nginx-config volume to /etc/nginx
+              subPath: nginx.conf
+              readOnly: true
+              name: api-nginx-config
+            - mountPath: /etc/nginx/keptn-endpoints.conf # mount api-nginx-config volume to /etc/nginx
+              subPath: keptn-endpoints.conf
+              readOnly: true
+              name: api-nginx-config
+            - mountPath: /etc/nginx/keptn-endpoints-pre-0-7.conf # mount api-nginx-config volume to /etc/nginx
+              subPath: keptn-endpoints-pre-0-7.conf
+              readOnly: true
+              name: api-nginx-config
+            - mountPath: /etc/nginx/keptn-endpoints-pre-1-0.conf # mount api-nginx-config volume to /etc/nginx
+              subPath: keptn-endpoints-pre-1-0.conf
+              readOnly: true
+              name: api-nginx-config
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 101
+            readOnlyRootFilesystem: false
+            allowPrivilegeEscalation: false
+      volumes:
+        - name: api-nginx-config
+          configMap:
+            name: api-nginx-config # place ConfigMap `api-nginx-config` on /etc/nginx
+      serviceAccountName: keptn-default
+---
+# Source: keptn/charts/control-plane/templates/continuous-operations.yaml
+# remediation-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: remediation-service
+  labels:
+    app.kubernetes.io/name: remediation-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    app.kubernetes.io/version: 0.10.0
+    helm.sh/chart: control-plane-0.1.0           
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: remediation-service
+      app.kubernetes.io/instance: my-keptn
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: remediation-service
+        app.kubernetes.io/instance: my-keptn
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: keptn-default
+        app.kubernetes.io/component: control-plane
+        app.kubernetes.io/version: 0.10.0
+        helm.sh/chart: control-plane-0.1.0                   
+    spec:
+      securityContext:
+        fsGroup: 65532
+      containers:
+      - name: remediation-service
+        image: docker.io/keptn/remediation-service:0.10.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 10998
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        readinessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "1Gi"
+            cpu: "200m"
+        env:
+          - name: EVENTBROKER
+            value: 'http://localhost:8081/event'
+          - name: CONFIGURATION_SERVICE
+            value: 'http://configuration-service:8080'
+          - name: ENVIRONMENT
+            value: 'production'
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 65532
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+      - name: distributor
+        image: docker.io/keptn/distributor:0.10.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 10999
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 10999
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        ports:
+          - containerPort: 8080
+        resources:
+          requests:
+            memory: "16Mi"
+            cpu: "25m"
+          limits:
+            memory: "32Mi"
+            cpu: "100m"
+        env:
+          - name: PUBSUB_URL
+            value: 'nats://keptn-nats-cluster'
+          - name: PUBSUB_TOPIC
+            value: 'sh.keptn.event.get-action.triggered'
+          - name: PUBSUB_RECIPIENT
+            value: '127.0.0.1'
+          - name: VERSION
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['app.kubernetes.io/version']
+          - name: LOCATION
+            valueFrom:
+             fieldRef:
+                fieldPath: metadata.labels['app.kubernetes.io/component']
+          - name: K8S_DEPLOYMENT_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['app.kubernetes.io/name']
+          - name: K8S_POD_NAME
+            valueFrom:
+              fieldRef:
+               fieldPath: metadata.name
+          - name: K8S_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: K8S_NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 65532
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+      serviceAccountName: keptn-default
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-service
+  labels:
+    app.kubernetes.io/name: api-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    app.kubernetes.io/version: 0.10.0
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: api-service
+      app.kubernetes.io/instance: my-keptn
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: api-service
+        app.kubernetes.io/instance: my-keptn
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: keptn-default
+        app.kubernetes.io/component: control-plane
+        app.kubernetes.io/version: 0.10.0
+        helm.sh/chart: control-plane-0.1.0
+    spec:
+      securityContext:
+        fsGroup: 65532
+      containers:
+        - name: api-service
+          image: docker.io/keptn/api:0.10.0
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 10998
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "50m"
+            limits:
+              memory: "64Mi"
+              cpu: "100m"
+          env:
+            - name: PREFIX_PATH
+              value: ""
+            - name: EVENTBROKER_URI
+              value: http://localhost:8081/event
+            - name: DATASTORE_URI
+              value: mongodb-datastore:8080
+            - name: CONFIGURATION_URI
+              value: configuration-service:8080
+            - name: SECRET_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: keptn-api-token
+                  key: keptn-api-token
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: MAX_AUTH_REQUESTS_PER_SECOND
+              value: '1.0'
+            - name: MAX_AUTH_REQUESTS_BURST
+              value: '2'
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+        - name: distributor
+          image: docker.io/keptn/distributor:0.10.0
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 10999
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 10999
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "16Mi"
+              cpu: "25m"
+            limits:
+              memory: "32Mi"
+              cpu: "100m"
+          env:
+            - name: PUBSUB_URL
+              value: 'nats://keptn-nats-cluster'
+            - name: VERSION
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/version']
+            - name: LOCATION
+              valueFrom:
+               fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/component']
+            - name: K8S_DEPLOYMENT_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/name']
+            - name: K8S_POD_NAME
+              valueFrom:
+                fieldRef:
+                 fieldPath: metadata.name
+            - name: K8S_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: K8S_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+      serviceAccountName: keptn-api-service
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+# bridge
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bridge
+  labels:
+    app.kubernetes.io/name: bridge
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    app.kubernetes.io/version: 0.10.0
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: bridge
+      app.kubernetes.io/instance: my-keptn
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: bridge
+        app.kubernetes.io/instance: my-keptn
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: keptn-default
+        app.kubernetes.io/component: control-plane
+        app.kubernetes.io/version: 0.10.0
+        helm.sh/chart: control-plane-0.1.0
+    spec:
+      securityContext:
+        fsGroup: 65532
+      containers:
+        - name: bridge
+          image: docker.io/keptn/bridge2:0.10.0
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: API_URL
+              value: "http://api-gateway-nginx/api"
+            - name: API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: keptn-api-token
+                  key: keptn-api-token
+            - name: CLI_DOWNLOAD_LINK
+              value: "https://github.com/keptn/keptn/releases/tag/0.10.0"
+            - name: INTEGRATIONS_PAGE_LINK
+              value: "https://get.keptn.sh/integrations.html"
+            - name: ENABLE_VERSION_CHECK
+              value: "true"
+            - name: SHOW_API_TOKEN
+              value: "true"
+            - name: KEPTN_INSTALLATION_TYPE
+              value: "QUALITY_GATES,CONTINUOUS_OPERATIONS"
+            - name: LOOK_AND_FEEL_URL
+              value: ""
+            - name: PREFIX_PATH
+              value: ""
+            - name: OAUTH_ENABLED
+              value: "false"
+            - name: OAUTH_DISCOVERY
+              value: ""
+            - name: SECURE_COOKIE
+              value: "false"
+            # Session cookie timeout in minutes
+            - name: SESSION_TIMEOUT_MIN
+              value: ""
+            # Correlates to trust proxy number of hops as defined at http://expressjs.com/en/guide/behind-proxies.html
+            - name: TRUST_PROXY
+              value: ""
+          envFrom:
+            - secretRef:
+                name: bridge-credentials
+                optional: true
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "25m"
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+          volumeMounts:
+            - mountPath: /usr/src/app/dist/assets/branding
+              name: assets
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+      serviceAccountName: keptn-default
+      volumes:
+        - emptyDir: {}
+          name: assets
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+# shipyard-controller
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipyard-controller
+  labels:
+    app.kubernetes.io/name: shipyard-controller
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    app.kubernetes.io/version: 0.10.0
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: shipyard-controller
+      app.kubernetes.io/instance: my-keptn
+  replicas: 1
+  # recreate the deployment if anything changes (we can not do a rolling upgrade of this deployment as we use a volume)
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: shipyard-controller
+        app.kubernetes.io/instance: my-keptn
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: keptn-default
+        app.kubernetes.io/component: control-plane
+        app.kubernetes.io/version: 0.10.0
+        helm.sh/chart: control-plane-0.1.0
+    spec:
+      securityContext:
+        fsGroup: 65532
+      serviceAccountName: keptn-shipyard-controller
+      containers:
+        - name: shipyard-controller
+          image: docker.io/keptn/shipyard-controller:0.10.0
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CONFIGURATION_SERVICE
+              value: "http://configuration-service:8080"
+            - name: EVENTBROKER
+              value: http://localhost:8081/event
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: MONGODB_HOST
+              value: 'mongodb:27017'
+            - name: MONGODB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-credentials
+                  key: user
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-credentials
+                  key: password
+            - name: MONGO_DB_NAME
+              value: keptn
+            - name: MONGODB_EXTERNAL_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-credentials
+                  key: external_connection_string
+                  optional: true
+            - name: KEPTN_SPEC_VERSION
+              value: 0.2.3
+            - name: TASK_STARTED_WAIT_DURATION
+              value: 10m
+            - name: UNIFORM_INTEGRATION_TTL
+              value: 48h
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+        - name: distributor
+          image: docker.io/keptn/distributor:0.10.0
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 10999
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 10999
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "16Mi"
+              cpu: "25m"
+            limits:
+              memory: "32Mi"
+              cpu: "100m"
+          env:
+            - name: PUBSUB_URL
+              value: 'nats://keptn-nats-cluster'
+            - name: PUBSUB_TOPIC
+              value: 'sh.keptn.>'
+            - name: PUBSUB_RECIPIENT
+              value: '127.0.0.1'
+            - name: PUBSUB_RECIPIENT_PATH
+              value: '/v1/event'
+            - name: DISABLE_REGISTRATION
+              value: "true"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secret-service
+  labels:
+    app.kubernetes.io/name: secret-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    app.kubernetes.io/version: 0.10.0
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: secret-service
+      app.kubernetes.io/instance: my-keptn
+  replicas: 1
+  # recreate the deployment if anything changes (we can not do a rolling upgrade of this deployment as we use a volume)
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: secret-service
+        app.kubernetes.io/instance: my-keptn
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: keptn-default
+        app.kubernetes.io/component: control-plane
+        app.kubernetes.io/version: 0.10.0
+        helm.sh/chart: control-plane-0.1.0
+    spec:
+      securityContext:
+        fsGroup: 65532
+      serviceAccountName: keptn-secret-service
+      containers:
+        - name: secret-service
+          image: docker.io/keptn/secret-service:0.10.0
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 10998
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /v1/secret
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "25m"
+            limits:
+              memory: "64Mi"
+              cpu: "200m"
+          volumeMounts:
+            - mountPath: /data
+              name: secret-service-configmap-volume
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+      volumes:
+        - name: secret-service-configmap-volume
+          configMap:
+            name: secret-service-config
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configuration-service
+  labels:
+    app.kubernetes.io/name: configuration-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    app.kubernetes.io/version: 0.10.0
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: configuration-service
+      app.kubernetes.io/instance: my-keptn
+  replicas: 1
+  # recreate the deployment if anything changes (we can not do a rolling upgrade of this deployment as we use a volume)
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: configuration-service
+        app.kubernetes.io/instance: my-keptn
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: keptn-default
+        app.kubernetes.io/component: control-plane
+        app.kubernetes.io/version: 0.10.0
+        helm.sh/chart: control-plane-0.1.0
+    spec:
+      securityContext:
+        fsGroup: 65532
+      initContainers:
+      - name: change-user-init
+        image: docker.io/keptn/configuration-service:0.10.0
+        securityContext:
+          runAsUser: 0
+        volumeMounts:
+          - mountPath: /data/config
+            name: configuration-volume
+        command:
+          - sh
+          - -c
+          - chown -R 65532 /data/config
+      containers:
+        - name: configuration-service
+          image: docker.io/keptn/configuration-service:0.10.0
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 10998
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 10998
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: PREFIX_PATH
+              value: ""
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: DATASTORE_URI
+              value: mongodb-datastore:8080
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "25m"
+            limits:
+              memory: "64Mi"
+              cpu: "100m"
+          volumeMounts:
+            - mountPath: /data/config
+              name: configuration-volume
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: false # False is necessary because we have to write the git config file
+            allowPrivilegeEscalation: false
+      volumes:
+        - name: configuration-volume
+          persistentVolumeClaim:
+            claimName: configuration-volume
+      serviceAccountName: keptn-configuration-service
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+# statistics-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: statistics-service
+  labels:
+    app.kubernetes.io/name: statistics-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    app.kubernetes.io/version: 0.10.0
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: statistics-service
+      app.kubernetes.io/instance: my-keptn
+  replicas: 1
+  # recreate the deployment if anything changes (we can not do a rolling upgrade of this deployment as we use a volume)
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: statistics-service
+        app.kubernetes.io/instance: my-keptn
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: keptn-default
+        app.kubernetes.io/component: control-plane
+        app.kubernetes.io/version: 0.10.0
+        helm.sh/chart: control-plane-0.1.0
+    spec:
+      securityContext:
+        fsGroup: 65532
+      serviceAccountName: keptn-default
+      containers:
+        - name: statistics-service
+          image: docker.io/keptn/statistics-service:0.10.0
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: AGGREGATION_INTERVAL_SECONDS
+              value: '1800'
+            - name: NEXT_GEN_EVENTS
+              value: 'true'
+            - name: MONGODB_HOST
+              value: 'mongodb:27017'
+            - name: MONGODB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-credentials
+                  key: user
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-credentials
+                  key: password
+            - name: MONGO_DB_NAME
+              value: keptn
+            - name: MONGODB_EXTERNAL_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-credentials
+                  key: external_connection_string
+                  optional: true
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "25m"
+            limits:
+              memory: "64Mi"
+              cpu: "100m"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+        - name: distributor
+          image: docker.io/keptn/distributor:0.10.0
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 10999
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 10999
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "16Mi"
+              cpu: "25m"
+            limits:
+              memory: "32Mi"
+              cpu: "100m"
+          env:
+            - name: PUBSUB_URL
+              value: 'nats://keptn-nats-cluster'
+            - name: PUBSUB_TOPIC
+              value: 'sh.keptn.>'
+            - name: PUBSUB_RECIPIENT
+              value: '127.0.0.1'
+            - name: PUBSUB_RECIPIENT_PATH
+              value: '/v1/event'
+            - name: VERSION
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/version']
+            - name: LOCATION
+              valueFrom:
+               fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/component']
+            - name: K8S_DEPLOYMENT_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/name']
+            - name: K8S_POD_NAME
+              valueFrom:
+                fieldRef:
+                 fieldPath: metadata.name
+            - name: K8S_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: K8S_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+# approval-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: approval-service
+  labels:
+    app.kubernetes.io/name: approval-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    app.kubernetes.io/version: 0.10.0
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: approval-service
+      app.kubernetes.io/instance: my-keptn
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: approval-service
+        app.kubernetes.io/instance: my-keptn
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: keptn-default
+        app.kubernetes.io/component: control-plane
+        app.kubernetes.io/version: 0.10.0
+        helm.sh/chart: control-plane-0.1.0
+    spec:
+      securityContext:
+        fsGroup: 65532
+      serviceAccountName: keptn-default
+      containers:
+        - name: approval-service
+          image: docker.io/keptn/approval-service:0.10.0
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 10998
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "25m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+          env:
+            - name: CONFIGURATION_SERVICE
+              value: 'http://configuration-service:8080'
+            - name: EVENTBROKER
+              value: 'http://localhost:8081/event'
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+        - name: distributor
+          image: docker.io/keptn/distributor:0.10.0
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 10999
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 10999
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "16Mi"
+              cpu: "25m"
+            limits:
+              memory: "32Mi"
+              cpu: "100m"
+          env:
+            - name: PUBSUB_URL
+              value: 'nats://keptn-nats-cluster'
+            - name: PUBSUB_TOPIC
+              value: 'sh.keptn.event.approval.>'
+            - name: PUBSUB_RECIPIENT
+              value: '127.0.0.1'
+            - name: VERSION
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/version']
+            - name: LOCATION
+              valueFrom:
+               fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/component']
+            - name: K8S_DEPLOYMENT_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/name']
+            - name: K8S_POD_NAME
+              valueFrom:
+                fieldRef:
+                 fieldPath: metadata.name
+            - name: K8S_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: K8S_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+---
+# Source: keptn/charts/control-plane/templates/core.yaml
+# webhook-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webhook-service
+  labels:
+    app.kubernetes.io/name: webhook-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    app.kubernetes.io/version: 0.10.0
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: webhook-service
+      app.kubernetes.io/instance: my-keptn
+  replicas: 1
+  # recreate the deployment if anything changes (we can not do a rolling upgrade of this deployment as we use a volume)
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: webhook-service
+        app.kubernetes.io/instance: my-keptn
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: keptn-default
+        app.kubernetes.io/component: control-plane
+        app.kubernetes.io/version: 0.10.0
+        helm.sh/chart: control-plane-0.1.0
+    spec:
+      securityContext:
+        fsGroup: 65532
+      serviceAccountName: keptn-webhook-service
+      containers:
+        - name: webhook-service
+          image: docker.io/keptn/webhook-service:0.10.0
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 10998
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "25m"
+            limits:
+              memory: "64Mi"
+              cpu: "100m"
+          env:
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+        - name: distributor
+          image: docker.io/keptn/distributor:0.10.0
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 10999
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 10999
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "16Mi"
+              cpu: "25m"
+            limits:
+              memory: "32Mi"
+              cpu: "100m"
+          env:
+            - name: PUBSUB_URL
+              value: 'nats://keptn-nats-cluster'
+            - name: PUBSUB_TOPIC
+              value: ''
+            - name: PUBSUB_RECIPIENT
+              value: '127.0.0.1'
+            - name: PUBSUB_RECIPIENT_PATH
+              value: '/v1/event'
+            - name: VERSION
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/version']
+            - name: LOCATION
+              valueFrom:
+               fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/component']
+            - name: K8S_DEPLOYMENT_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/name']
+            - name: K8S_POD_NAME
+              valueFrom:
+                fieldRef:
+                 fieldPath: metadata.name
+            - name: K8S_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: K8S_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+---
+# Source: keptn/charts/control-plane/templates/mongodb-datastore.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-datastore
+  annotations:
+    fluentbit.io/exclude: "true"
+  labels:
+    app.kubernetes.io/name: mongodb-datastore
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    app.kubernetes.io/version: 0.10.0
+    helm.sh/chart: control-plane-0.1.0     
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mongodb-datastore
+      app.kubernetes.io/instance: my-keptn
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: mongodb-datastore
+        app.kubernetes.io/instance: my-keptn
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: keptn-default
+        app.kubernetes.io/component: control-plane
+        app.kubernetes.io/version: 0.10.0
+        helm.sh/chart: control-plane-0.1.0     
+    spec:
+      securityContext:
+        fsGroup: 65532
+      serviceAccountName: keptn-default
+      containers:
+      - name: mongodb-datastore
+        image: docker.io/keptn/mongodb-datastore:0.10.0
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "50m"
+          limits:
+            memory: "512Mi"
+            cpu: "300m"
+        env:
+        - name: PREFIX_PATH
+          value: ""
+        - name: MONGODB_HOST
+          value: 'mongodb:27017'
+        - name: MONGO_DB_NAME
+          value: keptn
+        - name: MONGODB_USER
+          valueFrom:
+            secretKeyRef:
+                name: mongodb-credentials
+                key: user
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+                name: mongodb-credentials
+                key: password
+        - name: MONGODB_EXTERNAL_CONNECTION_STRING
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-credentials
+              key: external_connection_string
+              optional: true
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 65532
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+      - name: distributor
+        image: docker.io/keptn/distributor:0.10.0
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 10999
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 10999
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 8080
+        resources:
+          requests:
+            memory: "16Mi"
+            cpu: "25m"
+          limits:
+            memory: "32Mi"
+            cpu: "100m"
+        env:
+          - name: PUBSUB_IMPL
+            value: nats
+          - name: PUBSUB_URL
+            value: 'nats://keptn-nats-cluster'
+          - name: PUBSUB_TOPIC
+            value: 'sh.keptn.>'
+          - name: PUBSUB_RECIPIENT
+            value: '127.0.0.1'
+          - name: PUBSUB_RECIPIENT_PATH
+            value: '/event'
+          - name: VERSION
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['app.kubernetes.io/version']
+          - name: LOCATION
+            valueFrom:
+             fieldRef:
+                fieldPath: metadata.labels['app.kubernetes.io/component']
+          - name: K8S_DEPLOYMENT_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['app.kubernetes.io/name']
+          - name: K8S_POD_NAME
+            valueFrom:
+              fieldRef:
+               fieldPath: metadata.name
+          - name: K8S_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: K8S_NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 65532
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+---
+# Source: keptn/charts/control-plane/templates/quality-gates.yaml
+# lighthouse-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lighthouse-service
+  labels:
+    app.kubernetes.io/name: lighthouse-service
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    app.kubernetes.io/version: 0.10.0
+    helm.sh/chart: control-plane-0.1.0 
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: lighthouse-service
+      app.kubernetes.io/instance: my-keptn
+  replicas: 1
+  template:
+    metadata:
+      labels:        
+        app.kubernetes.io/name: lighthouse-service
+        app.kubernetes.io/instance: my-keptn
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: keptn-default
+        app.kubernetes.io/component: control-plane
+        app.kubernetes.io/version: 0.10.0
+        helm.sh/chart: control-plane-0.1.0         
+    spec:
+      securityContext:
+        fsGroup: 65532
+      containers:
+        - name: lighthouse-service
+          image: docker.io/keptn/lighthouse-service:0.10.0
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 10998
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "50m"
+            limits:
+              memory: "1Gi"
+              cpu: "200m"
+          env:
+            - name: EVENTBROKER
+              value: 'http://localhost:8081/event'
+            - name: CONFIGURATION_SERVICE
+              value: 'http://configuration-service:8080'
+            - name: MONGODB_DATASTORE
+              value: 'mongodb-datastore:8080'
+            - name: ENVIRONMENT
+              value: 'production'
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+        - name: distributor
+          image: docker.io/keptn/distributor:0.10.0
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 10999
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 10999
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "16Mi"
+              cpu: "25m"
+            limits:
+              memory: "32Mi"
+              cpu: "100m"
+          env:
+            - name: PUBSUB_URL
+              value: 'nats://keptn-nats-cluster'
+            - name: PUBSUB_TOPIC
+              value: 'sh.keptn.event.evaluation.triggered,sh.keptn.event.get-sli.finished,sh.keptn.event.monitoring.configure'
+            - name: PUBSUB_RECIPIENT
+              value: '127.0.0.1'
+            - name: VERSION
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/version']
+            - name: LOCATION
+              valueFrom:
+               fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/component']
+            - name: K8S_DEPLOYMENT_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/name']
+            - name: K8S_POD_NAME
+              valueFrom:
+                fieldRef:
+                 fieldPath: metadata.name
+            - name: K8S_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: K8S_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+      serviceAccountName: keptn-lighthouse-service
+---
+# Source: keptn/charts/control-plane/charts/nats/templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: keptn-nats-cluster
+  labels:
+    app: keptn-nats-cluster
+    chart: nats-0.7.4
+spec:
+  selector:
+    matchLabels:
+      app: keptn-nats-cluster
+  replicas: 1
+  serviceName: keptn-nats-cluster
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: "7777"
+        prometheus.io/scrape: "true"
+      labels:
+        app: keptn-nats-cluster
+        chart: nats-0.7.4
+    spec:
+      # Common volumes for the containers.
+      volumes:
+      - name: config-volume
+        configMap:
+          name: keptn-nats-cluster-config
+
+      # Local volume shared with the reloader.
+      - name: pid
+        emptyDir: {}
+
+      #################
+      #               #
+      #  TLS Volumes  #
+      #               #
+      #################
+
+      
+
+      # Required to be able to HUP signal and apply config
+      # reload to the server without restarting the pod.
+      shareProcessNamespace: true
+
+      #################
+      #               #
+      #  NATS Server  #
+      #               #
+      #################
+      terminationGracePeriodSeconds: 60
+      containers:
+      - name: nats
+        image: nats:2.1.9-alpine3.12
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 4222
+          name: client
+        - containerPort: 7422
+          name: leafnodes
+        - containerPort: 7522
+          name: gateways
+        - containerPort: 6222
+          name: cluster
+        - containerPort: 8222
+          name: monitor
+        - containerPort: 7777
+          name: metrics
+        command:
+         - "nats-server"
+         - "--config"
+         - "/etc/nats-config/nats.conf"
+
+        # Required to be able to define an environment variable
+        # that refers to other environment variables.  This env var
+        # is later used as part of the configuration file.
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: CLUSTER_ADVERTISE
+          value: $(POD_NAME).keptn-nats-cluster.$(POD_NAMESPACE).svc
+        volumeMounts:
+          - name: config-volume
+            mountPath: /etc/nats-config
+          - name: pid
+            mountPath: /var/run/nats
+
+        # Liveness/Readiness probes against the monitoring.
+        #
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8222
+          initialDelaySeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8222
+          initialDelaySeconds: 10
+          timeoutSeconds: 5
+
+        # Gracefully stop NATS Server on pod deletion or image upgrade.
+        #
+        lifecycle:
+          preStop:
+            exec:
+              # Using the alpine based NATS image, we add an extra sleep that is
+              # the same amount as the terminationGracePeriodSeconds to allow
+              # the NATS Server to gracefully terminate the client connections.
+              #
+              command:
+              - "/bin/sh"
+              - "-c"
+              - "nats-server -sl=ldm=/var/run/nats/nats.pid && /bin/sleep 60"
+
+      #################################
+      #                               #
+      #  NATS Configuration Reloader  #
+      #                               #
+      #################################
+      
+      - name: reloader
+        image: connecteverything/nats-server-config-reloader:0.6.0
+        imagePullPolicy: IfNotPresent
+        command:
+         - "nats-server-config-reloader"
+         - "-pid"
+         - "/var/run/nats/nats.pid"
+         - "-config"
+         - "/etc/nats-config/nats.conf"
+        volumeMounts:
+          - name: config-volume
+            mountPath: /etc/nats-config
+          - name: pid
+            mountPath: /var/run/nats
+      
+
+      ##############################
+      #                            #
+      #  NATS Prometheus Exporter  #
+      #                            #
+      ##############################
+      
+      - name: metrics
+        image: synadia/prometheus-nats-exporter:0.5.0
+        imagePullPolicy: IfNotPresent
+        args:
+        - -connz
+        - -routez
+        - -subz
+        - -varz
+        - -prefix=nats
+        - -use_internal_server_id
+        - http://localhost:8222/
+        ports:
+        - containerPort: 7777
+          name: metrics
+      
+
+  volumeClaimTemplates:
+---
+# Source: keptn/charts/control-plane/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "false"
+  name: keptn-ingress
+  namespace: keptn
+  labels:
+    app.kubernetes.io/name: ingress
+    app.kubernetes.io/instance: my-keptn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: keptn-default
+    app.kubernetes.io/component: control-plane
+    helm.sh/chart: control-plane-0.1.0
+spec:
+  rules:
+    - host: keptn.ortelius.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: api-gateway-nginx
+                port:
+                  number: 80
+
