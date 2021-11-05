@@ -30,10 +30,14 @@ releases:
   - name: argocd-applicationset
     namespace: ci-cd
     chart: argo/argocd-applicationset
-    version: 0.2.0
+    version: 1.4.0
     condition: argo-cd.enabled 
     values:
-      - ../kube-infra/ci-cd/argocd-applicationset/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-argocd-applicationset-values.yaml 
+      - ../kube-infra/ci-cd/argocd-applicationset/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-argocd-applicationset-values.yaml
+    hooks:
+      - events: ["prepare"]
+        command: "kubectl"
+        args: ["apply", "--validate=true", "--filename=values/common/argocd-applicationset-crds.yaml"]
 
   - name: ingress-nginx
     namespace: ingress-nginx
