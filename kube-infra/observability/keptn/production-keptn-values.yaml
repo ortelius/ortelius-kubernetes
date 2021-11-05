@@ -3,7 +3,6 @@ control-plane:
   apiGatewayNginx:
     type: ClusterIP
     port: 80
-  
   ingress:
     enabled: true
     annotations:
