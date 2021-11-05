@@ -17,5 +17,3 @@ control-plane:
 
 continuous-delivery:
   enabled: true  
-
-
