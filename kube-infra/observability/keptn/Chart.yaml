@@ -14,16 +14,16 @@ dependencies:
   values:
     - common-keptn-values.yaml
 
-- name: jmeter-service
-  chart: keptn/jmeter-service
-  version: 0.10.0
-  repository: https://storage.googleapis.com/keptn-installer
-  values:
-    - common-jmeter-values.yaml
+# - name: jmeter-service
+#   chart: keptn/jmeter-service
+#   version: 0.10.0
+#   repository: https://storage.googleapis.com/keptn-installer
+#   values:
+#     - common-jmeter-values.yaml
 
-- name: helm-service
-  chart: keptn/helm-service
-  version: 0.10.0
-  repository: https://storage.googleapis.com/keptn-installer
-  values:
-    - common-helm-service-values.yaml
+# - name: helm-service
+#   chart: keptn/helm-service
+#   version: 0.10.0
+#   repository: https://storage.googleapis.com/keptn-installer
+#   values:
+#     - common-helm-service-values.yaml
