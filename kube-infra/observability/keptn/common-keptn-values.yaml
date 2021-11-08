@@ -12,8 +12,6 @@ control-plane:
     host: "keptn.ortelius.io"
     path: /
     pathType: Prefix
-    tls:
-      []
 
 continuous-delivery:
   enabled: true  
