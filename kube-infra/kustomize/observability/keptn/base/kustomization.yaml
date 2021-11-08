@@ -1,0 +1,23 @@
+helmCharts:
+- name: keptn
+  version: 0.10.0
+  repo: https://storage.googleapis.com/keptn-installer
+  releaseName: keptn
+  includeCRDs: true
+  valuesInline: 
+    control-plane:
+      enabled: true
+      apiGatewayNginx:
+        type: ClusterIP
+        port: 80
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          nginx.ingress.kubernetes.io/backend-protocol: "false"
+        host: "keptn.ortelius.io"
+        path: /
+        pathType: Prefix
+        
+    continuous-delivery:
+      enabled: true  
