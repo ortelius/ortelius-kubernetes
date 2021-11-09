@@ -30,7 +30,7 @@ releases:
   - name: argocd-applicationset
     namespace: ci-cd
     chart: argo/argocd-applicationset
-    version: 1.4.0
+    version: 1.6.0
     condition: argo-cd.enabled 
     values:
       - ../kube-infra/ci-cd/argocd-applicationset/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-argocd-applicationset-values.yaml
