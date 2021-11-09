@@ -1,4 +1,4 @@
-![passing](https://github.com/ortelius/kubernetes/actions/workflows/ci.yml/badge.svg) ![GitHub](https://img.shields.io/github/license/ortelius/kubernetes) 
+![passing](https://github.com/ortelius/ortelius-kubernetes/actions/workflows/ci.yml/badge.svg) ![GitHub](https://img.shields.io/github/license/ortelius/ortelius-kubernetes)
 # ortelius-kubernetes
 This Project Is for The Ortelius Kubernetes manifests, helm charts, deployments etc
 
