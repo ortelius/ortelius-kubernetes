@@ -45,7 +45,6 @@ server:
     scopes: '[roles, email]'
 
   config:
-    kustomize.buildOptions: --enable-helm
     url: https://argocd.ortelius.io
     dex.config: |
       connectors:
@@ -59,4 +58,5 @@ server:
           tenant: 57ebf52b-400a-4db6-a524-b07f4888055a
           groups:
             - AKS-Cluster-Admins
+    kustomize.buildOptions: --enable-helm
         

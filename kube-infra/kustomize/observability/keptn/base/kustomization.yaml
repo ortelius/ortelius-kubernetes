@@ -1,5 +1,6 @@
 helmCharts:
 - name: keptn
+  namespace: ci-cd
   version: 0.10.0
   repo: https://storage.googleapis.com/keptn-installer
   releaseName: keptn
