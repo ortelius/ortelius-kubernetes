@@ -25,7 +25,7 @@ releases:
     version: 3.26.5
     condition: argo-cd.enabled
     values:
-      -  ../kube-infra/ci-cd/argo-cd/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-argo-cd-values.yaml
+      -  ../kube-infra/helm/ci-cd/argo-cd/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-argo-cd-values.yaml
 
   - name: argocd-applicationset
     namespace: ci-cd
@@ -33,11 +33,11 @@ releases:
     version: 1.6.0
     condition: argo-cd.enabled 
     values:
-      - ../kube-infra/ci-cd/argocd-applicationset/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-argocd-applicationset-values.yaml
+      - ../kube-infra/helm/ci-cd/argocd-applicationset/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-argocd-applicationset-values.yaml
 
   - name: ingress-nginx
     namespace: ingress-nginx
     chart: ingress-nginx/ingress-nginx
     version: 3.34.0
     values:
-      - ../kube-infra/dns-infra/ingress-nginx/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-ingress-nginx-values.yaml 
+      - ../kube-infra/helm/dns-infra/ingress-nginx/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-ingress-nginx-values.yaml 
