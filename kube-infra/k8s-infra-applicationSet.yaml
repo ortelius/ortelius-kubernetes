@@ -12,7 +12,6 @@ spec:
           revision: HEAD
           directories:
           - path: kube-infra/dns-infra/*
-          - path: kube-infra/observability/*
       - list:
           elements:
           - cluster: production

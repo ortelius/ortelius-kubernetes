@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: kube-infra-setup
-  namespace: ci-cd
+  name: keptn
+  namespace: keptn
 spec:
   generators:
   - matrix:
