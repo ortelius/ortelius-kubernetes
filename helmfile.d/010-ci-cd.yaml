@@ -40,4 +40,4 @@ releases:
     chart: ingress-nginx/ingress-nginx
     version: 3.34.0
     values:
-      - ../kube-infra/helm/dns-infra/ingress-nginx/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-ingress-nginx-values.yaml 
+      - ../kube-infra/helm/dns-infra/ingress-nginx/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-ingress-nginx-values.yaml
