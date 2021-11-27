@@ -12,4 +12,4 @@ dependencies:
   version: 3.34.0
   repository: https://kubernetes.github.io/ingress-nginx
   values:
-    - ../common-ingress-nginx-values.yaml
+    - ../production-ingress-nginx-values.yaml
