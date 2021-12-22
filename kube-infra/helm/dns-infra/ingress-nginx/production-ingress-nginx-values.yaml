@@ -17,7 +17,7 @@ controller:
     enabled: true
   publishService:
     enabled: true
-  replicaCount: 3
+  replicaCount: 1
   stats:
     enabled: true
 
