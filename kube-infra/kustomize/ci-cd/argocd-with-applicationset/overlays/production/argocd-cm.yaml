@@ -10,7 +10,7 @@ data:
   kustomize.buildOptions: --enable-helm
   ga.trackingid: "G-SMLWM11VB0"
   repositories: |
-    - url: https://github.com/ortelius/ortelius.git
+    - url: https://github.com/ortelius/ortelius-kubernetes.git
   dex.config: |
     connectors:
     - type: microsoft
