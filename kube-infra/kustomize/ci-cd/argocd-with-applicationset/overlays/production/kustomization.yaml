@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- namespace.yaml
+- argocd-secrets-sealed.yaml
+- ../../base
+- argocd-server-ingress.yaml
+- argocd-appproject.yaml
+- kustomize-kube-infra-applicationSet.yaml
+
+namespace: ci-cd
+
+patchesStrategicMerge:
+- argocd-server-service.yaml
+- argocd-cm.yaml
+- argocd-rbac-cm.yaml
+- argocd-server-clusterRoleBinding.yaml
+- argocd-application-controller-clusterRoleBinding.yaml
+- argocd-server-service.yaml
+- argocd-dex-server-deployment.yaml
+
+images:
+- newTag: v0.2.0
+
+patches:
+- patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/command/-
+      value: --insecure
+  target:
+    kind: Deployment
+    labelSelector: app.kubernetes.io/name=argocd-server

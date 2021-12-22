@@ -1,0 +1,101 @@
+helmCharts:
+- name: linkerd2
+  namespace: linkerd
+  version: 2.11.1
+  repo: https://helm.linkerd.io/stable
+  releaseName: linkerd2
+  includeCRDs: true
+  valuesInline:
+    identity:
+      issuer:
+        scheme: kubernetes.io/tls
+    global: 
+      identityTrustAnchorsPEM: |
+        -----BEGIN CERTIFICATE-----
+        MIIBjTCCATOgAwIBAgIQVEcCYumXcWijAb6dCnS03jAKBggqhkjOPQQDAjAlMSMw
+        IQYDVQQDExpyb290LmxpbmtlcmQuY2x1c3Rlci5sb2NhbDAeFw0yMTEyMTYwNTAz
+        MThaFw0yNjEyMTUwNTAzMThaMCUxIzAhBgNVBAMTGnJvb3QubGlua2VyZC5jbHVz
+        dGVyLmxvY2FsMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE8Xs9qGB7MTei5yx1
+        nRON6YyzgWnwZbRO+OfrUh/fVV6MuI1FgX/WO6Em8Hp5plDRO3z1zxSLjKiybGc/
+        kS4zFqNFMEMwDgYDVR0PAQH/BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYD
+        VR0OBBYEFOY543MHf2m31SgjUNt6TijNGyYdMAoGCCqGSM49BAMCA0gAMEUCIFsd
+        c27VRBrUYMHxX/xedgv8thUmAkkY7kZs2WwdZELHAiEApEI7csmRVJa7Wu0Mesnt
+        IO7udWyfi+dGXMYAXxyoYmo=
+        -----END CERTIFICATE-----
+    identityTrustAnchorsPEM: |
+        -----BEGIN CERTIFICATE-----
+        MIIBjTCCATOgAwIBAgIQVEcCYumXcWijAb6dCnS03jAKBggqhkjOPQQDAjAlMSMw
+        IQYDVQQDExpyb290LmxpbmtlcmQuY2x1c3Rlci5sb2NhbDAeFw0yMTEyMTYwNTAz
+        MThaFw0yNjEyMTUwNTAzMThaMCUxIzAhBgNVBAMTGnJvb3QubGlua2VyZC5jbHVz
+        dGVyLmxvY2FsMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE8Xs9qGB7MTei5yx1
+        nRON6YyzgWnwZbRO+OfrUh/fVV6MuI1FgX/WO6Em8Hp5plDRO3z1zxSLjKiybGc/
+        kS4zFqNFMEMwDgYDVR0PAQH/BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYD
+        VR0OBBYEFOY543MHf2m31SgjUNt6TijNGyYdMAoGCCqGSM49BAMCA0gAMEUCIFsd
+        c27VRBrUYMHxX/xedgv8thUmAkkY7kZs2WwdZELHAiEApEI7csmRVJa7Wu0Mesnt
+        IO7udWyfi+dGXMYAXxyoYmo=
+        -----END CERTIFICATE-----
+
+# - name: linkerd-jaeger
+#   version: 2.11.1
+#   repo: https://helm.linkerd.io/stable
+#   releaseName: linkerd-jaeger
+#   includeCRDs: true
+#   valuesInline: 
+#     installNamespace: false
+#     namespace: linkerd-jaeger
+#     linkerdNamespace: linkerd
+#     webhook:
+#       externalSecret: true
+#       caBundle: |
+#         -----BEGIN CERTIFICATE-----
+#         MIIBjTCCATOgAwIBAgIQVEcCYumXcWijAb6dCnS03jAKBggqhkjOPQQDAjAlMSMw
+#         IQYDVQQDExpyb290LmxpbmtlcmQuY2x1c3Rlci5sb2NhbDAeFw0yMTEyMTYwNTAz
+#         MThaFw0yNjEyMTUwNTAzMThaMCUxIzAhBgNVBAMTGnJvb3QubGlua2VyZC5jbHVz
+#         dGVyLmxvY2FsMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE8Xs9qGB7MTei5yx1
+#         nRON6YyzgWnwZbRO+OfrUh/fVV6MuI1FgX/WO6Em8Hp5plDRO3z1zxSLjKiybGc/
+#         kS4zFqNFMEMwDgYDVR0PAQH/BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYD
+#         VR0OBBYEFOY543MHf2m31SgjUNt6TijNGyYdMAoGCCqGSM49BAMCA0gAMEUCIFsd
+#         c27VRBrUYMHxX/xedgv8thUmAkkY7kZs2WwdZELHAiEApEI7csmRVJa7Wu0Mesnt
+#         IO7udWyfi+dGXMYAXxyoYmo=
+#         -----END CERTIFICATE-----
+      
+# - name: linkerd-viz
+#   version: 2.11.1
+#   repo: https://helm.linkerd.io/stable
+#   releaseName: linkerd-viz
+#   includeCRDs: true
+#   valuesInline:
+#     installNamespace: false
+#     namespace: linkerd-viz
+#     linkerdNamespace: linkerd
+#     defaultLogLevel: debug
+#     tap:
+#       externalSecret: true
+#       caBundle: |
+#         -----BEGIN CERTIFICATE-----
+#         MIIBjTCCATOgAwIBAgIQVEcCYumXcWijAb6dCnS03jAKBggqhkjOPQQDAjAlMSMw
+#         IQYDVQQDExpyb290LmxpbmtlcmQuY2x1c3Rlci5sb2NhbDAeFw0yMTEyMTYwNTAz
+#         MThaFw0yNjEyMTUwNTAzMThaMCUxIzAhBgNVBAMTGnJvb3QubGlua2VyZC5jbHVz
+#         dGVyLmxvY2FsMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE8Xs9qGB7MTei5yx1
+#         nRON6YyzgWnwZbRO+OfrUh/fVV6MuI1FgX/WO6Em8Hp5plDRO3z1zxSLjKiybGc/
+#         kS4zFqNFMEMwDgYDVR0PAQH/BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYD
+#         VR0OBBYEFOY543MHf2m31SgjUNt6TijNGyYdMAoGCCqGSM49BAMCA0gAMEUCIFsd
+#         c27VRBrUYMHxX/xedgv8thUmAkkY7kZs2WwdZELHAiEApEI7csmRVJa7Wu0Mesnt
+#         IO7udWyfi+dGXMYAXxyoYmo=
+#         -----END CERTIFICATE-----
+#     tapInjector:
+#       externalSecret: true
+#       caBundle: |
+#         -----BEGIN CERTIFICATE-----
+#         MIIBjTCCATOgAwIBAgIQVEcCYumXcWijAb6dCnS03jAKBggqhkjOPQQDAjAlMSMw
+#         IQYDVQQDExpyb290LmxpbmtlcmQuY2x1c3Rlci5sb2NhbDAeFw0yMTEyMTYwNTAz
+#         MThaFw0yNjEyMTUwNTAzMThaMCUxIzAhBgNVBAMTGnJvb3QubGlua2VyZC5jbHVz
+#         dGVyLmxvY2FsMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE8Xs9qGB7MTei5yx1
+#         nRON6YyzgWnwZbRO+OfrUh/fVV6MuI1FgX/WO6Em8Hp5plDRO3z1zxSLjKiybGc/
+#         kS4zFqNFMEMwDgYDVR0PAQH/BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYD
+#         VR0OBBYEFOY543MHf2m31SgjUNt6TijNGyYdMAoGCCqGSM49BAMCA0gAMEUCIFsd
+#         c27VRBrUYMHxX/xedgv8thUmAkkY7kZs2WwdZELHAiEApEI7csmRVJa7Wu0Mesnt
+#         IO7udWyfi+dGXMYAXxyoYmo=
+#         -----END CERTIFICATE-----
+#     dashboard:
+#       enforcedHostRegexp: .*

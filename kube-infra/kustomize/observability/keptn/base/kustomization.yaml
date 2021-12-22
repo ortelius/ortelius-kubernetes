@@ -1,7 +1,7 @@
 helmCharts:
 - name: keptn
-  namespace: ci-cd
-  version: 0.10.0
+  namespace: keptn
+  version: 0.11.3
   repo: https://storage.googleapis.com/keptn-installer
   releaseName: keptn
   includeCRDs: true
@@ -25,14 +25,14 @@ helmCharts:
 
 - name: helm-service
   namespace: ci-cd
-  version: 0.10.0
+  version: 0.11.3
   repo: https://storage.googleapis.com/keptn-installer
   releaseName: helm-service
   includeCRDs: true
 
 - name: jmeter-service
   namespace: ci-cd
-  version: 0.10.0
+  version: 0.11.3
   repo: https://storage.googleapis.com/keptn-installer
   releaseName: jmeter-service
   includeCRDs: true
