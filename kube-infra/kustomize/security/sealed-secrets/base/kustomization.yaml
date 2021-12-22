@@ -1,0 +1,10 @@
+helmCharts:
+- name: sealed-secrets
+  namespace: security
+  version: 1.16.1
+  repo: https://bitnami-labs.github.io/sealed-secrets
+  releaseName: sealed-secrets
+  includeCRDs: true
+  valuesInline: 
+    commandArgs:
+      - "--update-status"

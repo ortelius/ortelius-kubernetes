@@ -17,7 +17,7 @@ spec:
       - list:
           elements:
           - cluster: production
-            url: https://aks-96cc8329.0bdd7a85-0827-4b5f-a665-5294ca534810.privatelink.eastus.azmk8s.io:443
+            url: https://aks-c452c5c4.0ed4e465-53d1-43cc-b016-12689a743be0.privatelink.eastus.azmk8s.io:443
             values:
               CLIENT_ENVIRONMENT: production             
   template:
@@ -34,7 +34,7 @@ spec:
             # - 'common-{{path.basename}}-values.yaml'
             - 'values.yaml'
       destination:
-        server: https://aks-96cc8329.0bdd7a85-0827-4b5f-a665-5294ca534810.privatelink.eastus.azmk8s.io:443
+        server: https://aks-c452c5c4.0ed4e465-53d1-43cc-b016-12689a743be0.privatelink.eastus.azmk8s.io:443
         namespace: '{{path.basename}}'
       syncPolicy:
         automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.

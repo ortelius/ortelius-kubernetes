@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: kube-infra-kustomize-setup
+  namespace: ci-cd
+spec:
+  generators:
+  - matrix:
+      generators:
+      - git:
+          repoURL: https://github.com/ortelius/ortelius-kubernetes.git
+          revision: HEAD
+          directories:
+          - path: kube-infra/kustomize/ci-cd/*
+          - path: kube-infra/kustomize/dns-infra/*
+          - path: kube-infra/kustomize/observability/*
+          - path: kube-infra/kustomize/security/*
+        exclude: 
+      - list:
+          elements:
+          - cluster: production
+            url: https://aks-c452c5c4.0ed4e465-53d1-43cc-b016-12689a743be0.privatelink.eastus.azmk8s.io:443
+            values:
+              CLIENT_ENVIRONMENT: production             
+  template:
+    metadata:
+      name: '{{ path.basename }}'
+    spec:
+      project: ortelius
+      source:
+        repoURL: https://github.com/ortelius/ortelius-kubernetes.git
+        targetRevision: HEAD
+        path: '{{path}}/overlays/{{cluster}}'
+      destination:
+        server: '{{ url }}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:  
+        - CreateNamespace=true      
