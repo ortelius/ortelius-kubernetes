@@ -10,7 +10,6 @@ environments:
   production:
     values:
 
-
 releases:
   - name: sealed-secrets-controller
     namespace: security
