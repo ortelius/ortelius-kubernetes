@@ -2,7 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../base
-- argocd-secrets-sealed.yaml
 - argocd-server-ingress.yaml
 - argocd-appproject.yaml
 - kustomize-kube-infra-applicationSet.yaml
