@@ -3,27 +3,14 @@ repositories:
     url: https://bitnami-labs.github.io/sealed-secrets
   - name: jetstack
     url: https://charts.jetstack.io
-
-values:
-  - sealed-secrets:
-      enabled: true
-  - cert-manager:
-      enabled: true
-      
-environments:
-  production:
-    values:
-      - sealed-secrets:
-          enabled: true
-      - cert-manager:
-          enabled: true
+  - name: ingress-nginx
+    url: https://kubernetes.github.io/ingress-nginx
 
 releases:
   - name: sealed-secrets-controller
     namespace: security
     chart: sealed-secrets/sealed-secrets 
     version: 1.16.1
-    condition: sealed-secrets.enabled
     values:
       - ../kube-infra/helm/security/sealed-secrets/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-sealed-secrets-values.yaml
 
@@ -31,6 +18,12 @@ releases:
     namespace: dns-infra
     chart: jetstack/cert-manager
     version: 1.6.1
-    condition: cert-manager.enabled
     values:
       - ../kube-infra/helm/dns-infra/cert-manager/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-cert-manager-values.yaml
+  
+  - name: ingress-nginx
+    namespace: ingress-nginx
+    chart: ingress-nginx/ingress-nginx
+    version: 3.34.0
+    values:
+      - ../kube-infra/helm/dns-infra/ingress-nginx/{{ requiredEnv "CLIENT_ENVIRONMENT" }}-ingress-nginx-values.yaml
