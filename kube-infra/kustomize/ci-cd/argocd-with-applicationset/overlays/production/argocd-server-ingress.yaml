@@ -3,9 +3,10 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    nginx.ingress.kubernetes.io/ssl-passthrough: "false"
   name: argo-ingress
-  namespace: argo
+  namespace: ci-cd
 spec:
   rules:
   - http:
@@ -17,3 +18,4 @@ spec:
               number: 80
         path: /
         pathType: Prefix
+    host: argocd.ortelius.io
