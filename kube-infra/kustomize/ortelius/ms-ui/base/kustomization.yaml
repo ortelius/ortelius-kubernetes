@@ -1,0 +1,8 @@
+helmCharts:
+- name: ortelius/ms-ui
+  namespace: security
+  version: 10.0.0-build.510
+  repo: https://ortelius.github.io/ortelius-charts/
+  releaseName: ortelius/ms-ui
+  includeCRDs: false
+  valuesInline: 
