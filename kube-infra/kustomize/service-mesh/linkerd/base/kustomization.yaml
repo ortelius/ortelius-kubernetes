@@ -60,6 +60,7 @@ helmCharts:
 #         -----END CERTIFICATE-----
       
 - name: linkerd-viz
+  namespace: linkerd-viz
   version: 2.11.1
   repo: https://helm.linkerd.io/stable
   releaseName: linkerd-viz
