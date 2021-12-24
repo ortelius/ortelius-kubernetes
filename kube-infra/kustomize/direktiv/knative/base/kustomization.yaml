@@ -1,0 +1,8 @@
+helmCharts:
+- name: knative
+  version: 0.5.9
+  namespace: knative-serving
+  repo: https://charts.direktiv.io
+  releaseName: knative
+  includeCRDs: true
+  # valuesInline:
