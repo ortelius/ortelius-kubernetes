@@ -4,6 +4,9 @@ resources:
 - ../../base
 - argocd-server-ingress.yaml
 - argocd-appproject.yaml
+- argocd-manager.yaml
+- argocd-manager-role.yaml
+- argocd-manager-role-binding.yaml
 - kustomize-kube-infra-applicationSet.yaml
 
 namespace: ci-cd
@@ -16,6 +19,7 @@ patchesStrategicMerge:
 - argocd-application-controller-clusterRoleBinding.yaml
 - argocd-server-service.yaml
 - argocd-dex-server-deployment.yaml
+- argocd-repo-server.yaml
 
 images:
 - newTag: v0.2.0
