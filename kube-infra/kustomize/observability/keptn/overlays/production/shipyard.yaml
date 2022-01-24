@@ -10,7 +10,6 @@ spec:
         tasks: 
         - name: "deployment"
         - name: "release"
-​
     - name: "uat"
       sequences:
       - name: "delivery"
@@ -19,7 +18,6 @@ spec:
         tasks: 
         - name: "deployment"
         - name: "release"
-​
     - name: "prod"
       sequences:
       - name: "delivery"
