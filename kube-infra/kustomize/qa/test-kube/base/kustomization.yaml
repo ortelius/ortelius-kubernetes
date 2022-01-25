@@ -1,0 +1,7 @@
+helmCharts:
+- name: testkube
+  namespace: testkube
+  version: 0.8.2
+  repo: https://kubeshop.github.io/helm-charts
+  releaseName: testkube
+  includeCRDs: true
