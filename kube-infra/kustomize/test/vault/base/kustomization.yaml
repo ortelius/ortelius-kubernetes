@@ -1,0 +1,32 @@
+helmCharts:
+- name: vault
+  namespace: security
+  version: 0.18.0
+  repo: https://helm.releases.hashicorp.com
+  releaseName: vault
+  includeCRDs: true
+  valuesInline: 
+    server:
+      injector:
+        enabled: false
+      dev:
+        enabled: true
+        devRootToken: "bradmccoy"
+      ingress:
+        enabled: true
+        labels:
+          traffic: external
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          nginx.ingress.kubernetes.io/backend-protocol: HTTP
+          nginx.ingress.kubernetes.io/ssl-passthrough: "false"
+        ingressClassName: ""
+        pathType: Prefix
+        hosts:
+          - host: vault.ortelius.io
+            paths: []
+        extraPaths: []
+        tls:
+          - secretName: vault-tls-certificate
+            hosts:
+              - vault.ortelius.io
