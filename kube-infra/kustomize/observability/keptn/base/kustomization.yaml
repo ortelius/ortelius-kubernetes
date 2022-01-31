@@ -41,5 +41,5 @@ helmCharts:
   namespace: keptn
   version: 0.12.0
   repo: https://bradmccoydev.github.io/terraform-service
-  releaseName: terraform-service
+  releaseName: keptn-terraform-service
   includeCRDs: true
