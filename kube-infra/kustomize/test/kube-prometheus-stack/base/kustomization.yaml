@@ -1,0 +1,87 @@
+helmCharts:
+- name: kube-prometheus-stack
+  namespace: observability
+  version: 31.0.0
+  repo: https://prometheus-community.github.io/helm-charts
+  releaseName: kube-prometheus-stack
+  includeCRDs: true
+  valuesInline: 
+    grafana:
+      image: 
+        tag: 8.0.3
+
+      adminPassword: password@123
+
+      sidecar:
+        dashboards:
+          enabled: "true"
+          provider:
+            allowUiUpdates: true
+            disableDeletion: false
+            editabled: true
+
+      plugins:
+        - digrich-bubblechart-panel
+        - grafana-clock-panel
+        - grafana-piechart-panel
+
+      additionalDataSources:
+        - name: loki
+          url: http://loki-stack.loki-stack:3100/
+          type: loki
+          access: proxy
+        - name: PromLoki
+          url: http://loki-stack.loki-stack:3100/loki
+          type: prometheus
+          access: proxy
+        - name: Stackdriver
+          type: stackdriver
+          access: proxy    
+          jsonData:
+            authenticationType: gce
+
+      persistence:
+        type: pvc
+        enabled: true
+        accessModes:
+          - ReadWriteOnce
+        size: 10Gi
+
+    coreDns:
+      enabled: false
+
+    kubeDns:
+      enabled: true
+
+    prometheus:
+      ingress:
+        enabled: true
+        annotations:
+          Kubernetes.io/ingress.class: nginx
+          cert-manager.io/cluster-issuer: letsencrypt-demo-aws
+        hosts:
+          - prometheus.bradmccoy.io
+        tls:
+          - hosts:
+              - prometheus.bradmccoy.io
+            secretName: letsencrypt-demo-prometheus-bradmccoy-io
+      prometheusSpec:
+        serviceMonitorSelectorNilUsesHelmValues: false
+        serviceMonitorSelector: {}
+        enableAdminAPI: false
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: standard
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 30Gi
+
+    prometheusOperator:
+      adminssionWebhooks:
+        enabled: false
+        patch:
+          enabled: false
+      tlsProxy: 
+        enabled: false  
