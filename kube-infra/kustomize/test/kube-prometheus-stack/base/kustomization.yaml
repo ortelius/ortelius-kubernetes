@@ -8,7 +8,7 @@ helmCharts:
   valuesInline: 
     grafana:
       image: 
-        tag: 8.0.3
+        tag: 8.3.4
 
       adminPassword: password@123
 
@@ -58,13 +58,9 @@ helmCharts:
         enabled: true
         annotations:
           Kubernetes.io/ingress.class: nginx
-          cert-manager.io/cluster-issuer: letsencrypt-demo-aws
         hosts:
-          - prometheus.bradmccoy.io
-        tls:
-          - hosts:
-              - prometheus.bradmccoy.io
-            secretName: letsencrypt-demo-prometheus-bradmccoy-io
+          - prometheus.ortelius.io
+
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
         serviceMonitorSelector: {}

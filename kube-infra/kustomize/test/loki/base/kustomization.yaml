@@ -1,0 +1,8 @@
+helmCharts:
+- name: loki
+  namespace: observability
+  version: 2.6.0
+  repo: https://grafana.github.io/helm-charts 
+  releaseName: grafana/loki-stack
+  includeCRDs: false
+  valuesInline: 
