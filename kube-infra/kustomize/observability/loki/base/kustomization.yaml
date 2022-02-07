@@ -7,7 +7,7 @@ helmCharts:
   includeCRDs: true
   valuesInline: 
     fluent-bit:
-    enabled: true
+      enabled: true
 
     promtail:
       enabled: true
