@@ -1,5 +1,5 @@
 helmCharts:
-- name: loki
+- name: loki-stack
   namespace: observability
   version: 2.6.0
   repo: https://grafana.github.io/helm-charts 
@@ -9,14 +9,14 @@ helmCharts:
     fluent-bit:
     enabled: true
 
-  promtail:
-    enabled: true
-
-  loki:
-    config:
-      table_manager:
-        retention_deletes_enabled: true
-        retention_period: 504h
-    persistence:
+    promtail:
       enabled: true
-      size: 30Gi
+
+    loki:
+      config:
+        table_manager:
+          retention_deletes_enabled: true
+          retention_period: 504h
+      persistence:
+        enabled: true
+        size: 30Gi
