@@ -83,9 +83,9 @@ helmCharts:
                   storage: 30Gi
 
     prometheusOperator:
-      adminssionWebhooks:
+      enabled: true
+      admissionWebhooks:
         enabled: false
-        patch:
-          enabled: false
-      tlsProxy: 
-        enabled: false  
+      tls:
+        enabled: false
+
