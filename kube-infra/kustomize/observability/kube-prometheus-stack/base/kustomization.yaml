@@ -88,4 +88,3 @@ helmCharts:
         enabled: false
       tls:
         enabled: false
-
