@@ -43,3 +43,10 @@ helmCharts:
   repo: https://bradmccoydev.github.io/terraform-service
   releaseName: keptn-terraform-service
   includeCRDs: true
+
+- name: keptn-ortelius-service
+  namespace: keptn
+  version: 0.11.6
+  repo: https://ortelius.github.io/keptn-ortelius-service
+  releaseName: keptn-ortelius-service
+  includeCRDs: true
