@@ -37,12 +37,12 @@ helmCharts:
   releaseName: jmeter-service
   includeCRDs: true
 
-- name: keptn-terraform-service
-  namespace: keptn
-  version: 0.12.4
-  repo: https://bradmccoydev.github.io/terraform-service
-  releaseName: keptn-terraform-service
-  includeCRDs: true
+# - name: keptn-terraform-service
+#   namespace: keptn
+#   version: 0.12.4
+#   repo: https://bradmccoydev.github.io/terraform-service
+#   releaseName: keptn-terraform-service
+#   includeCRDs: true
 
 - name: keptn-ortelius-service
   namespace: keptn
