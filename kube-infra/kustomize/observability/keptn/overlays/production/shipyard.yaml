@@ -8,21 +8,47 @@ spec:
       sequences:
       - name: "delivery"
         tasks: 
-        - name: "deployment"
-        - name: "release"
+        - name: "buildimage"
+        - name: "pushimage"
+        - name: "updatecicd"
+        - name: "evaluation"
+          triggeredAfter: "15m"
+            properties:
+              timeframe: "15m"
     - name: "uat"
       sequences:
       - name: "delivery"
         triggeredOn:
           - event: "test.delivery.finished"
+            selector:
+              match:
+                result: "pass"
         tasks: 
-        - name: "deployment"
-        - name: "release"
+        - name: "updatecicd"
+        - name: "evaluation"
+          triggeredAfter: "15m"
+            properties:
+              timeframe: "15m"
     - name: "prod"
       sequences:
       - name: "delivery"
         triggeredOn:
           - event: "uat.delivery.finished"
+            selector:
+              match:
+                result: "pass"
         tasks: 
-        - name: "deployment"
-        - name: "release"
+        - name: "updatecicd"
+        - name: "evaluation"
+          triggeredAfter: "5m"
+            properties:
+              timeframe: "5m"
+      - name: "rollback"
+        triggeredOn:
+          - event: "prod.delivery.finished"
+            selector:
+              match:
+                result: "fail"
+        tasks:
+        - name: "rollback"
+        - name: "notify"
