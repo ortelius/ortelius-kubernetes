@@ -5,18 +5,3 @@ helmCharts:
   repo: https://grafana.github.io/helm-charts 
   releaseName: grafana/loki-stack
   includeCRDs: true
-  valuesInline: 
-    fluent-bit:
-      enabled: true
-
-    promtail:
-      enabled: true
-
-    loki:
-      config:
-        table_manager:
-          retention_deletes_enabled: true
-          retention_period: 504h
-      persistence:
-        enabled: true
-        size: 30Gi
