@@ -46,7 +46,7 @@ helmCharts:
 
 - name: keptn-ortelius-service
   namespace: keptn
-  version: 0.11.7
+  version: 0.12.0
   repo: https://ortelius.github.io/keptn-ortelius-service
   releaseName: keptn-ortelius-service
   includeCRDs: true
