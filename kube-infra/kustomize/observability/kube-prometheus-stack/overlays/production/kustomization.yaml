@@ -4,3 +4,6 @@ resources:
 - namespace.yaml
 - ../../base
 namespace: observability
+
+patchesStrategicMerge:
+- prometheuses-crd.yaml
