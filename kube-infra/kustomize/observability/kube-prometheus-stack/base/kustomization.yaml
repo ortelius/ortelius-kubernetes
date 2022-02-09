@@ -76,7 +76,7 @@ helmCharts:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: standard
+              storageClassName: default
               accessModes: ["ReadWriteOnce"]
               resources:
                 requests:
