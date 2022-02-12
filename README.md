@@ -14,18 +14,3 @@ Contributors:
 * Ben Poh ([@benhpoh](https://github.com/benhpoh)), Moula
 * Ujwal Yelmareddy ([@interasujwal](https://github.com/interasujwal)), Interas Labs
 * Hamid Gholami ([@hamidgholami](https://github.com/hamidgholami)),EGS
-
-## Support
-
-https://github.com/ortelius/ortelius/issues
-
-ortelius/ortelius-ms-dep-pkg-r <br />
-ortelius/ortelius-ms-textfile-crud <br />
-ortelius/ortelius-ms-compitem-crud <br />
-ortelius/ortelius-ms-dep-pkg-cud <br />
-ortelius/ortelius-ms-validate-user <br />
-ortelius/ortelius-ms-pyutil <br />
-ortelius/ortelius-ms-bs <br />
-ortelius/ortelius-ms-rpt-comp2env <br />
-ortelius/ortelius-ms-rpt-env2app <br />
-ortelius/ortelius-ms-rpt-env2comp <br />
