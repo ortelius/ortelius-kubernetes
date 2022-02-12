@@ -20,15 +20,4 @@ patchesStrategicMerge:
 - argocd-server-service.yaml
 - argocd-dex-server-deployment.yaml
 - argocd-repo-server.yaml
-
-images:
-- newTag: v0.2.0
-
-patches:
-- patch: |-
-    - op: add
-      path: /spec/template/spec/containers/0/command/-
-      value: --insecure
-  target:
-    kind: Deployment
-    labelSelector: app.kubernetes.io/name=argocd-server
+- argocd-server-deployment.yaml
