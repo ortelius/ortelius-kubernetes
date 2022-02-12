@@ -18,7 +18,7 @@ spec:
       serviceAccountName: argocd-server
       containers:
       - name: argocd-server
-        image: docker.com/odysseycloud/argocd:2.2.4
+        image: odysseycloud/argocd:2.2.4
         imagePullPolicy: Always
         command: [argocd-server]
         env:
