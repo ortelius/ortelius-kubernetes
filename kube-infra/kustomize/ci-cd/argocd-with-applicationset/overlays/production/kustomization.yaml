@@ -20,4 +20,3 @@ patchesStrategicMerge:
 - argocd-server-service.yaml
 - argocd-dex-server-deployment.yaml
 - argocd-repo-server.yaml
-- argocd-server-deployment.yaml
