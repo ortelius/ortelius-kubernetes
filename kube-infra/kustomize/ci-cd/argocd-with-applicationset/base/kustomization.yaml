@@ -3,8 +3,8 @@ kind: Kustomization
 resources:
 - namespace.yaml
 - https://raw.githubusercontent.com/argoproj/argo-cd/v2.2.4/manifests/install.yaml
-#- https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/manifests/install.yaml
-#- https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/catalog/install.yaml
+- https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/manifests/install.yaml
+- https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/catalog/install.yaml
 - github.com/argoproj/applicationset/manifests/crds?ref=v0.3.0
 - github.com/argoproj/applicationset/manifests/base?ref=v0.3.0
 
