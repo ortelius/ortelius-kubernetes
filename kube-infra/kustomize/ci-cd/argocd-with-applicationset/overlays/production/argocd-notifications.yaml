@@ -89,6 +89,10 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: argocd-notifications-secret
+stringData:
+  notifiers.yaml: |
+    slack:
+      token: xoxb-1975318752818-1997639292499-nQU8UYiD4Bp1Sg9i889Xhrwp
 type: Opaque
 ---
 apiVersion: v1
