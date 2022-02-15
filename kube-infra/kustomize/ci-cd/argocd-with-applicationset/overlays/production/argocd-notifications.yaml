@@ -81,7 +81,7 @@ data:
         }]
       # Aggregate the messages to the thread by git commit hash
       groupingKey: "{{.app.status.sync.revision}}"
-      notifyBroadcast: false
+      notifyBroadcast: true
   template.app-sync-failed: |
     message: |
       Application {{.app.metadata.name}} sync is {{.app.status.sync.status}}.
