@@ -53,14 +53,6 @@ subjects:
   name: argocd-notifications-controller
 ---
 apiVersion: v1
-kind: Secret
-metadata:
-  name: argocd-notifications-secret
-stringData:
-  slack-token: xoxp-1975318752818-1999122787040-3094558098005-f4a2f4f89cee022ec363b034bdc2c90d
-type: Opaque
----
-apiVersion: v1
 kind: ConfigMap
 metadata:
   name: argocd-notifications-cm
