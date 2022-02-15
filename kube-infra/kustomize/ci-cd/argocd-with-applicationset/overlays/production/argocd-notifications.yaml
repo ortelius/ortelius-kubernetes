@@ -57,7 +57,7 @@ kind: Secret
 metadata:
   name: argocd-notifications-secret
 stringData:
-  slack-token: xoxb-1975318752818-1997639292499-nQU8UYiD4Bp1Sg9i889Xhrwp
+  slack-token: xoxp-1975318752818-1999122787040-3094558098005-f4a2f4f89cee022ec363b034bdc2c90d
 type: Opaque
 ---
 apiVersion: v1
@@ -87,6 +87,32 @@ data:
             "short": true
           }]
         }]
+      # Aggregate the messages to the thread by git commit hash
+      groupingKey: "{{.app.status.sync.revision}}"
+      notifyBroadcast: false
+  template.app-sync-failed: |
+    message: |
+      Application {{.app.metadata.name}} sync is {{.app.status.sync.status}}.
+      Application details: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}.
+    slack:
+      attachments: |
+        [{
+          "title": "{{.app.metadata.name}}",
+          "title_link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
+          "color": "#ff0000",
+          "fields": [{
+            "title": "Sync Status",
+            "value": "{{.app.status.sync.status}}",
+            "short": true
+          }, {
+            "title": "Repository",
+            "value": "{{.app.spec.source.repoURL}}",
+            "short": true
+          }]
+        }]
+      # Aggregate the messages to the thread by git commit hash
+      groupingKey: "{{.app.status.sync.revision}}"
+      notifyBroadcast: true
 ---
 apiVersion: v1
 kind: Service
