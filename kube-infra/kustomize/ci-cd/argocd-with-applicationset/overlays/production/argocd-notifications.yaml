@@ -68,11 +68,6 @@ metadata:
 data:
   service.slack: |
     token: $slack-token
-  service.webhook.slack_webhook: |
-    url: https://hooks.slack.com/services/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
-    headers:
-    - name: Content-Type
-      value: application/json
   template.app-sync-status: |
     message: |
       Application {{.app.metadata.name}} sync is {{.app.status.sync.status}}.
@@ -93,27 +88,6 @@ data:
             "short": true
           }]
         }]
-  template.send-slack: |
-    webhook:
-      slack_webhook:
-        method: POST
-        body: |
-          {
-            "attachments": [{
-              "title": "{{.app.metadata.name}}",
-              "title_link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
-              "color": "#18be52",
-              "fields": [{
-                "title": "Sync Status",
-                "value": "{{.app.status.sync.status}}",
-                "short": true
-              }, {
-                "title": "Repository",
-                "value": "{{.app.spec.source.repoURL}}",
-                "short": true
-              }]
-            }]
-          }
 ---
 apiVersion: v1
 kind: Service
