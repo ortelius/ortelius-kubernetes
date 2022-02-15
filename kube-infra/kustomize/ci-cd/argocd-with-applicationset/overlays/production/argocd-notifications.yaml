@@ -53,10 +53,21 @@ subjects:
   name: argocd-notifications-controller
 ---
 apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-notifications-secret
+stringData:
+  notifiers.yaml:
+    slack-token: xoxb-1975318752818-1997639292499-nQU8UYiD4Bp1Sg9i889Xhrwp
+type: Opaque
+---
+apiVersion: v1
 kind: ConfigMap
 metadata:
   name: argocd-notifications-cm
 data:
+  service.slack: |
+    token: $slack-token
   service.webhook.slack_webhook: |
     url: https://hooks.slack.com/services/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
     headers:
@@ -84,16 +95,6 @@ data:
               }]
             }]
           }
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: argocd-notifications-secret
-stringData:
-  notifiers.yaml: |
-    slack:
-      token: xoxb-1975318752818-1997639292499-nQU8UYiD4Bp1Sg9i889Xhrwp
-type: Opaque
 ---
 apiVersion: v1
 kind: Service
