@@ -1,0 +1,11 @@
+helmCharts:
+- name: dynatrace-operator
+  namespace: dynatrace
+  version: 0.4.1
+  repo: https://raw.githubusercontent.com/Dynatrace/helm-charts/master/repos/stable
+  releaseName: dynatrace-operator
+  includeCRDs: true
+  valuesInline: 
+    apiUrl: https://fqp43822.live.dynatrace.com/api
+    apiToken: dt0c01.FJEGSO2NBFPWOEA7WOSKOA2G.GGMUK6GJDH2TWLNKQT6FRB6H22252VXP2F3QAMBUVUDV5TSYYHAWZVVFCUQLF2UA
+    paasToken: dt0c01.QS7G6E6S5G64DLXFMEDEJ2O7.XVJQTFD2H7XG45V5RTDGAW7JAI5W44MFTLZTUOMH4JEXPAV6NSEHUNGAYPIZGEIV
