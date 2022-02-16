@@ -1,5 +1,5 @@
 resources: 
-- github.com/Dynatrace/dynatrace-operator/releases/latest/download/dynatrace.com_dynakubes.yaml
+- https://github.com/Dynatrace/dynatrace-operator/releases/latest/download/dynatrace.com_dynakubes.yaml
 
 helmCharts:
 - name: dynatrace-operator
