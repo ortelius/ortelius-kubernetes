@@ -7,6 +7,7 @@ helmCharts:
   includeCRDs: true
   valuesInline: 
     dashboard:
+      enabled: true
       ingress: 
         enabled: true
         https: false
@@ -14,9 +15,6 @@ helmCharts:
           kubernetes.io/ingress.class: nginx
           nginx.ingress.kubernetes.io/backend-protocol: HTTP
           nginx.ingress.kubernetes.io/ssl-passthrough: "false"
+        pathType: "Prefix"
         hosts:
           - argorollouts.ortelius.io
-        tls:
-          - hosts:
-              - argorollouts.ortelius.io
-            secretName: argorollouts-tls
