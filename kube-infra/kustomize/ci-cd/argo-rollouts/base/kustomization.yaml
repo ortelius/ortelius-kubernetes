@@ -1,0 +1,22 @@
+helmCharts:
+- name: argo-rollouts
+  namespace: ci-cd
+  version: 2.12.0
+  repo: https://argoproj.github.io/argo-helm
+  releaseName: argo-rollouts
+  includeCRDs: true
+  valuesInline: 
+    dashboard:
+      ingress: 
+        enabled: true
+        https: false
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          nginx.ingress.kubernetes.io/backend-protocol: HTTP
+          nginx.ingress.kubernetes.io/ssl-passthrough: "false"
+        hosts:
+          - argorollouts.ortelius.io
+        tls:
+          - hosts:
+              - argorollouts.ortelius.io
+            secretName: argorollouts-tls
