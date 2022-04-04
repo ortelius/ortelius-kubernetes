@@ -1,8 +1,8 @@
 helmCharts:
 - name: keptn
   namespace: keptn
-  version: 0.12.0
-  repo: https://storage.googleapis.com/keptn-installer
+  version: 0.14.1
+  repo: https://charts.keptn.sh
   releaseName: keptn
   includeCRDs: true
   valuesInline: 
@@ -25,15 +25,15 @@ helmCharts:
 
 - name: helm-service
   namespace: keptn
-  version: 0.12.0
-  repo: https://storage.googleapis.com/keptn-installer
+  version: 0.14.1
+  repo: https://charts.keptn.sh
   releaseName: helm-service
   includeCRDs: true
 
 - name: jmeter-service
   namespace: keptn
-  version: 0.12.0
-  repo: https://storage.googleapis.com/keptn-installer
+  version: 0.14.1
+  repo: https://charts.keptn.sh
   releaseName: jmeter-service
   includeCRDs: true
 
