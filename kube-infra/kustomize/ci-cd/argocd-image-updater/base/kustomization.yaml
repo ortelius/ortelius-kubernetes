@@ -1,0 +1,14 @@
+helmCharts:
+- name: argocd-image-updater
+  namespace: ci-cd
+  version: 0.8.0
+  repo: https://argoproj.github.io/argo-helm
+  releaseName: argocd-image-updater
+  includeCRDs: true
+  valuesInline: 
+    config:
+      argocd:
+        grpcWeb: false
+        serverAddress: "http://argocd-server.ci-cd"
+        insecure: true
+        plaintext: true
