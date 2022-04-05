@@ -23,6 +23,10 @@ helmCharts:
               topologyKey: "kubernetes.io/hostname"
       metrics:
         enabled: true
+        serviceMonitor:
+          enabled: true
+          additionalLabels:
+            release: kube-prometheus-stack
       publishService:
         enabled: true
       replicaCount: 1
