@@ -11,8 +11,8 @@ helmCharts:
         enabled: true
         serviceMonitor:
           enabled: true
-        additionalLabels:
-          release: kube-prometheus-stack 
+          additionalLabels:
+            release: kube-prometheus-stack 
     dashboard:
       enabled: true
       ingress: 
@@ -25,3 +25,93 @@ helmCharts:
         pathType: "Prefix"
         hosts:
           - argorollouts.ortelius.io
+    notifications:
+      notifiers:
+        service.slack: |
+          token: $slack-token
+      triggers:
+        trigger.on-rollout-completed: |
+          - send: [rollout-completed]
+        trigger.on-rollout-aborted: |
+          - send: [rollout-aborted]
+        trigger.on-rollout-paused: |
+          - send: [rollout-paused]
+      templates:
+        template.rollout-completed: |
+          message: Rollout {{.rollout.metadata.name}} has been completed.
+          email:
+            subject: Rollout {{.rollout.metadata.name}} has been completed.
+          slack:
+            attachments: |
+                [{
+                  "title": "{{ .rollout.metadata.name}}",
+                  "color": "#18be52",
+                  "fields": [
+                  {
+                    "title": "Strategy",
+                    "value": "{{if .rollout.spec.strategy.blueGreen}}BlueGreen{{end}}{{if .rollout.spec.strategy.canary}}Canary{{end}}",
+                    "short": true
+                  }
+                  {{range $index, $c := .rollout.spec.template.spec.containers}}
+                    {{if not $index}},{{end}}
+                    {{if $index}},{{end}}
+                    {
+                      "title": "{{$c.name}}",
+                      "value": "{{$c.image}}",
+                      "short": true
+                    }
+                  {{end}}
+                  ]
+                }]
+        template.rollout-aborted: |
+          message: Rollout {{.rollout.metadata.name}} has been aborted.
+          email:
+            subject: Rollout {{.rollout.metadata.name}} has been aborted.
+          slack:
+            attachments: |
+                [{
+                  "title": "{{ .rollout.metadata.name}}",
+                  "color": "#E01E5A",
+                  "fields": [
+                  {
+                    "title": "Strategy",
+                    "value": "{{if .rollout.spec.strategy.blueGreen}}BlueGreen{{end}}{{if .rollout.spec.strategy.canary}}Canary{{end}}",
+                    "short": true
+                  }
+                  {{range $index, $c := .rollout.spec.template.spec.containers}}
+                    {{if not $index}},{{end}}
+                    {{if $index}},{{end}}
+                    {
+                      "title": "{{$c.name}}",
+                      "value": "{{$c.image}}",
+                      "short": true
+                    }
+                  {{end}}
+                  ]
+                }]
+        template.rollout-paused: |
+          message: Rollout {{.rollout.metadata.name}} has been paused.
+          email:
+            subject: Rollout {{.rollout.metadata.name}} has been paused.
+          slack:
+            attachments: |
+                [{
+                  "title": "{{ .rollout.metadata.name}}",
+                  "color": "#18be52",
+                  "fields": [
+                  {
+                    "title": "Strategy",
+                    "value": "{{if .rollout.spec.strategy.blueGreen}}BlueGreen{{end}}{{if .rollout.spec.strategy.canary}}Canary{{end}}",
+                    "short": true
+                  }
+                  {{range $index, $c := .rollout.spec.template.spec.containers}}
+                    {{if not $index}},{{end}}
+                    {{if $index}},{{end}}
+                    {
+                      "title": "{{$c.name}}",
+                      "value": "{{$c.image}}",
+                      "short": true
+                    }
+                  {{end}}
+                  ]
+                }]
