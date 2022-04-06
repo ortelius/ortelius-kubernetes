@@ -23,8 +23,8 @@ patchesStrategicMerge:
 - argocd-repo-server.yaml
 
 images:
-- name: quay.io/argoproj/argocd:latest
-  newName: odysseycloud/argocd:v2.2.5
+- name: quay.io/argoproj/argocd
+  newName: odysseycloud/argocd
 
 patches:
 - patch: |-
