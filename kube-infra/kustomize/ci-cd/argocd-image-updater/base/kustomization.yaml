@@ -12,3 +12,9 @@ helmCharts:
         serverAddress: "http://argocd-server.ci-cd"
         insecure: true
         plaintext: true
+      gitCommitMail: "bradmccoydev+argo@gmail.com"
+      gitCommitUser: bradmccoydev
+    metrics:
+      enabled: true
+      additionalLabels:
+            release: kube-prometheus-stack
