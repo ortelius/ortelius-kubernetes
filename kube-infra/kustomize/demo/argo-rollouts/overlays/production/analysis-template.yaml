@@ -1,0 +1,35 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: AnalysisTemplate
+# metadata:
+#   name: success-rate
+# spec:
+#   args:
+#   - name: service-name
+#   metrics:
+#   - name: success-rate
+#     interval: 2m
+#     count: 2
+#     successCondition: result[0] >= 0.95
+#     provider:
+#       prometheus:
+#         address: http://kube-prometheus-stack-prometheus.observability:9090
+#         query: sum(response_status{app="{{args.service-name}}",role="canary",status=~"2.*"})/sum(response_status{app="{{args.service-name}}",role="canary"})
+
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: success-rate
+spec:
+  args:
+  - name: service-name
+  metrics:
+  - name: success-rate
+    interval: 1m
+    successCondition: result[0] >= 0.95
+    failureLimit: 3
+    provider:
+      prometheus:
+        address: http://kube-prometheus-stack-prometheus.observability:9090
+        query: |
+          sum(irate(nginx_ingress_controller_requests{service=~"{{args.service-name}}",status!~"[4-5].*"}[5m])) / 
+          sum(irate(nginx_ingress_controller_requests{service=~"{{args.service-name}}"}[5m]))

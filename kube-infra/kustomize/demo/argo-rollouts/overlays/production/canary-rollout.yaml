@@ -1,0 +1,54 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: demo
+  namespace: test
+  annotations:
+    notifications.argoproj.io/subscribe.on-rollout-completed.slack: argo-notifications
+    notifications.argoproj.io/subscribe.on-rollout-step-completed.slack: argo-notifications
+    notifications.argoproj.io/subscribe.on-rollout-updated.slack: argo-notifications
+    notifications.argoproj.io/subscribe.on-rollout-aborted.slack: argo-notifications
+spec:
+  replicas: 5
+  strategy:
+    canary:
+      analysis:
+        templates:
+        - templateName: success-rate
+        args:
+        - name: service-name
+          value: demo-stable
+      canaryService: demo-canary
+      stableService: demo-stable
+      trafficRouting:
+        nginx:
+          stableIngress: canary-stable
+      steps:
+      - setWeight: 10
+      - pause: {duration: 2m}
+      - setWeight: 20
+      - pause: {duration: 2m}
+      - setWeight: 50
+      - pause: {duration: 2m}
+      - setWeight: 80
+      - pause: {duration: 2m}
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: canary-demo
+  template:
+    metadata:
+      labels:
+        app: canary-demo
+    spec:
+      containers:
+      - name: demo
+        image: argoproj/rollouts-demo:yellow
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            memory: 32Mi
+            cpu: 5m
