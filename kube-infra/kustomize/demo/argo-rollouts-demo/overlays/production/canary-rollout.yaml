@@ -9,7 +9,7 @@ metadata:
     notifications.argoproj.io/subscribe.on-rollout-updated.slack: argo-notifications
     notifications.argoproj.io/subscribe.on-rollout-aborted.slack: argo-notifications
 spec:
-  replicas: 3
+  replicas: 5
   strategy:
     canary:
       analysis:
