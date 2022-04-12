@@ -24,6 +24,15 @@ spec:
       trafficRouting:
         nginx:
           stableIngress: canary-stable
+      steps:
+      - setWeight: 40
+      - pause: {}
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
   revisionHistoryLimit: 2
   selector:
     matchLabels:
