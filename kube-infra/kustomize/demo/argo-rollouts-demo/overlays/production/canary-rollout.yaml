@@ -24,7 +24,9 @@ spec:
       trafficRouting:
         nginx:
           stableIngress: canary-stable
-      # steps:
+      steps:
+        - setCanaryScale:
+            weight: 25
       # - setWeight: 10
       # - pause: {duration: 2m}
       # - setWeight: 20
