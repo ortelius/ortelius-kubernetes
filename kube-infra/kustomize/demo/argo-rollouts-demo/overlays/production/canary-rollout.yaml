@@ -9,7 +9,8 @@ metadata:
     notifications.argoproj.io/subscribe.on-rollout-updated.slack: argo-notifications
     notifications.argoproj.io/subscribe.on-rollout-aborted.slack: argo-notifications
 spec:
-  replicas: 10
+  replicas: 2
+  minReadySeconds: 30
   strategy:
     canary:
       # analysis:
@@ -20,9 +21,9 @@ spec:
       #     value: demo-stable
       canaryService: demo-canary
       stableService: demo-stable
-      trafficRouting:
-        nginx:
-          stableIngress: canary-stable
+      # trafficRouting:
+      #   nginx:
+      #     stableIngress: canary-stable
       steps:
       - setCanaryScale:
           replicas: 3
@@ -45,7 +46,7 @@ spec:
     spec:
       containers:
       - name: demo
-        image: argoproj/rollouts-demo:yellow
+        image: argoproj/rollouts-demo:blue
         ports:
         - name: http
           containerPort: 8080
