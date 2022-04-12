@@ -20,20 +20,19 @@ spec:
         #   value: demo-stable
       canaryService: demo-canary
       stableService: demo-stable
-      minReadySeconds: 30
       maxUnavailable: 5
       trafficRouting:
         nginx:
           stableIngress: canary-stable
-      steps:
-      - setWeight: 10
-      - pause: {duration: 2m}
-      - setWeight: 20
-      - pause: {duration: 2m}
-      - setWeight: 50
-      - pause: {duration: 2m}
-      - setWeight: 80
-      - pause: {duration: 2m}
+      # steps:
+      # - setWeight: 10
+      # - pause: {duration: 2m}
+      # - setWeight: 20
+      # - pause: {duration: 2m}
+      # - setWeight: 50
+      # - pause: {duration: 2m}
+      # - setWeight: 80
+      # - pause: {duration: 2m}
   revisionHistoryLimit: 2
   selector:
     matchLabels:
