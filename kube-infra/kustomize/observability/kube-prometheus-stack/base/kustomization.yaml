@@ -36,10 +36,6 @@ helmCharts:
           url: http://loki-stack.observability:3100/
           type: loki
           access: proxy
-        - name: PromLoki
-          url: http://loki-stack.observability:3100/loki
-          type: prometheus
-          access: proxy
 
       persistence:
         type: pvc

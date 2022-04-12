@@ -1,0 +1,24 @@
+helmCharts:
+- name: loki
+  namespace: observability
+  version: 2.6.2
+  repo: https://grafana.github.io/helm-charts 
+  releaseName: loki-stack
+  includeCRDs: false
+  valuesInline:
+    fluent-bit:
+      enabled: true
+
+    promtail:
+      enabled: true
+
+    loki:
+      service:
+        type: ClusterIP
+      config:
+        table_manager:
+          retention_deletes_enabled: true
+          retention_period: 336h
+      persistence:
+        enabled: true
+        size: 100Gi
