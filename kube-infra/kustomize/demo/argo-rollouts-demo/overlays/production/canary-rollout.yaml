@@ -25,27 +25,7 @@ spec:
           stableIngress: canary-stable
       steps:
       - setCanaryScale:
-          weight: 20
-      - setWeight: 20
-      - pause: {duration: 1s}
-      - setCanaryScale:
-          weight: 40
-      - setWeight: 40
-      - pause: {duration: 1s}
-      - setCanaryScale:
-          weight: 60
-      - setWeight: 60
-      - pause: {duration: 1s}
-      - setCanaryScale:
-          weight: 80
-      - setWeight: 80
-      - pause: {duration: 1s}
-      - setCanaryScale:
-          weight: 100
-      - setWeight: 100
-      - pause: {duration: 1s}
-      # - setCanaryScale:
-      #     weight: 50
+          weight: 50
       # - setCanaryScale:
       #     matchTrafficWeight: true
   revisionHistoryLimit: 2
