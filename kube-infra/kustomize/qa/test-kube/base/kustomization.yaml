@@ -1,6 +1,6 @@
 helmCharts:
 - name: testkube
-  namespace: test-kube
+  namespace: testkube
   version: 1.0.4
   repo: https://kubeshop.github.io/helm-charts
   releaseName: testkube
