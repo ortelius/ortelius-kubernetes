@@ -25,18 +25,16 @@ spec:
       #   nginx:
       #     stableIngress: canary-stable
       steps:
-        - setWeight: 50
-        - pause: {duration: 2m}
-        # - setCanaryScale:
+      - setWeight: 10
+      - pause: {duration: 10s}
+      - setWeight: 20
+      - pause: {duration: 10s}
+      - setWeight: 50
+      - pause: {duration: 10s}
+      - setWeight: 80
+      - pause: {duration: 10s}
+              # - setCanaryScale:
         #     weight: 25
-      # - setWeight: 10
-      # - pause: {duration: 2m}
-      # - setWeight: 20
-      # - pause: {duration: 2m}
-      # - setWeight: 50
-      # - pause: {duration: 2m}
-      # - setWeight: 80
-      # - pause: {duration: 2m}
   revisionHistoryLimit: 2
   selector:
     matchLabels:
@@ -48,7 +46,7 @@ spec:
     spec:
       containers:
       - name: demo
-        image: argoproj/rollouts-demo:yellow
+        image: argoproj/rollouts-demo:blue
         ports:
         - name: http
           containerPort: 8080
