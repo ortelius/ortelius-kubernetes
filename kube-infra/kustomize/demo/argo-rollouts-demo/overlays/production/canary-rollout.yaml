@@ -9,7 +9,7 @@ metadata:
     notifications.argoproj.io/subscribe.on-rollout-updated.slack: argo-notifications
     notifications.argoproj.io/subscribe.on-rollout-aborted.slack: argo-notifications
 spec:
-  replicas: 2
+  replicas: 5
   minReadySeconds: 30
   strategy:
     canary:
@@ -21,20 +21,9 @@ spec:
       #     value: demo-stable
       canaryService: demo-canary
       stableService: demo-stable
-      # trafficRouting:
-      #   nginx:
-      #     stableIngress: canary-stable
-      steps:
-      - setCanaryScale:
-          replicas: 3
-      # a percentage of spec.replicas
-      - setCanaryScale:
-          weight: 25
-      # matchTrafficWeight returns to the default behavior of matching the canary traffic weight
-      - setCanaryScale:
-          matchTrafficWeight: true
-      # - setCanaryScale:
-      #     matchTrafficWeight: true
+      trafficRouting:
+        nginx:
+          stableIngress: canary-stable
   revisionHistoryLimit: 2
   selector:
     matchLabels:
