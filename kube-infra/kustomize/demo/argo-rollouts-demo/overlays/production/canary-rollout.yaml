@@ -13,12 +13,12 @@ spec:
   minReadySeconds: 30
   strategy:
     canary:
-      # analysis:
-      #   templates:
-      #   - templateName: success-rate
-      #   args:
-      #   - name: service-name
-      #     value: demo-stable
+      analysis:
+        templates:
+        - templateName: success-rate
+        args:
+        - name: service-name
+          value: demo-stable
       canaryService: demo-canary
       stableService: demo-stable
       trafficRouting:
@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
       - name: demo
-        image: argoproj/rollouts-demo:blue
+        image: argoproj/rollouts-demo:yellow
         ports:
         - name: http
           containerPort: 8080
