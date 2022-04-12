@@ -21,9 +21,9 @@ spec:
       canaryService: demo-canary
       stableService: demo-stable
       maxUnavailable: 5
-      # trafficRouting:
-      #   nginx:
-      #     stableIngress: canary-stable
+      trafficRouting:
+        nginx:
+          stableIngress: canary-stable
       steps:
       - setWeight: 10
       - pause: {duration: 10s}
