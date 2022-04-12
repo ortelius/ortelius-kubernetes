@@ -21,9 +21,9 @@ spec:
           value: demo-stable
       canaryService: demo-canary
       stableService: demo-stable
-      trafficRouting:
-        nginx:
-          stableIngress: canary-stable
+      # trafficRouting:
+      #   nginx:
+      #     stableIngress: canary-stable
       steps:
       - setWeight: 40
       - pause: {}
@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
       - name: demo
-        image: argoproj/rollouts-demo:yellow
+        image: argoproj/rollouts-demo:blue
         ports:
         - name: http
           containerPort: 8080
