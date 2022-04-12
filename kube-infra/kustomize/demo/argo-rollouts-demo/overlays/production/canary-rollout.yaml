@@ -12,12 +12,12 @@ spec:
   replicas: 5
   strategy:
     canary:
-      # analysis:
-      #   templates:
-      #   - templateName: success-rate
-        # args:
-        # - name: service-name
-        #   value: demo-stable
+      analysis:
+        templates:
+        - templateName: success-rate
+        args:
+        - name: service-name
+          value: demo-stable
       canaryService: demo-canary
       stableService: demo-stable
       # maxUnavailable: 5
@@ -33,12 +33,12 @@ spec:
       # - pause: {duration: 10s}
       # - setWeight: 80
       # - pause: {duration: 10s}
-      # - setCanaryScale:
-      #     weight: 25
+      - setCanaryScale:
+          weight: 25
       # - setCanaryScale:
       #     weight: 50
-      - setCanaryScale:
-          matchTrafficWeight: true
+      # - setCanaryScale:
+      #     matchTrafficWeight: true
   revisionHistoryLimit: 2
   selector:
     matchLabels:
@@ -50,7 +50,7 @@ spec:
     spec:
       containers:
       - name: demo
-        image: argoproj/rollouts-demo:green
+        image: argoproj/rollouts-demo:yellow
         ports:
         - name: http
           containerPort: 8080
