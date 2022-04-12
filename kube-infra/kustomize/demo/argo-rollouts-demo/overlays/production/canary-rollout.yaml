@@ -12,12 +12,12 @@ spec:
   replicas: 5
   strategy:
     canary:
-      analysis:
-        templates:
-        - templateName: success-rate
-        args:
-        - name: service-name
-          value: demo-stable
+      # analysis:
+      #   templates:
+      #   - templateName: success-rate
+        # args:
+        # - name: service-name
+        #   value: demo-stable
       canaryService: demo-canary
       stableService: demo-stable
       trafficRouting:
