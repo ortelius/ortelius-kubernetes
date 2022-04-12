@@ -1,0 +1,914 @@
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.7.0
+  creationTimestamp: null
+  name: keptndeploymentcontexts.keptn.sh
+spec:
+  group: keptn.sh
+  names:
+    kind: KeptnDeploymentContext
+    listKind: KeptnDeploymentContextList
+    plural: keptndeploymentcontexts
+    singular: keptndeploymentcontext
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeptnDeploymentContext is the Schema for the keptndeploymentcontexts
+          API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeptnDeploymentContextSpec defines the desired state of KeptnDeploymentContext
+            properties:
+              project:
+                type: string
+              service:
+                type: string
+              version:
+                type: string
+            required:
+            - project
+            - service
+            - version
+            type: object
+          status:
+            description: KeptnDeploymentContextStatus defines the observed state of
+              KeptnDeploymentContext
+            properties:
+              keptnContext:
+                type: string
+              lastAppliedHash:
+                additionalProperties:
+                  type: string
+                type: object
+            required:
+            - keptnContext
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.7.0
+  creationTimestamp: null
+  name: keptninstances.keptn.sh
+spec:
+  group: keptn.sh
+  names:
+    kind: KeptnInstance
+    listKind: KeptnInstanceList
+    plural: keptninstances
+    singular: keptninstance
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeptnInstance is the Schema for the keptninstances API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeptnInstanceSpec defines the desired state of KeptnInstance
+            properties:
+              apiToken:
+                type: string
+              apiUrl:
+                type: string
+              tokenType:
+                type: string
+            required:
+            - apiUrl
+            type: object
+          status:
+            description: KeptnInstanceStatus defines the observed state of KeptnInstance
+            properties:
+              APIScheme:
+                type: string
+              authHeader:
+                type: string
+              currentToken:
+                type: string
+              lastUpdated:
+                format: date-time
+                type: string
+            required:
+            - authHeader
+            - currentToken
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.7.0
+  creationTimestamp: null
+  name: keptnprojects.keptn.sh
+spec:
+  group: keptn.sh
+  names:
+    kind: KeptnProject
+    listKind: KeptnProjectList
+    plural: keptnprojects
+    singular: keptnproject
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeptnProject is the Schema for the keptnprojects API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeptnProjectSpec defines the desired state of KeptnProject
+            properties:
+              defaultBranch:
+                type: string
+              initialShipyard:
+                type: string
+              password:
+                type: string
+              repository:
+                description: Foo is an example field of KeptnProject. Edit keptnproject_types.go
+                  to remove/update
+                type: string
+              username:
+                type: string
+            type: object
+          status:
+            description: KeptnProjectStatus defines the observed state of KeptnProject
+            properties:
+              projectExists:
+                type: boolean
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.7.0
+  creationTimestamp: null
+  name: keptnscheduledexecs.keptn.sh
+spec:
+  group: keptn.sh
+  names:
+    kind: KeptnScheduledExec
+    listKind: KeptnScheduledExecList
+    plural: keptnscheduledexecs
+    singular: keptnscheduledexec
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeptnScheduledExec is the Schema for the keptnscheduledexecs
+          API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeptnScheduledExecSpec defines the desired state of KeptnScheduledExec
+            properties:
+              sequenceExecutionTemplate:
+                description: KeptnSequenceExecutionSpec defines the desired state
+                  of KeptnSequenceExecution
+                properties:
+                  event:
+                    type: string
+                  labels:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  project:
+                    description: Foo is an example field of KeptnSequenceExecution.
+                      Edit keptnsequenceexecution_types.go to remove/update
+                    type: string
+                  service:
+                    type: string
+                  stage:
+                    type: string
+                required:
+                - event
+                - project
+                - service
+                - stage
+                type: object
+              startTime:
+                description: Foo is an example field of KeptnScheduledExec. Edit keptnscheduledexec_types.go
+                  to remove/update
+                type: string
+            required:
+            - sequenceExecutionTemplate
+            - startTime
+            type: object
+          status:
+            description: KeptnScheduledExecStatus defines the observed state of KeptnScheduledExec
+            properties:
+              started:
+                type: boolean
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.7.0
+  creationTimestamp: null
+  name: keptnsequenceexecutions.keptn.sh
+spec:
+  group: keptn.sh
+  names:
+    kind: KeptnSequenceExecution
+    listKind: KeptnSequenceExecutionList
+    plural: keptnsequenceexecutions
+    shortNames:
+    - kse
+    singular: keptnsequenceexecution
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeptnSequenceExecution is the Schema for the keptnsequenceexecutions
+          API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeptnSequenceExecutionSpec defines the desired state of KeptnSequenceExecution
+            properties:
+              event:
+                type: string
+              labels:
+                additionalProperties:
+                  type: string
+                type: object
+              project:
+                description: Foo is an example field of KeptnSequenceExecution. Edit
+                  keptnsequenceexecution_types.go to remove/update
+                type: string
+              service:
+                type: string
+              stage:
+                type: string
+            required:
+            - event
+            - project
+            - service
+            - stage
+            type: object
+          status:
+            description: KeptnSequenceExecutionStatus defines the observed state of
+              KeptnSequenceExecution
+            properties:
+              keptnContext:
+                type: string
+              lastAppliedHash:
+                type: string
+              projectExists:
+                description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
+                  of cluster Important: Run "make" to regenerate code after modifying
+                  this file'
+                type: boolean
+              serviceExists:
+                type: boolean
+              updatePending:
+                type: boolean
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.7.0
+  creationTimestamp: null
+  name: keptnsequences.keptn.sh
+spec:
+  group: keptn.sh
+  names:
+    kind: KeptnSequence
+    listKind: KeptnSequenceList
+    plural: keptnsequences
+    singular: keptnsequence
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeptnSequence is the Schema for the keptnsequences API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: Spec contains the specification of this sequence
+            properties:
+              sequence:
+                description: Sequence defines the Keptn Sequence this is referring
+                  to
+                properties:
+                  name:
+                    type: string
+                  tasks:
+                    items:
+                      description: Task defines a task by its name and optional properties
+                      properties:
+                        name:
+                          type: string
+                        properties:
+                          additionalProperties:
+                            type: string
+                          type: object
+                        triggeredAfter:
+                          type: string
+                      required:
+                      - name
+                      type: object
+                    type: array
+                  triggeredOn:
+                    items:
+                      description: Trigger defines a trigger which causes a sequence
+                        to get activated
+                      properties:
+                        event:
+                          type: string
+                        selector:
+                          description: Selector defines criteria for a sequence to
+                            get triggered
+                          properties:
+                            match:
+                              additionalProperties:
+                                type: string
+                              type: object
+                          type: object
+                      required:
+                      - event
+                      type: object
+                    type: array
+                required:
+                - name
+                - tasks
+                type: object
+            required:
+            - sequence
+            type: object
+          status:
+            description: Status contains information about the current status of this
+              KeptnSequence
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.7.0
+  creationTimestamp: null
+  name: keptnservicedeployments.keptn.sh
+spec:
+  group: keptn.sh
+  names:
+    kind: KeptnServiceDeployment
+    listKind: KeptnServiceDeploymentList
+    plural: keptnservicedeployments
+    singular: keptnservicedeployment
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeptnServiceDeployment is the Schema for the keptnservicedeployments
+          API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeptnServiceDeploymentSpec defines the desired state of KeptnServiceDeployment
+            properties:
+              author:
+                type: string
+              configVersion:
+                type: string
+              labels:
+                additionalProperties:
+                  type: string
+                type: object
+              project:
+                description: 'INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
+                  Important: Run "make" to regenerate code after modifying this file'
+                type: string
+              service:
+                type: string
+              sourceCommitHash:
+                type: string
+              stage:
+                type: string
+              version:
+                type: string
+            required:
+            - project
+            - service
+            - stage
+            - version
+            type: object
+          status:
+            description: KeptnServiceDeploymentStatus defines the observed state of
+              KeptnServiceDeployment
+            properties:
+              deployedConfigVersion:
+                type: string
+              deployedVersion:
+                type: string
+              keptnContext:
+                type: string
+              lastAppliedHash:
+                type: string
+              prerequisites:
+                description: KeptnServiceDeploymentPrerequisites defines all of the
+                  objects needed to deploy a service
+                properties:
+                  projectExists:
+                    type: boolean
+                  serviceExists:
+                    type: boolean
+                  stageExists:
+                    type: boolean
+                type: object
+              progress:
+                description: KeptnServiceDeploymentProgress describes the state of
+                  the deployment progress
+                properties:
+                  artifactAvailable:
+                    type: boolean
+                  deploymentTriggered:
+                    type: boolean
+                type: object
+              updatePending:
+                type: boolean
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.7.0
+  creationTimestamp: null
+  name: keptnservices.keptn.sh
+spec:
+  group: keptn.sh
+  names:
+    kind: KeptnService
+    listKind: KeptnServiceList
+    plural: keptnservices
+    singular: keptnservice
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeptnService is the Schema for the keptnservices API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeptnServiceSpec defines the desired state of KeptnService
+            properties:
+              deploymentEvent:
+                type: string
+              project:
+                type: string
+              service:
+                description: Foo is an example field of KeptnService. Edit keptnservice_types.go
+                  to remove/update
+                type: string
+              stage:
+                type: string
+              version:
+                type: string
+            required:
+            - project
+            - service
+            type: object
+          status:
+            description: KeptnServiceStatus defines the observed state of KeptnService
+            properties:
+              projectExists:
+                description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
+                  of cluster Important: Run "make" to regenerate code after modifying
+                  this file'
+                type: boolean
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.7.0
+  creationTimestamp: null
+  name: keptnshipyards.keptn.sh
+spec:
+  group: keptn.sh
+  names:
+    kind: KeptnShipyard
+    listKind: KeptnShipyardList
+    plural: keptnshipyards
+    singular: keptnshipyard
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeptnShipyard is the Schema for the keptnshipyards API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeptnShipyardSpec defines the desired state of KeptnShipyard
+            properties:
+              project:
+                description: 'INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
+                  Important: Run "make" to regenerate code after modifying this file'
+                type: string
+              shipyard:
+                description: Shipyard describes a shipyard specification according
+                  to Keptn spec 0.2.0
+                properties:
+                  apiVersion:
+                    type: string
+                  kind:
+                    type: string
+                  metadata:
+                    description: Metadata contains meta-data of a resource
+                    properties:
+                      name:
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  spec:
+                    description: ShipyardSpec consists of any number of stages
+                    properties:
+                      stages:
+                        items:
+                          description: Stage defines a stage by its name and list
+                            of task sequences
+                          properties:
+                            name:
+                              type: string
+                            sequences:
+                              items:
+                                description: Sequence defines a task sequence by its
+                                  name and tasks. The triggers property is optional
+                                properties:
+                                  name:
+                                    type: string
+                                  tasks:
+                                    items:
+                                      description: Task defines a task by its name
+                                        and optional properties
+                                      properties:
+                                        name:
+                                          type: string
+                                        properties:
+                                          additionalProperties:
+                                            type: string
+                                          type: object
+                                        triggeredAfter:
+                                          type: string
+                                      required:
+                                      - name
+                                      type: object
+                                    type: array
+                                  triggeredOn:
+                                    items:
+                                      description: Trigger defines a trigger which
+                                        causes a sequence to get activated
+                                      properties:
+                                        event:
+                                          type: string
+                                        selector:
+                                          description: Selector defines criteria for
+                                            a sequence to get triggered
+                                          properties:
+                                            match:
+                                              additionalProperties:
+                                                type: string
+                                              type: object
+                                          type: object
+                                      required:
+                                      - event
+                                      type: object
+                                    type: array
+                                required:
+                                - name
+                                - tasks
+                                type: object
+                              type: array
+                          required:
+                          - name
+                          type: object
+                        type: array
+                    required:
+                    - stages
+                    type: object
+                required:
+                - apiVersion
+                - kind
+                - metadata
+                - spec
+                type: object
+            required:
+            - project
+            - shipyard
+            type: object
+          status:
+            description: KeptnShipyardStatus defines the observed state of KeptnShipyard
+            properties:
+              LastUploadedHash:
+                type: string
+              lastAppliedHash:
+                type: string
+              projectExists:
+                type: boolean
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.7.0
+  creationTimestamp: null
+  name: keptnstages.keptn.sh
+spec:
+  group: keptn.sh
+  names:
+    kind: KeptnStage
+    listKind: KeptnStageList
+    plural: keptnstages
+    singular: keptnstage
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeptnStage is the Schema for the keptnstages API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeptnStageSpec defines the desired state of KeptnStage
+            properties:
+              project:
+                description: Project defines the Keptn Project this stage is assigned
+                  to
+                type: string
+              sequence:
+                description: Sequence defines an array of sequences this KeptnStage
+                  will use
+                items:
+                  description: KeptnSequenceRefSpec defines a KeptnSequence which
+                    is used in this stage
+                  properties:
+                    sequenceRef:
+                      description: SequenceRef is used to set a reference to a KeptnSequence
+                      type: string
+                    type:
+                      description: Type describes how the sequence is defined in this
+                        KeptnSequenceRefSpec
+                      type: string
+                  required:
+                  - type
+                  type: object
+                type: array
+            required:
+            - project
+            - sequence
+            type: object
+          status:
+            description: KeptnStageStatus defines the observed state of KeptnStage
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
