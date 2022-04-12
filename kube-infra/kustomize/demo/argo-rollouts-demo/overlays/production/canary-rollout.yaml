@@ -50,7 +50,7 @@ spec:
     spec:
       containers:
       - name: demo
-        image: argoproj/rollouts-demo:purple
+        image: argoproj/rollouts-demo:green
         ports:
         - name: http
           containerPort: 8080
