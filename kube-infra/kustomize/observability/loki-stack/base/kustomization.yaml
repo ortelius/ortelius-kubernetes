@@ -1,5 +1,5 @@
 helmCharts:
-- name: loki
+- name: loki-stack
   namespace: observability
   version: 2.6.2
   repo: https://grafana.github.io/helm-charts 
