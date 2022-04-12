@@ -20,7 +20,7 @@ spec:
         #   value: demo-stable
       canaryService: demo-canary
       stableService: demo-stable
-      maxUnavailable: 5
+      # maxUnavailable: 5
       trafficRouting:
         nginx:
           stableIngress: canary-stable
@@ -33,10 +33,12 @@ spec:
       # - pause: {duration: 10s}
       # - setWeight: 80
       # - pause: {duration: 10s}
-      - setCanaryScale:
-          weight: 25
+      # - setCanaryScale:
+      #     weight: 25
       # - setCanaryScale:
       #     weight: 50
+      - setCanaryScale:
+          matchTrafficWeight: true
   revisionHistoryLimit: 2
   selector:
     matchLabels:
