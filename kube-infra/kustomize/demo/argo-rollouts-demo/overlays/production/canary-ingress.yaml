@@ -9,8 +9,8 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "false"
 spec:
   rules:
-  - host: canary.ortelius.eastus.cloudapp.azure.com
-  - http:
+  - host: canary.ortelius.io
+    http:
       paths:
       - pathType: Prefix
         path: "/"
