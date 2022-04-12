@@ -33,18 +33,13 @@ helmCharts:
 
       additionalDataSources:
         - name: loki
-          url: http://loki-stack.loki-stack:3100/
+          url: http://loki-stack.observability:3100/
           type: loki
           access: proxy
         - name: PromLoki
-          url: http://loki-stack.loki-stack:3100/loki
+          url: http://loki-stack.observability:3100/loki
           type: prometheus
           access: proxy
-        - name: Stackdriver
-          type: stackdriver
-          access: proxy    
-          jsonData:
-            authenticationType: gce
 
       persistence:
         type: pvc
@@ -73,6 +68,7 @@ helmCharts:
           - prometheus.ortelius.io
 
       prometheusSpec:
+        retention: 7d
         serviceMonitorSelectorNilUsesHelmValues: false
         serviceMonitorSelector: {}
         enableAdminAPI: false
