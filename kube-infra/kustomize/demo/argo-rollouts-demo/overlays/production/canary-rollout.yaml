@@ -20,6 +20,7 @@ spec:
         #   value: demo-stable
       canaryService: demo-canary
       stableService: demo-stable
+      maxUnavailable: 5
       trafficRouting:
         nginx:
           stableIngress: canary-stable
