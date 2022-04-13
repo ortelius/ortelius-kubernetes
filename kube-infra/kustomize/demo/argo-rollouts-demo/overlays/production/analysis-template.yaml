@@ -31,5 +31,5 @@ spec:
       prometheus:
         address: http://kube-prometheus-stack-prometheus.observability:9090
         query: |
-          sum(irate(nginx_ingress_controller_requests{service=~"{{args.service-name}}",status!~"[4-5].*"}[5m])) / 
-          sum(irate(nginx_ingress_controller_requests{service=~"{{args.service-name}}"}[5m]))
+          sum(irate(nginx_ingress_controller_requests{ingress=~"canary-stable",status!~"[4-5].*"}[5m])) / 
+          sum(irate(nginx_ingress_controller_requests{ingress=~"canary-stable"}[5m]))
