@@ -39,7 +39,7 @@ helmCharts:
 
 - name: argo-service
   namespace: keptn
-  version: 0.13.1
+  version: 0.14.1
   repo: https://bradmccoydev.github.io/argo-service
   releaseName: argo-service
   includeCRDs: true
@@ -50,12 +50,12 @@ helmCharts:
       image:
         tag: "0.14.1"
 
-# - name: keptn-ortelius-service
-#   namespace: keptn
-#   version: 0.13.7
-#   repo: https://ortelius.github.io/keptn-ortelius-service
-#   releaseName: keptn-ortelius-service
-#   includeCRDs: true
+- name: keptn-ortelius-service
+  namespace: keptn
+  version: 0.13.7
+  repo: https://ortelius.github.io/keptn-ortelius-service
+  releaseName: keptn-ortelius-service
+  includeCRDs: true
 
 # - name: keptn-terraform-service
 #   namespace: keptn
