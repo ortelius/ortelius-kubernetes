@@ -37,16 +37,23 @@ helmCharts:
   releaseName: jmeter-service
   includeCRDs: true
 
+- name: keptn-argo-service
+  namespace: keptn
+  version: 0.13.1
+  repo: https://bradmccoydev.github.io/argo-service
+  releaseName: keptn-argo-service
+  includeCRDs: true
+
+- name: keptn-ortelius-service
+  namespace: keptn
+  version: 0.13.7
+  repo: https://ortelius.github.io/keptn-ortelius-service
+  releaseName: keptn-ortelius-service
+  includeCRDs: true
+
 # - name: keptn-terraform-service
 #   namespace: keptn
 #   version: 0.12.4
 #   repo: https://bradmccoydev.github.io/terraform-service
 #   releaseName: keptn-terraform-service
-#   includeCRDs: true
-
-# - name: keptn-ortelius-service
-#   namespace: keptn
-#   version: 0.12.0
-#   repo: https://ortelius.github.io/keptn-ortelius-service
-#   releaseName: keptn-ortelius-service
 #   includeCRDs: true
