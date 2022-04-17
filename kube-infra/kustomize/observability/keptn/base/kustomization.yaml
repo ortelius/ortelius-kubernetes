@@ -37,11 +37,11 @@ helmCharts:
   releaseName: jmeter-service
   includeCRDs: true
 
-- name: keptn-argo-service
+- name: argo-service
   namespace: keptn
   version: 0.13.1
   repo: https://bradmccoydev.github.io/argo-service
-  releaseName: keptn-argo-service
+  releaseName: argo-service
   includeCRDs: true
 
 # - name: keptn-ortelius-service
