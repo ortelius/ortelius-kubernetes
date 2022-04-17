@@ -45,7 +45,7 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     image:
-      tag: "0.9.2-dev-pr-33"
+      tag: "0.9.2-dev"
     distributor:
       image:
         tag: "0.14.1"
