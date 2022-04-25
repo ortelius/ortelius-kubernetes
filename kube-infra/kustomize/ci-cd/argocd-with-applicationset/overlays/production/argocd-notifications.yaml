@@ -132,7 +132,7 @@ data:
           "data": {
             "project": "ortelius",
             "service": "keptn-ortelius-service",
-            "stage": "prod"
+            "stage": "prod",
             "image": "argoproj/rollouts-demo:yellow"
           },
           "source": "postman",
@@ -279,6 +279,21 @@ data:
           ]
         }]
   template.app-health-degraded: |
+    webhook:
+      keptn:
+        method: POST
+        body: |
+        {
+          "data": {
+            "project": "ortelius",
+            "service": "keptn-ortelius-service",
+            "stage": "prod",
+            "image": "argoproj/rollouts-demo:yellow"
+          },
+          "source": "postman",
+          "specversion": "1.0",
+          "type": "sh.keptn.event.prod.canaryphase3.triggered"
+        }
     slack:
       attachments: |
         [{
