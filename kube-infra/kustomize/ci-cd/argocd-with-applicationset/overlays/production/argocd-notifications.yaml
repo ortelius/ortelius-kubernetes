@@ -115,6 +115,14 @@ data:
       value: $keptn-x-token
     - name: Content-Type
       value: application/json
+  service.webhook.github: |
+    url: https://api.github.com
+    headers:
+    - name: Authorization
+      value: token $github-token
+  service.grafana: |
+    apiUrl: https://grafana.ortelius.io/api
+    apiKey: $grafana-api-key
   template.app-sync-succeeded: |
     webhook:
       keptn:
@@ -125,6 +133,7 @@ data:
             "project": "ortelius",
             "service": "keptn-ortelius-service",
             "stage": "prod"
+            "image": "argoproj/rollouts-demo:yellow"
           },
           "source": "postman",
           "specversion": "1.0",
@@ -222,6 +231,20 @@ data:
           ]
         }]
   template.app-deployed: |
+    webhook:
+      github:
+        method: POST
+        path: /repos/{{call .repo.FullNameByRepoURL .app.spec.source.repoURL}}/statuses/{{.app.status.operationState.operation.sync.revision}}
+        body: |
+          {
+            {{if eq .app.status.operationState.phase "Running"}} "state": "pending"{{end}}
+            {{if eq .app.status.operationState.phase "Succeeded"}} "state": "success"{{end}}
+            {{if eq .app.status.operationState.phase "Error"}} "state": "error"{{end}}
+            {{if eq .app.status.operationState.phase "Failed"}} "state": "error"{{end}},
+            "description": "ArgoCD",
+            "target_url": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
+            "context": "continuous-delivery/{{.app.metadata.name}}"
+          }
     slack:
       attachments: |
         [{
