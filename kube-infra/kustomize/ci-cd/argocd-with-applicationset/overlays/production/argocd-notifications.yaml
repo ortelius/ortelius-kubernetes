@@ -21,14 +21,20 @@ rules:
   - patch
 - apiGroups:
   - ""
+  resources:
+  - configmaps
+  - secrets
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
   resourceNames:
   - argocd-notifications-cm
   resources:
   - configmaps
   verbs:
   - get
-  - list
-  - watch
 - apiGroups:
   - ""
   resourceNames:
@@ -37,8 +43,6 @@ rules:
   - secrets
   verbs:
   - get
-  - list
-  - watch
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -86,12 +90,17 @@ spec:
       - command:
         - /app/argocd-notifications-backend
         - controller
-        image: argoprojlabs/argocd-notifications:v1.1.0
+        image: argoprojlabs/argocd-notifications:v1.2.1
         imagePullPolicy: Always
+        livenessProbe:
+          tcpSocket:
+            port: 9001
         name: argocd-notifications-controller
         volumeMounts:
         - mountPath: /app/config/tls
           name: tls-certs
+        - mountPath: /app/config/reposerver/tls
+          name: argocd-repo-server-tls
         workingDir: /app
       securityContext:
         runAsNonRoot: true
@@ -100,6 +109,17 @@ spec:
       - configMap:
           name: argocd-tls-certs-cm
         name: tls-certs
+      - name: argocd-repo-server-tls
+        secret:
+          items:
+          - key: tls.crt
+            path: tls.crt
+          - key: tls.key
+            path: tls.key
+          - key: ca.crt
+            path: ca.crt
+          optional: true
+          secretName: argocd-repo-server-tls
 ---
 apiVersion: v1
 kind: ConfigMap
