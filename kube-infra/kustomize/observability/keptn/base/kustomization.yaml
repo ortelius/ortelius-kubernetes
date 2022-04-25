@@ -23,12 +23,12 @@ helmCharts:
     continuous-delivery:
       enabled: true 
 
-- name: helm-service
-  namespace: keptn
-  version: 0.14.1
-  repo: https://charts.keptn.sh
-  releaseName: helm-service
-  includeCRDs: true
+# - name: helm-service
+#   namespace: keptn
+#   version: 0.14.1
+#   repo: https://charts.keptn.sh
+#   releaseName: helm-service
+#   includeCRDs: true
 
 - name: jmeter-service
   namespace: keptn
