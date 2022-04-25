@@ -31,6 +31,7 @@ rules:
   - ""
   resourceNames:
   - argocd-notifications-cm
+  - argo-rollouts-notification-configmap
   resources:
   - configmaps
   verbs:
@@ -39,6 +40,7 @@ rules:
   - ""
   resourceNames:
   - argocd-notifications-secret
+  - argo-rollouts-notification-secret
   resources:
   - secrets
   verbs:
