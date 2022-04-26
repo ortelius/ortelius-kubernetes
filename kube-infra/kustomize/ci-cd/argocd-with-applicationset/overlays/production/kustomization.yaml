@@ -22,6 +22,18 @@ patchesStrategicMerge:
 - argocd-server-service.yaml
 #- argocd-dex-server-deployment.yaml
 - argocd-repo-server.yaml
+- |-
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: argocd-notifications-secret
+  $patch: delete
+- |-
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: argocd-secret
+  $patch: delete
 
 # images:
 # - name: quay.io/argoproj/argocd
