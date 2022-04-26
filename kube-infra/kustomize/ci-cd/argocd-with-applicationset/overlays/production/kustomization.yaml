@@ -3,23 +3,24 @@ kind: Kustomization
 resources:
 - ../../base
 - argocd-server-ingress.yaml
-- argocd-appproject.yaml
+#- argocd-appproject.yaml
 - argocd-manager.yaml
 - argocd-manager-role.yaml
 - argocd-manager-role-binding.yaml
 - kustomize-kube-infra-applicationSet.yaml
-- argocd-notifications.yaml
+#- argocd-notifications.yaml
 
 namespace: ci-cd
 
 patchesStrategicMerge:
 - argocd-server-service.yaml
 - argocd-cm.yaml
+- argocd-notifications-cm.yaml
 - argocd-rbac-cm.yaml
 - argocd-server-clusterRoleBinding.yaml
 - argocd-application-controller-clusterRoleBinding.yaml
 - argocd-server-service.yaml
-- argocd-dex-server-deployment.yaml
+#- argocd-dex-server-deployment.yaml
 - argocd-repo-server.yaml
 
 images:
