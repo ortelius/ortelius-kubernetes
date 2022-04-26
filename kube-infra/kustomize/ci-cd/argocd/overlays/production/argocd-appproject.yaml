@@ -15,9 +15,9 @@ spec:
   - '*'
   destinations:
   - namespace: '*'
-    server: https://aks-539bc867.hcp.eastus.azmk8s.io
+    server: https://aks-7e3b88d3.hcp.eastus.azmk8s.io.io
   - namespace: '*'
-    server: https://aks-539bc867.hcp.eastus.azmk8s.io:443
+    server: https://aks-7e3b88d3.hcp.eastus.azmk8s.io.io:443
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'    

@@ -13,13 +13,13 @@ spec:
           directories:
           - path: kube-infra/kustomize/ci-cd/*
           - path: kube-infra/kustomize/dns-infra/*
-          - path: kube-infra/kustomize/observability/*
-          - path: kube-infra/kustomize/demo/*
+          #- path: kube-infra/kustomize/observability/*
+          #- path: kube-infra/kustomize/demo/*
         exclude: 
       - list:
           elements:
           - cluster: production
-            url: https://aks-539bc867.hcp.eastus.azmk8s.io:443
+            url: https://aks-7e3b88d3.hcp.eastus.azmk8s.io:443
             values:
               CLIENT_ENVIRONMENT: production             
   template:
