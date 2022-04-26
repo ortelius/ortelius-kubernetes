@@ -7,7 +7,7 @@ resources:
 - argocd-manager.yaml
 - argocd-manager-role.yaml
 - argocd-manager-role-binding.yaml
-- kustomize-kube-infra-applicationSet.yaml
+#- kustomize-kube-infra-applicationSet.yaml
 #- argocd-notifications.yaml
 
 namespace: ci-cd
