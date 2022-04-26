@@ -3,21 +3,19 @@ kind: AppProject
 metadata:
   name: ortelius
   namespace: ci-cd
-  # Finalizer that ensures that project is not deleted until it is not referenced by any application
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  # Project description
   description: Ortelius Project
-
-  # Allow manifests to deploy from any Git repos
   sourceRepos:
   - '*'
   destinations:
   - namespace: '*'
     server: https://aks-7e3b88d3.hcp.eastus.azmk8s.io.io
   - namespace: '*'
-    server: https://aks-7e3b88d3.hcp.eastus.azmk8s.io.io:443
+    server: https://aks-7e3b88d3.hcp.eastus.azmk8s.io:443
+  - namespace: '*'
+    server: '*'
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'    

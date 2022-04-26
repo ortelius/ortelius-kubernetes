@@ -40,7 +40,7 @@ spec:
         targetRevision: HEAD
         path: '{{path}}/overlays/{{cluster}}'
       destination:
-        server: '{{ url }}'
+        server: '{{url}}'
       syncPolicy:
         automated:
           prune: true

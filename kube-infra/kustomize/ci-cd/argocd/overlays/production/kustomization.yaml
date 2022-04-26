@@ -3,11 +3,11 @@ kind: Kustomization
 resources:
 - ../../base
 - argocd-server-ingress.yaml
-#- argocd-appproject.yaml
+- argocd-appproject.yaml
 - argocd-manager.yaml
 - argocd-manager-role.yaml
 - argocd-manager-role-binding.yaml
-#- kustomize-kube-infra-applicationSet.yaml
+- kustomize-kube-infra-applicationSet.yaml
 #- argocd-notifications.yaml
 
 namespace: ci-cd
