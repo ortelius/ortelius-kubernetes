@@ -23,9 +23,9 @@ patchesStrategicMerge:
 #- argocd-dex-server-deployment.yaml
 - argocd-repo-server.yaml
 
-images:
-- name: quay.io/argoproj/argocd
-  newName: odysseycloud/argocd
+# images:
+# - name: quay.io/argoproj/argocd
+#   newName: odysseycloud/argocd
 
 patches:
 - patch: |-
