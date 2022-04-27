@@ -286,8 +286,13 @@ data:
           ]
         }]
   template.app-health-degraded: |
+    email:
+      subject: Application {{.app.metadata.name}} has degraded.
+    message: |
+      {{if eq .serviceType "slack"}}:exclamation:{{end}} Application {{.app.metadata.name}} has degraded.
+      Application details: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}.
     slack:
-      attachments: |
+      attachments: |-
         [{
           "title": "{{ .app.metadata.name}}",
           "title_link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
@@ -315,6 +320,11 @@ data:
           ]
         }]
   template.app-sync-failed: |
+    message: |
+      {{if eq .serviceType "slack"}}:exclamation:{{end}} 
+      The sync operation of application {{.app.metadata.name}} 
+      has failed at {{.app.status.operationState.finishedAt}} 
+      with the following error: {{.app.status.operationState.message}}.
     slack:
       attachments: |
         [{
@@ -447,25 +457,25 @@ data:
   subscriptions: |
     # subscription for on-sync-status-unknown trigger notifications
     - recipients:
-      - slack:argo-notifications
+      - slack: argo-notifications
       triggers:
       - on-sync-status-unknown
 
     # subscription for on-sync-failed trigger notifications
     - recipients:
-      - slack:argo-notifications
+      - slack: argo-notifications
       triggers:
       - on-sync-failed
 
     # subscription for on-health-degraded trigger notifications
     - recipients:
-      - slack:argo-notifications
+      - slack: argo-notifications
       triggers:
       - on-health-degraded
     
     # subscription for on-deployed trigger notifications
     - recipients:
-      - slack:argo-notifications
+      - slack: argo-notifications
       triggers:
       - on-deployed
 ---
