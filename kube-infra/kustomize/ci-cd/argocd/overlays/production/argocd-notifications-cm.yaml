@@ -49,21 +49,6 @@ data:
             }]
           }
   template.app-sync-succeeded: |
-    webhook:
-      keptn:
-        method: POST
-        body: |
-        {
-          "data": {
-            "project": "ortelius",
-            "service": "keptn-ortelius-service",
-            "stage": "prod",
-            "image": "argoproj/rollouts-demo:yellow"
-          },
-          "source": "postman",
-          "specversion": "1.0",
-          "type": "sh.keptn.event.prod.delivery.triggered"
-        }
     message: |
       {{if eq .serviceType "slack"}}:white_check_mark:{{end}} Application {{.app.metadata.name}} has been successfully synced at {{.app.status.operationState.finishedAt}}.
       Sync operation details are available at: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true .
@@ -222,21 +207,6 @@ data:
       groupingKey: "{{.app.status.sync.revision}}"
       notifyBroadcast: true
   template.app-health-degraded: |
-    webhook:
-      keptn:
-        method: POST
-        body: |
-        {
-          "data": {
-            "project": "ortelius",
-            "service": "keptn-ortelius-service",
-            "stage": "prod",
-            "image": "argoproj/rollouts-demo:yellow"
-          },
-          "source": "postman",
-          "specversion": "1.0",
-          "type": "sh.keptn.event.prod.canaryphase3.triggered"
-        }
     message: |
       {{if eq .serviceType "slack"}}:exclamation:{{end}} Application {{.app.metadata.name}} has degraded.
       Application details: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}.
