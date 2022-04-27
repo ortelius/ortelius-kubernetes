@@ -26,8 +26,10 @@ spec:
       #     stableIngress: canary-stable
       steps:
       - setWeight: 40
-      - pause: {}
+      #- pause: {}
       - setWeight: 60
+      - pause:
+          duration: 10
       - pause:
           duration: 10
       - setWeight: 80
@@ -44,7 +46,7 @@ spec:
     spec:
       containers:
       - name: demo
-        image: argoproj/rollouts-demo:blue
+        image: argoproj/rollouts-demo:yellow
         ports:
         - name: http
           containerPort: 8080
