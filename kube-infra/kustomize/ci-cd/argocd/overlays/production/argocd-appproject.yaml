@@ -5,6 +5,15 @@ metadata:
   namespace: ci-cd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    notifications.argoproj.io/subscribe.on-created.slack: argocd-notifications
+    notifications.argoproj.io/subscribe.on-deleted.slack: argocd-notifications
+    notifications.argoproj.io/subscribe.on-deployed.slack: argocd-notifications
+    notifications.argoproj.io/subscribe.on-health-degraded.slack: argocd-notifications
+    notifications.argoproj.io/subscribe.on-sync-failed.slack: argocd-notifications
+    notifications.argoproj.io/subscribe.on-sync-running.slack: argocd-notifications
+    notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: argocd-notifications
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: argocd-notifications
 spec:
   description: Ortelius Project
   sourceRepos:
