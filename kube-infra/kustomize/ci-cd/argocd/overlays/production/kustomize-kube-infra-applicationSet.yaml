@@ -26,11 +26,13 @@ spec:
     metadata:
       name: '{{ path.basename }}'
       annotations:
-        notifications.argoproj.io/subscribe.on-sync-succeeded.slack: "argo-notifications"
-        notifications.argoproj.io/subscribe.on-deployed.slack: "argo-notifications"
-        notifications.argoproj.io/subscribe.on-sync-failed.slack: "argo-notifications"
-        notifications.argoproj.io/subscribe.on-health-degraded.slack: "argo-notifications"
-        notifications.argoproj.io/subscribe.on-sync-running.slack: "argo-notifications"
+        notifications.argoproj.io/subscribe.on-sync-succeeded.slack: argo-notifications
+        notifications.argoproj.io/subscribe.on-deployed.slack: argo-notifications
+        notifications.argoproj.io/subscribe.on-sync-failed.slack: argo-notifications
+        notifications.argoproj.io/subscribe.on-health-degraded.slack: argo-notifications
+        notifications.argoproj.io/subscribe.on-sync-running.slack: argo-notifications
+        notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: argo-notifications
+        notifications.argoproj.io/subscribe.on-created.slack: argo-notifications
         notifications.argoproj.io/subscribe.on-sync-succeeded.keptn: ""
         notifications.argoproj.io/subscribe.on-sync-succeeded.grafana: tag1|tag2
         notifications.argoproj.io/subscribe.succeeded.github: ""
