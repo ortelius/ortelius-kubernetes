@@ -146,21 +146,6 @@ data:
     apiUrl: https://grafana.ortelius.io/api
     apiKey: $grafana-api-key
   template.app-sync-succeeded: |
-    webhook:
-      keptn:
-        method: POST
-        body: |
-        {
-          "data": {
-            "project": "ortelius",
-            "service": "keptn-ortelius-service",
-            "stage": "prod",
-            "image": "argoproj/rollouts-demo:yellow"
-          },
-          "source": "postman",
-          "specversion": "1.0",
-          "type": "sh.keptn.event.prod.delivery.triggered"
-        }
     slack:
       attachments: |
         [{
@@ -301,21 +286,6 @@ data:
           ]
         }]
   template.app-health-degraded: |
-    webhook:
-      keptn:
-        method: POST
-        body: |
-        {
-          "data": {
-            "project": "ortelius",
-            "service": "keptn-ortelius-service",
-            "stage": "prod",
-            "image": "argoproj/rollouts-demo:yellow"
-          },
-          "source": "postman",
-          "specversion": "1.0",
-          "type": "sh.keptn.event.prod.canaryphase3.triggered"
-        }
     slack:
       attachments: |
         [{
@@ -474,4 +444,28 @@ data:
       send:
       - app-sync-succeeded
       when: app.status.operationState.phase in ['Succeeded']
+  subscriptions: |
+    # subscription for on-sync-status-unknown trigger notifications
+    - recipients:
+      - slack:argo-notifications
+      triggers:
+      - on-sync-status-unknown
+
+    # subscription for on-sync-failed trigger notifications
+    - recipients:
+      - slack:argo-notifications
+      triggers:
+      - on-sync-failed
+
+    # subscription for on-health-degraded trigger notifications
+    - recipients:
+      - slack:argo-notifications
+      triggers:
+      - on-health-degraded
+    
+    # subscription for on-deployed trigger notifications
+    - recipients:
+      - slack:argo-notifications
+      triggers:
+      - on-deployed
 ---
