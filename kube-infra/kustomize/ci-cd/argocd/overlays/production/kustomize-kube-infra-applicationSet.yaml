@@ -34,12 +34,6 @@ spec:
         notifications.argoproj.io/subscribe.on-sync-running.slack: "argo-notifications"
         notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: "argo-notifications"
         notifications.argoproj.io/subscribe.on-created.slack: "argo-notifications"
-        notifications.argoproj.io/subscribe.on-sync-succeeded.keptn: ""
-        notifications.argoproj.io/subscribe.on-sync-succeeded.grafana: tag1|tag2
-        notifications.argoproj.io/subscribe.succeeded.github: ""
-        notifications.argoproj.io/subscribe.on-deployed.grafana: tag1|tag2
-        notifications.argoproj.io/subscribe.on-deployed.github: ""
-        notifications.argoproj.io/subscribe.on-sync-succeeded.on-sync-succeeded.slack_webhook: ""
     spec:
       project: ortelius
       source:
