@@ -20,6 +20,8 @@ data:
   service.grafana: |
     apiUrl: https://grafana.ortelius.io/api
     apiKey: $grafana-api-key
+  defaultTriggers: |
+    - on-sync-succeeded
   template.app-sync-succeeded: |
     webhook:
       keptn:
@@ -68,8 +70,8 @@ data:
           ]
         }]
       deliveryPolicy: Post
-      groupingKey: ""
-      notifyBroadcast: false
+      groupingKey: "{{.app.status.sync.revision}}"
+      notifyBroadcast: true
   template.app-created: |
     message: Application {{.app.metadata.name}} has been created.
     slack:
@@ -101,8 +103,8 @@ data:
           ]
         }]
       deliveryPolicy: Post
-      groupingKey: ""
-      notifyBroadcast: false
+      groupingKey: "{{.app.status.sync.revision}}"
+      notifyBroadcast: true
   template.app-deleted: |
     slack:
       attachments: |
@@ -137,6 +139,9 @@ data:
           {{end}}
           ]
         }]
+      deliveryPolicy: Post
+      groupingKey: "{{.app.status.sync.revision}}"
+      notifyBroadcast: true
   template.app-deployed: |
     webhook:
       github:
@@ -188,8 +193,8 @@ data:
           ]
         }]
       deliveryPolicy: Post
-      groupingKey: ""
-      notifyBroadcast: false
+      groupingKey: "{{.app.status.sync.revision}}"
+      notifyBroadcast: true
   template.app-health-degraded: |
     webhook:
       keptn:
@@ -238,8 +243,8 @@ data:
           ]
         }]
       deliveryPolicy: Post
-      groupingKey: ""
-      notifyBroadcast: false
+      groupingKey: "{{.app.status.sync.revision}}"
+      notifyBroadcast: true
   template.app-sync-failed: |
     message: |
       {{if eq .serviceType "slack"}}:exclamation:{{end}}  The sync operation of application {{.app.metadata.name}} has failed at {{.app.status.operationState.finishedAt}} with the following error: {{.app.status.operationState.message}}
@@ -273,8 +278,8 @@ data:
           ]
         }]
       deliveryPolicy: Post
-      groupingKey: ""
-      notifyBroadcast: false
+      groupingKey: "{{.app.status.sync.revision}}"
+      notifyBroadcast: true
   template.app-sync-running: |
     message: |
       The sync operation of application {{.app.metadata.name}} has started at {{.app.status.operationState.startedAt}}.
@@ -308,8 +313,8 @@ data:
           ]
         }]
       deliveryPolicy: Post
-      groupingKey: ""
-      notifyBroadcast: false
+      groupingKey: "{{.app.status.sync.revision}}"
+      notifyBroadcast: true
   template.app-sync-status-unknown: |
     message: |
       {{if eq .serviceType "slack"}}:exclamation:{{end}} Application {{.app.metadata.name}} sync is 'Unknown'.
@@ -348,8 +353,8 @@ data:
           ]
         }]
       deliveryPolicy: Post
-      groupingKey: ""
-      notifyBroadcast: false
+      groupingKey: "{{.app.status.sync.revision}}"
+      notifyBroadcast: true
   trigger.on-sync-running: |
     - description: Application is being synced
       send:
