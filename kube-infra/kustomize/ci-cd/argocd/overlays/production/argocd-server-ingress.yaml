@@ -8,6 +8,11 @@ metadata:
   name: argo-ingress
   namespace: ci-cd
 spec:
+  defaultBackend:
+    service:
+      name: argocd-server
+      port:
+        number: 80
   rules:
   - http:
       paths:
@@ -16,6 +21,6 @@ spec:
             name: argocd-server
             port:
               number: 80
-        path: /
+        path: /*
         pathType: Prefix
     host: argocd.ortelius.io

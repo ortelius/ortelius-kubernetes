@@ -394,6 +394,5 @@ data:
   trigger.on-sync-succeeded: |
     - description: Application syncing has succeeded
       send:
-      - send-slack
       - app-sync-succeeded
       when: app.status.operationState.phase in ['Succeeded']
