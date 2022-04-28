@@ -17,7 +17,7 @@ helmCharts:
           kubernetes.io/ingress.class: nginx
           nginx.ingress.kubernetes.io/backend-protocol: "false"
         host: "keptn.ortelius.io"
-        path: /*
+        path: /
         pathType: Prefix
         
     continuous-delivery:
