@@ -48,6 +48,27 @@ data:
               }]
             }]
           }
+  template.send-keptn-event: |
+    webhook:
+      slack_webhook:
+        method: POST
+        body: |
+          {
+            "attachments": [{
+              "title": "{{.app.metadata.name}}",
+              "title_link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
+              "color": "#18be52",
+              "fields": [{
+                "title": "Sync Status",
+                "value": "{{.app.status.sync.status}}",
+                "short": true
+              }, {
+                "title": "Repository",
+                "value": "{{.app.spec.source.repoURL}}",
+                "short": true
+              }]
+            }]
+          }
   template.app-sync-succeeded: |
     message: |
       {{if eq .serviceType "slack"}}:white_check_mark:{{end}} Application {{.app.metadata.name}} has been successfully synced at {{.app.status.operationState.finishedAt}}.
