@@ -383,6 +383,10 @@ data:
       send:
       - app-sync-running
       when: app.status.operationState.phase in ['Running']
+    - description: Send Event To Keptn
+      send:
+      - send-keptn-event
+      when: app.status.operationState.phase in ['Running'] and app.metadata.name == 'argo-rollouts-demo'
   trigger.on-created: |
     - description: Application is created.
       oncePer: app.metadata.name
