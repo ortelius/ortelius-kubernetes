@@ -59,7 +59,7 @@ data:
               "service": "keptn-ortelius-service",
               "stage": "prod",
               "image": "argoproj/rollouts-demo",
-              "tag": "yellow",
+              "tag": "green",
               "labels": {
                 "deployWith": "ArgoRollout",
                 "buildId": "1.0.0",
@@ -67,7 +67,7 @@ data:
               },
               "configurationChange": {
                 "values": {
-                  "image": "argoproj/rollouts-demo:yellow"
+                  "image": "argoproj/rollouts-demo:green"
                 }        
               }
             },
@@ -381,12 +381,9 @@ data:
   trigger.on-sync-running: |
     - description: Application is being synced
       send:
+      - send-keptn-event
       - app-sync-running
       when: app.status.operationState.phase in ['Running']
-    - description: Send Event To Keptn
-      send:
-      - send-keptn-event
-      when: app.status.operationState.phase in ['Running'] and app.metadata.name == 'argo-rollouts-demo'
   trigger.on-created: |
     - description: Application is created.
       oncePer: app.metadata.name
