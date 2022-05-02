@@ -3,6 +3,8 @@ kind: ConfigMap
 metadata:
   name: argocd-notifications-cm
 data:
+  context: |
+    argocdUrl: http://argocd.ortelius.io
   service.slack: |
     token: $slack-token
   service.webhook.slack_webhook: |
@@ -25,8 +27,6 @@ data:
   service.grafana: |
     apiUrl: https://grafana.ortelius.io/api
     apiKey: $grafana-api-key
-  defaultTriggers: |
-    - on-sync-succeeded
   template.send-slack: |
     webhook:
       slack_webhook:
@@ -386,7 +386,6 @@ data:
       when: app.status.operationState.phase in ['Running']
   trigger.keptn-on-sync-running: |
     - description: Application is being synced
-      oncePer: app.status.operationState.syncResult.revision
       send:
       - keptn
       when: app.status.operationState.phase in ['Running']
@@ -429,3 +428,10 @@ data:
       send:
       - app-sync-succeeded
       when: app.status.operationState.phase in ['Succeeded']
+  subscriptions: |
+    - recipients:
+      - webhook:keptn
+      trigger: keptn-on-sync-running
+    - recipients:
+      - webhook:github
+      trigger: app-deployed
