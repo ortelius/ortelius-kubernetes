@@ -50,24 +50,30 @@ data:
           }
   template.send-keptn-event: |
     webhook:
-      slack_webhook:
+      keptn:
         method: POST
         body: |
           {
-            "attachments": [{
-              "title": "{{.app.metadata.name}}",
-              "title_link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
-              "color": "#18be52",
-              "fields": [{
-                "title": "Sync Status",
-                "value": "{{.app.status.sync.status}}",
-                "short": true
-              }, {
-                "title": "Repository",
-                "value": "{{.app.spec.source.repoURL}}",
-                "short": true
-              }]
-            }]
+            "data": {
+              "project": "ortelius",
+              "service": "keptn-ortelius-service",
+              "stage": "prod",
+              "image": "argoproj/rollouts-demo",
+              "tag": "yellow",
+              "labels": {
+                "deployWith": "ArgoRollout",
+                "buildId": "1.0.0",
+                "owner": "Brad McCoy"
+              },
+              "configurationChange": {
+                "values": {
+                  "image": "argoproj/rollouts-demo:yellow"
+                }        
+              }
+            },
+            "source": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
+            "specversion": "1.0",
+            "type": "sh.keptn.event.prod.canaryphase1.triggered"
           }
   template.app-sync-succeeded: |
     message: |
@@ -375,7 +381,6 @@ data:
   trigger.on-sync-running: |
     - description: Application is being synced
       send:
-      - send-slack
       - app-sync-running
       when: app.status.operationState.phase in ['Running']
   trigger.on-created: |
