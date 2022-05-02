@@ -8,6 +8,7 @@ metadata:
     notifications.argoproj.io/subscribe.on-rollout-step-completed.slack: argo-notifications
     notifications.argoproj.io/subscribe.on-rollout-updated.slack: argo-notifications
     notifications.argoproj.io/subscribe.on-rollout-aborted.slack: argo-notifications
+    notifications.argoproj.io/subscribe.keptn-on-sync-running.keptn: ""
 spec:
   replicas: 5
   minReadySeconds: 30
@@ -42,7 +43,7 @@ spec:
     spec:
       containers:
       - name: demo
-        image: argoproj/rollouts-demo:blue
+        image: argoproj/rollouts-demo:yellow
         ports:
         - name: http
           containerPort: 8080

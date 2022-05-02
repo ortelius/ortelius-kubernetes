@@ -34,7 +34,7 @@ data:
         body: |
           {
             "attachments": [{
-              "title": "{{.app.metadata.name}}",
+              "title": "{{.app.metadata.name}} HI",
               "title_link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
               "color": "#18be52",
               "fields": [{
@@ -59,15 +59,15 @@ data:
               "service": "keptn-ortelius-service",
               "stage": "prod",
               "image": "argoproj/rollouts-demo",
-              "tag": "green",
+              "tag": "yellow",
               "labels": {
                 "deployWith": "ArgoRollout",
-                "buildId": "1.0.0",
+                "buildId": "1.1.0",
                 "owner": "Brad McCoy"
               },
               "configurationChange": {
                 "values": {
-                  "image": "argoproj/rollouts-demo:green"
+                  "image": "argoproj/rollouts-demo:yellow"
                 }        
               }
             },
@@ -382,8 +382,13 @@ data:
     - description: Application is being synced
       oncePer: app.status.operationState.syncResult.revision
       send:
-      - keptn
       - app-sync-running
+      when: app.status.operationState.phase in ['Running']
+  trigger.keptn-on-sync-running: |
+    - description: Application is being synced
+      oncePer: app.status.operationState.syncResult.revision
+      send:
+      - keptn
       when: app.status.operationState.phase in ['Running']
   trigger.on-created: |
     - description: Application is created.
