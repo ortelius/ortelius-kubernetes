@@ -39,13 +39,13 @@ helmCharts:
 
 - name: argo-service
   namespace: keptn
-  version: 0.14.1
+  version: 0.14.2
   repo: https://bradmccoydev.github.io/argo-service
   releaseName: argo-service
   includeCRDs: true
   valuesInline:
     image:
-      tag: "0.9.2-dev"
+      tag: "0.14.1"
     distributor:
       image:
         tag: "0.14.1"
