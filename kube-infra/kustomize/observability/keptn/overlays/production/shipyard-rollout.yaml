@@ -6,28 +6,8 @@ spec:
   stages:
   - name: prod           
     sequences:
-    # Initial Deployment, Test and Evaluation
-    - name: delivery        
-      tasks:
-      - name: deployment
-        properties:
-          deploymentstrategy: user_managed
-      - name: test
-        properties:
-          teststrategy: performance
-      - name: evaluation
-      - name: approval
-        properties:
-          pass: manual
-          warning: manual
-
     # Phase 1 of Rollout: Release, Test, Evaluate
     - name: canaryphase1
-      triggeredOn:
-        - event: prod.delivery.finished
-          selector:
-            match:
-              result: "pass"
       tasks:
       - name: release
       - name: test

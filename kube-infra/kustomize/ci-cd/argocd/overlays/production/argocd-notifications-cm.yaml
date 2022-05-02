@@ -48,14 +48,14 @@ data:
               }]
             }]
           }
-  template.send-keptn-event: |
+  template.keptn: |
     webhook:
       keptn:
         method: POST
         body: |
           {
             "data": {
-              "project": "ortelius",
+              "project": "{{.app.spec.project}}",
               "service": "keptn-ortelius-service",
               "stage": "prod",
               "image": "argoproj/rollouts-demo",
@@ -380,8 +380,9 @@ data:
       notifyBroadcast: true
   trigger.on-sync-running: |
     - description: Application is being synced
+      oncePer: app.status.operationState.syncResult.revision
       send:
-      - send-keptn-event
+      - keptn
       - app-sync-running
       when: app.status.operationState.phase in ['Running']
   trigger.on-created: |
