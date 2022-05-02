@@ -235,11 +235,11 @@ data:
       oncePer: app.status.operationState.syncResult.revision
       send:
       - app-sync-running
+      - keptn
       when: app.status.operationState.phase in ['Running']
   trigger.keptn-on-sync-running: |
     - description: Application is being synced
-      send:
-      - keptn
+      send: [keptn]
       when: app.status.operationState.phase in ['Running']
   trigger.on-deployed: |
     - description: Application is synced and healthy. Triggered once per commit.
