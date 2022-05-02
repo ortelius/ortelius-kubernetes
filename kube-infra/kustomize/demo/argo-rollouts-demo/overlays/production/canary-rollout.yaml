@@ -5,10 +5,8 @@ metadata:
   namespace: ortelius-prod
   annotations:
     notifications.argoproj.io/subscribe.on-rollout-completed.slack: argo-notifications
-    notifications.argoproj.io/subscribe.on-rollout-step-completed.slack: argo-notifications
     notifications.argoproj.io/subscribe.on-rollout-updated.slack: argo-notifications
-    notifications.argoproj.io/subscribe.on-rollout-aborted.slack: argo-notifications
-    notifications.argoproj.io/subscribe.keptn-on-sync-running.keptn: ""
+    notifications.argoproj.io/subscribe.on-rollout-aborted.slack: argo-notifications   
 spec:
   replicas: 5
   minReadySeconds: 30
@@ -43,7 +41,7 @@ spec:
     spec:
       containers:
       - name: demo
-        image: argoproj/rollouts-demo:green
+        image: argoproj/rollouts-demo:blue
         ports:
         - name: http
           containerPort: 8080

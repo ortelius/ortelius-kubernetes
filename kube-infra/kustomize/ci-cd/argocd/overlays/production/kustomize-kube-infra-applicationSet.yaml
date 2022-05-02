@@ -26,9 +26,10 @@ spec:
     metadata:
       name: '{{ path.basename }}'
       annotations:
-        notifications.argoproj.io/subscribe.on-sync-failed.slack: "argo-notifications"
+        notifications.argoproj.io/subscribe.keptn-on-sync-running.keptn: ""
         notifications.argoproj.io/subscribe.on-health-degraded.slack: "argo-notifications"
         notifications.argoproj.io/subscribe.on-sync-running.slack: "argo-notifications"
+        notifications.argoproj.io/subscribe.on-rollout-step-completed.slack: argo-notifications
     spec:
       project: ortelius
       source:
