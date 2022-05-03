@@ -8,7 +8,7 @@ data:
   service.slack: |
     token: $slack-token
   service.webhook.keptn: |
-    url: https://keptn.ortelius.io/api/vi/event
+    url: https://keptn.ortelius.io/api/v1/event
     headers:
     - name: x-token
       value: $keptn-x-token
@@ -25,7 +25,7 @@ data:
               "service": "keptn-ortelius-service",
               "stage": "prod",
               "image": "argoproj/rollouts-demo",
-              "tag": "yellow",
+              "tag": "blue",
               "labels": {
                 "deployWith": "ArgoRollout",
                 "buildId": "1.1.0",
@@ -33,7 +33,7 @@ data:
               },
               "configurationChange": {
                 "values": {
-                  "image": "argoproj/rollouts-demo:yellow"
+                  "image": "argoproj/rollouts-demo:blue"
                 }        
               }
             },
