@@ -7,11 +7,6 @@ data:
     argocdUrl: http://argocd.ortelius.io
   service.slack: |
     token: $slack-token
-  service.webhook.slack_webhook: |
-    url: $slack-webhook
-    headers:
-    - name: Content-Type
-      value: application/json
   service.webhook.keptn: |
     url: https://keptn.ortelius.io/api/vi/event
     headers:
@@ -19,32 +14,6 @@ data:
       value: $keptn-x-token
     - name: Content-Type
       value: application/json
-  service.webhook.github: |
-    url: https://api.github.com
-    headers:
-    - name: Authorization
-      value: token $github-token
-  template.send-slack: |
-    webhook:
-      slack_webhook:
-        method: POST
-        body: |
-          {
-            "attachments": [{
-              "title": "{{.app.metadata.name}} HI **",
-              "title_link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
-              "color": "#18be52",
-              "fields": [{
-                "title": "Sync Status",
-                "value": "{{.app.status.sync.status}}",
-                "short": true
-              }, {
-                "title": "Repository",
-                "value": "{{.app.spec.source.repoURL}}",
-                "short": true
-              }]
-            }]
-          }
   template.keptn: |
     webhook:
       keptn:
@@ -199,6 +168,32 @@ data:
     message: |
       The sync operation of application {{.app.metadata.name}} has started at {{.app.status.operationState.startedAt}}.
       Sync operation details are available at: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true .
+    webhook:
+      keptn:
+        method: POST
+        body: |
+          {
+            "data": {
+              "project": "ortelius",
+              "service": "keptn-ortelius-service",
+              "stage": "prod",
+              "image": "argoproj/rollouts-demo",
+              "tag": "yellow",
+              "labels": {
+                "deployWith": "ArgoRollout",
+                "buildId": "1.1.0",
+                "owner": "Brad McCoy"
+              },
+              "configurationChange": {
+                "values": {
+                  "image": "argoproj/rollouts-demo:yellow"
+                }        
+              }
+            },
+            "source": "test",
+            "specversion": "1.0",
+            "type": "sh.keptn.event.prod.canaryphase1.triggered"
+          }
     slack:
       attachments: |
         [{
@@ -235,8 +230,6 @@ data:
       oncePer: app.status.operationState.syncResult.revision
       send:
       - app-sync-running
-      - send-slack
-      - keptn
       when: app.status.operationState.phase in ['Running']
   trigger.keptn-on-sync-running: |
     - description: Application is being synced
