@@ -68,7 +68,7 @@ data:
                 }        
               }
             },
-            "source": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
+            "source": "test",
             "specversion": "1.0",
             "type": "sh.keptn.event.prod.canaryphase1.triggered"
           }
