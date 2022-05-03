@@ -21,21 +21,22 @@ data:
         body: |
           {
             "data": {
-              "project": "ortelius",
+              "project": "{{.app.spec.project}}",
               "service": "keptn-ortelius-service",
               "stage": "prod",
               "image": "argoproj/rollouts-demo",
-              "tag": "blue",
+              "tag": "yellow",
               "labels": {
                 "deployWith": "ArgoRollout",
                 "buildId": "1.1.0",
                 "owner": "Brad McCoy",
                 "link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
-                "repository":"{{.app.spec.source.repoURL}}"
+                "repository": "{{.app.spec.source.repoURL}}",
+                "test": "{{.app.status.operationState.summary.images[0]}}"
               },
               "configurationChange": {
                 "values": {
-                  "image": "argoproj/rollouts-demo:blue"
+                  "image": "argoproj/rollouts-demo:yellow"
                 }        
               }
             },
