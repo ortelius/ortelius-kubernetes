@@ -25,18 +25,17 @@ data:
               "service": "keptn-ortelius-service",
               "stage": "prod",
               "image": "argoproj/rollouts-demo",
-              "tag": "blue",
+              "tag": "green",
               "labels": {
                 "deployWith": "ArgoRollout",
-                "buildId": "1.1.0",
-                "owner": "Brad McCoy",
+                "buildId": "{{.app.status.sync.revision}}",
+                "owner": "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author}}",
                 "link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
-                "repository": "{{.app.spec.source.repoURL}}",
-                "test": "{{.app.status.operationState.summary.images}}"
+                "repository": "{{.app.spec.source.repoURL}}"
               },
               "configurationChange": {
                 "values": {
-                  "image": "argoproj/rollouts-demo:blue"
+                  "image": "argoproj/rollouts-demo:green"
                 }        
               }
             },
