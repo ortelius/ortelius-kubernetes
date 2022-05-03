@@ -1,2 +1,4 @@
 argocd-secrets.yaml
 argorollouts-secrets.yaml
+argocd-notifications-linux-amd64
+x.yaml

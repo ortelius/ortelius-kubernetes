@@ -31,7 +31,7 @@ data:
         body: |
           {
             "attachments": [{
-              "title": "{{.app.metadata.name}} HI",
+              "title": "{{.app.metadata.name}} HI **",
               "title_link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
               "color": "#18be52",
               "fields": [{
@@ -52,7 +52,7 @@ data:
         body: |
           {
             "data": {
-              "project": "{{.app.spec.project}}",
+              "project": "ortelius",
               "service": "keptn-ortelius-service",
               "stage": "prod",
               "image": "argoproj/rollouts-demo",
@@ -235,6 +235,7 @@ data:
       oncePer: app.status.operationState.syncResult.revision
       send:
       - app-sync-running
+      - send-slack
       - keptn
       when: app.status.operationState.phase in ['Running']
   trigger.keptn-on-sync-running: |
