@@ -25,7 +25,7 @@ data:
               "service": "keptn-ortelius-service",
               "stage": "prod",
               "image": "argoproj/rollouts-demo",
-              "tag": "green",
+              "tag": "blue",
               "labels": {
                 "deployWith": "ArgoRollout",
                 "buildId": "1.1.0",
@@ -35,7 +35,7 @@ data:
               },
               "configurationChange": {
                 "values": {
-                  "image": "argoproj/rollouts-demo:green"
+                  "image": "argoproj/rollouts-demo:blue"
                 }        
               }
             },
@@ -169,33 +169,7 @@ data:
   template.app-sync-running: |
     message: |
       The sync operation of application {{.app.metadata.name}} has started at {{.app.status.operationState.startedAt}}.
-      Sync operation details are available at: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true .
-    webhook:
-      keptn:
-        method: POST
-        body: |
-          {
-            "data": {
-              "project": "ortelius",
-              "service": "keptn-ortelius-service",
-              "stage": "prod",
-              "image": "argoproj/rollouts-demo",
-              "tag": "yellow",
-              "labels": {
-                "deployWith": "ArgoRollout",
-                "buildId": "1.1.0",
-                "owner": "Brad McCoy"
-              },
-              "configurationChange": {
-                "values": {
-                  "image": "argoproj/rollouts-demo:yellow"
-                }        
-              }
-            },
-            "source": "test",
-            "specversion": "1.0",
-            "type": "sh.keptn.event.prod.canaryphase1.triggered"
-          }
+      Sync operation details are available at: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true .w
     slack:
       attachments: |
         [{
@@ -236,7 +210,7 @@ data:
   trigger.keptn-on-sync-running: |
     - description: Application is being synced
       send: [keptn]
-      when: app.status.operationState.phase in ['Running']
+      when: app.status.operationState.phase in ['Running'] and app.metadata.name == 'argo-rollouts-demo'
   trigger.on-deployed: |
     - description: Application is synced and healthy. Triggered once per commit.
       oncePer: app.status.operationState.syncResult.revision
