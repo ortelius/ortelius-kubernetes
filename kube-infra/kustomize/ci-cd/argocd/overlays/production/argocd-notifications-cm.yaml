@@ -25,7 +25,7 @@ data:
               "service": "keptn-ortelius-service",
               "stage": "prod",
               "image": "argoproj/rollouts-demo",
-              "tag": "green",
+              "tag": "yellow",
               "labels": {
                 "deployWith": "ArgoRollout",
                 "buildId": "{{.app.status.sync.revision}}",
@@ -35,7 +35,7 @@ data:
               },
               "configurationChange": {
                 "values": {
-                  "image": "argoproj/rollouts-demo:green"
+                  "image": "argoproj/rollouts-demo:yellow"
                 }        
               }
             },

@@ -31,6 +31,7 @@ spec:
         notifications.argoproj.io/subscribe.on-health-degraded.slack: "argo-notifications"
         notifications.argoproj.io/subscribe.on-sync-running.slack: "argo-notifications"
         notifications.argoproj.io/subscribe.on-rollout-step-completed.slack: argo-notifications
+        environment: prod
     spec:
       project: ortelius
       source:

@@ -57,6 +57,9 @@ helmCharts:
   releaseName: keptn-ortelius-service
   includeCRDs: true
 
+  # for prometheus add the following
+  #--set=prometheus.namespace="<PROMETHEUS_NS>",prometheus.endpoint="<PROMETHEUS_ENDPOINT>",prometheus.namespace_am="<ALERT_MANAGER_NS>"
+
 # - name: keptn-terraform-service
 #   namespace: keptn
 #   version: 0.12.4
