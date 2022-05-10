@@ -3,7 +3,7 @@ kind: Kustomization
 
 ## these resources comprise this kustomization
 resources:
-  - ../base
+  - ../../base
   - namespace.yaml
   - hpa.yaml
 
