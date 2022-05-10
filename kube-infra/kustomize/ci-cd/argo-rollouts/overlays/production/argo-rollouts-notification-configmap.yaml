@@ -13,8 +13,6 @@ data:
     - send: [rollout-paused]
   template.rollout-completed: |
     message: Rollout {{.rollout.metadata.name}} has been completed.
-    email:
-      subject: Rollout {{.rollout.metadata.name}} has been completed.
     slack:
       attachments: |
           [{
@@ -39,8 +37,6 @@ data:
           }]
   template.rollout-aborted: |
     message: Rollout {{.rollout.metadata.name}} has been aborted.
-    email:
-      subject: Rollout {{.rollout.metadata.name}} has been aborted.
     slack:
       attachments: |
           [{
@@ -65,8 +61,6 @@ data:
           }]
   template.rollout-paused: |
     message: Rollout {{.rollout.metadata.name}} has been paused.
-    email:
-      subject: Rollout {{.rollout.metadata.name}} has been paused.
     slack:
       attachments: |
           [{
