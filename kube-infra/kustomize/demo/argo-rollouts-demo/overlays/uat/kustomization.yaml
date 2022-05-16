@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+- namespace.yaml
+- analysis-template.yaml
+- canary-ingress.yaml
+- canary-preview-ingress.yaml
+- canary-preview-service.yaml
+- canary-rollout.yaml
+- canary-service.yaml
+namespace: ortelius-prod
