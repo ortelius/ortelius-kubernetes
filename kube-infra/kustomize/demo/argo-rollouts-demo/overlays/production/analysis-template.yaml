@@ -17,4 +17,3 @@ spec:
         query: |
           sum(irate(nginx_ingress_controller_requests{ingress=~"canary-stable",status!~"[4-5].*"}[5m])) / 
           sum(irate(nginx_ingress_controller_requests{ingress=~"canary-stable"}[5m]))
-#query: sum(response_status{app="{{args.service-name}}",role="canary",status=~"2.*"})/sum(response_status{app="{{args.service-name}}",role="canary"})
