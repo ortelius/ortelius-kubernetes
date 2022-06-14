@@ -1,0 +1,28 @@
+helmCharts:
+- name: base
+  namespace: istio-system
+  version: 1.14.0
+  repo: https://istio-release.storage.googleapis.com/charts
+  releaseName: istio-base
+  includeCRDs: true
+  valuesInline:
+    brad: mccoy
+
+- name: istiod
+  namespace: istio-system
+  version: 1.14.0
+  repo: https://istio-release.storage.googleapis.com/charts
+  releaseName: istiod
+  includeCRDs: true
+  valuesInline:
+    brad: mccoy
+
+- name: base
+  namespace: istio-system
+  version: 1.14.0
+  repo: https://istio-release.storage.googleapis.com/charts
+  releaseName: istio-base
+  includeCRDs: true
+  valuesInline:
+    brad: mccoy
+

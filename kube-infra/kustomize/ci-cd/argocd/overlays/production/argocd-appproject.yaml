@@ -11,9 +11,9 @@ spec:
   - '*'
   destinations:
   - namespace: '*'
-    server: https://aks-7e3b88d3.hcp.eastus.azmk8s.io.io
+    server: https://aks-1d6d379d.hcp.centralus.azmk8s.io
   - namespace: '*'
-    server: https://aks-7e3b88d3.hcp.eastus.azmk8s.io:443
+    server: https://aks-1d6d379d.hcp.centralus.azmk8s.io:443
   - namespace: '*'
     server: '*'
   clusterResourceWhitelist:

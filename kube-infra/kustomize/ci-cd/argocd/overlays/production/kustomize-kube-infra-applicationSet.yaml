@@ -19,7 +19,7 @@ spec:
       - list:
           elements:
           - cluster: production
-            url: https://aks-7e3b88d3.hcp.eastus.azmk8s.io:443
+            url: https://aks-1d6d379d.hcp.centralus.azmk8s.io:443
             values:
               CLIENT_ENVIRONMENT: production             
   template:

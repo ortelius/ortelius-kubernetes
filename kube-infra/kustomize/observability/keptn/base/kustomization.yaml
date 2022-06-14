@@ -32,7 +32,7 @@ helmCharts:
 
 - name: jmeter-service
   namespace: keptn
-  version: 0.14.1
+  version: 0.16.0
   repo: https://charts.keptn.sh
   releaseName: jmeter-service
   includeCRDs: true
