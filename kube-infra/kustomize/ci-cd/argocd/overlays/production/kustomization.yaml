@@ -8,7 +8,7 @@ resources:
 - argocd-manager-role.yaml
 - argocd-manager-role-binding.yaml
 - kustomize-kube-infra-applicationSet.yaml
-- podtato-kustomize-appSet.yaml
+#- podtato-kustomize-appSet.yaml
 #- argocd-notifications.yaml
 
 namespace: ci-cd
@@ -21,8 +21,7 @@ patchesStrategicMerge:
 - argocd-server-clusterRoleBinding.yaml
 - argocd-application-controller-clusterRoleBinding.yaml
 - argocd-server-service.yaml
-#- argocd-dex-server-deployment.yaml
-#- argocd-repo-server.yaml
+
 - |-
   apiVersion: v1
   kind: Secret
