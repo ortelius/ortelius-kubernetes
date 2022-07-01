@@ -30,12 +30,12 @@ helmCharts:
 #   releaseName: helm-service
 #   includeCRDs: true
 
-- name: jmeter-service
-  namespace: keptn
-  version: 0.16.0
-  repo: https://charts.keptn.sh
-  releaseName: jmeter-service
-  includeCRDs: true
+# - name: jmeter-service
+#   namespace: keptn
+#   version: 0.16.0
+#   repo: https://charts.keptn.sh
+#   releaseName: jmeter-service
+#   includeCRDs: true
 
 - name: argo-service
   namespace: keptn

@@ -18,7 +18,7 @@ spec:
       serviceAccountName: argocd-server
       containers:
       - name: argocd-server
-        image: odysseycloud/argocd:2.2.5
+        image: quay.io/argoproj/argocd:v2.4.3
         imagePullPolicy: Always
         command: [argocd-server]
         env:
