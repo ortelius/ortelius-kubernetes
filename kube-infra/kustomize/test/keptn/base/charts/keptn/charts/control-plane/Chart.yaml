@@ -1,0 +1,15 @@
+apiVersion: v2
+appVersion: 0.16.0
+dependencies:
+- alias: mongo
+  condition: mongo.enabled
+  name: mongodb
+  repository: https://charts.bitnami.com/bitnami
+  version: 11.1.10
+- name: nats
+  repository: https://nats-io.github.io/k8s/helm/charts/
+  version: 0.13.2
+description: A Helm chart for Kubernetes
+name: control-plane
+type: application
+version: 0.1.0
