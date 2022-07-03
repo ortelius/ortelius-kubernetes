@@ -1,0 +1,7 @@
+helmCharts:
+- name: crossplane-master/crossplane
+  namespace: crossplane-system
+  version: 1.2.1
+  repo: https://charts.crossplane.io/stable
+  releaseName: crossplane
+  includeCRDs: true
