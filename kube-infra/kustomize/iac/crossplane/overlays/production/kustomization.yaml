@@ -4,4 +4,5 @@ resources:
 - namespace.yaml
 - ../../base
 - aws-provider.yaml
+- aws-provider-config.yaml
 namespace: crossplane-system
