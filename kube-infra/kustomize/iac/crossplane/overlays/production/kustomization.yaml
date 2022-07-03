@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
 - namespace.yaml
 - ../../base
+- aws-provider.yaml
 namespace: crossplane-system
