@@ -1,5 +1,5 @@
 helmCharts:
-- name: crossplane-stable/crossplane
+- name: crossplane
   namespace: crossplane-system
   version: 1.2.1
   repo: https://charts.crossplane.io/stable
