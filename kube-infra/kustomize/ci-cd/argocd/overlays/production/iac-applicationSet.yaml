@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: podtato-kustomize
+  name: kube-infra-kustomize-setup
   namespace: ci-cd
 spec:
   generators:
@@ -11,20 +11,23 @@ spec:
           repoURL: https://github.com/ortelius/ortelius-kubernetes.git
           revision: HEAD
           directories:
-          - path: kube-infra/kustomize/podtato-head/*
+          - path: kube-infra/kustomize/iac/*
         exclude: 
       - list:
           elements:
           - cluster: production
             url: https://aks-1d6d379d.hcp.centralus.azmk8s.io:443
             values:
-              CLIENT_ENVIRONMENT: production              
+              CLIENT_ENVIRONMENT: production             
   template:
     metadata:
-      name: 'podtato-kustomize'
+      name: '{{ path.basename }}'
       annotations:
-        notifications.argoproj.io/subscribe.on-deployed.keptn: ""
-        notifications.argoproj.io/subscribe.on-out-of-sync-status.keptn: ""
+        notifications.argoproj.io/subscribe.keptn-on-sync-running.keptn: ""
+        notifications.argoproj.io/subscribe.on-sync-running.keptn: ""
+        notifications.argoproj.io/subscribe.on-health-degraded.slack: "argo-notifications"
+        notifications.argoproj.io/subscribe.on-sync-running.slack: "argo-notifications"
+        notifications.argoproj.io/subscribe.on-rollout-step-completed.slack: argo-notifications
         environment: prod
     spec:
       project: ortelius
@@ -36,8 +39,7 @@ spec:
         server: '{{url}}'
       syncPolicy:
         automated:
-          prune: true
-          selfHeal: true
+          prune: false
+          selfHeal: false
         syncOptions:  
-        - CreateNamespace=true
-   
+        - CreateNamespace=true      
