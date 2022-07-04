@@ -12,7 +12,6 @@ spec:
           revision: HEAD
           directories:
           - path: kube-infra/kustomize/ci-cd/*
-          - path: kube-infra/kustomize/iac/*
           - path: kube-infra/kustomize/dns-infra/*
           - path: kube-infra/kustomize/observability/*
           - path: kube-infra/kustomize/demo/*
