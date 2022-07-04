@@ -17,4 +17,4 @@ spec:
           service:
             name: podtato-head-entry
             port:
-              number: 80
+              number: 9000
