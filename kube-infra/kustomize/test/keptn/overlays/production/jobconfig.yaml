@@ -1,0 +1,12 @@
+apiVersion: v2
+actions:
+  - name: "Run advanced sophisticated testing"
+    events:
+      - name: "sh.keptn.event.test.triggered"
+    tasks:
+      - name: "Run Testing"
+        image: "alpine"
+        cmd:
+          - echo
+        args:
+          - 'Testing Passed!'
