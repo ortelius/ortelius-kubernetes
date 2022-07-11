@@ -5,3 +5,18 @@ helmCharts:
   repo: https://falcosecurity.github.io/charts
   releaseName: falco
   includeCRDs: true
+  valuesInline:
+    ebpf:
+      enabled: true
+      
+    falcosidekick:
+      enabled: true
+      webui:
+        enabled: true
+
+    falco:
+      grpc:
+        enabled: true
+      programOutput:
+        enabled: true
+        program: mail -s "Falco Notification" brad@odysseycloud.io
