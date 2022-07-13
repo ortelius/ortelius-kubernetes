@@ -1,7 +1,7 @@
 helmCharts:
 - name: keptn
   namespace: keptn
-  version: 0.16.0 #variable
+  version: 0.17.0
   repo: https://charts.keptn.sh
   releaseName: keptn
   includeCRDs: true
