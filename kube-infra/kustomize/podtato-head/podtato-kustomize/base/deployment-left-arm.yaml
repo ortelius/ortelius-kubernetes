@@ -43,4 +43,4 @@ spec:
               fieldRef:
                 fieldPath: metadata.name
           - name: PODTATO_PART_NUMBER
-            value: "02"
+            value: "03"
