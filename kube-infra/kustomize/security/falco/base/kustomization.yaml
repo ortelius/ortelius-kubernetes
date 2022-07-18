@@ -1,7 +1,7 @@
 helmCharts:
 - name: falco
   namespace: falco
-  version: 1.19.4
+  version: 2.0.2
   repo: https://falcosecurity.github.io/charts
   releaseName: falco
   includeCRDs: true
@@ -19,4 +19,4 @@ helmCharts:
         enabled: true
       programOutput:
         enabled: true
-        program: mail -s "Falco Notification" brad@odysseycloud.io
+        program: mail -s "Falco Notification" bradmccoydev@gmail.com
