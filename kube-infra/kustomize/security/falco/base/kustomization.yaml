@@ -20,3 +20,17 @@ helmCharts:
       programOutput:
         enabled: true
         program: mail -s "Falco Notification" bradmccoydev@gmail.com
+
+- name: falco-exporter
+  namespace: falco
+  version: 0.8.0
+  repo: https://falcosecurity.github.io/charts
+  releaseName: falco-exporter
+  includeCRDs: true
+  valuesInline:
+    serviceMonitor: 
+      enabled: true
+    grafanaDashboard: 
+      enabled: true
+      namespace: observability
+      prometheusDatasourceName: Prometheus
