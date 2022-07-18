@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: podtato-kustomize
+  name: podtato-head
   namespace: ci-cd
 spec:
   generators:
@@ -21,7 +21,7 @@ spec:
               CLIENT_ENVIRONMENT: production              
   template:
     metadata:
-      name: 'podtato-kustomize'
+      name: 'podtato-head'
       annotations:
         notifications.argoproj.io/subscribe.on-deployed.keptn: ""
         notifications.argoproj.io/subscribe.on-out-of-sync-status.keptn: ""

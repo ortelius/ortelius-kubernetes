@@ -8,7 +8,7 @@ resources:
   - ingress.yaml
 
 ## all resources will be deployed in this namespace
-namespace: podtato-kustomize
+namespace: podtato-head
 
 ## labels to be applied to all resources
 commonLabels:
