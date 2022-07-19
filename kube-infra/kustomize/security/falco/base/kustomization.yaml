@@ -22,7 +22,7 @@ helmCharts:
         enabled: true
     customRules:
       my-rules.yaml: |-
-        -  macro: greetings
+        - macro: greetings
           condition: >
             proc.name = cowsay  
         - rule: Try to say use cowsay in Container
