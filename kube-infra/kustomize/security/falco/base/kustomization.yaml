@@ -6,20 +6,29 @@ helmCharts:
   releaseName: falco
   includeCRDs: true
   valuesInline:
+    fakeEventGenerator:
+      enabled: false
     falco:
+      priority: notice
+      jsonOutput: true
+      httpOutput:
+        enabled: true
+        url: http://falco-falcosidekick-ui:2802/
       grpc:
         enabled: true
       programOutput:
         enabled: true
         program: mail -s "Falco Notification" bradmccoydev@gmail.com
     ebpf:
-      enabled: true
-    auditLog:
-      enabled: true  
+      enabled: true 
     falcosidekick:
       enabled: true
+      replicaCount: 1
       webui:
         enabled: true
+      config:
+        webhook:
+          address: https://webhook.site/8674e32b-0602-4d53-ba7a-726521b80a38
     customRules:
       my-rules.yaml: |-
         - macro: greetings
