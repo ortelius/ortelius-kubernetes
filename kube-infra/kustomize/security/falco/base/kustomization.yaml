@@ -6,20 +6,36 @@ helmCharts:
   releaseName: falco
   includeCRDs: true
   valuesInline:
-    ebpf:
-      enabled: true
-      
-    falcosidekick:
-      enabled: true
-      webui:
-        enabled: true
-
     falco:
       grpc:
         enabled: true
       programOutput:
         enabled: true
         program: mail -s "Falco Notification" bradmccoydev@gmail.com
+    ebpf:
+      enabled: true
+    auditLog:
+      enabled: true  
+    falcosidekick:
+      enabled: true
+      webui:
+        enabled: true
+    customRules:
+      my-rules.yaml: |-
+        -  macro: greetings
+          condition: >
+            proc.name = cowsay  
+        - rule: Try to say use cowsay in Container
+          desc: Detect use of greetings command in container
+          condition: >
+            spawned_process and
+            container and
+            greetings
+          output: >
+            Cowsay command launched in container (user=%user.name user_loginuid=%user.loginuid command=%proc.cmdline parent_process=%proc.pname
+            container_id=%container.id container_name=%container.name image=%container.image.repository:%container.image.tag)
+          priority: NOTICE
+          tags: [dummy, process, demo]
 
 - name: falco-exporter
   namespace: falco
