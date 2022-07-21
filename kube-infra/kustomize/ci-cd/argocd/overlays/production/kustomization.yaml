@@ -8,7 +8,6 @@ resources:
 - argocd-manager-role.yaml
 - argocd-manager-role-binding.yaml
 - kustomize-kube-infra-applicationSet.yaml
-- podtato-head-appSet.yaml
 - iac-applicationSet.yaml
 
 
