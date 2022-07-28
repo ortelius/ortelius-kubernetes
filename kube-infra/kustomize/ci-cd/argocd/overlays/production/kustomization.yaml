@@ -10,7 +10,6 @@ resources:
 - kustomize-kube-infra-applicationSet.yaml
 - iac-applicationSet.yaml
 
-
 namespace: ci-cd
 
 patchesStrategicMerge:
