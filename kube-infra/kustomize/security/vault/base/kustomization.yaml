@@ -1,6 +1,6 @@
 helmCharts:
 - name: vault
-  namespace: security
+  namespace: vault
   version: 0.20.1
   repo: https://helm.releases.hashicorp.com
   releaseName: vault
