@@ -13,7 +13,7 @@ helmCharts:
         enabled: true
         devRootToken: "bradmccoy"
       ingress:
-        enabled: true
+        enabled: false
         labels:
           traffic: external
         annotations:
