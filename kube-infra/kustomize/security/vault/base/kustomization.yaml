@@ -20,6 +20,9 @@ helmCharts:
           kubernetes.io/ingress.class: nginx
           nginx.ingress.kubernetes.io/backend-protocol: HTTP
           nginx.ingress.kubernetes.io/ssl-passthrough: "false"
+          nginx.ingress.kubernetes.io/auth-type: basic
+          nginx.ingress.kubernetes.io/auth-secret: vault-ingress-auth
+          nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
         ingressClassName: ""
         pathType: Prefix
         hosts:
