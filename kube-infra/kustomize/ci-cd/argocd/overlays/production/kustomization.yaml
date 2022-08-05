@@ -9,7 +9,7 @@ resources:
 - argocd-manager-role-binding.yaml
 - kustomize-kube-infra-applicationSet.yaml
 - iac-applicationSet.yaml
-- podtato-kustomize-appSet.yaml
+- podtato-head-appSet.yaml
 
 namespace: ci-cd
 
