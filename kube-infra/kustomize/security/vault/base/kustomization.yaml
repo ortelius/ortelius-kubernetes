@@ -1,7 +1,7 @@
 helmCharts:
 - name: vault
   namespace: vault
-  version: 0.20.1
+  version: 0.21.0
   repo: https://helm.releases.hashicorp.com
   releaseName: vault
   includeCRDs: true
@@ -18,9 +18,9 @@ helmCharts:
           kubernetes.io/ingress.class: nginx
           nginx.ingress.kubernetes.io/backend-protocol: HTTP
           nginx.ingress.kubernetes.io/ssl-passthrough: "false"
-          #nginx.ingress.kubernetes.io/auth-type: basic
-          #nginx.ingress.kubernetes.io/auth-secret: vault-ingress-auth
-          #nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
+          nginx.ingress.kubernetes.io/auth-type: basic
+          nginx.ingress.kubernetes.io/auth-secret: vault-ingress-auth
+          nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
         ingressClassName: ""
         pathType: Prefix
         hosts:

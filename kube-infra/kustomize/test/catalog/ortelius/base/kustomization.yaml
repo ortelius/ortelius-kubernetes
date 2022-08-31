@@ -1,6 +1,6 @@
 helmCharts:
 - name: ingress-nginx
-  version: 4.2.3
+  version: 4.2.0
   repo: https://kubernetes.github.io/ingress-nginx
   releaseName: ingress-nginx
   namespace: dns-infra
@@ -21,23 +21,3 @@ helmCharts:
                   values:
                     - controller
               topologyKey: "kubernetes.io/hostname"
-      metrics:
-        enabled: true
-        serviceMonitor:
-          enabled: true
-          additionalLabels:
-            release: kube-prometheus-stack
-      publishService:
-        enabled: true
-      replicaCount: 1
-      stats:
-        enabled: true
-
-    rbac:
-      create: true
-
-    service:
-      externalTrafficPolicy: Local
-
-    config:
-      use-forwarded-headers: "true"
