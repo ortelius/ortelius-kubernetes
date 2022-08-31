@@ -18,8 +18,8 @@ patchesStrategicMerge:
 - argocd-cm.yaml
 - argocd-notifications-cm.yaml
 - argocd-rbac-cm.yaml
-- argocd-server-clusterRoleBinding.yaml
-- argocd-application-controller-clusterRoleBinding.yaml
+#- argocd-server-clusterRoleBinding.yaml
+#- argocd-application-controller-clusterRoleBinding.yaml
 - argocd-server-service.yaml
 
 - |-
@@ -47,3 +47,21 @@ patches:
   target:
     kind: Deployment
     labelSelector: app.kubernetes.io/name=argocd-server
+- patch: |-
+    - op: replace
+      path: /subjects/0/namespace
+      value: ci-cd
+  target:
+    group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: argocd-application-controller
+    version: v1
+- patch: |-
+    - op: replace
+      path: /subjects/0/namespace
+      value: ci-cd
+  target:
+    group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: argocd-server
+    version: v1
