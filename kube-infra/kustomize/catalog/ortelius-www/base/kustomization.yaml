@@ -1,0 +1,11 @@
+helmCharts:
+- name: ortelius-www
+  namespace: ortelius
+  version: 9.0.0-build.292
+  repo: https://ortelius.github.io/website
+  releaseName: ortelius-www
+  includeCRDs: true
+  valuesInline:
+    ingress:
+      enabled: true
+      host: ortelius.io

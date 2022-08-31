@@ -15,14 +15,15 @@ spec:
           - path: kube-infra/kustomize/security/*
           - path: kube-infra/kustomize/dns-infra/*
           - path: kube-infra/kustomize/observability/*
+          - path: kube-infra/kustomize/catalog/*
           - path: kube-infra/kustomize/demo/*
-        exclude: 
+        exclude:
       - list:
           elements:
           - cluster: production
             url: https://aks-1d6d379d.hcp.centralus.azmk8s.io:443
             values:
-              CLIENT_ENVIRONMENT: production             
+              CLIENT_ENVIRONMENT: production
   template:
     metadata:
       name: '{{ path.basename }}'
@@ -45,5 +46,5 @@ spec:
         automated:
           prune: true
           selfHeal: true
-        syncOptions:  
-        - CreateNamespace=true      
+        syncOptions:
+        - CreateNamespace=true
