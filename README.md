@@ -3,7 +3,7 @@
 This Project Is for The Ortelius Kubernetes manifests, helm charts, deployments etc
 
 # Pre commit hook
-To make use of the pre commit hook please run the following command to enable it on your computer
+To make use of the pre commit hook please run the following command to enable it on your computer.
 ```bash
 pre-commit install
 ```
