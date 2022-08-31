@@ -5,7 +5,7 @@ helmCharts:
   repo: https://argoproj.github.io/argo-helm
   releaseName: argocd-image-updater
   includeCRDs: true
-  valuesInline: 
+  valuesInline:
     config:
       argocd:
         grpcWeb: false
