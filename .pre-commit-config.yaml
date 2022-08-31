@@ -1,0 +1,20 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-json
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+      - id: detect-aws-credentials
+        args: [--allow-missing-credentials]
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: "0.14.0"
+    hooks:
+      - id: check-github-workflows
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: "2.1.6"
+    hooks:
+      - id: shellcheck
+        args: [--severity=error]

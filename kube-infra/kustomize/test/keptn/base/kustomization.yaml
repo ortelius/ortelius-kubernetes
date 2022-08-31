@@ -5,7 +5,7 @@ helmCharts:
   repo: https://charts.keptn.sh
   releaseName: keptn
   includeCRDs: true
-  valuesInline: 
+  valuesInline:
     control-plane:
       enabled: true
       apiGatewayNginx:
@@ -19,20 +19,20 @@ helmCharts:
         host: "keptn.ortelius.io"
         path: /
         pathType: Prefix
-        
+
     continuous-delivery:
-      enabled: true 
+      enabled: true
 
 # - name: helm-service
 #   namespace: keptn
-#   version: 0.14.1
+#   version: 0.18.2
 #   repo: https://charts.keptn.sh
 #   releaseName: helm-service
 #   includeCRDs: true
 
 # - name: jmeter-service
 #   namespace: keptn
-#   version: 0.16.0
+#   version: 0.18.2
 #   repo: https://charts.keptn.sh
 #   releaseName: jmeter-service
 #   includeCRDs: true
