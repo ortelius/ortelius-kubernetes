@@ -6,6 +6,8 @@ helmCharts:
   releaseName: ortelius-www
   includeCRDs: true
   valuesInline:
+    DockerRepo: "quay.io/ortelius/website"
+    DockerTag: "main-v9.0.0.334-gcd73761"
     ingress:
       enabled: true
       host: ortelius.io

@@ -15,6 +15,7 @@ spec:
           - path: kube-infra/kustomize/security/*
           - path: kube-infra/kustomize/dns-infra/*
           - path: kube-infra/kustomize/observability/*
+          - path: kube-infra/kustomize/catalog/*
           - path: kube-infra/kustomize/demo/*
         exclude:
       - list:
