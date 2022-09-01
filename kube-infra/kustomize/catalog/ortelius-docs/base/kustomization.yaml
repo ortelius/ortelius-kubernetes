@@ -1,7 +1,7 @@
 helmCharts:
 - name: ortelius-docs
-  namespace: ortelius-docs
-  version: 10.0.1
+  namespace: ortelius
+  version: 10.0.2
   repo: https://ortelius.github.io/ortelius-docs
   releaseName: ortelius-docs
   includeCRDs: true
