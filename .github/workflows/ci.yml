@@ -1,0 +1,21 @@
+
+name: CI
+
+on:
+  pull_request:
+    types:
+      - "opened"
+      - "synchronize"
+      - "edited"
+
+jobs:
+  gitleaks:
+    name: Gitleaks
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout PR branch
+      uses: actions/checkout@v3
+
+    - name: gitleaks-action
+      uses: zricethezav/gitleaks-action@v1.6.0
