@@ -13,4 +13,5 @@ helmCharts:
       host: docs.ortelius.io
       annotations:
         kubernetes.io/ingress.class: nginx
-        nginx.ingress.kubernetes.io/backend-protocol: "false"
+        nginx.ingress.kubernetes.io/backend-protocol: HTTP
+        nginx.ingress.kubernetes.io/ssl-passthrough: "false"
