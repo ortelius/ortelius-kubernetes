@@ -8,7 +8,7 @@ helmCharts:
   valuesInline:
     controller:
       extraArgs:
-        - enable-ssl-passthrough=
+        enable-ssl-passthrough:
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
