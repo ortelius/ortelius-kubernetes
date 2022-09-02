@@ -5,8 +5,10 @@ helmCharts:
   releaseName: ingress-nginx
   namespace: dns-infra
   includeCRDs: true
-  valuesInline: 
+  valuesInline:
     controller:
+      extraArgs:
+        - --enable-ssl-passthrough
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
