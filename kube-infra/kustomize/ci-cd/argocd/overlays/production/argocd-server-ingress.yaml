@@ -16,6 +16,6 @@ spec:
             name: argocd-server
             port:
               number: 80
-        path: /*
+        path: /
         pathType: Prefix
     host: argocd.ortelius.io
