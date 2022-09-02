@@ -10,7 +10,7 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: argocd-server
+      name: ortelius-www.ortelius.svc.cluster.local
       port:
         number: 80
   rules:
