@@ -1,7 +1,7 @@
 helmCharts:
 - name: ortelius-www
   namespace: ortelius
-  version: 9.0.0-build.293
+  version: 9.0.0-build.294
   repo: https://ortelius.github.io/website
   releaseName: ortelius-www
   includeCRDs: true
