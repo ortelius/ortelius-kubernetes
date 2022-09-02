@@ -7,8 +7,6 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     controller:
-      extraArgs:
-        enable-ssl-passthrough
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -43,3 +41,12 @@ helmCharts:
 
     config:
       use-forwarded-headers: "true"
+
+patches:
+- patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/command/-
+      value: --enable-ssl-passthrough
+  target:
+    kind: Deployment
+    labelSelector: app.kubernetes.io/name=ingress-nginx
