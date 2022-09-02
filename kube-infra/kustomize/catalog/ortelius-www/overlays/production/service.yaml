@@ -4,7 +4,7 @@ metadata:
   name: ortelius-hugo
 spec:
   selector:
-    app: ortelius-hugo
+    app: ortelius-www
     tier: backend
   ports:
     - name: hugo
