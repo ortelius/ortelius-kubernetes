@@ -21,6 +21,6 @@ spec:
             name: argocd-server
             port:
               number: 443
-        path: /* #remove star
+        path: /
         pathType: Prefix
     host: argocd.ortelius.io
