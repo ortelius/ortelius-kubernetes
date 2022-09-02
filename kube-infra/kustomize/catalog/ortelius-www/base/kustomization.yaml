@@ -9,7 +9,7 @@ helmCharts:
     DockerRepo: "quay.io/ortelius/website"
     DockerTag: "main-v9.0.0.334-gcd73761"
     ingress:
-      enabled: true
+      enabled: false
       host: ortelius.io
       annotations:
         kubernetes.io/ingress.class: nginx
