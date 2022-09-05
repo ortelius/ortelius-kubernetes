@@ -7,7 +7,6 @@ resources:
 - argocd-manager.yaml
 - argocd-manager-role.yaml
 - argocd-manager-role-binding.yaml
-- kustomize-kube-infra-applicationSet.yaml
 - application-sets/kube-infra.yaml
 - application-sets/podtato-head.yaml
 - application-sets/ortelius-docs.yaml
