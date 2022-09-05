@@ -8,8 +8,10 @@ resources:
 - argocd-manager-role.yaml
 - argocd-manager-role-binding.yaml
 - kustomize-kube-infra-applicationSet.yaml
-- iac-applicationSet.yaml
-- podtato-head-appSet.yaml
+- application-sets/kube-infra.yaml
+- application-sets/podtato-head.yaml
+- application-sets/ortelius-docs.yaml
+- application-sets/ortelius-website.yaml
 
 namespace: ci-cd
 
