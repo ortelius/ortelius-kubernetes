@@ -4,9 +4,7 @@ metadata:
   name: argocd-notifications-cm
 data:
   context: |
-    argocdUrl: http://argocd.ortelius.io
-  service.slack: |
-    token: $slack-token
+    argocdUrl: https://argocd.ortelius.io
   service.webhook.keptn: |
     url: https://keptn.ortelius.io/api/v1/event
     headers:
@@ -14,223 +12,71 @@ data:
       value: $keptn-x-token
     - name: Content-Type
       value: application/json
-  template.keptn: |
+template.keptn-outofsync: |
     webhook:
       keptn:
         method: POST
         body: |
           {
             "data": {
-              "project": "{{.app.spec.project}}",
-              "service": "keptn-ortelius-service",
-              "stage": "prod",
-              "image": "argoproj/rollouts-demo",
-              "tag": "yellow",
+              "configurationChange": {},
               "labels": {
-                "deployWith": "ArgoRollout",
-                "buildId": "{{.app.status.sync.revision}}",
-                "owner": "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author}}",
-                "link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
-                "repository": "{{.app.spec.source.repoURL}}"
+                "version": "{{.app.status.sync.revision}}",
+                "appname": "{{.app.metadata.name}}",
+                "argocd": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}"
               },
-              "configurationChange": {
-                "values": {
-                  "image": "argoproj/rollouts-demo:yellow"
-                }        
-              }
+              "project": "{{.app.metadata.labels.keptnProject}}",
+              "service": "{{.app.metadata.labels.keptnService}}",
+              "stage": "{{.app.metadata.labels.stage}}"
             },
-            "source": "test",
+            "source": "argocd",
             "specversion": "1.0",
-            "type": "sh.keptn.event.prod.canaryphase1.triggered"
+            "type": "sh.keptn.event.dev.kickoff.triggered",
+            "shkeptnspecversion": "0.2.3"
           }
-  template.app-sync-succeeded: |
-    message: |
-      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} Application {{.app.metadata.name}} has been successfully synced at {{.app.status.operationState.finishedAt}}.
-      Sync operation details are available at: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true .
-    slack:
-      attachments: |
-        [{
-          "title": "{{ .app.metadata.name}}",
-          "title_link":"{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
-          "color": "#18be52",
-          "fields": [
-          {
-            "title": "Sync Status",
-            "value": "{{.app.status.sync.status}}",
-            "short": true
-          },
-          {
-            "title": "Repository",
-            "value": "{{.app.spec.source.repoURL}}",
-            "short": true
-          }
-          {{range $index, $c := .app.status.conditions}}
-          {{if not $index}},{{end}}
-          {{if $index}},{{end}}
-          {
-            "title": "{{$c.type}}",
-            "value": "{{$c.message}}",
-            "short": true
-          }
-          {{end}}
-          ]
-        }]
-      deliveryPolicy: Post
-      groupingKey: "{{.app.status.sync.revision}}"
-      notifyBroadcast: true
-  template.app-deployed: |
+  template.keptn-deployed: |
     webhook:
-      github:
+      keptn:
         method: POST
-        path: /repos/{{call .repo.FullNameByRepoURL .app.spec.source.repoURL}}/statuses/{{.app.status.operationState.operation.sync.revision}}
         body: |
           {
-            {{if eq .app.status.operationState.phase "Running"}} "state": "pending"{{end}}
-            {{if eq .app.status.operationState.phase "Succeeded"}} "state": "success"{{end}}
-            {{if eq .app.status.operationState.phase "Error"}} "state": "error"{{end}}
-            {{if eq .app.status.operationState.phase "Failed"}} "state": "error"{{end}},
-            "description": "ArgoCD",
-            "target_url": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
-            "context": "continuous-delivery/{{.app.metadata.name}}"
+            "data": {
+              "configurationChange": {},
+              "labels": {
+                "version": "{{.app.status.sync.revision}}",
+                "appname": "{{.app.metadata.name}}",
+                "link": "{{.app.metadata.annotations.externalURI}}",
+                "buildId": "{{.app.status.sync.revision}}",
+                "argocd": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}"
+              },
+              "deployment": {
+                  "deploymentURIsPublic": [
+                     "{{.app.metadata.annotations.externalURI}}"
+               ]
+              },
+              "project": "{{.app.metadata.labels.keptnProject}}",
+              "service": "{{.app.metadata.labels.keptnService}}",
+              "stage": "{{.app.metadata.labels.stage}}",
+              "repository": "{{.app.spec.source.repoURL}}",
+              "result": "pass"
+            },
+            "source": "argocd",
+            "specversion": "1.0",
+            "type": "sh.keptn.event.deliver.finished",
+            "shkeptnspecversion": "0.2.3",
+            {{$first := true}}
+            {{- range $index,$value := .app.status.operationState.operation.info}}
+              {{- if $first}}
+                  {{- $first = false}}
+              {{- else}}
+                  ,
+              {{- end}}
+            "{{$value.name}}": "{{$value.value}}"
+            {{- end}}
           }
-    message: |
-      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} Application {{.app.metadata.name}} is now running new version of deployments manifests.
-    slack:
-      attachments: |
-        [{
-          "title": "{{ .app.metadata.name}}",
-          "title_link":"{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
-          "color": "#18be52",
-          "fields": [
-          {
-            "title": "Sync Status",
-            "value": "{{.app.status.sync.status}}",
-            "short": true
-          },
-          {
-            "title": "Repository",
-            "value": "{{.app.spec.source.repoURL}}",
-            "short": true
-          },
-          {
-            "title": "Revision",
-            "value": "{{.app.status.sync.revision}}",
-            "short": true
-          }
-          {{range $index, $c := .app.status.conditions}}
-          {{if not $index}},{{end}}
-          {{if $index}},{{end}}
-          {
-            "title": "{{$c.type}}",
-            "value": "{{$c.message}}",
-            "short": true
-          }
-          {{end}}
-          ]
-        }]
-      deliveryPolicy: Post
-      groupingKey: "{{.app.status.sync.revision}}"
-      notifyBroadcast: true
-  template.app-health-degraded: |
-    message: |
-      {{if eq .serviceType "slack"}}:exclamation:{{end}} Application {{.app.metadata.name}} has degraded.
-      Application details: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}.
-    slack:
-      attachments: |
-        [{
-          "title": "{{ .app.metadata.name}}",
-          "title_link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
-          "color": "#f4c030",
-          "fields": [
-          {
-            "title": "Health Status",
-            "value": "{{.app.status.health.status}}",
-            "short": true
-          },
-          {
-            "title": "Repository",
-            "value": "{{.app.spec.source.repoURL}}",
-            "short": true
-          }
-          {{range $index, $c := .app.status.conditions}}
-          {{if not $index}},{{end}}
-          {{if $index}},{{end}}
-          {
-            "title": "{{$c.type}}",
-            "value": "{{$c.message}}",
-            "short": true
-          }
-          {{end}}
-          ]
-        }]
-      deliveryPolicy: Post
-      groupingKey: "{{.app.status.sync.revision}}"
-      notifyBroadcast: true
-  template.app-sync-running: |
-    message: |
-      The sync operation of application {{.app.metadata.name}} has started at {{.app.status.operationState.startedAt}}.
-      Sync operation details are available at: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true .w
-    slack:
-      attachments: |
-        [{
-          "title": "{{ .app.metadata.name}}",
-          "title_link":"{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
-          "color": "#0DADEA",
-          "fields": [
-          {
-            "title": "Sync Status",
-            "value": "{{.app.status.sync.status}}",
-            "short": true
-          },
-          {
-            "title": "Repository",
-            "value": "{{.app.spec.source.repoURL}}",
-            "short": true
-          }
-          {{range $index, $c := .app.status.conditions}}
-          {{if not $index}},{{end}}
-          {{if $index}},{{end}}
-          {
-            "title": "{{$c.type}}",
-            "value": "{{$c.message}}",
-            "short": true
-          }
-          {{end}}
-          ]
-        }]
-      deliveryPolicy: Post
-      groupingKey: "{{.app.status.sync.revision}}"
-      notifyBroadcast: true
-  trigger.on-sync-running: |
-    - description: Application is being synced
-      oncePer: app.status.operationState.syncResult.revision
-      send:
-      - app-sync-running
-      when: app.status.operationState.phase in ['Running']
-  trigger.keptn-on-sync-running: |
-    - description: Application is being synced
-      send: [keptn]
-      when: app.status.operationState.phase in ['Running'] and app.metadata.name == 'argo-rollouts-demo'
+  trigger.on-out-of-sync-status: |
+    - when: app.status.sync.status == 'OutOfSync'
+      send: [keptn-outofsync]
   trigger.on-deployed: |
-    - description: Application is synced and healthy. Triggered once per commit.
-      oncePer: app.status.operationState.syncResult.revision
-      send:
-      - app-deployed
-      when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
-  trigger.on-health-degraded: |
-    - description: Application has degraded
-      send:
-      - app-health-degraded
-      when: app.status.health.status == 'Degraded'
-  trigger.on-sync-succeeded: |
-    - description: Application syncing has succeeded
-      send:
-      - app-sync-succeeded
-      when: app.status.operationState.phase in ['Succeeded']
-  subscriptions: |
-    - recipients:
-      - webhook:keptn
-      trigger: keptn-on-sync-running
-    - recipients:
-      - webhook:github
-      trigger: app-deployed
+    - when: app.status.sync.status == 'Synced' and app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
+      send: [keptn-deployed]
