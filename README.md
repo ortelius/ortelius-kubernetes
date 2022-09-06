@@ -20,7 +20,3 @@ Contributors:
 * Ben Poh ([@benhpoh](https://github.com/benhpoh)), Moula
 * Ujwal Yelmareddy ([@interasujwal](https://github.com/interasujwal)), Interas Labs
 * Hamid Gholami ([@hamidgholami](https://github.com/hamidgholami)),EGS
-
-keptn create project ortelius --shipyard=$SHIPYARD_FILE --git-user=$GIT_USER --git-token=$GITHUB_TOKEN --git-remote-url=$GIT_REPO
-
-GITHUB_TOKEN=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 && GIT_USER=bradmccoydev && GIT_REPO=https://github.com/bradmccoydev/keptn-argo-demo && SHIPYARD_FILE=/Users/bradmccoy/Development/bradmccoydev/ortelius-kubernetes/kube-infra/kustomize/test/keptn/overlays/production/shipyard.yaml
