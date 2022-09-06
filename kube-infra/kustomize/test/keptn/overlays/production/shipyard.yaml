@@ -4,7 +4,7 @@ metadata:
   name: "ortelius"
 spec:
   stages:
-    - name: "dev"
+    - name: "test"
       sequences:
       - name: "qualitycheck"
         tasks:
