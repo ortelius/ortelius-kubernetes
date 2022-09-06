@@ -5,7 +5,7 @@ helmCharts:
   repo: https://helm.releases.hashicorp.com
   releaseName: vault
   includeCRDs: true
-  valuesInline: 
+  valuesInline:
     server:
       injector:
         enabled: false

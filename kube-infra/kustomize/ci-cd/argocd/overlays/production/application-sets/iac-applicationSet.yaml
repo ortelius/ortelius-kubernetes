@@ -12,13 +12,13 @@
 #           revision: HEAD
 #           directories:
 #           - path: kube-infra/kustomize/iac/*
-#         exclude: 
+#         exclude:
 #       - list:
 #           elements:
 #           - cluster: production
 #             url: https://aks-1d6d379d.hcp.centralus.azmk8s.io:443
 #             values:
-#               CLIENT_ENVIRONMENT: production             
+#               CLIENT_ENVIRONMENT: production
 #   template:
 #     metadata:
 #       name: '{{ path.basename }}'
@@ -41,5 +41,5 @@
 #         automated:
 #           prune: false
 #           selfHeal: false
-#         syncOptions:  
-#         - CreateNamespace=true      
+#         syncOptions:
+#         - CreateNamespace=true

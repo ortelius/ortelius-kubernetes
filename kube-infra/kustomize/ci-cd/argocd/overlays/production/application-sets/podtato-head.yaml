@@ -12,13 +12,13 @@ spec:
           revision: HEAD
           directories:
           - path: kube-infra/kustomize/podtato-head/*
-        exclude: 
+        exclude:
       - list:
           elements:
           - cluster: production
             url: https://aks-1d6d379d.hcp.centralus.azmk8s.io:443
             values:
-              CLIENT_ENVIRONMENT: production              
+              CLIENT_ENVIRONMENT: production
   template:
     metadata:
       name: 'podtato-head'
@@ -26,6 +26,10 @@ spec:
         notifications.argoproj.io/subscribe.on-deployed.keptn: ""
         notifications.argoproj.io/subscribe.on-out-of-sync-status.keptn: ""
         environment: prod
+      labels:
+        keptnProject: podtato-head
+        keptnService: website
+        stage: test
     spec:
       project: ortelius
       source:
@@ -38,6 +42,5 @@ spec:
         automated:
           prune: true
           selfHeal: true
-        syncOptions:  
+        syncOptions:
         - CreateNamespace=true
-   
