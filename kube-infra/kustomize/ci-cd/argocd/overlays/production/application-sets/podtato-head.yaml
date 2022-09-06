@@ -27,9 +27,9 @@ spec:
         notifications.argoproj.io/subscribe.on-out-of-sync-status.keptn: ""
         environment: prod
       labels:
-        keptnProject: gsoc
+        keptnProject: ortelius
         keptnService: podtato-head
-        keptnStage: qa
+        keptnStage: dev
     spec:
       project: ortelius
       source:
