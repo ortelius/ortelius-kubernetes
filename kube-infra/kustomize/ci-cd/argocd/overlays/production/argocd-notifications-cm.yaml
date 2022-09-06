@@ -27,7 +27,7 @@ data:
               },
               "project": "{{.app.metadata.labels.keptnProject}}",
               "service": "{{.app.metadata.labels.keptnService}}",
-              "stage": "{{.app.metadata.labels.stage}}"
+              "stage": "{{.app.metadata.labels.keptnStage}}"
             },
             "source": "argocd",
             "specversion": "1.0",

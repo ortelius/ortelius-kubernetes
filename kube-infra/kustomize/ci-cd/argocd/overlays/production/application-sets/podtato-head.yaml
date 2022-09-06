@@ -29,7 +29,7 @@ spec:
       labels:
         keptnProject: gsoc
         keptnService: podtato-head
-        stage: qa
+        keptnStage: qa
     spec:
       project: ortelius
       source:
