@@ -11,6 +11,7 @@ spec:
         - name: "catalog"
         - name: "test"
         - name: "evaluation"
+        - name: "pr"
     - name: "production"
       sequences:
       - name: "qualitycheck"
