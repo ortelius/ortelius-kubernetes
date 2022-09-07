@@ -16,6 +16,7 @@ spec:
           - path: kube-infra/kustomize/dns-infra/*
           - path: kube-infra/kustomize/observability/*
           - path: kube-infra/kustomize/demo/*
+          - path: kube-infra/kustomize/catalog/keptn-ortelius-service
         exclude:
       - list:
           elements:
