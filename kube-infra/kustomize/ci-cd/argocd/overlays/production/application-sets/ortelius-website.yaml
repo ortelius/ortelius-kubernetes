@@ -11,7 +11,7 @@ spec:
           repoURL: https://github.com/ortelius/ortelius-kubernetes.git
           revision: HEAD
           directories:
-          - path: kube-infra/kustomize/catalog/ortelius-website
+          - path: kube-infra/kustomize/catalog/ortelius-www
         exclude:
       - list:
           elements:
