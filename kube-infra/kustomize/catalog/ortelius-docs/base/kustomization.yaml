@@ -1,13 +1,15 @@
 helmCharts:
 - name: ortelius-docs
   namespace: ortelius
-  version: 10.0.2
+  version: 10.0.3
   repo: https://ortelius.github.io/ortelius-docs
   releaseName: ortelius-docs
   includeCRDs: true
   valuesInline:
     DockerRepo: "quay.io/ortelius/ortelius-docs"
     DockerTag: "main-v10.0.0.129-g5912602"
+    service:
+      serviceMonitor: true
     ingress:
       enabled: true
       host: docs.ortelius.io
