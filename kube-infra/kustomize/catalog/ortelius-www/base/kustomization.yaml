@@ -1,7 +1,7 @@
 helmCharts:
 - name: ortelius-www
   namespace: ortelius
-  version: 9.0.0-build.296
+  version: 9.0.0-build.297
   repo: https://ortelius.github.io/website
   releaseName: ortelius-www
   includeCRDs: true
@@ -10,6 +10,7 @@ helmCharts:
     DockerTag: "main-v9.0.0.334-gcd73761"
     ingress:
       enabled: true
+      addDefaultBackend: true
       host: ortelius.io
       annotations:
         kubernetes.io/ingress.class: nginx
