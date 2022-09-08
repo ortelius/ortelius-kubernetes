@@ -9,7 +9,8 @@ helmCharts:
     DockerRepo: "quay.io/ortelius/ortelius-docs"
     DockerTag: "main-v10.0.0.129-g5912602"
     service:
-      serviceMonitor: true
+      serviceMonitor:
+        enabled: true
     ingress:
       enabled: true
       host: docs.ortelius.io
