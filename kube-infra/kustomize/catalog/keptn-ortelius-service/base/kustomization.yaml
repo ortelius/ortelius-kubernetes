@@ -5,3 +5,6 @@ helmCharts:
   repo: https://ortelius.github.io/keptn-ortelius-service
   releaseName: keptn-ortelius-service
   includeCRDs: true
+  valuesInline:
+    image:
+      tag: "dev"
