@@ -1,13 +1,16 @@
 helmCharts:
 - name: ortelius-www
   namespace: ortelius
-  version: 9.0.0-build.298
+  version: 0.0.1
   repo: https://ortelius.github.io/website
   releaseName: ortelius-www
   includeCRDs: true
   valuesInline:
     DockerRepo: "quay.io/ortelius/website"
     DockerTag: "main-v9.0.0.334-gcd73761"
+    service:
+      serviceMonitor:
+        enabled: true
     ingress:
       enabled: true
       addDefaultBackend: true
