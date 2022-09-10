@@ -10,7 +10,7 @@ helmCharts:
     DockerTag: "main-v9.0.0.334-gcd73761"
     service:
       serviceMonitor:
-        enabled: false
+        enabled: true
     ingress:
       enabled: true
       addDefaultBackend: true
