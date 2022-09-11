@@ -4,7 +4,7 @@ metadata:
   name: "shipyard-delivery-rollout"
 spec:
   stages:
-  - name: prod           
+  - name: prod
     sequences:
     # Phase 1 of Rollout: Release, Test, Evaluate
     - name: canaryphase1
@@ -56,7 +56,7 @@ spec:
       - name: approval
         properties:
           pass: automatic
-          warning: automatic          
+          warning: automatic
     - name: rollback
       triggeredOn:
       - event: prod.delivery.finished
@@ -74,6 +74,6 @@ spec:
       - event: prod.canaryphase3.finished
         selector:
           match:
-            result: "fail"            
+            result: "fail"
       tasks:
       - name: rollback

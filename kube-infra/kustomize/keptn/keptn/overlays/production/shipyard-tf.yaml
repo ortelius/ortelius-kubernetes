@@ -7,7 +7,7 @@
 #     - name: "test"
 #       sequences:
 #       - name: "delivery"
-#         tasks: 
+#         tasks:
 #         - name: "buildimage"
 #         - name: "pushimage"
 #         - name: "updatecicd"
@@ -23,7 +23,7 @@
 #             selector:
 #               match:
 #                 result: "pass"
-#         tasks: 
+#         tasks:
 #         - name: "updatecicd"
 #         - name: "evaluation"
 #           triggeredAfter: "15m"
@@ -37,7 +37,7 @@
 #             selector:
 #               match:
 #                 result: "pass"
-#         tasks: 
+#         tasks:
 #         - name: "updatecicd"
 #         - name: "evaluation"
 #           triggeredAfter: "5m"
