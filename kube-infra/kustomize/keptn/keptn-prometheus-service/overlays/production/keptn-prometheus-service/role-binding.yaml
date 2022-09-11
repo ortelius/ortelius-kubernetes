@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: keptn-prometheus-service
+  namespace: observability
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: keptn-prometheus-service
+subjects:
+  - kind: ServiceAccount
+    name: keptn-prometheus-service
+    namespace: keptn
