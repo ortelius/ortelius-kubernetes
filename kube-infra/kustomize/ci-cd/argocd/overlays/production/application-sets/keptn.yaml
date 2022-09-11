@@ -11,7 +11,7 @@ spec:
           repoURL: https://github.com/ortelius/ortelius-kubernetes.git
           revision: HEAD
           directories:
-          - path: kube-infra/kustomize/keptn/*
+          - path: kube-infra/kustomize/keptn/keptn-prometheus-service
         exclude:
       - list:
           elements:
