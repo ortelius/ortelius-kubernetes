@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: keptn
-  annotations:
-    keptn.sh/managed-by: keptn
-  labels:
-    keptn.sh/managed-by: keptn

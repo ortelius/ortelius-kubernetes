@@ -7,7 +7,7 @@ spec:
     - name: "test"
       sequences:
       - name: "delivery"
-        tasks: 
+        tasks:
         - name: "triggered"
         - name: "test"
         - name: "promote"
@@ -16,7 +16,7 @@ spec:
       - name: "delivery"
         triggeredOn:
           - event: "test.delivery.finished"
-        tasks: 
+        tasks:
         - name: "test"
         - name: "promote"
     - name: "prod"
@@ -27,5 +27,5 @@ spec:
             selector:
               match:
               result: "pass"
-        tasks: 
+        tasks:
         - name: "test"
