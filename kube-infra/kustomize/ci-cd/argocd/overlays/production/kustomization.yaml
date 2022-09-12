@@ -9,7 +9,7 @@ resources:
 - argocd-manager-role-binding.yaml
 - argocd-service-monitors.yaml
 - application-sets/kube-infra.yaml
-- application-sets/keptn.yaml
+#- application-sets/keptn.yaml
 - application-sets/podtato-head.yaml
 - application-sets/ortelius-docs.yaml
 - application-sets/ortelius-website.yaml
