@@ -7,7 +7,7 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     DockerRepo: "quay.io/ortelius/website"
-    DockerTag: "main-v9.0.0.357-g6ca2a24"
+    DockerTag: "main-v9.0.0.359-g7a31cd1"
     service:
       serviceMonitor:
         enabled: true
