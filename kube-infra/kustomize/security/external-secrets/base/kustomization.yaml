@@ -1,0 +1,22 @@
+helmCharts:
+- name: external-secrets-operator
+  namespace: security
+  version: 0.6.0-rc1
+  repo: https://charts.external-secrets.io
+  releaseName: external-secrets-operator
+  includeCRDs: true
+  valuesInline:
+    certContoller:
+      serviceMonitor:
+        enabled: true
+        interval: "30s"
+        scrapeTimeout:  "25s"
+        additionalLabels:
+            release: kube-prometheus-stack
+      webhook:
+        serviceMonitor:
+          enabled: true
+          interval: "30s"
+          scrapeTimeout:  "25s"
+          additionalLabels:
+            release: kube-prometheus-stack
