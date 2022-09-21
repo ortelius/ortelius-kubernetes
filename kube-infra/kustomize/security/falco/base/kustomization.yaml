@@ -1,7 +1,7 @@
 helmCharts:
 - name: falco
   namespace: falco
-  version: 2.0.16
+  version: 2.0.17
   repo: https://falcosecurity.github.io/charts
   releaseName: falco
   includeCRDs: true
@@ -20,7 +20,7 @@ helmCharts:
         enabled: true
         program: mail -s "Falco Notification" bradmccoydev@gmail.com
     ebpf:
-      enabled: true 
+      enabled: true
     falcosidekick:
       enabled: true
       replicaCount: 1
@@ -33,7 +33,7 @@ helmCharts:
       my-rules.yaml: |-
         - macro: greetings
           condition: >
-            proc.name = cowsay  
+            proc.name = cowsay
         - rule: Try to say use cowsay in Container
           desc: Detect use of greetings command in container
           condition: >
@@ -53,9 +53,9 @@ helmCharts:
   releaseName: falco-exporter
   includeCRDs: true
   valuesInline:
-    serviceMonitor: 
+    serviceMonitor:
       enabled: true
-    grafanaDashboard: 
+    grafanaDashboard:
       enabled: true
       namespace: observability
       prometheusDatasourceName: Prometheus

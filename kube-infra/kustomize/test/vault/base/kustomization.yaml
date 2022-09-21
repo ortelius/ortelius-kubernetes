@@ -1,7 +1,7 @@
 helmCharts:
 - name: vault
   namespace: vault
-  version: 0.21.0
+  version: 0.22.0
   repo: https://helm.releases.hashicorp.com
   releaseName: vault
   includeCRDs: true
