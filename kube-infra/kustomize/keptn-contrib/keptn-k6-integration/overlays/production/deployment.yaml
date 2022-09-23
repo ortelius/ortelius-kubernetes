@@ -1,0 +1,122 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chart-1663911321-k6-service
+  labels:
+    helm.sh/chart: k6-service-0.8.0
+    app.kubernetes.io/name: k6-service
+    app.kubernetes.io/instance: chart-1663911321
+    app.kubernetes.io/version: "0.8.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: k6-service
+      app.kubernetes.io/instance: chart-1663911321
+  template:
+    metadata:
+      labels:
+        helm.sh/chart: k6-service-0.8.0
+        app.kubernetes.io/name: k6-service
+        app.kubernetes.io/instance: chart-1663911321
+        app.kubernetes.io/version: "0.8.0"
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName: chart-1663911321-k6-service
+      securityContext:
+        {}
+      containers:
+        - name: keptn-service
+          securityContext:
+            {}
+          image: "docker.io/jvenom/k6-service:dev"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          env:
+          - name: CONFIGURATION_SERVICE
+            value: "http://localhost:8081/configuration-service"
+          - name: env
+            value: 'production'
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+        - name: distributor
+          image: "docker.io/keptn/distributor:0.19.0"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+          lifecycle:
+            preStop:
+              exec:
+                command: [ "/bin/sleep","60" ]
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          env:
+            - name: PUBSUB_URL
+              value: 'nats://keptn-nats'
+            - name: PUBSUB_TOPIC
+              value: sh.keptn.>
+            - name: PUBSUB_RECIPIENT
+              value: '127.0.0.1'
+            - name: STAGE_FILTER
+              value: ""
+            - name: PROJECT_FILTER
+              value: ""
+            - name: SERVICE_FILTER
+              value: ""
+            - name: VERSION
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: 'metadata.labels[''app.kubernetes.io/version'']'
+            - name: DISTRIBUTOR_VERSION
+              value: 0.19.0
+            - name: K8S_DEPLOYMENT_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: 'metadata.labels[''app.kubernetes.io/name'']'
+            - name: K8S_POD_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
+            - name: K8S_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
+            - name: K8S_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: spec.nodeName
+            - name: PUBSUB_GROUP
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/name']
+      terminationGracePeriodSeconds: 60
