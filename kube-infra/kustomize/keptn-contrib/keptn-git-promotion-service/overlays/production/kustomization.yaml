@@ -2,6 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 # - ../../base
-- cluster-role-binding.yaml
+- deployment.yaml
+- rolebinding.yaml
+- service.yaml
+- serviceaccount.yaml
 
 namespace: keptn
