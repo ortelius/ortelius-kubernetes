@@ -4,14 +4,15 @@ metadata:
   name: "ortelius"
 spec:
   stages:
-    - name: "dev"
+    - name: "development"
       sequences:
       - name: "kickoff"
         tasks:
-        - name: "catalog"
         - name: "test"
         - name: "evaluation"
-        - name: "pr"
+        - name: "catalog"
+        - name: "promote"
+        - name: "inform"
     - name: "production"
       sequences:
       - name: "qualitycheck"
@@ -21,4 +22,7 @@ spec:
               match:
               result: "pass"
         tasks:
+        - name: "test"
         - name: "evaluation"
+        - name: "catalog"
+        - name: "inform"
