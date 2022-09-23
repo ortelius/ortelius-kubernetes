@@ -20,6 +20,6 @@ helmCharts:
         nginx.ingress.kubernetes.io/backend-protocol: HTTP
         nginx.ingress.kubernetes.io/ssl-passthrough: "false"
     keptnLabels:
-      keptnProject: "ortelius"
-      keptnService: "website"
-      keptnStage: "dev"
+      keptnProject: ortelius
+      keptnService: website
+      keptnStage: dev
