@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: chart-1662850918-prometheus-service
+  name: keptn-prometheus-service
   labels:
     helm.sh/chart: prometheus-service-0.0.1
     app.kubernetes.io/name: prometheus-service
