@@ -1,0 +1,18 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: keptn-keptn-keptn-service-cluster-admin
+  labels:
+    helm.sh/chart: k6-service-0.8.0
+    app.kubernetes.io/name: k6-service
+    app.kubernetes.io/instance: chart-1663911321
+    app.kubernetes.io/version: "0.8.0"
+    app.kubernetes.io/managed-by: Helm
+subjects:
+  - kind: ServiceAccount
+    name: chart-1663911321-k6-service
+    namespace: keptn
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
