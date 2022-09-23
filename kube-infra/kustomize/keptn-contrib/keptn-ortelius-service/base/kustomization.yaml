@@ -8,3 +8,5 @@ helmCharts:
   valuesInline:
     image:
       tag: "dev"
+    subscription:
+      pubsubTopic: "sh.keptn.kickoff.catalog.triggered"
