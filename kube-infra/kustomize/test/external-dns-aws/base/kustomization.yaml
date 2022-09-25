@@ -1,0 +1,27 @@
+helmCharts:
+- name: external-dns
+  version: 6.9.0
+  repo: https://charts.bitnami.com/bitnami
+  releaseName: external-dns-aws
+  namespace: dns-infra
+  includeCRDs: true
+  valuesInline:
+    policy: sync
+    rbac:
+      create: true
+    registry: txt
+    extraEnv:
+    - name: AWS_ACCESS_KEY_ID
+      valueFrom:
+        secretKeyRef:
+          name: aws-dns-creds
+          key: AWS_ACCESS_KEY
+    - name: AWS_SECRET_ACCESS_KEY
+      valueFrom:
+        secretKeyRef:
+          name: aws-dns-creds
+          key: AWS_SECRET_ACCESS_KEY
+    provider: aws
+    domainFilters:
+    - bradmccoy.io
+    txtOwnderId: external-dns.bradmccoy.io

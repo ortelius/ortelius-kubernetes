@@ -1,11 +1,112 @@
-apiVersion: apps/v1
-kind: Deployment
+# Source: prometheus-service/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
 metadata:
   name: keptn-prometheus-service
   labels:
     helm.sh/chart: prometheus-service-0.0.1
     app.kubernetes.io/name: prometheus-service
-    app.kubernetes.io/instance: chart-1662850918
+    app.kubernetes.io/instance: chart-1663966772
+    app.kubernetes.io/version: "0.0.1"
+    app.kubernetes.io/managed-by: Helm
+---
+# Source: prometheus-service/templates/serviceaccount.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: keptn-read-secret-prometheus
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - get
+      - watch
+---
+# Source: prometheus-service/templates/serviceaccount.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: keptn-prometheus-sli-service
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: keptn-read-secret-prometheus
+subjects:
+  - kind: ServiceAccount
+    name: keptn-prometheus-service
+    namespace: keptn
+---
+# Source: prometheus-service/templates/serviceaccount.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: keptn-prometheus-service
+  namespace: observability
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - get
+      - update
+      - create
+  - apiGroups:
+      - ""
+    resources:
+      - services
+    verbs:
+      - get
+      - list
+---
+# Source: prometheus-service/templates/serviceaccount.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: keptn-prometheus-service
+  namespace: observability
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: keptn-prometheus-service
+subjects:
+  - kind: ServiceAccount
+    name: keptn-prometheus-service
+    namespace: keptn
+---
+# Source: prometheus-service/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: chart-1663966772-prometheus-service
+  labels:
+    helm.sh/chart: prometheus-service-0.0.1
+    app.kubernetes.io/name: prometheus-service
+    app.kubernetes.io/instance: chart-1663966772
+    app.kubernetes.io/version: "0.0.1"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: prometheus-service
+    app.kubernetes.io/instance: chart-1663966772
+---
+# Source: prometheus-service/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chart-1663966772-prometheus-service
+  labels:
+    helm.sh/chart: prometheus-service-0.0.1
+    app.kubernetes.io/name: prometheus-service
+    app.kubernetes.io/instance: chart-1663966772
     app.kubernetes.io/version: "0.0.1"
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -13,13 +114,13 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: prometheus-service
-      app.kubernetes.io/instance: chart-1662850918
+      app.kubernetes.io/instance: chart-1663966772
   template:
     metadata:
       labels:
         helm.sh/chart: prometheus-service-0.0.1
         app.kubernetes.io/name: prometheus-service
-        app.kubernetes.io/instance: chart-1662850918
+        app.kubernetes.io/instance: chart-1663966772
         app.kubernetes.io/version: "0.0.1"
         app.kubernetes.io/managed-by: Helm
     spec:
@@ -36,6 +137,14 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8081
           resources:
             limits:
               cpu: 500m
@@ -49,7 +158,7 @@ spec:
             - name: PROMETHEUS_NS
               value: 'observability'
             - name: PROMETHEUS_CM
-              value: 'kube-prometheus-stack-prometheus'
+              value: 'prometheus-server'
             - name: PROMETHEUS_LABELS
               value: 'component=server'
             - name: HEALTH_ENDPOINT_PORT
@@ -61,7 +170,7 @@ spec:
             - name: ALERT_MANAGER_CONFIG_FILENAME
               value: 'alertmanager.yml'
             - name: ALERT_MANAGER_CM
-              value: 'kube-prometheus-stack-alertmanager-overview'
+              value: 'prometheus-alertmanager'
             - name: ALERT_MANAGER_LABELS
               value: 'component=alertmanager'
             - name: ALERT_MANAGER_NS

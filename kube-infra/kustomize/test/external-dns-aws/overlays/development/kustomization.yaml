@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+#- aws-dns-creds-sealed.yaml
+#- aws-dns-creds-ci-sealed.yaml
+namespace: dns-infra
