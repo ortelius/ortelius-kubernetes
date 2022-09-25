@@ -10,7 +10,7 @@ resources:
 namespace: ci-cd
 
 patchesStrategicMerge:
-- argocd-server-service.yaml
+
 - argocd-rbac-cm.yaml
 
 - |-

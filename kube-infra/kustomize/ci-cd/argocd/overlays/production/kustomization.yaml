@@ -12,6 +12,7 @@ resources:
 namespace: ci-cd
 
 patchesStrategicMerge:
+- argocd-server-service.yaml
 - argocd-cm.yaml
 - argocd-notifications-cm.yaml
 
