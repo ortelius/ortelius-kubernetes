@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: ortelius
+  namespace: ci-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Ortelius Project
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: '*'
+    server: https://58FFA2BB4C6C5B798E6BA3229F902277.gr7.us-west-2.eks.amazonaws.com
+  - namespace: '*'
+    server: '*'
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
