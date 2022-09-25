@@ -1,0 +1,21 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: aws-dns-creds
+  namespace: ci-cd
+spec:
+  encryptedData:
+    AWS_ACCESS_KEY: AgClA3juCOAW/l2dQyRu/7tSACGDyw94wLZG9HOQ5GIkO9sVLqdkUc+u/9pCoVlApaeIJA6yvXmMMw0P48sX6pMttHmB9tKc6ixyWTiXI9hovCX4iL636l7s8MyjFKRNqUO7HOc9mj7ooV2abfZAtODpAQPJxz9+Ebq6R5xjimjoTMJQpYf/yo8qMcBTZ/rloAkivseA3eywxElwzvGCWPvJQEn7n+vOTURRnRcGV+0n2xX/Gi7O8ylTq/ynRETn5DvuCtpFXXSMiVc9dijYDGUom7lxnJLPBmQjkGrXN4NVF2k0XQVH0SugW/mM8Svge0tGTO4LfWfSgfqzmy1d+M+neaziI/EKOzMM0oJGQbRZ6LQIpjyGqwpTcgcNk04dGxTB31W8jDf1jJx+ND+3uTCFsqpiBPkq62hO/soEAHvDvVbEv8TXDwVoigGnRhOAgaqoBhHvKaE7rSnzm7yiQ3ajSfdtZnD6X0APMb9WXkTCA26FQdQjD+FmZvocN1HKMjIDv6bFRnOH32TGf9ZKNNTwG26siQeJoSapkrCJB6v0o68GX36GDdPldk9unI46ej8ouqw2yK5A7RUBxOzPNpxp11SVPPrBk8tCz1gFo1TKVzkOivIDRUMXgNkKvAv3ikbYBFhfhCV1Z1IrxoIZuqHjFCNtw9z8Ce1sZW5lG6DY24N07ZFM9+5cvge18rCxtQo70JECgDHPY/ZRvMbNeGP189OXTQ==
+    AWS_SECRET_ACCESS_KEY: AgAGYU4TSpuyFwWNIwIY24zmJna+fLf5CGI9EPPsIfbCLQwuMZfo5/b6gMaVVngwzVn/XZxJo7l1JLkRILlMGw+NxkkZWp5ydZiw+NAgieY85Lq5gzX3upQUrO21KecZC/bTsnvMuTj0Q533HmDWqdyhgwkiyL7MDn+RGlNrtayztBRVC7UWBimQ4bW+7pdWsiomYsoacnALTm15aeuFrra8p6QK/ErigY+qlosi0E7KfuncGMLKbByJ7T2rFXlIzvwcdof/xZoYoJSLYr8gZq/6OUyYdNTA1+oOGG6OOZ5cV0UXiyIVM901MZKaHpSX2IPs5/dZg9+eWyCCJPe0SzeU0W1Zf01OUIYExmwIbrln6Fon7A6nTx6T96GdPWRC49JCTvuzo06BlKB30bDABQryNtwy6rsWz08oIwxJC672hMZfDLpKKQi0/VcF+drleWpb9f0+Y+vib/D8AZCdiKpDu5nVYOKG73/l2FSnDGtGtbEZ/xGTNDbkHGfnWp5DcTfzlA332gAqVxIJR1370+pOTvx7CSNl1sHSMLeH9KtnPEJucr5SRX2DRLgKOx/AYmdiR2qO2iP8Vc7n0k/S0cZPBTmOzUbrTCNEV7RSxNgVU2KZAZrApU99ffkpPoI/E1WoKGiksiOdMlVXJt/Z3FzruzU+v3AQZ7FlwxdYn/9cQ23UU1TPwawgCnpY81MjcbfX/S1VkmKHGQoh7CYrE1IrFRFNRHK42phfny/r4pjtxzm1R16ag3bU
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      labels:
+        environment: demo
+        folder: dns-infra
+        subFolder: external-dns-aws
+      name: aws-dns-creds
+      namespace: ci-cd
+    type: Opaque
