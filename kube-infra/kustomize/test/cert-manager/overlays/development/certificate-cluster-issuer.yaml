@@ -2,19 +2,19 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-demo-aws
+  name: letsencrypt-development-aws
   namespace: dns-infra
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
     email: bradmccoydev@gmail.com
     privateKeySecretRef:
-      name: letsencrypt-demo-aws
+      name: letsencrypt-development-aws
     solvers:
     - dns01:
         route53:
           region: us-west-2
-          accessKeyID: AKIASCEPZTFMGUH2KCZD
+          accessKeyID: AKIASCEPZTFMLJDDHQGY
           secretAccessKeySecretRef:
             name: aws-dns-creds
             key: AWS_SECRET_ACCESS_KEY
@@ -34,7 +34,7 @@ spec:
     - dns01:
         route53:
           region: us-west-2
-          accessKeyID: AKIASCEPZTFMGUH2KCZD
+          accessKeyID: AKIASCEPZTFMLJDDHQGY
           secretAccessKeySecretRef:
             name: aws-dns-creds
             key: AWS_SECRET_ACCESS_KEY
