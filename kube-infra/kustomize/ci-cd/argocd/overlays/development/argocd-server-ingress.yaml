@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-development-aws
+  name: argo-ingress
+  namespace: ci-cd
+spec:
+  defaultBackend:
+    service:
+      name: argocd-server
+      port:
+        number: 80
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: argocd-server
+            port:
+              number: 80
+        path: /*
+        pathType: Prefix
+    host: argocd.bradmccoy.io
+  tls:
+  - hosts:
+    - argocd.bradmccoy.io
+    secretName: argocd-tls-cert

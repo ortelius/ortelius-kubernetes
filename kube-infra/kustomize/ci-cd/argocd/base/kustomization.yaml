@@ -10,7 +10,6 @@ resources:
 namespace: ci-cd
 
 patchesStrategicMerge:
-
 - argocd-rbac-cm.yaml
 
 - |-

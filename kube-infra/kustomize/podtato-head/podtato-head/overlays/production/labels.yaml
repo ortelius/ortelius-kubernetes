@@ -5,6 +5,9 @@ metadata:
 labels:
   env: production
   instance: kustomize
+  keptnProject: ortelius
+  keptnService: podtato-head
+  keptnStage: production
 fieldSpecs:
   - path: metadata/labels
     create: true
