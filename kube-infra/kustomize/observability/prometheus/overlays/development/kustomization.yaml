@@ -9,15 +9,7 @@ patches:
     - op: add
       path: /metadata/annotations
       value:
-        nginx.ingress.kubernetes.io/backend-protocol: HTTP
-  target:
-    kind: Ingress
-    name: prometheus-server
-- patch: |-
-    - op: add
-      path: /metadata/annotations
-      value:
-        nginx.ingress.kubernetes.io/ssl-passthrough: "false"
+        cert-manager.io/cluster-issuer: letsencrypt-development-aws
   target:
     kind: Ingress
     name: prometheus-server

@@ -8,7 +8,7 @@ resources:
 - application-sets/podtato-head.yaml
 - application-sets/ortelius-docs.yaml
 - application-sets/ortelius-website.yaml
-- argocd-service-monitors.yaml
+#- argocd-service-monitors.yaml
 
 namespace: ci-cd
 

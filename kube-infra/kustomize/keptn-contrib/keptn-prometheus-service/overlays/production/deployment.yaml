@@ -51,19 +51,19 @@ spec:
             - name: PROMETHEUS_CM
               value: 'kube-prometheus-stack-prometheus'
             - name: PROMETHEUS_LABELS
-              value: 'component=server'
+              value: 'app=kube-prometheus-stack-operator'
             - name: HEALTH_ENDPOINT_PORT
               value: '8081'
             - name: PROMETHEUS_ENDPOINT
               value: "http://kube-prometheus-stack-prometheus.observability:9090"
             - name: PROMETHEUS_CONFIG_FILENAME
-              value: 'prometheus.yml'
+              value: 'prometheus.json'
             - name: ALERT_MANAGER_CONFIG_FILENAME
-              value: 'alertmanager.yml'
+              value: 'alertmanager-overview.json'
             - name: ALERT_MANAGER_CM
               value: 'kube-prometheus-stack-alertmanager-overview'
             - name: ALERT_MANAGER_LABELS
-              value: 'component=alertmanager'
+              value: 'app=kube-prometheus-stack-alertmanager'
             - name: ALERT_MANAGER_NS
               value: 'observability'
             - name: ALERT_MANAGER_TEMPLATE_CM
