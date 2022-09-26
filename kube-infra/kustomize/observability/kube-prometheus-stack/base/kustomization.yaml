@@ -55,7 +55,7 @@ helmCharts:
 
     prometheus:
       ingress:
-        enabled: true
+        enabled: false
         annotations:
           kubernetes.io/ingress.class: nginx
           nginx.ingress.kubernetes.io/backend-protocol: HTTP
