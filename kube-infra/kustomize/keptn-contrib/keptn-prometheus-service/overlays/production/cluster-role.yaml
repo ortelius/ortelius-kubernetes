@@ -8,6 +8,7 @@ rules:
     resources:
       - secrets
       - services
+      - configmap
     verbs:
       - get
       - watch
