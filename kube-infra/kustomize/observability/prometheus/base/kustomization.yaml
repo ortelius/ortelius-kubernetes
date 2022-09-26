@@ -11,13 +11,18 @@ helmCharts:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: nginx
-          cert-manager.io/cluster-issuer: letsencrypt-development-aws
+          nginx.ingress.kubernetes.io/backend-protocol: "false"
           nginx.ingress.kubernetes.io/auth-type: basic
           nginx.ingress.kubernetes.io/auth-secret: prometheus-ingress-auth
           nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
         hosts:
-          - prometheus.bradmccoy.io
-        tls:
-          - hosts:
-              - prometheus.bradmccoy.io
-            secretName: prometheus-cert
+          - prometheus.ortelius.io
+
+# kubernetes.io/ingress.class: nginx
+# cert-manager.io/cluster-issuer: letsencrypt-development-aws
+hosts:
+#   - prometheus.bradmccoy.io
+# tls:
+#   - hosts:
+#       - prometheus.bradmccoy.io
+#     secretName: prometheus-cert
