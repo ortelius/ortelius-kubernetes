@@ -5,8 +5,8 @@ resources:
 - cluster-role-binding.yaml
 - cluster-role.yaml
 - deployment.yaml
-- role-binding.yaml
-- role.yaml
+#- role-binding.yaml
+#- role.yaml
 - service-account.yaml
 - service.yaml
 namespace: keptn
