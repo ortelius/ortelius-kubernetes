@@ -20,7 +20,7 @@ helmCharts:
 
 # kubernetes.io/ingress.class: nginx
 # cert-manager.io/cluster-issuer: letsencrypt-development-aws
-hosts:
+# hosts:
 #   - prometheus.bradmccoy.io
 # tls:
 #   - hosts:
