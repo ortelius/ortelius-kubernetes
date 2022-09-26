@@ -5,7 +5,6 @@ resources:
 - argocd-manager-role-binding.yaml
 - argocd-manager-role.yaml
 - argocd-manager.yaml
-- argocd-service-monitors.yaml
 
 namespace: ci-cd
 
