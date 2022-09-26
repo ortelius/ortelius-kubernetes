@@ -4,7 +4,7 @@ helmCharts:
   version: 15.13.0
   repo: https://prometheus-community.github.io/helm-charts
   releaseName: prometheus
-  includeCRDs: true
+  includeCRDs: false
   valuesInline:
     server:
       ingress:
