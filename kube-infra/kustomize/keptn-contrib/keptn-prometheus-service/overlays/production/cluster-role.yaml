@@ -13,3 +13,5 @@ rules:
       - get
       - watch
       - list
+      - update
+      - create
