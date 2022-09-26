@@ -1,9 +1,13 @@
 ---
 spec_version: '1.0'
 indicators:
-  response_time_p50: histogram_quantile(0.5, sum by(le) (rate(http_response_time_milliseconds_bucket{handler="ItemsController.addToCart",job="$SERVICE-$PROJECT-$STAGE-$DEPLOYMENT"}[$DURATION_SECONDS])))
-  response_time_p90: histogram_quantile(0.9, sum by(le) (rate(http_response_time_milliseconds_bucket{handler="ItemsController.addToCart",job="$SERVICE-$PROJECT-$STAGE-$DEPLOYMENT"}[$DURATION_SECONDS])))
-  response_time_p95: histogram_quantile(0.95, sum by(le) (rate(http_response_time_milliseconds_bucket{handler="ItemsController.addToCart",job="$SERVICE-$PROJECT-$STAGE-$DEPLOYMENT"}[$DURATION_SECONDS])))
+  successful_requests: sum(irate(nginx_ingress_controller_requests{ingress=~"ortelius-website",status!~"[4-5].*"}))
+# ---
+# spec_version: '1.0'
+# indicators:
+#   response_time_p50: histogram_quantile(0.5, sum by(le) (rate(http_response_time_milliseconds_bucket{handler="ItemsController.addToCart",job="$SERVICE-$PROJECT-$STAGE-$DEPLOYMENT"}[$DURATION_SECONDS])))
+#   response_time_p90: histogram_quantile(0.9, sum by(le) (rate(http_response_time_milliseconds_bucket{handler="ItemsController.addToCart",job="$SERVICE-$PROJECT-$STAGE-$DEPLOYMENT"}[$DURATION_SECONDS])))
+#   response_time_p95: histogram_quantile(0.95, sum by(le) (rate(http_response_time_milliseconds_bucket{handler="ItemsController.addToCart",job="$SERVICE-$PROJECT-$STAGE-$DEPLOYMENT"}[$DURATION_SECONDS])))
 
 # spec_version: '1.0'
 # indicators:
