@@ -1,0 +1,29 @@
+apiVersion: v1
+data:
+  alertmanager.yml: |
+    global: {}
+    receivers:
+    - name: default-receiver
+    route:
+      group_interval: 5m
+      group_wait: 10s
+      receiver: default-receiver
+      repeat_interval: 3h
+  allow-snippet-annotations: "false"
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"alertmanager.yml":"global: {}\nreceivers:\n- name: default-receiver\nroute:\n  group_interval: 5m\n  group_wait: 10s\n  receiver: default-receiver\n  repeat_interval: 3h\n","allow-snippet-annotations":"false"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"prometheus","app.kubernetes.io/instance":"prometheus","chart":"prometheus-15.13.0","component":"alertmanager","heritage":"Helm","release":"prometheus"},"name":"prometheus-alertmanager","namespace":"monitoring"}}
+  creationTimestamp: "2022-09-26T05:12:02Z"
+  labels:
+    app: prometheus
+    app.kubernetes.io/instance: prometheus
+    chart: prometheus-15.13.0
+    component: alertmanager
+    heritage: Helm
+    release: prometheus
+  name: prometheus-alertmanager
+  namespace: monitoring
+  resourceVersion: "59299697"
+  uid: 36269fda-8894-4c8e-b3b0-a0c124bfe047
