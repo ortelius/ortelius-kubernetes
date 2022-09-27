@@ -47,25 +47,25 @@ spec:
             - name: METRICS_SCRAPE_PATH
               value: '/metrics'
             - name: PROMETHEUS_NS
-              value: 'observability'
+              value: 'monitoring'
             - name: PROMETHEUS_CM
-              value: 'kube-prometheus-stack-prometheus'
+              value: 'prometheus-server'
             - name: PROMETHEUS_LABELS
-              value: 'app=kube-prometheus-stack-operator'
+              value: 'component=server'
             - name: HEALTH_ENDPOINT_PORT
               value: '8081'
             - name: PROMETHEUS_ENDPOINT
-              value: "http://kube-prometheus-stack-prometheus.observability:9090"
+              value: "http://prometheus-server.monitoring:80"
             - name: PROMETHEUS_CONFIG_FILENAME
-              value: 'prometheus.json'
+              value: 'prometheus.yml'
             - name: ALERT_MANAGER_CONFIG_FILENAME
-              value: 'alertmanager-overview.json'
+              value: 'alertmanager.yml'
             - name: ALERT_MANAGER_CM
-              value: 'kube-prometheus-stack-alertmanager-overview'
+              value: 'prometheus-alertmanager'
             - name: ALERT_MANAGER_LABELS
-              value: 'app=kube-prometheus-stack-alertmanager'
+              value: 'component=alertmanager'
             - name: ALERT_MANAGER_NS
-              value: 'observability'
+              value: 'monitoring'
             - name: ALERT_MANAGER_TEMPLATE_CM
               value: 'alertmanager-templates'
             - name: POD_NAMESPACE
