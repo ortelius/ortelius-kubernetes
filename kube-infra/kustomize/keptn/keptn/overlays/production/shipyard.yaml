@@ -4,11 +4,10 @@ metadata:
   name: "ortelius"
 spec:
   stages:
-    - name: "development"
+    - name: "test"
       sequences:
       - name: "kickoff"
         tasks:
-        - name: "test"
         - name: "evaluation"
         - name: "catalog"
         - name: "promote"
@@ -17,7 +16,7 @@ spec:
       sequences:
       - name: "qualitycheck"
         triggeredOn:
-          - event: "dev.kickoff.finished"
+          - event: "test.kickoff.finished"
             selector:
               match:
               result: "pass"
