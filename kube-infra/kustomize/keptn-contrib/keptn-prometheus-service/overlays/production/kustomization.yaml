@@ -4,9 +4,8 @@ resources:
 # - ../../base
 - cluster-role-binding.yaml
 - cluster-role.yaml
-- deployment-prometheus.yaml
-#- role-binding.yaml
-#- role.yaml
+#- deployment-prometheus.yaml
+- deployment-kube-stack.yaml
 - service-account.yaml
 - service.yaml
 namespace: keptn
