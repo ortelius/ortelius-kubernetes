@@ -4,7 +4,7 @@ resources:
 # - ../../base
 - cluster-role-binding.yaml
 - cluster-role.yaml
-- deployment.yaml
+- deployment-prometheus.yaml
 #- role-binding.yaml
 #- role.yaml
 - service-account.yaml
