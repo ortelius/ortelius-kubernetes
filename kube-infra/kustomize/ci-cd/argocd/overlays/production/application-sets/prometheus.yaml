@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: kube-infra-kustomize-setup
+  name: prometheus
   namespace: ci-cd
 spec:
   generators:
@@ -11,14 +11,7 @@ spec:
           repoURL: https://github.com/ortelius/ortelius-kubernetes.git
           revision: HEAD
           directories:
-          - path: kube-infra/kustomize/ci-cd/*
-          - path: kube-infra/kustomize/dns-infra/*
-          - path: kube-infra/kustomize/keptn-contrib/*
-          - path: kube-infra/kustomize/demo/*
-          - path: kube-infra/kustomize/security/falco
-          - path: kube-infra/kustomize/observability/kube-prometheus-stack
-          - path: kube-infra/kustomize/observability/loki-stack
-
+          - path: kube-infra/kustomize/observability/prometheus
         exclude:
       - list:
           elements:
@@ -30,6 +23,8 @@ spec:
     metadata:
       name: '{{ path.basename }}'
       annotations:
+        notifications.argoproj.io/subscribe.keptn-on-sync-running.keptn: ""
+        notifications.argoproj.io/subscribe.on-sync-running.keptn: ""
         environment: prod
     spec:
       project: ortelius
@@ -41,7 +36,7 @@ spec:
         server: '{{url}}'
       syncPolicy:
         automated:
-          prune: true
-          selfHeal: true
+          prune: false
+          selfHeal: false
         syncOptions:
         - CreateNamespace=true
