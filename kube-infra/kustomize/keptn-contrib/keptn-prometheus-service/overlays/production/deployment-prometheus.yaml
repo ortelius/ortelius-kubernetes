@@ -75,9 +75,9 @@ spec:
             - name: SCRAPE_INTERVAL
               value: '30s'
             - name: CREATE_TARGETS
-              value: 'true'
+              value: 'false'
             - name: CREATE_ALERTS
-              value: 'true'
+              value: 'false'
             - name: PUBSUB_TOPIC
               value: sh.keptn.event.monitoring.configure,sh.keptn.event.get-sli.triggered
             - name: K8S_DEPLOYMENT_NAME
