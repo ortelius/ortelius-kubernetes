@@ -1,0 +1,184 @@
+# Source: job-executor-service/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chart-1664332147-job-executor-service
+  labels:
+    helm.sh/chart: job-executor-service-0.3.0
+    app.kubernetes.io/name: job-executor-service
+    app.kubernetes.io/instance: chart-1664332147
+    app.kubernetes.io/version: "0.3.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: job-executor-service
+      app.kubernetes.io/instance: chart-1664332147
+  template:
+    metadata:
+      annotations:
+        rollme: "B865l" # forces pod restart (e.g., when updating helm values)
+      labels:
+        helm.sh/chart: job-executor-service-0.3.0
+        app.kubernetes.io/name: job-executor-service
+        app.kubernetes.io/instance: chart-1664332147
+        app.kubernetes.io/version: "0.3.0"
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName: chart-1664332147-job-executor-service
+      securityContext:
+        fsGroup: 2000
+      containers:
+        - name: job-executor-service
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - all
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 2000
+            runAsNonRoot: true
+            runAsUser: 1000
+            seccompProfile:
+              type: RuntimeDefault
+          image: "docker.io/keptncontrib/job-executor-service:0.3.0"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+          volumeMounts:
+            - mountPath: "/config"
+              name: job-executor-settings
+              readOnly: true
+          env:
+          - name: KEPTN_API_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: job-service-keptn-secrets
+                key: token
+          - name: PUBSUB_TOPIC
+            value: sh.keptn.event.test.triggered
+          - name: env
+            value: 'production'
+          - name: JOB_NAMESPACE
+            valueFrom:
+              configMapKeyRef:
+                name: job-service-config
+                key: job_namespace
+          - name: INIT_CONTAINER_IMAGE
+            valueFrom:
+              configMapKeyRef:
+                name: job-service-config
+                key: init_container_image
+          - name: DEFAULT_RESOURCE_LIMITS_CPU
+            valueFrom:
+              configMapKeyRef:
+                name: job-service-config
+                key: default_resource_limits_cpu
+          - name: DEFAULT_RESOURCE_LIMITS_MEMORY
+            valueFrom:
+              configMapKeyRef:
+                name: job-service-config
+                key: default_resource_limits_memory
+          - name: DEFAULT_RESOURCE_REQUESTS_CPU
+            valueFrom:
+              configMapKeyRef:
+                name: job-service-config
+                key: default_resource_requests_cpu
+          - name: DEFAULT_RESOURCE_REQUESTS_MEMORY
+            valueFrom:
+              configMapKeyRef:
+                name: job-service-config
+                key: default_resource_requests_memory
+          - name: DEFAULT_JOB_SERVICE_ACCOUNT
+            valueFrom:
+              configMapKeyRef:
+                name: job-service-config
+                key: default_job_service_account
+          - name: ALLOWED_IMAGE_LIST
+            value:
+          - name: ALLOW_PRIVILEGED_JOBS
+            valueFrom:
+              configMapKeyRef:
+                name: job-service-config
+                key: allow_privileged_jobs
+          - name: TASK_DEADLINE_SECONDS
+            valueFrom:
+              configMapKeyRef:
+                name: job-service-config
+                key: task_deadline_seconds
+          - name: KEPTN_API_ENDPOINT
+            valueFrom:
+              configMapKeyRef:
+                name: job-service-config
+                key: keptn_api_endpoint
+          - name: CONFIGURATION_SERVICE
+            valueFrom:
+              configMapKeyRef:
+                name: job-service-config
+                key: configuration_service
+          - name: K8S_DEPLOYMENT_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: 'metadata.labels[''app.kubernetes.io/name'']'
+          - name: K8S_DEPLOYMENT_VERSION
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: 'metadata.labels[''app.kubernetes.io/version'']'
+          - name: K8S_DEPLOYMENT_COMPONENT
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: 'metadata.labels[''app.kubernetes.io/component'']'
+          - name: K8S_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: K8S_NODE_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
+          - name: K8S_POD_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          - name: FULL_DEPLOYMENT_NAME
+            value: chart-1664332147-job-executor-service
+          - name: HTTP_SSL_VERIFY
+            value: "true"
+          - name: API_PROXY_MAX_PAYLOAD_BYTES_KB
+            value: "128"
+          resources:
+            limits:
+              cpu: 1
+              memory: 512Mi
+            requests:
+              cpu: 50m
+              memory: 128Mi
+      volumes:
+        - name: job-executor-settings
+          projected:
+            sources:
+              - configMap:
+                  name: job-security-context
+              - configMap:
+                  name: job-service-config
+                  items:
+                    - key: additional_job_labels
+                      path: job-labels.yaml
