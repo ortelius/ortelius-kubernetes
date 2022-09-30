@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: ortelius-docs
+  namespace: ci-cd
+spec:
+  generators:
+  - matrix:
+      generators:
+      - git:
+          repoURL: https://github.com/ortelius/ortelius-kubernetes.git
+          revision: HEAD
+          directories:
+          - path: kube-infra/kustomize/catalog/ortelius-docs
+        exclude:
+      - list:
+          elements:
+          - cluster: prod
+            url: https://aks-1d6d379d.hcp.centralus.azmk8s.io:443
+            values:
+              CLIENT_ENVIRONMENT: prod
+  template:
+    metadata:
+      name: 'ortelius-docs'
+      annotations:
+        notifications.argoproj.io/subscribe.on-deployed.keptn: ""
+        notifications.argoproj.io/subscribe.on-out-of-sync-status.keptn: ""
+        environment: prod
+      labels:
+        keptnProject: ortelius
+        keptnService: docs
+        keptnStage: dev
+    spec:
+      project: ortelius
+      source:
+        repoURL: https://github.com/ortelius/ortelius-kubernetes.git
+        targetRevision: HEAD
+        path: '{{path}}/envs/{{cluster}}'
+      destination:
+        server: '{{url}}'
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true

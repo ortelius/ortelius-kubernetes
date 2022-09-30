@@ -1,0 +1,45 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: ApplicationSet
+# metadata:
+#   name: iac-setup
+#   namespace: ci-cd
+# spec:
+#   generators:
+#   - matrix:
+#       generators:
+#       - git:
+#           repoURL: https://github.com/ortelius/ortelius-kubernetes.git
+#           revision: HEAD
+#           directories:
+#           - path: kube-infra/kustomize/iac/*
+#         exclude:
+#       - list:
+#           elements:
+#           - cluster: prod
+#             url: https://aks-1d6d379d.hcp.centralus.azmk8s.io:443
+#             values:
+#               CLIENT_ENVIRONMENT: prod
+#   template:
+#     metadata:
+#       name: '{{ path.basename }}'
+#       annotations:
+#         notifications.argoproj.io/subscribe.keptn-on-sync-running.keptn: ""
+#         notifications.argoproj.io/subscribe.on-sync-running.keptn: ""
+#         notifications.argoproj.io/subscribe.on-health-degraded.slack: "argo-notifications"
+#         notifications.argoproj.io/subscribe.on-sync-running.slack: "argo-notifications"
+#         notifications.argoproj.io/subscribe.on-rollout-step-completed.slack: argo-notifications
+#         environment: prod
+#     spec:
+#       project: ortelius
+#       source:
+#         repoURL: https://github.com/ortelius/ortelius-kubernetes.git
+#         targetRevision: HEAD
+#         path: '{{path}}/envs/{{cluster}}'
+#       destination:
+#         server: '{{url}}'
+#       syncPolicy:
+#         automated:
+#           prune: false
+#           selfHeal: false
+#         syncOptions:
+#         - CreateNamespace=true
