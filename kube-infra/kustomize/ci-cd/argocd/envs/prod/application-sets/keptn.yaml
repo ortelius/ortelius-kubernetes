@@ -15,10 +15,10 @@ spec:
         exclude:
       - list:
           elements:
-          - cluster: dev
+          - cluster: prod
             url: https://aks-1d6d379d.hcp.centralus.azmk8s.io:443
             values:
-              CLIENT_ENVIRONMENT: dev
+              CLIENT_ENVIRONMENT: prod
   template:
     metadata:
       name: 'keptn'

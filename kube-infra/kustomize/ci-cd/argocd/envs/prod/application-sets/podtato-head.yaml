@@ -29,7 +29,7 @@ spec:
       labels:
         keptnProject: ortelius
         keptnService: podtato-head
-        keptnStage: prod
+        keptnStage: dev
     spec:
       project: ortelius
       source:
