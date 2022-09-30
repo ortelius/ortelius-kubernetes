@@ -10,3 +10,14 @@ actions:
         image: "loadimpact/k6"
         cmd: ["k6"]
         args: ["run", "--duration", "30s", "--vus", "10", "/keptn/files/k6_test.js"]
+
+  - name: "Catalog Data"
+    events:
+      - name: "sh.keptn.event.catalog.triggered"
+    tasks:
+      - name: "Catalog Data in Ortelius"
+        image: "alpine"
+        cmd:
+          - echo
+        args:
+          - 'Data Cataloged!'

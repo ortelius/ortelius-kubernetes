@@ -10,7 +10,7 @@ spec:
         tasks:
         - name: "test"
         - name: "evaluation"
-        #- name: "catalog"
+        - name: "catalog"
         - name: "git-promotion"
         - name: "inform"
     - name: "production"
