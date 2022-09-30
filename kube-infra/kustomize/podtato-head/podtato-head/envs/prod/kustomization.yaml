@@ -15,8 +15,9 @@ commonLabels:
   variant: production
 
 ## strategic merge patches to be applied to resources
-# patchesStrategicMerge:
-#  - patch.yaml
+patchesStrategicMerge:
+ - version.yaml
+ - settings.yaml
 
 ## kustomize transformers that operate on resources
 transformers:
