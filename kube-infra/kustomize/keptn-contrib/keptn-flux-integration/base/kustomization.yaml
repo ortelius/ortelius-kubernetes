@@ -1,0 +1,15 @@
+helmCharts:
+- name: keptn-flux-integration
+  namespace: keptn
+  version: 0.16.5
+  repo: https://keptn-sandbox.github.io/keptn-flux-integration
+  releaseName: keptn-flux-integration
+  includeCRDs: true
+  valuesInline:
+    keptn:
+      url: https://keptn.ortelius.io/api/v1/event
+    provider:
+      groupVersionResource:
+        group: notification.toolkit.fluxcd.io
+        version: v1beta1
+        resource: providers
