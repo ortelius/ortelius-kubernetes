@@ -3,11 +3,11 @@ kind: LabelTransformer
 metadata:
   name: add-labels
 labels:
-  env: production
+  env: prod
   instance: kustomize
   keptnProject: ortelius
   keptnService: podtato-head
-  keptnStage: production
+  keptnStage: prod
 fieldSpecs:
   - path: metadata/labels
     create: true

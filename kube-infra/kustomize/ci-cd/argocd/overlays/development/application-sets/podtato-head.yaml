@@ -18,14 +18,14 @@ spec:
           - cluster: development
             url: https://58FFA2BB4C6C5B798E6BA3229F902277.gr7.us-west-2.eks.amazonaws.com
             values:
-              CLIENT_ENVIRONMENT: development
+              CLIENT_ENVIRONMENT: dev
   template:
     metadata:
       name: 'podtato-head'
       annotations:
         notifications.argoproj.io/subscribe.on-deployed.keptn: ""
         notifications.argoproj.io/subscribe.on-out-of-sync-status.keptn: ""
-        environment: development
+        environment: dev
       labels:
         keptnProject: ortelius
         keptnService: podtato-head
@@ -35,7 +35,7 @@ spec:
       source:
         repoURL: https://github.com/ortelius/ortelius-kubernetes.git
         targetRevision: HEAD
-        path: '{{path}}/overlays/{{cluster}}'
+        path: '{{path}}/envs/{{cluster}}'
       destination:
         server: '{{url}}'
       syncPolicy:
