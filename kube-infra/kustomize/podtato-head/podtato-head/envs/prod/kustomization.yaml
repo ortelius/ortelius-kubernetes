@@ -1,0 +1,37 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+## these resources comprise this kustomization
+resources:
+  - ../../base
+  - namespace.yaml
+  - ingress.yaml
+
+## all resources will be deployed in this namespace
+namespace: podtato-head-production
+
+## labels to be applied to all resources
+commonLabels:
+  variant: production
+
+## strategic merge patches to be applied to resources
+# patchesStrategicMerge:
+#  - patch.yaml
+
+## kustomize transformers that operate on resources
+transformers:
+  - labels.yaml
+
+## patches to be applied to target resources
+#patches:
+#  - patch: |-
+#      - op: add
+#        path: /spec/template/spec/containers/0/env/-
+#        value:
+#            name: PODTATO_PART_NUMBER
+#            value: "02"
+#    target:
+#      group: apps
+#      version: v1
+#      kind: Deployment  #patch all deployments
+##      name: podtato-head-hat  #patch a specific named deployment

@@ -15,10 +15,10 @@ spec:
         exclude:
       - list:
           elements:
-          - cluster: production
+          - cluster: prod
             url: https://aks-1d6d379d.hcp.centralus.azmk8s.io:443
             values:
-              CLIENT_ENVIRONMENT: production
+              CLIENT_ENVIRONMENT: prod
   template:
     metadata:
       name: 'podtato-head'
@@ -29,13 +29,13 @@ spec:
       labels:
         keptnProject: ortelius
         keptnService: podtato-head
-        keptnStage: dev
+        keptnStage: prod
     spec:
       project: ortelius
       source:
         repoURL: https://github.com/ortelius/ortelius-kubernetes.git
         targetRevision: HEAD
-        path: '{{path}}/overlays/{{cluster}}'
+        path: '{{path}}/envs/{{cluster}}'
       destination:
         server: '{{url}}'
       syncPolicy:
