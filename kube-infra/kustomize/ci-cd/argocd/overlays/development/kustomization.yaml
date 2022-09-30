@@ -4,7 +4,7 @@ resources:
 - ../../base
 - argocd-server-ingress.yaml
 - argocd-appproject.yaml
-- application-sets/kube-infra.yaml
+#- application-sets/kube-infra.yaml
 # - application-sets/podtato-head.yaml
 
 namespace: ci-cd
