@@ -28,7 +28,7 @@ spec:
     metadata:
       name: '{{ path.basename }}'
       annotations:
-        environment: prod
+        environment: dev
     spec:
       project: ortelius
       source:
