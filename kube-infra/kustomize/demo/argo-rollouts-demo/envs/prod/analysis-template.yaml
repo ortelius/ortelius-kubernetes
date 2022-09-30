@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: success-rate
+  namespace: ortelius-prod
+spec:
+  args:
+  - name: service-name
+  metrics:
+  - name: success-rate
+    interval: 1m
+    successCondition: result[0] >= 0.95
+    failureLimit: 1
+    provider:
+      prometheus:
+        address: http://kube-prometheus-stack-prometheus.observability:9090
+        query: |
+          sum(irate(nginx_ingress_controller_requests{ingress=~"canary-stable",status!~"[4-5].*"}[5m])) /
+          sum(irate(nginx_ingress_controller_requests{ingress=~"canary-stable"}[5m]))

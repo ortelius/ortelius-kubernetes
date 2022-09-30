@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: ortelius
+  namespace: ci-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Ortelius Project
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: '*'
+    server: https://aks-1d6d379d.hcp.centralus.azmk8s.io
+  - namespace: '*'
+    server: https://aks-1d6d379d.hcp.centralus.azmk8s.io:443
+  - namespace: '*'
+    server: '*'
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'

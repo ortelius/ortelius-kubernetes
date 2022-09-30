@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-cm
+data:
+  accounts.keptn: $keptn.apiToken
+  url: https://argocd.ortelius.io
+  kustomize.buildOptions: --enable-helm
+  ga.trackingid: "G-SMLWM11VB0"
+  repositories: |
+    - url: https://github.com/ortelius/ortelius-kubernetes.git
+  resource.customizations: |
+    argoproj.io/Application:
+      health.lua: |
+        hs = {}
+        hs.status = "Progressing"
+        hs.message = ""
+        if obj.status ~= nil then
+          if obj.status.health ~= nil then
+            hs.status = obj.status.health.status
+            if obj.status.health.message ~= nil then
+              hs.message = obj.status.health.message
+            end
+          end
+        end
+        return hs
+  dex.config: |
+    connectors:
+    - type: microsoft
+      id: microsoft
+      name: Ortelius
+      config:
+        clientID: adcae61e-8c4f-4146-b845-cc5ff47f3027
+        clientSecret: $sso.clientSecret
+        redirectURI: https://argocd.ortelius.io/api/dex/callback
+        tenant: 57ebf52b-400a-4db6-a524-b07f4888055a
+        groups:
+          - AKS-Cluster-Admins
