@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-development-aws
+  name: kube-prometheus-stack-grafana
+  namespace: observability
+spec:
+  rules:
+  - host: grafana.ortelius.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: kube-prometheus-stack-grafana
+            port:
+              number: 80
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - grafana.bradmccoy.io
+    secretName: grafana-tls-cert

@@ -1,0 +1,32 @@
+# Source: job-executor-service/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: job-service-config
+data:
+  job_namespace: "keptn-jes"
+  init_container_image: "docker.io/keptncontrib/job-executor-service-initcontainer:0.3.0"
+  default_resource_limits_cpu: "1"
+  default_resource_limits_memory: "512Mi"
+  default_resource_requests_cpu: "50m"
+  default_resource_requests_memory: "128Mi"
+  keptn_api_endpoint: http://api-gateway-nginx.keptn/api
+  configuration_service:   "http://api-gateway-nginx.keptn/api/resource-service"
+  default_job_service_account: "chart-1664332147-job-executor-service-default-job-account"
+  allow_privileged_jobs: "false"
+  additional_job_labels: |
+  task_deadline_seconds: "0"
+  oauth_discovery: ""
+  oauth_client_id: ""
+  oauth_scopes: ""
+  auth_mode: "token"
+---
+# Source: job-executor-service/templates/jobsecuritycontext.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: job-security-context
+data:
+  job-defaultSecurityContext.json: "{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"all\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true,\"runAsGroup\":2000,\"runAsNonRoot\":true,\"runAsUser\":1000,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}"
+  job-podSecurityContext.json: "{\"RunAsGroup\":2000,\"RunAsNonRoot\":true,\"RunAsUser\":1000,\"fsGroup\":2000,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}"
+---

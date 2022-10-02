@@ -1,0 +1,33 @@
+# Source: job-executor-service/templates/tests/test-api-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "chart-1664332147-job-executor-service-test-api-connection"
+  labels:
+    helm.sh/chart: job-executor-service-0.3.0
+    app.kubernetes.io/name: job-executor-service
+    app.kubernetes.io/instance: chart-1664332147
+    app.kubernetes.io/version: "0.3.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  restartPolicy: Never
+  containers:
+    - name: wget
+      image: busybox
+      env:
+        - name: KEPTN_API_ENDPOINT
+          valueFrom:
+            configMapKeyRef:
+              name: job-service-config
+              key: keptn_api_endpoint
+        - name: KEPTN_API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: job-service-keptn-secrets
+              key: token
+      args:
+        - sh
+        - '-c'
+        - 'wget -q -O - --header="x-token:$KEPTN_API_TOKEN" "$KEPTN_API_ENDPOINT/v1/metadata"'
