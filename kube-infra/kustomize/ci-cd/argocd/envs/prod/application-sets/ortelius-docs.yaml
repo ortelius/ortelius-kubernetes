@@ -29,7 +29,7 @@ spec:
       labels:
         keptnProject: ortelius
         keptnService: docs
-        keptnStage: prod
+        keptnStage: dev
     spec:
       project: ortelius
       source:

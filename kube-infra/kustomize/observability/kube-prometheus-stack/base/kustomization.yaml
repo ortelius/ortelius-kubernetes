@@ -1,7 +1,7 @@
 helmCharts:
 - name: kube-prometheus-stack
   namespace: observability
-  version: 40.1.2
+  version: 40.3.1
   repo: https://prometheus-community.github.io/helm-charts
   releaseName: kube-prometheus-stack
   includeCRDs: true
@@ -18,7 +18,6 @@ helmCharts:
           # nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
         hosts:
           - prometheus.ortelius.io
-
       prometheusSpec:
         retention: 7d
         serviceMonitorSelectorNilUsesHelmValues: false
@@ -27,7 +26,7 @@ helmCharts:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: default
+              #storageClassName: default
               accessModes: ["ReadWriteOnce"]
               resources:
                 requests:

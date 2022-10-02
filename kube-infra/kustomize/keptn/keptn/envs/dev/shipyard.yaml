@@ -1,0 +1,24 @@
+apiVersion: "spec.keptn.sh/0.2.3"
+kind: "Shipyard"
+metadata:
+  name: "odysseycloud"
+spec:
+  stages:
+    - name: "test"
+      sequences:
+      - name: "kickoff"
+        tasks:
+        - name: "test"
+        - name: "evaluation"
+        - name: "git-promotion"
+    - name: "production"
+      sequences:
+      - name: "qualitycheck"
+        triggeredOn:
+          - event: "test.kickoff.finished"
+            selector:
+              match:
+              result: "pass"
+        tasks:
+        - name: "test"
+        - name: "evaluation"
