@@ -68,7 +68,7 @@ spec:
                 name: job-service-keptn-secrets
                 key: token
           - name: PUBSUB_TOPIC
-            value: sh.keptn.event.test.triggered
+            value: sh.keptn.event.test.triggered,sh.keptn.event.catalog.triggered
           - name: env
             value: 'production'
           - name: JOB_NAMESPACE
