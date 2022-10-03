@@ -12,7 +12,6 @@ spec:
         - name: "evaluation"
         - name: "catalog"
         - name: "git-promotion"
-        - name: "inform"
     - name: "production"
       sequences:
       - name: "qualitycheck"
@@ -25,4 +24,3 @@ spec:
         - name: "test"
         - name: "evaluation"
         - name: "catalog"
-        - name: "inform"
