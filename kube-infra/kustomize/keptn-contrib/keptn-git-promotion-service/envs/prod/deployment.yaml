@@ -44,67 +44,16 @@ spec:
                 fieldRef:
                   apiVersion: v1
                   fieldPath: metadata.namespace
-            - name: API_BASE_URL
+            - name: KEPTN_API_URL
               value: 'http://api-gateway-nginx/api'
-            - name: API_AUTH_TOKEN
+            - name: KEPTN_API_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: keptn-api-token
                   key: keptn-api-token
             - name: EXTERNAL_URL
-              value: https://keptn.ortelius.io
-        - name: distributor
-          image: keptn/distributor:0.19.0
-          ports:
-            - containerPort: 8081
-          resources:
-            requests:
-              memory: "16Mi"
-              cpu: "25m"
-            limits:
-              memory: "32Mi"
-              cpu: "100m"
-          env:
+              value: 'http://api-gateway-nginx/api'
             - name: PUBSUB_URL
               value: nats://keptn-nats
             - name: PUBSUB_TOPIC
               value: 'sh.keptn.event.git-promotion.>'
-            - name: PUBSUB_RECIPIENT
-              value: '127.0.0.1'
-            - name: VERSION
-              valueFrom:
-                fieldRef:
-                  apiVersion: v1
-                  fieldPath: metadata.labels['app.kubernetes.io/version']
-            - name: DISTRIBUTOR_VERSION
-              value: 0.14.1
-            - name: LOCATION
-              valueFrom:
-                fieldRef:
-                  apiVersion: v1
-                  fieldPath: metadata.labels['app.kubernetes.io/component']
-            - name: K8S_DEPLOYMENT_NAME
-              valueFrom:
-                fieldRef:
-                  apiVersion: v1
-                  fieldPath: metadata.labels['app.kubernetes.io/name']
-            - name: K8S_POD_NAME
-              valueFrom:
-                fieldRef:
-                  apiVersion: v1
-                  fieldPath: metadata.name
-            - name: K8S_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  apiVersion: v1
-                  fieldPath: metadata.namespace
-            - name: K8S_NODE_NAME
-              valueFrom:
-                fieldRef:
-                  apiVersion: v1
-                  fieldPath: spec.nodeName
-            - name: PUBSUB_GROUP
-              valueFrom:
-                fieldRef:
-                  apiVersion: v1
-                  fieldPath: metadata.labels['app.kubernetes.io/name']
