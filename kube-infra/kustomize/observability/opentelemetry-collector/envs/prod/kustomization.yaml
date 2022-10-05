@@ -2,22 +2,4 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../base
-namespace: monitoring
-
-patches:
-- patch: |-
-    - op: add
-      path: /metadata/annotations
-      value:
-        nginx.ingress.kubernetes.io/backend-protocol: HTTP
-  target:
-    kind: Ingress
-    name: prometheus-server
-- patch: |-
-    - op: add
-      path: /metadata/annotations
-      value:
-        nginx.ingress.kubernetes.io/ssl-passthrough: "false"
-  target:
-    kind: Ingress
-    name: prometheus-server
+namespace: observability
