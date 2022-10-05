@@ -5,3 +5,5 @@ helmCharts:
   repo: https://open-telemetry.github.io/opentelemetry-helm-charts
   releaseName: opentelemetry-collector
   includeCRDs: false
+  valuesInline:
+    mode: deployment
