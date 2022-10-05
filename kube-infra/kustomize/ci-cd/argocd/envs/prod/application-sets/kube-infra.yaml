@@ -17,6 +17,7 @@ spec:
           - path: kube-infra/kustomize/demo/*
           - path: kube-infra/kustomize/security/falco
           - path: kube-infra/kustomize/observability/kube-prometheus-stack
+          - path: kube-infra/kustomize/observability/opentelemetry-collector
           - path: kube-infra/kustomize/observability/loki-stack
 
         exclude:
