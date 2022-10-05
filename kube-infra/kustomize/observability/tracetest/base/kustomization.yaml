@@ -1,0 +1,17 @@
+helmCharts:
+- name: jaeger
+  namespace: observability
+  version: 0.62.0
+  repo: https://jaegertracing.github.io/helm-charts
+  releaseName: jaeger
+  includeCRDs: false
+  valuesInline:
+    provisionDataStore:
+      cassandra: true
+    storage:
+      type: cassandra
+    collector:
+      autoscaling:
+        enabled: true
+    query:
+      basePath: /jaeger

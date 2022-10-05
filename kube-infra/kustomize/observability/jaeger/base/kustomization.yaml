@@ -1,17 +1,41 @@
 helmCharts:
-- name: jaeger
+- name: tracetest
   namespace: observability
-  version: 0.62.0
-  repo: https://jaegertracing.github.io/helm-charts
-  releaseName: jaeger
+  version: 0.2.19
+  repo: https://kubeshop.github.io/helm-charts
+  releaseName: tracetest
   includeCRDs: false
   valuesInline:
-    provisionDataStore:
-      cassandra: true
-    storage:
-      type: cassandra
-    collector:
-      autoscaling:
-        enabled: true
-    query:
-      basePath: /jaeger
+    postgresql:
+      enabled: true
+      architecture: standalone
+    auth:
+      database: "tracetest"
+      username: "tracetest"
+      password: not-secure-database-password
+      existingSecret: ""
+
+    poolingConfig:
+      maxWaitTimeForTrace: 30s
+      retryDelay: 5s
+
+    analytics:
+      enabled: true
+
+    telemetry:
+      dataStores:
+        jaeger:
+          type: jaeger
+          jaeger:
+            endpoint: jaeger-query:16685
+            tls:
+              insecure: true
+
+      exporters:
+        collector:
+          serviceName: tracetest
+          sampling: 100
+          exporter:
+            type: collector
+            collector:
+              endpoint: opentelemetry-collector:4317
