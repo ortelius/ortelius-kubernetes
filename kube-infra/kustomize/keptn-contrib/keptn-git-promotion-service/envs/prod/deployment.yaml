@@ -46,6 +46,11 @@ spec:
                   fieldPath: metadata.namespace
             - name: KEPTN_API_URL
               value: 'http://api-gateway-nginx/api'
+            - name: GIT_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: github
+                  key: access-token
             - name: KEPTN_API_TOKEN
               valueFrom:
                 secretKeyRef:
