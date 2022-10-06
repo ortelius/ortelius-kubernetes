@@ -9,5 +9,5 @@ spec:
     secret: github
     provider: github
   paths:
-    - target: /kube-infra/kustomize/podtato-head/podtato-head/envs/dev/version.yaml
-      source: /kube-infra/kustomize/podtato-head/podtato-head/envs/prod/version.yaml
+    - target: /kube-infra/kustomize/podtato-head/podtato-head/envs/prod/version.yaml
+      source: /kube-infra/kustomize/podtato-head/podtato-head/envs/dev/version.yaml
