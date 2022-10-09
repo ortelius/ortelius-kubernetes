@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podtato-head-left-arm
+spec:
+  template:
+    spec:
+      containers:
+        - name: podtato-head-left-arm
+          env:
+          - name: PODTATO_PART_NUMBER
+            value: "01"

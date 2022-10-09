@@ -4,19 +4,60 @@ metadata:
   name: "ortelius"
 spec:
   stages:
-    - name: "test"
+    - name: "non-production"
       sequences:
-      - name: "kickoff"
+      - name: "smoke-test"
         tasks:
-        - name: "test"
+        - name: "smoke-test"
+      - name: "performance-test"
+        triggeredOn:
+          - event: "non-production.smoke-test.finished"
+            selector:
+              match:
+              result: "pass"
+        tasks:
+        - name: "load-test"
         - name: "evaluation"
-        - name: "catalog"
         - name: "git-promotion"
+        - name: "catalog"
+      - name: "integration-test"
+        triggeredOn:
+          - event: "non-production.performance-test.finished"
+            selector:
+              match:
+              result: "pass"
+        tasks:
+        - name: "api-test"
+        - name: "trace-test"
+        - name: "evaluation"
+        - name: "git-promotion"
+        - name: "catalog"
+      - name: "qa"
+        triggeredOn:
+          - event: "non-production.integration-test.finished"
+            selector:
+              match:
+              result: "pass"
+        tasks:
+        - name: "api-test"
+        - name: "evaluation"
+        - name: "git-promotion"
+        - name: "catalog"
     - name: "production"
       sequences:
-      - name: "qualitycheck"
+      - name: "staging"
         triggeredOn:
-          - event: "test.kickoff.finished"
+          - event: "non-production.qa.finished"
+            selector:
+              match:
+              result: "pass"
+        tasks:
+        - name: "api-test"
+        - name: "evaluation"
+        - name: "catalog"
+      - name: "production"
+        triggeredOn:
+          - event: "production.staging.finished"
             selector:
               match:
               result: "pass"
