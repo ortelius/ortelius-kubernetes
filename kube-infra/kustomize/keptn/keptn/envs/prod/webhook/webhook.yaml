@@ -1,0 +1,25 @@
+apiVersion: webhookconfig.keptn.sh/v1beta1
+kind: WebhookConfig
+metadata:
+  name: webhook-configuration
+spec:
+  webhooks:
+    - type: sh.keptn.event.evaluation.finished
+      requests:
+        - url: https://hooks.slack.com/services/{{.env.secret_slackwebhook_token}}
+          payload: >-
+            payload={   "channel" : "{{.data.project}}--{{.data.service}}",  "username" : "keptn",   "blocks": [    {      "type" : "section",      "text" : {        "type": "mrkdwn",        "text" : "*Keptn Evaluation finished:* {{.data.result}} ({{.data.evaluation.score}} / 100)"      }    },    {      "type" : "section",      "text" : {        "type": "mrkdwn",        "text" : "*Project:* {{.data.project}}\n*Stage:* {{.data.stage}}\n*Service:* {{.data.service}}\n*Details:* {{.env.secret_slackwebhook_bridgeUrl}}/bridge/evaluation/{{.shkeptncontext}}"      }    }  ]}
+          headers: []
+          method: POST
+      envFrom:
+        - name: secret_slackwebhook_token
+          secretRef:
+            name: slack-webhook
+            key: token
+        - name: secret_slackwebhook_bridgeUrl
+          secretRef:
+            name: slack-webhook
+            key: bridgeUrl
+      subscriptionID: e2829d4d-e032-49d2-8ac7-5e86df866c5f
+      sendFinished: false
+      sendStarted: false

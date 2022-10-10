@@ -4,14 +4,14 @@ metadata:
   name: "ortelius"
 spec:
   stages:
-    - name: "non-production"
+    - name: "load-test"
       sequences:
       - name: "smoke-test"
         tasks:
         - name: "smoke-test"
-      - name: "performance-test"
+      - name: "load-test"
         triggeredOn:
-          - event: "non-production.smoke-test.finished"
+          - event: "load-test.smoke-test.finished"
             selector:
               match:
               result: "pass"
@@ -20,9 +20,11 @@ spec:
         - name: "evaluation"
         - name: "git-promotion"
         - name: "catalog"
+    - name: "integration-test"
+      sequences:
       - name: "integration-test"
         triggeredOn:
-          - event: "non-production.performance-test.finished"
+          - event: "load-test.load-test.finished"
             selector:
               match:
               result: "pass"
@@ -32,22 +34,25 @@ spec:
         - name: "evaluation"
         - name: "git-promotion"
         - name: "catalog"
+    - name: "quality-assurance"
+      sequences:
       - name: "qa"
         triggeredOn:
-          - event: "non-production.integration-test.finished"
+          - event: "integration-test.integration-test.finished"
             selector:
               match:
               result: "pass"
         tasks:
         - name: "api-test"
+        - name: "trace-test"
         - name: "evaluation"
         - name: "git-promotion"
         - name: "catalog"
-    - name: "production"
+    - name: "staging"
       sequences:
       - name: "staging"
         triggeredOn:
-          - event: "non-production.qa.finished"
+          - event: "quality-assurance.qa.finished"
             selector:
               match:
               result: "pass"
@@ -55,9 +60,11 @@ spec:
         - name: "api-test"
         - name: "evaluation"
         - name: "catalog"
+    - name: "production"
+      sequences:
       - name: "production"
         triggeredOn:
-          - event: "production.staging.finished"
+          - event: "staging.staging.finished"
             selector:
               match:
               result: "pass"
