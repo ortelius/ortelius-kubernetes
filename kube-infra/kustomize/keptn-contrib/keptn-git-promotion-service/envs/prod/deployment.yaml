@@ -39,11 +39,21 @@ spec:
               memory: "256Mi"
               cpu: "100m"
           env:
+            - name: K8S_POD_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
             - name: K8S_NAMESPACE
               valueFrom:
                 fieldRef:
                   apiVersion: v1
                   fieldPath: metadata.namespace
+            - name: K8S_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: spec.nodeName
             - name: KEPTN_API_URL
               value: 'http://api-gateway-nginx/api'
             - name: GIT_ACCESS_TOKEN
