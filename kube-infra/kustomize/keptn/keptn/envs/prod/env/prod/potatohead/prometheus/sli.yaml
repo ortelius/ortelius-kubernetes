@@ -1,0 +1,4 @@
+---
+spec_version: '1.0'
+indicators:
+  successful_requests: sum(irate(nginx_ingress_controller_requests{ingress=~"podtato-head",status!~"[4-5].*"}[5m]))

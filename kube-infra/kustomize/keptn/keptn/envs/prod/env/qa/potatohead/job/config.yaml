@@ -1,0 +1,56 @@
+apiVersion: v2
+actions:
+  - name: "Run k6"
+    events:
+      - name: "sh.keptn.event.load-test.triggered"
+    tasks:
+      - name: "Run k6 with Keptn"
+        files:
+          - /files
+        image: "loadimpact/k6"
+        cmd: ["k6"]
+        args: ["run", "--duration", "30s", "--vus", "10", "/keptn/files/k6_test.js"]
+
+  - name: "Catalog Data"
+    events:
+      - name: "sh.keptn.event.catalog.triggered"
+    tasks:
+      - name: "Catalog Data in Ortelius"
+        image: "alpine"
+        cmd:
+          - echo
+        args:
+          - 'Data Cataloged!'
+
+  - name: "Smoke Test"
+    events:
+      - name: "sh.keptn.event.smoke-test.triggered"
+    tasks:
+      - name: "Smoke Test"
+        image: "alpine"
+        cmd:
+          - echo
+        args:
+          - 'Smoke Tests Passed!'
+
+  - name: "API Test"
+    events:
+      - name: "sh.keptn.event.api-test.triggered"
+    tasks:
+      - name: "API Test"
+        image: "alpine"
+        cmd:
+          - echo
+        args:
+          - 'API Tests Passed!'
+
+  - name: "Trace Test"
+    events:
+      - name: "sh.keptn.event.trace-test.triggered"
+    tasks:
+      - name: "Trace Test"
+        image: "alpine"
+        cmd:
+          - echo
+        args:
+          - 'Trace Tests Passed!'
