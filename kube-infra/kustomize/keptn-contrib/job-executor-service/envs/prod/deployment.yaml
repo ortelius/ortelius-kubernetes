@@ -164,13 +164,13 @@ spec:
             value: "true"
           - name: API_PROXY_MAX_PAYLOAD_BYTES_KB
             value: "128"
-          resources:
-            limits:
-              cpu: 1
-              memory: 512Mi
-            requests:
-              cpu: 50m
-              memory: 128Mi
+          # resources:
+          #   limits:
+          #     cpu: 1
+          #     memory: 512Mi
+          #   requests:
+          #     cpu: 50m
+          #     memory: 128Mi
       volumes:
         - name: job-executor-settings
           projected:
