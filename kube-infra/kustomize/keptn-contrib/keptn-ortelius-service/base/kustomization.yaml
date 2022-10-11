@@ -9,4 +9,4 @@ helmCharts:
     image:
       tag: "dev"
     subscription:
-      pubsubTopic: "sh.keptn.kickoff.catalog.triggered"
+      pubsubTopic: "sh.keptn.event.catalog.triggered"
