@@ -79,7 +79,7 @@ spec:
             - name: PUBSUB_URL
               value: 'nats://keptn-nats'
             - name: PUBSUB_TOPIC
-              value: sh.keptn.load-test.load-test.triggered
+              value: sh.keptn.event.load-test.triggered
             - name: PUBSUB_RECIPIENT
               value: '127.0.0.1'
             - name: STAGE_FILTER
