@@ -1,10 +1,5 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: podtato-head-left-arm
-spec:
-  template:
-    spec:
-      containers:
-      - name: podtato-head-left-arm
-        image: ghcr.io/podtato-head/left-arm:0.2.5
+YXBpVmVyc2lvbjogYXBwcy92MQpraW5kOiBEZXBsb3ltZW50Cm1ldGFkYXRh
+OgogIG5hbWU6IHBvZHRhdG8taGVhZC1sZWZ0LWFybQpzcGVjOgogIHRlbXBs
+YXRlOgogICAgc3BlYzoKICAgICAgY29udGFpbmVyczoKICAgICAgLSBuYW1l
+OiBwb2R0YXRvLWhlYWQtbGVmdC1hcm0KICAgICAgICBpbWFnZTogZ2hjci5p
+by9wb2R0YXRvLWhlYWQvbGVmdC1hcm06MC4yLjcK
