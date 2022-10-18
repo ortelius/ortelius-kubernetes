@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: ortelius-podtatohead-prod
+  name: ortelius-podtatohead-stag
   namespace: ci-cd
 spec:
   generators:
@@ -15,10 +15,10 @@ spec:
         exclude:
       - list:
           elements:
-          - cluster: prod
+          - cluster: stag
             url: https://aks-1d6d379d.hcp.centralus.azmk8s.io:443
             values:
-              CLIENT_ENVIRONMENT: prod
+              CLIENT_ENVIRONMENT: stag
   template:
     metadata:
       name: 'podtatohead-{{cluster}}'
