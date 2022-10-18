@@ -31,7 +31,7 @@ data:
             },
             "source": "argocd",
             "specversion": "1.0",
-            "type": "sh.keptn.event.test.kickoff.triggered",
+            "type": "sh.keptn.event.{{.app.metadata.labels.keptnStage}}.{{.app.metadata.labels.keptnSequence}}.triggered",
             "shkeptnspecversion": "0.2.3"
           }
   template.keptn-deployed: |

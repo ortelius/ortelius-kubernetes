@@ -4,71 +4,100 @@ metadata:
   name: "ortelius"
 spec:
   stages:
-    - name: "load-test"
+    - name: "load"
       sequences:
-      - name: "smoke-test"
+      - name: "smoke"
         tasks:
         - name: "smoke-test"
-      - name: "load-test"
+      - name: "test"
         triggeredOn:
-          - event: "load-test.smoke-test.finished"
+          - event: "load.smoke.finished"
             selector:
               match:
               result: "pass"
         tasks:
         - name: "load-test"
         - name: "evaluation"
+          properties:
+            timeframe: 5m
         - name: "git-promotion"
         - name: "catalog"
-    - name: "integration-test"
+    - name: "int"
       sequences:
-      - name: "integration-test"
-        triggeredOn:
-          - event: "load-test.load-test.finished"
-            selector:
-              match:
-              result: "pass"
+      - name: "test"
         tasks:
         - name: "api-test"
         - name: "trace-test"
         - name: "evaluation"
+          properties:
+            timeframe: 5m
         - name: "git-promotion"
         - name: "catalog"
-    - name: "quality-assurance"
+    - name: "qa"
       sequences:
-      - name: "qa"
-        triggeredOn:
-          - event: "integration-test.integration-test.finished"
-            selector:
-              match:
-              result: "pass"
+      - name: "test"
         tasks:
         - name: "api-test"
         - name: "trace-test"
         - name: "evaluation"
+          properties:
+            timeframe: 5m
         - name: "git-promotion"
         - name: "catalog"
-    - name: "staging"
+    - name: "stag"
       sequences:
-      - name: "staging"
-        triggeredOn:
-          - event: "quality-assurance.qa.finished"
-            selector:
-              match:
-              result: "pass"
+      - name: "test"
         tasks:
         - name: "api-test"
         - name: "evaluation"
+          properties:
+            timeframe: 5m
         - name: "catalog"
-    - name: "production"
+    - name: "prod"
       sequences:
-      - name: "production"
-        triggeredOn:
-          - event: "staging.staging.finished"
-            selector:
-              match:
-              result: "pass"
+      - name: "test"
         tasks:
         - name: "test"
         - name: "evaluation"
+          properties:
+            timeframe: 5m
         - name: "catalog"
+      - name: "remediation"
+        triggeredOn:
+          - event: "prod.remediation.finished"
+            selector:
+              match:
+                evaluation.result: "fail"
+        tasks:
+          - name: "get-action"
+          - name: "action"
+          - name: "evaluation"
+            triggeredAfter: "15m"
+            properties:
+              timeframe: "15m"
+    - name: "rollback"
+      sequences:
+        - name: "revert"
+          triggeredOn:
+            - event: "load.test.finished"
+              selector:
+                match:
+                  evaluation.result: "fail"
+            - event: "int.test.finished"
+              selector:
+                match:
+                  evaluation.result: "fail"
+            - event: "qa.test.finished"
+              selector:
+                match:
+                  evaluation.result: "fail"
+            - event: "stag.test.finished"
+              selector:
+                match:
+                  evaluation.result: "fail"
+            - event: "prod.test.finished"
+              selector:
+                match:
+                  evaluation.result: "fail"
+          tasks:
+            - name: "rollback"

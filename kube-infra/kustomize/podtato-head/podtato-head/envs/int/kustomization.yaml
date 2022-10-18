@@ -5,14 +5,14 @@ kind: Kustomization
 resources:
   - ../../base
   - namespace.yaml
-  - ingress.yaml
+  #- ingress.yaml
 
 ## all resources will be deployed in this namespace
-namespace: podtato-head-production
+namespace: podtatohead-int
 
 ## labels to be applied to all resources
 commonLabels:
-  variant: production
+  variant: int
 
 ## strategic merge patches to be applied to resources
 patchesStrategicMerge:
