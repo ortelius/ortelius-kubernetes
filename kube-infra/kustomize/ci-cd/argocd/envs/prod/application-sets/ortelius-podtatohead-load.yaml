@@ -15,21 +15,22 @@ spec:
         exclude:
       - list:
           elements:
-          - cluster: prod
+          - cluster: load
             url: https://aks-1d6d379d.hcp.centralus.azmk8s.io:443
             values:
-              CLIENT_ENVIRONMENT: prod
+              CLIENT_ENVIRONMENT: load
   template:
     metadata:
       name: 'podtato-head'
       annotations:
         notifications.argoproj.io/subscribe.on-deployed.keptn: ""
         notifications.argoproj.io/subscribe.on-out-of-sync-status.keptn: ""
-        environment: prod
+        environment: load
       labels:
         keptnProject: ortelius
         keptnService: podtato-head
-        keptnStage: dev
+        keptnStage: load
+        keptnSequence: smoke
     spec:
       project: ortelius
       source:

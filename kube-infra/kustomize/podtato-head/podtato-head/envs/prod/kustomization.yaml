@@ -8,11 +8,11 @@ resources:
   - ingress.yaml
 
 ## all resources will be deployed in this namespace
-namespace: podtato-head-production
+namespace: podtatohead-prod
 
 ## labels to be applied to all resources
 commonLabels:
-  variant: production
+  variant: prod
 
 ## strategic merge patches to be applied to resources
 patchesStrategicMerge:
