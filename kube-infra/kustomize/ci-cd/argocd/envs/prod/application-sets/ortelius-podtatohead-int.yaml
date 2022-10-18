@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: podtato-head
+  name: ortelius-podtatohead-int
   namespace: ci-cd
 spec:
   generators:
@@ -21,15 +21,15 @@ spec:
               CLIENT_ENVIRONMENT: int
   template:
     metadata:
-      name: 'podtato-head'
+      name: 'podtatohead-{{cluster}}'
       annotations:
         notifications.argoproj.io/subscribe.on-deployed.keptn: ""
         notifications.argoproj.io/subscribe.on-out-of-sync-status.keptn: ""
-        environment: int
+        environment: '{{cluster}}'
       labels:
         keptnProject: ortelius
         keptnService: podtato-head
-        keptnStage: int
+        keptnStage: '{{cluster}}'
         keptnSequence: test
     spec:
       project: ortelius
