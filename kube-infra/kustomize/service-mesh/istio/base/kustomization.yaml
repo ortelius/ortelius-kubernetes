@@ -25,4 +25,3 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     brad: mccoy
-

@@ -34,6 +34,8 @@ helmCharts:
 
     prometheusOperator:
       enabled: true
+      hostNetwork: false
+
       admissionWebhooks:
         enabled: false
       tls:
