@@ -40,7 +40,7 @@ helmCharts:
         enabled: false
 
     grafana:
-      defaultDashboardsTimezone: America/Detroit
+      #defaultDashboardsTimezone: America/Detroit
 
       datasources:
         enabled: true
