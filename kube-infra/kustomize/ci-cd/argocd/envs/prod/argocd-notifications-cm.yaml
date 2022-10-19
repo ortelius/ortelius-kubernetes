@@ -62,7 +62,7 @@ data:
             },
             "source": "argocd",
             "specversion": "1.0",
-            "type": "sh.keptn.event.deliver.finished",
+            "type": "sh.keptn.event.{{.app.metadata.labels.keptnStage}}.{{.app.metadata.labels.keptnSequence}}.triggered",
             "shkeptnspecversion": "0.2.3",
             {{$first := true}}
             {{- range $index,$value := .app.status.operationState.operation.info}}
