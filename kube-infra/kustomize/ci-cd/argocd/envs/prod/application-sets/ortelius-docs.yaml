@@ -30,6 +30,7 @@ spec:
         keptnProject: ortelius
         keptnService: docs
         keptnStage: dev
+        keptnSequence: smoke
     spec:
       project: ortelius
       source:
