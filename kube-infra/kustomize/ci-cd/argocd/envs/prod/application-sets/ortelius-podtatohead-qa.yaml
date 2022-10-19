@@ -16,7 +16,7 @@ spec:
       - list:
           elements:
           - cluster: qa
-            url: aks-d1a554ae.hcp.centralus.azmk8s.io:443
+            url: https://aks-d1a554ae.hcp.centralus.azmk8s.io:443
             values:
               CLIENT_ENVIRONMENT: qa
   template:
