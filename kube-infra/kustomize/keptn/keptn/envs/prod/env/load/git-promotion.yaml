@@ -4,12 +4,13 @@ metadata:
   name: ortelius-podtato-head-test
 spec:
   strategy: flat-pr
-  nextStage: stag
+  nextStage: int
+  lastStage:
   autoApprove: false
   target:
     repo: https://github.com/ortelius/ortelius-kubernetes
     secret: github
     provider: github
   paths:
-    - source: kube-infra/kustomize/podtato-head/podtato-head/envs/qa/version.yaml
-      target: kube-infra/kustomize/podtato-head/podtato-head/envs/staging/version.yaml
+    - source: kube-infra/kustomize/podtato-head/podtato-head/envs/load/version.yaml
+      target: kube-infra/kustomize/podtato-head/podtato-head/envs/int/version.yaml
