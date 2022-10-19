@@ -36,6 +36,11 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: falco
+---
+apiVersion: v1
+kind: Namespace
+metadata:
   name: ortelius-docs
 ---
 apiVersion: v1

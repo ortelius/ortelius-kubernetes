@@ -28,7 +28,7 @@ spec:
         environment: '{{cluster}}'
       labels:
         keptnProject: ortelius
-        keptnService: podtato-head
+        keptnService: podtatohead
         keptnStage: '{{cluster}}'
         keptnSequence: smoke
     spec:

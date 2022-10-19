@@ -4,7 +4,8 @@ metadata:
   name: ortelius-podtato-head-test
 spec:
   strategy: flat-pr
-  nextStage: int
+  nextStage:
+  lastStage: stag
   autoApprove: false
   target:
     repo: https://github.com/ortelius/ortelius-kubernetes
