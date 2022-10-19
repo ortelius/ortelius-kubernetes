@@ -19,6 +19,7 @@ helmCharts:
         hosts:
           - prometheus.ortelius.io
       prometheusSpec:
+        priorityClassName: "observability-high-priority"
         retention: 7d
         serviceMonitorSelectorNilUsesHelmValues: false
         serviceMonitorSelector: {}

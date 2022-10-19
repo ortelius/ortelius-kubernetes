@@ -16,7 +16,7 @@ spec:
       - list:
           elements:
           - cluster: stag
-            url: https://aks-1d6d379d.hcp.centralus.azmk8s.io:443
+            url: aks-d1a554ae.hcp.centralus.azmk8s.io:443
             values:
               CLIENT_ENVIRONMENT: stag
   template:
