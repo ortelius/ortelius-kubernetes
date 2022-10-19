@@ -43,3 +43,8 @@ kind: Namespace
 metadata:
   name: ortelius-www
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ortelius
+---
