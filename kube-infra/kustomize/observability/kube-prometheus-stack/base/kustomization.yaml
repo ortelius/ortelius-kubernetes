@@ -40,6 +40,20 @@ helmCharts:
         enabled: false
 
     grafana:
+      defaultDashboardsTimezone: America/Detroit
+
+      datasources:
+        enabled: true
+        defaultDatasourceEnabled:
+        uid: prometheus
+        url: http://kube-prometheus-stack-prometheus.observability:9090
+
+      additionalDataSources:
+        - name: loki
+          url: http://loki-stack.observability:3100/
+          type: loki
+          access: proxy
+
       ingress:
         enabled: true
         annotations:
@@ -66,12 +80,6 @@ helmCharts:
         - digrich-bubblechart-panel
         - grafana-clock-panel
         - grafana-piechart-panel
-
-      additionalDataSources:
-        - name: loki
-          url: http://loki-stack.observability:3100/
-          type: loki
-          access: proxy
 
       persistence:
         type: pvc
