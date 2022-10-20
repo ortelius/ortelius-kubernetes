@@ -28,7 +28,7 @@ spec:
       containers:
         - name: git-promotion-service
           imagePullPolicy: Always
-          image: bradmccoydev/keptn-git-promotion-service:0.0.1
+          image: bradmccoydev/keptn-git-promotion-service:0.0.2
           ports:
             - containerPort: 8080
           resources:
