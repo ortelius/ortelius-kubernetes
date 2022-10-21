@@ -41,6 +41,8 @@ helmCharts:
 
     config:
       use-forwarded-headers: "true"
+      enable-opentracing: "true"
+      jaeger-collector-host: jaeger-agent.observability.svc.cluster.local
 
 patches:
 - patch: |-
