@@ -1,0 +1,32 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: podtato-head-entry-load
+spec:
+  type: ExternalName
+  externalName: podtato-head-entry.podtatohead-load.svc.cluster.local
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: podtato-head-entry-int
+spec:
+  type: ExternalName
+  externalName: podtato-head-entry.podtatohead-int.svc.cluster.local
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: podtato-head-entry-qa
+spec:
+  type: ExternalName
+  externalName: podtato-head-entry.podtatohead-qa.svc.cluster.local
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: podtato-head-entry-stag
+spec:
+  type: ExternalName
+  externalName: podtato-head-entry.podtatohead-stag.svc.cluster.local
+---

@@ -12,7 +12,7 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: "/"
+        path: "/load"
         backend:
           service:
             name: podtato-head-entry
