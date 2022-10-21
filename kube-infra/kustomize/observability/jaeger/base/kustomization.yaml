@@ -14,7 +14,7 @@ helmCharts:
       autoscaling:
         enabled: true
     query:
-      basePath: /jaeger
+      basePath: /tracing/jaeger
       ingress:
         enabled: true
         hosts:
