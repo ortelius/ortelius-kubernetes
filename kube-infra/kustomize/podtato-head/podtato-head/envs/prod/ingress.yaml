@@ -18,3 +18,31 @@ spec:
             name: podtato-head-entry
             port:
               number: 9000
+      - pathType: Prefix
+        path: "/load"
+        backend:
+          service:
+            name: podtato-head-entry-load
+            port:
+              number: 9000
+      - pathType: Prefix
+        path: "/int"
+        backend:
+          service:
+            name: podtato-head-entry-int
+            port:
+              number: 9000
+      - pathType: Prefix
+        path: "/qa"
+        backend:
+          service:
+            name: podtato-head-entry-qa
+            port:
+              number: 9000
+      - pathType: Prefix
+        path: "/sta"
+        backend:
+          service:
+            name: podtato-head-entry-stag
+            port:
+              number: 9000
