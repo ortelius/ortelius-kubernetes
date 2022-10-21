@@ -14,7 +14,6 @@ helmCharts:
       autoscaling:
         enabled: true
     query:
-      basePath: jaeger
       ingress:
         enabled: true
         hosts:
