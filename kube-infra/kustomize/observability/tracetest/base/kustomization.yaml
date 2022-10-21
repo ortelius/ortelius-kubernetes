@@ -1,7 +1,7 @@
 helmCharts:
 - name: tracetest
   namespace: observability
-  version: 0.2.19
+  version: 0.2.21
   repo: https://kubeshop.github.io/helm-charts
   releaseName: tracetest
   includeCRDs: false
