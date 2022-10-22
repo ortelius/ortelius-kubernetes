@@ -15,7 +15,7 @@ helmCharts:
         enabled: true
     query:
       ingress:
-        enabled: true
+        enabled: false
         hosts:
           - jaeger.ortelius.io
         ingressClassName: nginx
