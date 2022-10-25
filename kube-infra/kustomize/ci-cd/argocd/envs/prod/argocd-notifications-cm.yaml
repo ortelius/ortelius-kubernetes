@@ -42,6 +42,9 @@ data:
         body: |
           {
             "data": {
+              "labels": {
+                "version": "{{.app.status.sync.revision}}"
+              },
               "project": "{{.app.metadata.labels.keptnProject}}",
               "service": "{{.app.metadata.labels.keptnService}}",
               "stage": "{{.app.metadata.labels.keptnStage}}"
@@ -49,8 +52,6 @@ data:
             "source": "argocd",
             "specversion": "1.0",
             "type": "sh.keptn.event.{{.app.metadata.labels.keptnStage}}.{{.app.metadata.labels.keptnSequence}}.triggered"
-            "shkeptnspecversion": "0.2.3"
-          }
   # trigger.on-out-of-sync-status: |
   #   - when: app.status.sync.status == 'OutOfSync'
   #     send: [keptn-outofsync]
