@@ -21,15 +21,15 @@ spec:
               CLIENT_ENVIRONMENT: load
   template:
     metadata:
-      name: 'podtatohead-{{cluster}}'
+      name: podtatoheadload
       annotations:
         notifications.argoproj.io/subscribe.on-deployed.keptn: ""
         notifications.argoproj.io/subscribe.on-out-of-sync-status.keptn: ""
-        environment: '{{cluster}}'
+        environment: load
       labels:
         keptnProject: ortelius
         keptnService: podtatohead
-        keptnStage: '{{cluster}}'
+        keptnStage: load
         keptnSequence: smoke
     spec:
       project: ortelius
