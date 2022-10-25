@@ -42,9 +42,6 @@ data:
         body: |
           {
             "data": {
-              "labels": {
-                "version": "{{.app.status.sync.revision}}"
-              },
               "project": "{{.app.metadata.labels.keptnProject}}",
               "service": "{{.app.metadata.labels.keptnService}}",
               "stage": "{{.app.metadata.labels.keptnStage}}"
