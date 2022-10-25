@@ -8,11 +8,11 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-passthrough: "false"
 spec:
   rules:
-  - host: podtatohead.ortelius.io
+  - host: load.podtatohead.ortelius.io
     http:
       paths:
       - pathType: Prefix
-        path: "/load"
+        path: "/"
         backend:
           service:
             name: podtato-head-entry

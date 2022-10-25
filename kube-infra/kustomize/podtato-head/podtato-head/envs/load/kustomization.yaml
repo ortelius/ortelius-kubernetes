@@ -5,7 +5,7 @@ kind: Kustomization
 resources:
   - ../../base
   - namespace.yaml
-  #- ingress.yaml
+  - ingress.yaml
 
 ## all resources will be deployed in this namespace
 namespace: podtatohead-load
