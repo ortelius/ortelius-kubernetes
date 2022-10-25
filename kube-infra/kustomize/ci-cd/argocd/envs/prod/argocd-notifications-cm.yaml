@@ -46,7 +46,6 @@ data:
               "labels": {
                 "version": "{{.app.status.sync.revision}}",
                 "appname": "{{.app.metadata.name}}",
-                "link": "{{.app.metadata.annotations.externalURI}}",
                 "buildId": "{{.app.status.sync.revision}}",
                 "argocd": "https://$argo-hostname/applications/{{.app.metadata.name}}"
               },
