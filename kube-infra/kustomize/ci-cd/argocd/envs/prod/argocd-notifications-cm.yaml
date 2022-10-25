@@ -42,36 +42,18 @@ data:
         body: |
           {
             "data": {
-              "labels": {
-                "version": "{{.app.status.sync.revision}}",
-                "appname": "{{.app.metadata.name}}",
-                "argocd": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}"
-                "deploy": "yes"
-              },
               "project": "{{.app.metadata.labels.keptnProject}}",
               "service": "{{.app.metadata.labels.keptnService}}",
-              "stage": "{{.app.metadata.labels.keptnStage}}",
-              "keptnSequence": "{{.app.metadata.labels.keptnSequence}}",
-              "repository": "{{.app.spec.source.repoURL}}",
-              "result": "pass"
+              "stage": "{{.app.metadata.labels.keptnStage}}"
             },
             "source": "argocd",
             "specversion": "1.0",
-            "type": "sh.keptn.event.{{.app.metadata.labels.keptnStage}}.{{.app.metadata.labels.keptnSequence}}.triggered",
-            "shkeptnspecversion": "0.2.3",
-            {{$first := true}}
-            {{- range $index,$value := .app.status.operationState.operation.info}}
-              {{- if $first}}
-                  {{- $first = false}}
-              {{- else}}
-                  ,
-              {{- end}}
-            "{{$value.name}}": "{{$value.value}}"
-            {{- end}}
+            "type": "sh.keptn.event.{{.app.metadata.labels.keptnStage}}.{{.app.metadata.labels.keptnSequence}}.triggered"
+            "shkeptnspecversion": "0.2.3"
           }
-  trigger.on-out-of-sync-status: |
-    - when: app.status.sync.status == 'OutOfSync'
-      send: [keptn-outofsync]
+  # trigger.on-out-of-sync-status: |
+  #   - when: app.status.sync.status == 'OutOfSync'
+  #     send: [keptn-outofsync]
   trigger.on-deployed: |
     - when: app.status.sync.status == 'Synced' and app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
       send: [keptn-deployed]
