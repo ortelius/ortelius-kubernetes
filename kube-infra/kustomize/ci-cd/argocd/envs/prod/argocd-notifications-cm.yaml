@@ -42,13 +42,13 @@ data:
         body: |
           {
             "data": {
-              "project": "{{.app.metadata.labels.keptnProject}}",
-              "service": "{{.app.metadata.labels.keptnService}}",
-              "stage": "{{.app.metadata.labels.keptnStage}}"
+              "project": "ortelius",
+              "service": "podtatohead",
+              "stage": "load"
             },
             "source": "argocd",
             "specversion": "1.0",
-            "type": "sh.keptn.event.{{.app.metadata.labels.keptnStage}}.{{.app.metadata.labels.keptnSequence}}.triggered"
+            "type": "sh.keptn.event.load.smoke.triggered"
           }
   trigger.on-out-of-sync-status: |
     - when: app.status.sync.status == 'OutOfSync'
