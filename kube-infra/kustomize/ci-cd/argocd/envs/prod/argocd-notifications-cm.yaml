@@ -20,13 +20,13 @@ data:
         body: |
           {
             "data": {
-              "project": "ortelius",
-              "service": "podtatohead",
-              "stage": "load"
+              "project": "{{.app.metadata.labels.keptnProject}}",
+              "service": "{{.app.metadata.labels.keptnService}}",
+              "stage": "{{.app.metadata.labels.keptnStage}}"
             },
             "source": "argocd",
             "specversion": "1.0",
-            "type": "sh.keptn.event.load.smoke.triggered"
+            "type": "sh.keptn.event.{{.app.metadata.labels.keptnStage}}.{{.app.metadata.labels.keptnSequence}}.triggered"
           }
   trigger.on-deployed: |
     - when: app.status.sync.status == 'Synced' and app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
