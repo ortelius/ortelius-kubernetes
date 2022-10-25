@@ -25,6 +25,11 @@ spec:
     - name: "int"
       sequences:
       - name: "test"
+        triggeredOn:
+          - event: "load.test.finished"
+            selector:
+              match:
+              result: "pass"
         tasks:
         - name: "api-test"
         - name: "trace-test"
