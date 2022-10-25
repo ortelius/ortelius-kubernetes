@@ -9,4 +9,4 @@ spec:
         - name: podtato-head-left-arm
           env:
           - name: PODTATO_PART_NUMBER
-            value: "01"
+            value: "02"
