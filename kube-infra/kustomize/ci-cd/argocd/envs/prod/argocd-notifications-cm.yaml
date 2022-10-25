@@ -58,20 +58,11 @@ data:
             "source": "argocd",
             "specversion": "1.0",
             "type": "sh.keptn.event.{{.app.metadata.labels.keptnStage}}.{{.app.metadata.labels.keptnSequence}}.triggered",
-            "shkeptnspecversion": "0.2.3",
-            {{$first := true}}
-            {{- range $index,$value := .app.status.operationState.operation.info}}
-              {{- if $first}}
-                  {{- $first = false}}
-              {{- else}}
-                  ,
-              {{- end}}
-            "{{$value.name}}": "{{$value.value}}"
-            {{- end}}
+            "shkeptnspecversion": "0.2.3"
           }
-  trigger.on-out-of-sync-status: |
-    - when: app.status.sync.status == 'OutOfSync'
-      send: [keptn-outofsync]
+  # trigger.on-out-of-sync-status: |
+  #   - when: app.status.sync.status == 'OutOfSync'
+  #     send: [keptn-outofsync]
   trigger.on-deployed: |
     - when: app.status.sync.status == 'Synced' and app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
       send: [keptn-deployed]
