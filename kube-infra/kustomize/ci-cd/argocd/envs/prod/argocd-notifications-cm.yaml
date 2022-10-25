@@ -42,23 +42,38 @@ data:
         body: |
           {
             "data": {
+              "configurationChange": {},
               "labels": {
                 "version": "{{.app.status.sync.revision}}",
                 "appname": "{{.app.metadata.name}}",
-                "argocd": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}"
-                "deploy": "yes"
+                "link": "{{.app.metadata.annotations.externalURI}}",
+                "buildId": "{{.app.status.sync.revision}}",
+                "argocd": "https://$argo-hostname/applications/{{.app.metadata.name}}"
+              },
+              "deployment": {
+                  "deploymentURIsPublic": [
+                     "{{.app.metadata.annotations.externalURI}}"
+               ]
               },
               "project": "{{.app.metadata.labels.keptnProject}}",
               "service": "{{.app.metadata.labels.keptnService}}",
               "stage": "{{.app.metadata.labels.keptnStage}}",
-              "keptnSequence": "{{.app.metadata.labels.keptnSequence}}",
               "repository": "{{.app.spec.source.repoURL}}",
               "result": "pass"
             },
             "source": "argocd",
             "specversion": "1.0",
-            "type": "sh.keptn.event.{{.app.metadata.labels.keptnStage}}.{{.app.metadata.labels.keptnSequence}}.triggered",
-            "shkeptnspecversion": "0.2.3"
+            "type": "sh.keptn.event.smoke-test.triggered",
+            "shkeptnspecversion": "0.2.3",
+            {{$first := true}}
+            {{- range $index,$value := .app.status.operationState.operation.info}}
+              {{- if $first}}
+                  {{- $first = false}}
+              {{- else}}
+                  ,
+              {{- end}}
+            "{{$value.name}}": "{{$value.value}}"
+            {{- end}}
           }
   # trigger.on-out-of-sync-status: |
   #   - when: app.status.sync.status == 'OutOfSync'
