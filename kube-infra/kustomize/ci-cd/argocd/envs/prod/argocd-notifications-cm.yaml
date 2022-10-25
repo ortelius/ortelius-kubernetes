@@ -13,7 +13,7 @@ data:
       value: $keptn-x-token
     - name: Content-Type
       value: application/json
-  template.keptn-deployed: |
+  template.keptn-deployed-remove-me: |
     webhook:
       keptn:
         method: POST
