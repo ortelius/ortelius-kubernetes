@@ -9,4 +9,4 @@ spec:
         - name: podtato-head-hat
           env:
           - name: PODTATO_PART_NUMBER
-            value: "04"
+            value: "03"
