@@ -1,7 +1,7 @@
 helmCharts:
 - name: prometheus
   namespace: monitoring
-  version: 15.13.0
+  version: 15.17.0
   repo: https://prometheus-community.github.io/helm-charts
   releaseName: prometheus
   includeCRDs: false
