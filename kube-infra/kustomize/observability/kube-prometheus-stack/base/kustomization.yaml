@@ -80,7 +80,6 @@ helmCharts:
             editabled: true
 
       plugins:
-        - digrich-bubblechart-panel
         - grafana-clock-panel
         - grafana-piechart-panel
 

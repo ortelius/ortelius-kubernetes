@@ -53,3 +53,13 @@ kind: Namespace
 metadata:
   name: ortelius
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: backstage
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: postgres
+---
