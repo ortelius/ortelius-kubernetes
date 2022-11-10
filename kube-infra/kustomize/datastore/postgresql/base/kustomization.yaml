@@ -5,3 +5,9 @@ helmCharts:
   repo: https://charts.bitnami.com/bitnami
   releaseName: postgresql
   includeCRDs: true
+  valuesInline:
+    global:
+      postgresql:
+        auth:
+          username: backstage
+          database: backstage
