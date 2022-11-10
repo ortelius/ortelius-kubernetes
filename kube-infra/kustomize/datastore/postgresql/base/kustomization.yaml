@@ -11,3 +11,4 @@ helmCharts:
         auth:
           username: backstage
           database: backstage
+          existingSecret: postgresql
