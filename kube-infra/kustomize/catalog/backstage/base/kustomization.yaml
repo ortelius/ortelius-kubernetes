@@ -1,7 +1,7 @@
 helmCharts:
 - name: backstage
-  namespace: ortelius
-  version: 0.0.2
+  namespace: backstage
+  version: 0.0.3
   repo: https://ortelius.github.io/backstage
   releaseName: backstage
   includeCRDs: true
