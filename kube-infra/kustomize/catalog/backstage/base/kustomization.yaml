@@ -5,3 +5,30 @@ helmCharts:
   repo: https://ortelius.github.io/backstage
   releaseName: backstage
   includeCRDs: true
+  valuesInline:
+    backend:
+      livenessProbe:
+      readinessProbe:
+    appConfig:
+      app:
+        title: Ortelius Backstage
+        baseUrl: https://backstage.ortelius.io
+      organization: {}
+      backend:
+        baseUrl: http://localhost:8080
+        listen:
+          port: 7007
+        cors:
+          origin: http://localhost:8080
+          methods: [GET, POST, PUT, DELETE]
+          credentials: true
+        database:
+          client: pg
+          ## Environment variables provide based on postgresql or psql.
+          connection:
+            host: ${POSTGRES_HOST}
+            port: ${POSTGRES_PORT}
+            user: ${POSTGRES_USER}
+            password: ${POSTGRES_PASSWORD}
+      techdocs:
+        builder: external
