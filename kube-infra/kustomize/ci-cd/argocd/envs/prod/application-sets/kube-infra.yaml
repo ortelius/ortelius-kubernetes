@@ -22,7 +22,7 @@ spec:
           - path: kube-infra/kustomize/observability/opentelemetry-collector
           - path: kube-infra/kustomize/observability/jaeger
           - path: kube-infra/kustomize/observability/tracetest
-
+          - path: kube-infra/kustomize/catalog/backstage
         exclude:
       - list:
           elements:
