@@ -15,11 +15,11 @@ helmCharts:
         baseUrl: https://backstage.ortelius.io
       organization: {}
       backend:
-        baseUrl: http://localhost:8080
+        baseUrl: https://backstage.ortelius.io
         listen:
           port: 7007
         cors:
-          origin: http://localhost:8080
+          origin: https://backstage.ortelius.io
           methods: [GET, POST, PUT, DELETE]
           credentials: true
         database:
