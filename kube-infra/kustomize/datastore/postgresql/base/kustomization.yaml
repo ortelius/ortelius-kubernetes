@@ -1,7 +1,7 @@
 helmCharts:
 - name: postgresql
   namespace: postgres
-  version: 12.1.0
+  version: 12.1.2
   repo: https://charts.bitnami.com/bitnami
   releaseName: postgresql
   includeCRDs: true
@@ -16,3 +16,11 @@ helmCharts:
             adminPasswordKey: postgres-password
             userPasswordKey: postgres-password
             replicationPasswordKey: postgres-password
+    auth:
+      username: backstage
+      database: backstage
+      existingSecret: postgresql
+      secretKeys:
+        adminPasswordKey: postgres-password
+        userPasswordKey: postgres-password
+        replicationPasswordKey: postgres-password
