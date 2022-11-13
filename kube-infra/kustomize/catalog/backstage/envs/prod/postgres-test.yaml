@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: postgres-debug
+    environment: debug
+  name: postgres-debug
+  namespace: backstage
+spec:
+  containers:
+  - image: alpine:3.16
+    name: debug
+    args:
+    - sleep
+    - "86400"
