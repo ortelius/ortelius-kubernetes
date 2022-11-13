@@ -5,7 +5,6 @@ kubectl -n backstage exec -it postgres-debug -- /bin/sh
 apk --no-cache add curl && apk --update add postgresql-client
 
 psql -h postgresql.postgres.svc.cluster.local -U backstage -d backstage
-  enter password: passW0rd
 
 nslookup postgresql.postgres.svc.cluster.local
 telnet postgresql.postgres.svc.cluster.local 5432
