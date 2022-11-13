@@ -13,5 +13,6 @@ helmCharts:
           database: backstage
           existingSecret: postgresql
           secretKeys:
-            adminPasswordKey: password
-            userPasswordKey: password
+            adminPasswordKey: postgres-password
+            userPasswordKey: postgres-password
+            replicationPasswordKey: postgres-password
