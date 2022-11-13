@@ -9,6 +9,13 @@ helmCharts:
     backend:
       livenessProbe:
       readinessProbe:
+    psql:
+      host: postgresql.postgres.svc.cluster.local
+      port: 5432
+      username: backstage
+      password:
+        secret: postgres-secrets
+        key: POSTGRES_PASSWORD
     appConfig:
       app:
         title: Ortelius Backstage
