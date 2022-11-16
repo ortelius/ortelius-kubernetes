@@ -1,7 +1,7 @@
 # Debug Postgres Connection
 kubectl create -f /Users/bradmccoy/Development/bradmccoydev/ortelius-kubernetes/kube-infra/kustomize/catalog/backstage/envs/prod/postgres-test.yaml
 
-kubectl -n backstage exec -it postgres-debug -- /bin/sh
+kubectl -n postgres exec -it postgres-debug -- /bin/sh
 apk --no-cache add curl && apk --update add postgresql-client
 
 psql -h postgresql.postgres.svc.cluster.local -U backstage -d backstage

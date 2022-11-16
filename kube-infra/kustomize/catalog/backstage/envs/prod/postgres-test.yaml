@@ -5,7 +5,7 @@ metadata:
     app: postgres-debug
     environment: debug
   name: postgres-debug
-  namespace: backstage
+  namespace: postgres
 spec:
   containers:
   - image: alpine:3.16
