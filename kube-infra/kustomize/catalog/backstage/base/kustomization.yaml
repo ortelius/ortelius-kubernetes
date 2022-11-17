@@ -31,9 +31,9 @@ helmCharts:
         hosts:
           - backstage-backend.ortelius.io
     psql:
-      host: postgresql.postgres.svc.cluster.local
+      host: ortelius.postgres.database.azure.com
       port: 5432
-      username: backstage
+      username: dev
       password:
         secret: postgres-secrets
         key: POSTGRES_PASSWORD
