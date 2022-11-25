@@ -1,7 +1,7 @@
 helmCharts:
 - name: backstage
   namespace: backstage
-  version: 0.0.8
+  version: 0.0.11
   repo: https://ortelius.github.io/backstage
   releaseName: backstage
   includeCRDs: true
@@ -45,7 +45,7 @@ helmCharts:
         baseUrl: https://backstage.ortelius.io
       organization: {}
       backend:
-        baseUrl: https://backstage.ortelius.io
+        baseUrl: https://backstage-backend.ortelius.io/api
         listen:
           port: 7007
         cors:
@@ -54,11 +54,21 @@ helmCharts:
           credentials: true
         database:
           client: pg
-          ## Environment variables provide based on postgresql or psql.
           connection:
             host: ${POSTGRES_HOST}
             port: ${POSTGRES_PORT}
             user: ${POSTGRES_USER}
             password: ${POSTGRES_PASSWORD}
+          knexConfig:
+        pool:
+          min: 3
+          max: 12
+          acquireTimeoutMillis: 60000
+          createTimeoutMillis: 30000
+          destroyTimeoutMillis: 5000
+          idleTimeoutMillis: 60000
+          reapIntervalMillis: 1000
+          createRetryIntervalMillis: 200
+          propagateCreateError: false
       techdocs:
         builder: external
