@@ -57,8 +57,11 @@ helmCharts:
           connection:
             host: ${POSTGRES_HOST}
             port: ${POSTGRES_PORT}
+            database: backstage
             user: ${POSTGRES_USER}
             password: ${POSTGRES_PASSWORD}
+          ensureExists: false
+          pluginDivisionMode: schema
           knexConfig:
             pool:
               min: 15
