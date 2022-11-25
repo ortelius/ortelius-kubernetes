@@ -45,7 +45,7 @@ helmCharts:
         baseUrl: https://backstage.ortelius.io
       organization: {}
       backend:
-        baseUrl: https://backstage-backend.ortelius.io/api
+        baseUrl: https://backstage-backend.ortelius.io
         listen:
           port: 7007
         cors:
