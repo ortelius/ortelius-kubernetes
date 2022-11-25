@@ -10,6 +10,7 @@ helmCharts:
       image:
         repository: ghcr.io/ortelius/backstage/app
         tag: "0.0.1"
+        pullPolicy: Always
       ingress:
         enabled: true
         annotations:
@@ -22,6 +23,7 @@ helmCharts:
       image:
         repository: ghcr.io/ortelius/backstage/backend
         tag: "0.0.1"
+        pullPolicy: Always
       ingress:
         enabled: true
         annotations:
