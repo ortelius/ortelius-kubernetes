@@ -60,15 +60,15 @@ helmCharts:
             user: ${POSTGRES_USER}
             password: ${POSTGRES_PASSWORD}
           knexConfig:
-        pool:
-          min: 3
-          max: 12
-          acquireTimeoutMillis: 60000
-          createTimeoutMillis: 30000
-          destroyTimeoutMillis: 5000
-          idleTimeoutMillis: 60000
-          reapIntervalMillis: 1000
-          createRetryIntervalMillis: 200
-          propagateCreateError: false
+            pool:
+              min: 15
+              max: 30
+              acquireTimeoutMillis: 60000
+              createTimeoutMillis: 30000
+              destroyTimeoutMillis: 5000
+              idleTimeoutMillis: 60000
+              reapIntervalMillis: 1000
+              createRetryIntervalMillis: 200
+              propagateCreateError: false
       techdocs:
         builder: external
