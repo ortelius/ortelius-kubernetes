@@ -69,8 +69,6 @@ helmCharts:
         hosts:
           - grafana.ortelius.io
 
-      adminPassword: prom-operator
-
       sidecar:
         dashboards:
           enabled: "true"
