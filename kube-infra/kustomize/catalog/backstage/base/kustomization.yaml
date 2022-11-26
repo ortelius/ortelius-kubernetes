@@ -36,9 +36,9 @@ helmCharts:
       connectionString:
         secret: postgres-secrets
         key: POSTGRES_CONNECTION_STRING
-      host: ortelius.postgres.database.azure.com
+      host: postgresql.postgresql.svc
       port: 5432
-      username: dev
+      username: backstage
       password:
         secret: postgres-secrets
         key: POSTGRES_PASSWORD
