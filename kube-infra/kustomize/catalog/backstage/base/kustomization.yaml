@@ -37,6 +37,7 @@ helmCharts:
         secret: postgres-secrets
         key: POSTGRES_CONNECTION_STRING
       host: postgresql.postgresql.svc
+      database: backstage
       port: 5432
       username: backstage
       password:
