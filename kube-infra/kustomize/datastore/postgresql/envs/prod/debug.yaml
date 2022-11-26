@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: postgres-debug
+    environment: debug
+  name: postgres-debug
+  namespace: backstage
+spec:
+  containers:
+  - args:
+    - sleep
+    - "86400"
+    image: alpine:3.16
+    imagePullPolicy: IfNotPresent
+    name: debug
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+  dnsPolicy: ClusterFirst
+
+# psql -h postgresql.postgresql.svc -U backstage

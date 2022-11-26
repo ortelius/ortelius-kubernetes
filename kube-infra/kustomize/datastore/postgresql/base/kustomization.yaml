@@ -1,6 +1,6 @@
 helmCharts:
 - name: postgresql
-  namespace: postgres
+  namespace: postgresql
   version: 12.1.2
   repo: https://charts.bitnami.com/bitnami
   releaseName: postgresql
