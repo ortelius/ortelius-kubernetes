@@ -9,7 +9,7 @@ helmCharts:
     app:
       image:
         repository: ghcr.io/ortelius/backstage/app
-        tag: "0.0.1"
+        tag: "0.0.2"
         pullPolicy: Always
       ingress:
         enabled: true
@@ -22,7 +22,7 @@ helmCharts:
     backend:
       image:
         repository: ghcr.io/ortelius/backstage/backend
-        tag: "0.0.1"
+        tag: "0.0.2"
         pullPolicy: Always
       ingress:
         enabled: true
