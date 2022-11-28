@@ -1,7 +1,7 @@
 helmCharts:
 - name: backstage
   namespace: backstage
-  version: 0.0.13
+  version: 0.0.14
   repo: https://ortelius.github.io/backstage
   releaseName: backstage
   includeCRDs: true
@@ -74,6 +74,15 @@ helmCharts:
               reapIntervalMillis: 1000
               createRetryIntervalMillis: 200
               propagateCreateError: false
+      kubernetes:
+        serviceLocatorMethod: 'multiTenant'
+        clusterLocatorMethods:
+          - 'config'
+        clusters:
+          - url: ${KUBERNETES_URL}
+            name: aks
+            serviceAccountToken: ${KUBERNETES_TOKEN}
+            authProvider: 'serviceAccount'
       techdocs:
         builder: external
       catalog:
