@@ -6,6 +6,8 @@ helmCharts:
   namespace: dns-infra
   includeCRDs: true
   valuesInline:
+    commonLabels:
+      backstage.io/kubernetes-id: ingress-nginx
     controller:
       affinity:
         podAntiAffinity:
