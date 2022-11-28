@@ -9,7 +9,7 @@ helmCharts:
     app:
       image:
         repository: ghcr.io/ortelius/backstage/app
-        tag: "0.0.1"
+        tag: "0.0.2"
         pullPolicy: Always
       ingress:
         enabled: true
@@ -22,7 +22,7 @@ helmCharts:
     backend:
       image:
         repository: ghcr.io/ortelius/backstage/backend
-        tag: "0.0.1"
+        tag: "0.0.2"
         pullPolicy: Always
       ingress:
         enabled: true
@@ -74,27 +74,27 @@ helmCharts:
               reapIntervalMillis: 1000
               createRetryIntervalMillis: 200
               propagateCreateError: false
-          techdocs:
-            builder: external
-          catalog:
-            import:
-              entityFilename: catalog-info.yaml
-              pullRequestBranchName: backstage-integration
+      techdocs:
+        builder: external
+      catalog:
+        import:
+          entityFilename: catalog-info.yaml
+          pullRequestBranchName: backstage-integration
+        rules:
+          - allow: [Component, System, API, Resource, Location]
+        locations:
+          # Local example data, file locations are relative to the backend process, typically `packages/backend`
+          - type: file
+            target: ../../examples/entities.yaml
+
+          # Local example template
+          - type: file
+            target: ../../examples/template/template.yaml
             rules:
-              - allow: [Component, System, API, Resource, Location]
-            locations:
-              # Local example data, file locations are relative to the backend process, typically `packages/backend`
-              - type: file
-                target: ../../examples/entities.yaml
+              - allow: [Template]
 
-              # Local example template
-              - type: file
-                target: ../../examples/template/template.yaml
-                rules:
-                  - allow: [Template]
-
-              # Local example organizational data
-              - type: file
-                target: ../../examples/org.yaml
-                rules:
-                  - allow: [User, Group]
+          # Local example organizational data
+          - type: file
+            target: ../../examples/org.yaml
+            rules:
+              - allow: [User, Group]
