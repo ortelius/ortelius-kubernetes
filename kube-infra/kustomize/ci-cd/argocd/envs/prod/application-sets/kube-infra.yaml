@@ -17,10 +17,10 @@ spec:
           - path: kube-infra/kustomize/datastore/*
           - path: kube-infra/kustomize/demo/*
           - path: kube-infra/kustomize/security/falco
-          - path: kube-infra/kustomize/observability/kube-prometheus-stack
+          #- path: kube-infra/kustomize/observability/kube-prometheus-stack
           - path: kube-infra/kustomize/observability/loki-stack
           - path: kube-infra/kustomize/observability/opentelemetry-collector
-          - path: kube-infra/kustomize/observability/jaeger
+          #- path: kube-infra/kustomize/observability/jaeger
           - path: kube-infra/kustomize/observability/tracetest
           - path: kube-infra/kustomize/catalog/backstage
         exclude:
