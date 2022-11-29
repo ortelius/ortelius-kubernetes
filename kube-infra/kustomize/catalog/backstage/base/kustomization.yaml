@@ -48,6 +48,13 @@ helmCharts:
         baseUrl: https://backstage.ortelius.io
       organization:
         name: Oretlius Dev
+      auth:
+        environment: production
+        providers:
+          github:
+            development:
+              clientId: ${GITHUB_CLIENT_ID}
+              clientSecret: ${GITHUB_CLIENT_SECRET}
       backend:
         baseUrl: https://backstage-backend.ortelius.io
         listen:
