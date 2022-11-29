@@ -1,7 +1,7 @@
 helmCharts:
 - name: backstage
   namespace: backstage
-  version: 0.0.15
+  version: 0.0.16
   repo: https://ortelius.github.io/backstage
   releaseName: backstage
   includeCRDs: true
@@ -95,7 +95,13 @@ helmCharts:
             Cookie:
               $env: ${ARGOCD_AUTH_TOKEN}
       argocd:
-        baseUrl: ${ARGOCD_BASE_URL}
+        username: ${ARGOCD_USERNAME}
+        password: ${ARGOCD_PASSWORD}
+        appLocatorMethods:
+          - type: 'config'
+            instances:
+              - name: production
+                url: ${ARGOCD_BASE_URL}
 
       techdocs:
         builder: external
