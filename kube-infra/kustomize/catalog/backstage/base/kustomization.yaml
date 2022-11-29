@@ -1,7 +1,7 @@
 helmCharts:
 - name: backstage
   namespace: backstage
-  version: 0.0.14
+  version: 0.0.15
   repo: https://ortelius.github.io/backstage
   releaseName: backstage
   includeCRDs: true
@@ -86,6 +86,17 @@ helmCharts:
                 authProvider: 'serviceAccount'
                 skipTLSVerify: true
                 skipMetricsLookup: true
+      proxy:
+        '/argocd/api':
+          target: ${ARGOCD_BASE_URL}/api/v1/
+          changeOrigin: true
+          secure: false
+          headers:
+            Cookie:
+              $env: ${ARGOCD_AUTH_TOKEN}
+      argocd:
+        baseUrl: ${ARGOCD_BASE_URL}
+
       techdocs:
         builder: external
       catalog:
@@ -95,18 +106,7 @@ helmCharts:
         rules:
           - allow: [Component, System, API, Resource, Location]
         locations:
-          # Local example data, file locations are relative to the backend process, typically `packages/backend`
-          - type: file
-            target: ../../examples/entities.yaml
-
-          # Local example template
-          - type: file
-            target: ../../examples/template/template.yaml
-            rules:
-              - allow: [Template]
-
-          # Local example organizational data
-          - type: file
-            target: ../../examples/org.yaml
+          - type: url
+            target: https://github.com/ortelius/backstage/blob/main/catalog-info.yaml
             rules:
               - allow: [User, Group]
