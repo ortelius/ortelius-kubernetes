@@ -13,10 +13,10 @@ helmCharts:
     collector:
       autoscaling:
         enabled: true
-    allInOne:
+    query:
       enabled: true
       ingress:
-        enabled: false
+        enabled: true
         hosts:
           - jaeger.ortelius.io
         ingressClassName: nginx
