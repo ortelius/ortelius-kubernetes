@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    nginx.ingress.kubernetes.io/ssl-passthrough: "false"
+    nginx.ingress.kubernetes.io/auth-secret: prometheus-ingress-auth
+    nginx.ingress.kubernetes.io/auth-type: basic
+  labels:
+    app: jaeger-query
+  name: jaeger-query
+  namespace: observability
+spec:
+  rules:
+    - host: jaeger.ortelius.io
+      http:
+        paths:
+          - backend:
+              service:
+                name: jaeger-query
+                port:
+                  number: 80
+            path: /*
+            pathType: Prefix
