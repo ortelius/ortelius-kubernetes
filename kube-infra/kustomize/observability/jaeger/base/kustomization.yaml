@@ -13,7 +13,7 @@ helmCharts:
     collector:
       autoscaling:
         enabled: true
-    query:
+    allInOne:
       enabled: true
       ingress:
         enabled: false
