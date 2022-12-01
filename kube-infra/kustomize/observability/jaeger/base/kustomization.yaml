@@ -4,4 +4,4 @@ helmCharts:
   version: 2.37.0
   repo: https://jaegertracing.github.io/helm-charts
   releaseName: jaeger-operator
-  includeCRDs: true
+  includeCRDs: false
