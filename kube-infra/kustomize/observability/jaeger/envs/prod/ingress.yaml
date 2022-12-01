@@ -21,5 +21,5 @@ spec:
                 name: jaeger-query
                 port:
                   number: 80
-            path: /*
+            path: /
             pathType: Prefix
