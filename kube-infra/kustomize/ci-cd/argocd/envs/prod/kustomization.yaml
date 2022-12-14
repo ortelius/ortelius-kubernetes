@@ -9,11 +9,11 @@ resources:
 - application-sets/ortelius-website.yaml
 - argocd-service-monitors.yaml
 
-- application-sets/ortelius-podtatohead-load.yaml
-- application-sets/ortelius-podtatohead-int.yaml
-- application-sets/ortelius-podtatohead-qa.yaml
-- application-sets/ortelius-podtatohead-stag.yaml
-- application-sets/ortelius-podtatohead-prod.yaml
+# - application-sets/ortelius-podtatohead-load.yaml
+# - application-sets/ortelius-podtatohead-int.yaml
+# - application-sets/ortelius-podtatohead-qa.yaml
+# - application-sets/ortelius-podtatohead-stag.yaml
+# - application-sets/ortelius-podtatohead-prod.yaml
 
 namespace: ci-cd
 
