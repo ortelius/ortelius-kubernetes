@@ -1,11 +1,13 @@
 helmCharts:
 - name: falco
   namespace: falco
-  version: 2.2.0
+  version: 2.4.3
   repo: https://falcosecurity.github.io/charts
   releaseName: falco
   includeCRDs: true
   valuesInline:
+    podlabels:
+      backstage.io/kubernetes-id: falco
     fakeEventGenerator:
       enabled: false
     falco:
