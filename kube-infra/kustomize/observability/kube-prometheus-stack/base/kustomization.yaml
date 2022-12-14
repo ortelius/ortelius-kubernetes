@@ -1,7 +1,7 @@
 helmCharts:
 - name: kube-prometheus-stack
   namespace: observability
-  version: 41.9.1
+  version: 43.0.0
   repo: https://prometheus-community.github.io/helm-charts
   releaseName: kube-prometheus-stack
   includeCRDs: true
