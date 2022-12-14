@@ -44,6 +44,10 @@ helmCharts:
 
     grafana:
       #defaultDashboardsTimezone: America/Detroit
+      admin:
+        existingSecret: "grafana-auth"
+        userKey: admin-user
+        passwordKey: admin-password
 
       datasources:
         enabled: true

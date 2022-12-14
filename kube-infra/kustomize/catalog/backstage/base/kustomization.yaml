@@ -47,7 +47,7 @@ helmCharts:
         title: Ortelius Backstage
         baseUrl: https://backstage.ortelius.io
       organization:
-        name: Oretlius Dev
+        name: Ortelius Dev
       auth:
         environment: production
         providers:
@@ -55,6 +55,11 @@ helmCharts:
             development:
               clientId: ${GITHUB_CLIENT_ID}
               clientSecret: ${GITHUB_CLIENT_SECRET}
+          integrations:
+            github:
+              - host: github.com
+                apps:
+                  - $include: github-app-backstage-ortelius-credentials.yaml
       backend:
         baseUrl: https://backstage-backend.ortelius.io
         listen:
