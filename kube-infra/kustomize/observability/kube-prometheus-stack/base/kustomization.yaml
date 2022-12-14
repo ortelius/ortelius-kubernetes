@@ -6,6 +6,8 @@ helmCharts:
   releaseName: kube-prometheus-stack
   includeCRDs: true
   valuesInline:
+    commonLabels:
+      backstage.io/kubernetes-id: kube-prometheus-stack
     prometheus:
       ingress:
         enabled: true
