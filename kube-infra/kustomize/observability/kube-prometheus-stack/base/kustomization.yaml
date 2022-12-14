@@ -6,6 +6,8 @@ helmCharts:
   releaseName: kube-prometheus-stack
   includeCRDs: true
   valuesInline:
+    commonLabels:
+      backstage.io/kubernetes-id: kube-prometheus-stack
     prometheus:
       ingress:
         enabled: true
@@ -44,6 +46,10 @@ helmCharts:
 
     grafana:
       #defaultDashboardsTimezone: America/Detroit
+      admin:
+        existingSecret: "grafana-auth"
+        userKey: admin-user
+        passwordKey: admin-password
 
       datasources:
         enabled: true
