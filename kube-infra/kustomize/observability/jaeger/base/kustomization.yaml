@@ -1,31 +1,17 @@
 helmCharts:
 - name: jaeger
   namespace: observability
-  version: 0.64.1
+  version: 0.64.2
   repo: https://jaegertracing.github.io/helm-charts
   releaseName: jaeger
-  includeCRDs: false
+  includeCRDs: true
   valuesInline:
     provisionDataStore:
-      cassandra: true
+      elasticsearch: true
     storage:
-      type: cassandra
+      type: elasticsearch
     collector:
       autoscaling:
         enabled: true
     query:
-      ingress:
-        enabled: false
-        hosts:
-          - jaeger.ortelius.io
-        ingressClassName: nginx
-        annotations:
-          kubernetes.io/ingress.class: nginx
-          nginx.ingress.kubernetes.io/add-base-url: "true"
-          nginx.ingress.kubernetes.io/rewrite-target: /tracing/$2
-          nginx.ingress.kubernetes.io/backend-protocol: "false"
-          nginx.ingress.kubernetes.io/auth-type: basic
-          nginx.ingress.kubernetes.io/auth-secret: prometheus-ingress-auth
-          nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
-        labels:
-          app: jaeger-query
+      enabled: true
