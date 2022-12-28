@@ -1,7 +1,7 @@
 helmCharts:
 - name: backstage
   namespace: backstage
-  version: 0.0.17
+  version: 0.0.20
   repo: https://ortelius.github.io/backstage
   releaseName: backstage
   includeCRDs: true
@@ -59,7 +59,7 @@ helmCharts:
             github:
               - host: github.com
                 apps:
-                  - $include: github-app-backstage-ortelius-credentials.yaml
+                  - $include: github-app-credentials.yaml
       backend:
         baseUrl: https://backstage-backend.ortelius.io
         listen:
@@ -114,7 +114,6 @@ helmCharts:
             instances:
               - name: production
                 url: ${ARGOCD_BASE_URL}
-
       techdocs:
         builder: external
       catalog:
