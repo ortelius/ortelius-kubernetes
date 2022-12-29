@@ -9,6 +9,7 @@ helmCharts:
     DockerRepo: "quay.io/ortelius/website"
     DockerTag: "main-v9.0.0.373-ge6f7f2d"
     service:
+      port: 80
       serviceMonitor:
         enabled: true
     ingress:
