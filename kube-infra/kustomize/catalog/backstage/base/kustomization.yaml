@@ -53,8 +53,8 @@ helmCharts:
         providers:
           github:
             development:
-              clientId: ${GITHUB_CLIENT_ID}
-              clientSecret: ${GITHUB_CLIENT_SECRET}
+              clientId: ${GITHUB_OAUTH_CLIENT_ID}
+              clientSecret: ${GITHUB_OAUTH_CLIENT_SECRET}
           integrations:
             github:
               - host: github.com
