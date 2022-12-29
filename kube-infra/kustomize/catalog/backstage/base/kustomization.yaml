@@ -59,7 +59,7 @@ helmCharts:
             github:
               - host: github.com
                 apps:
-                  - $include: github-app-backstage-ortelius-credentials.yaml
+                  - $include: github-app-credentials.yaml
       backend:
         baseUrl: https://backstage-backend.ortelius.io
         listen:
