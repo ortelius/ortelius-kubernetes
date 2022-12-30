@@ -126,4 +126,8 @@ helmCharts:
           - type: url
             target: https://github.com/ortelius/backstage/blob/main/catalog-info.yaml
             rules:
-              - allow: [User, Group]
+              - allow: [Component, System, API, Resource, Location, Domain, Location]
+          - type: github-org
+            target: https://github.com/ortelius
+            rules:
+              - allow: [Group, User]
