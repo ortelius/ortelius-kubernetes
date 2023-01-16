@@ -5,6 +5,7 @@ resources:
 - argocd-server-ingress.yaml
 - argocd-appproject.yaml
 - application-sets/kube-infra.yaml
+- application-sets/ortelius-podtatohead-prod.yaml
 - application-sets/ortelius-docs.yaml
 - application-sets/ortelius-website.yaml
 - argocd-service-monitors.yaml

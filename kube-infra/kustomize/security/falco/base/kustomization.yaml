@@ -1,7 +1,7 @@
 helmCharts:
 - name: falco
   namespace: falco
-  version: 2.4.3
+  version: 2.4.5
   repo: https://falcosecurity.github.io/charts
   releaseName: falco
   includeCRDs: true
