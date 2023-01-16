@@ -1,7 +1,7 @@
 helmCharts:
 - name: jaeger
   namespace: observability
-  version: 0.64.2
+  version: 0.66.1
   repo: https://jaegertracing.github.io/helm-charts
   releaseName: jaeger
   includeCRDs: true

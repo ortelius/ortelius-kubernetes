@@ -7,59 +7,83 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: security
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: dns-infra
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: observability
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: keptn
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: keptn-jes
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: flux-system
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: falco
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: ortelius-docs
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: ortelius-www
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: ortelius
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: backstage
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: postgresql
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
 ---
