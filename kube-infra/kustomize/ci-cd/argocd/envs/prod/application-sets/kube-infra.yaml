@@ -14,7 +14,7 @@ spec:
           - path: kube-infra/kustomize/ci-cd/*
           - path: kube-infra/kustomize/dns-infra/ingress-nginx
           - path: kube-infra/kustomize/datastore/*
-          - path: kube-infra/kustomize/security/falco
+         # - path: kube-infra/kustomize/security/falco
           - path: kube-infra/kustomize/observability/kube-prometheus-stack
           - path: kube-infra/kustomize/observability/loki-stack
           - path: kube-infra/kustomize/observability/opentelemetry-collector
