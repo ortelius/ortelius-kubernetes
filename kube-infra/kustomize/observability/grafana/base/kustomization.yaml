@@ -22,7 +22,6 @@ helmCharts:
       size: 10Gi
 
     plugins:
-      - grafana-github-datasource
       - grafana-clock-panel
       - grafana-piechart-panel
 
@@ -57,12 +56,12 @@ helmCharts:
 
     sidecar:
       dashboards:
-        enabled: "true"
+        enabled: "false"
         provider:
           allowUiUpdates: true
           disableDeletion: false
       alerts:
-        enabled: true
+        enabled: false
         label: grafana_alert
 
     dashboardProviders:
@@ -77,14 +76,6 @@ helmCharts:
          editable: true
          options:
            path: /var/lib/grafana/dashboards/default
-       - name: 'admin'
-         orgId: 1
-         folder: 'admin'
-         type: file
-         disableDeletion: false
-         editable: false
-         options:
-           path: /var/lib/grafana/dashboards/admin
 
     dashboards:
       default:
