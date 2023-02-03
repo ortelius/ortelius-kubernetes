@@ -16,7 +16,7 @@ helmCharts:
 
     persistence:
       type: pvc
-      enabled: true
+      enabled: false
       accessModes:
         - ReadWriteOnce
       size: 10Gi
