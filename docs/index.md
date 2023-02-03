@@ -19,4 +19,4 @@
 | [opentelemetry-collector](https://) | [link](http://artifacthub.io) | For Collecting Open Telemetry |
 
 ### Maintainers:
-* Brad McCoy ([@basiq-brad](https://github.com/bradmccoydev)), Ortelius
+* Brad McCoy ([@bradmccoydev](https://github.com/bradmccoydev)), Ortelius

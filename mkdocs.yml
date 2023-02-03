@@ -1,4 +1,4 @@
-site_name: 'basiqio-platform'
+site_name: 'ortelius'
 
 nav:
   - Home: index.md
