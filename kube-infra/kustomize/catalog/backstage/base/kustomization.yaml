@@ -106,6 +106,8 @@ helmCharts:
           headers:
             Cookie:
               $env: ${ARGOCD_AUTH_TOKEN}
+        '/prometheus/api':
+          target: http://kube-prometheus-stack-prometheus.observability:9090/api/v1
       argocd:
         username: ${ARGOCD_USERNAME}
         password: ${ARGOCD_PASSWORD}

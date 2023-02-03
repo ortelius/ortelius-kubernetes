@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: keptn-ortelius-service-prod
-  namespace: ortelius-prod
+  namespace: demo
   annotations:
     notifications.argoproj.io/subscribe.on-rollout-completed.slack: argo-notifications
     notifications.argoproj.io/subscribe.on-rollout-updated.slack: argo-notifications

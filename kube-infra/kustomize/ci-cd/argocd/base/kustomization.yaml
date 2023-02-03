@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- https://raw.githubusercontent.com/argoproj/argo-cd/v2.5.5/manifests/install.yaml
+- https://raw.githubusercontent.com/argoproj/argo-cd/v2.5.8/manifests/install.yaml
 - argocd-manager-role-binding.yaml
 - argocd-manager-role.yaml
 - argocd-manager.yaml
