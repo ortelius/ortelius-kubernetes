@@ -9,6 +9,8 @@ helmCharts:
     commonLabels:
       backstage.io/kubernetes-id: kube-prometheus-stack
       ortelius.io/repo: ortelius-kubernetes
+    grafana:
+      enabled: false
     prometheus:
       ingress:
         enabled: true
@@ -48,5 +50,3 @@ helmCharts:
       enabled: false
     kubeDns:
       enabled: true
-    grafana:
-      enabled: false
