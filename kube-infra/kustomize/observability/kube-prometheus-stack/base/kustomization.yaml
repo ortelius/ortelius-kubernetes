@@ -46,6 +46,7 @@ helmCharts:
 
     coreDns:
       enabled: false
-
     kubeDns:
       enabled: true
+    grafana:
+      enabled: false
