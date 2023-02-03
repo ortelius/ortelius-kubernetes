@@ -9,4 +9,4 @@ resources:
 - canary-preview-service.yaml
 - canary-rollout.yaml
 - canary-service.yaml
-namespace: ortelius-prod
+namespace: demo

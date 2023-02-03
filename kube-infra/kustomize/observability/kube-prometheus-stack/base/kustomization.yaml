@@ -47,13 +47,13 @@ helmCharts:
     grafana:
       #defaultDashboardsTimezone: America/Detroit
       admin:
-        existingSecret: "grafana-auth"
+        existingSecret: "kube-prometheus-stack-grafana"
         userKey: admin-user
         passwordKey: admin-password
 
       datasources:
         enabled: true
-        defaultDatasourceEnabled:
+        defaultDatasourceEnabled: true
         uid: prometheus
         url: http://kube-prometheus-stack-prometheus.observability:9090
 
