@@ -8,7 +8,7 @@ helmCharts:
   valuesInline:
     extraLabels:
       backstage.io/kubernetes-id: grafana
-      ortelius.io/repo: ortelius/ortelius-kubernetes
+      ortelius.io/repo: ortelius-kubernetes
     admin:
       existingSecret: "admin"
       userKey: admin-user

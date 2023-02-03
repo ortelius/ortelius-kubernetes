@@ -8,7 +8,7 @@ helmCharts:
   valuesInline:
     commonLabels:
       backstage.io/kubernetes-id: kube-prometheus-stack
-      ortelius.io/repo: ortelius/ortelius-kubernetes
+      ortelius.io/repo: ortelius-kubernetes
     prometheus:
       ingress:
         enabled: true
