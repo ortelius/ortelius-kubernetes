@@ -1,0 +1,55 @@
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: admin
+  description: Admin
+spec:
+  owner: user:guest
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: Platform
+  description: Platform
+spec:
+  owner: user:guest
+  domain: admin
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ingress-nginx
+  description: Ortelius Cluster Ingress
+  annotations:
+    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-readme-path: README.md
+    backstage.io/kubernetes-id: ingress-nginx
+    argocd/app-name: ingress-nginx
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - platform
+spec:
+  type: service
+  owner: user:guest
+  system: Platform
+  lifecycle: production
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: kube-prometheus-stack
+  description: Ortelius Grafana Instance
+  annotations:
+    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-readme-path: README.md
+    argocd/app-name: kube-prometheus-stack
+    backstage.io/kubernetes-id: kube-prometheus-stack
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - platform
+spec:
+  type: service
+  owner: user:guest
+  system: Platform
+  lifecycle: production
+---
