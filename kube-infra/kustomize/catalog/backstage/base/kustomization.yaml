@@ -126,6 +126,10 @@ helmCharts:
           - allow: [Component, System, API, Resource, Location]
         locations:
           - type: url
+            target: https://github.com/ortelius/ortelius-kubernetes/blob/main/catalog-info.yaml
+            rules:
+              - allow: [Component, System, API, Resource, Location, Domain, Location, Group]
+          - type: url
             target: https://github.com/ortelius/backstage/blob/main/catalog-info.yaml
             rules:
               - allow: [Component, System, API, Resource, Location, Domain, Location]
