@@ -34,9 +34,9 @@ spec:
   system: Platform
   lifecycle: production
   dependsOn:
-    - resource: argocd
-    - resource: kube-prometheus-stack
-    - resource: jaeger
+    - component:default/argocd
+    - component:default/kube-prometheus-stack
+    - component:default/jaeger
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -57,10 +57,10 @@ spec:
   system: Platform
   lifecycle: production
   dependsOn:
-    - resource: argocd
-    - resource: ingress-nginx
-    - resource: cert-manager
-    - resource: external-dns
+    - component:default/argocd
+    - component:default/ingress-nginx
+    - component:default/cert-manager
+    - component:default/external-dns
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -81,10 +81,10 @@ spec:
   system: Platform
   lifecycle: production
   dependsOn:
-    - resource: argocd
-    - resource: cert-manager
-    - resource: external-dns
-    - resource: ingress-nginx
+    - component:default/argocd
+    - component:default/cert-manager
+    - component:default/external-dns
+    - component:default/ingress-nginx
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -105,9 +105,9 @@ spec:
   system: Platform
   lifecycle: production
   dependsOn:
-    - resource: cert-manager
-    - resource: external-dns
-    - resource: ingress-nginx
+    - component:default/cert-manager
+    - component:default/external-dns
+    - component:default/ingress-nginx
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -128,10 +128,10 @@ spec:
   system: Platform
   lifecycle: production
   dependsOn:
-    - resource: argocd
-    - resource: cert-manager
-    - resource: external-dns
-    - resource: ingress-nginx
+    - component:default/argocd
+    - component:default/cert-manager
+    - component:default/external-dns
+    - component:default/ingress-nginx
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -152,10 +152,10 @@ spec:
   system: Platform
   lifecycle: production
   dependsOn:
-    - resource: argocd
-    - resource: cert-manager
-    - resource: external-dns
-    - resource: ingress-nginx
+    - component:default/argocd
+    - component:default/cert-manager
+    - component:default/external-dns
+    - component:default/ingress-nginx
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -176,7 +176,7 @@ spec:
   system: Platform
   lifecycle: production
   dependsOn:
-    - resource: argocd
+    - component:default/argocd
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -197,7 +197,7 @@ spec:
   system: Platform
   lifecycle: production
   dependsOn:
-    - resource: argocd
+    - component:default/argocd
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -218,7 +218,7 @@ spec:
   system: Platform
   lifecycle: production
   dependsOn:
-    - resource: argocd
+    - component:default/argocd
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -239,7 +239,7 @@ spec:
   system: Platform
   lifecycle: production
   dependsOn:
-    - resource: argocd
+    - component:default/argocd
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -260,7 +260,7 @@ spec:
   system: Platform
   lifecycle: production
   dependsOn:
-    - resource: argocd
+    - component:default/argocd
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -281,5 +281,47 @@ spec:
   system: Platform
   lifecycle: production
   dependsOn:
-    - resource: argocd
+    - component:default/argocd
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: external-dns
+  description: Ortelius External DNS Cluster
+  annotations:
+    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-readme-path: README.md
+    argocd/app-name: postgresql
+    backstage.io/kubernetes-id: postgresql
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - platform
+spec:
+  type: service
+  owner: user:guest
+  system: Platform
+  lifecycle: production
+  dependsOn:
+    - component:default/argocd
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cert-manager
+  description: Ortelius Cert Manager
+  annotations:
+    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-readme-path: README.md
+    argocd/app-name: postgresql
+    backstage.io/kubernetes-id: postgresql
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - platform
+spec:
+  type: service
+  owner: user:guest
+  system: Platform
+  lifecycle: production
+  dependsOn:
+    - component:default/argocd
 ---
