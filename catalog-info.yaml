@@ -20,6 +20,16 @@ kind: Component
 metadata:
   name: ingress-nginx
   description: Ortelius Cluster Ingress
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      title: Artifact Hub
+      icon: dashboard
+    - url: https://www.nginx.com/products/nginx-ingress-controller/
+      title: Project Website
+      icon: dashboard
   annotations:
     github.com/project-slug: ortelius/ortelius-docs
     github.com/project-readme-path: README.md
@@ -43,6 +53,16 @@ kind: Component
 metadata:
   name: kube-prometheus-stack
   description: Ortelius Grafana Instance
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      title: Artifact Hub
+      icon: dashboard
+    - url: https://prometheus-operator.dev/
+      title: Project Website
+      icon: dashboard
   annotations:
     github.com/project-slug: ortelius/ortelius-docs
     github.com/project-readme-path: README.md
@@ -67,6 +87,16 @@ kind: Component
 metadata:
   name: argo-rollouts
   description: Ortelius Argo Rollouts Cluster
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://artifacthub.io/packages/helm/argo/argo-rollouts
+      title: Artifact Hub
+      icon: dashboard
+    - url: https://argoproj.github.io/argo-rollouts/features/helm/
+      title: Project Website
+      icon: dashboard
   annotations:
     github.com/project-slug: ortelius/ortelius-docs
     github.com/project-readme-path: README.md
@@ -91,6 +121,16 @@ kind: Component
 metadata:
   name: argocd
   description: Ortelius Argo CD Cluster
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://artifacthub.io/packages/helm/argo/argo-cd
+      title: Artifact Hub
+      icon: dashboard
+    - url: https://argoproj.github.io/cd/
+      title: Project Website
+      icon: dashboard
   annotations:
     github.com/project-slug: ortelius/ortelius-docs
     github.com/project-readme-path: README.md
@@ -114,6 +154,16 @@ kind: Component
 metadata:
   name: backstage
   description: Ortelius Backstage Cluster
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://artifacthub.io/packages/helm/deliveryhero/backstage
+      title: Artifact Hub
+      icon: dashboard
+    - url: https://backstage.io/
+      title: Project Website
+      icon: dashboard
   annotations:
     github.com/project-slug: ortelius/ortelius-docs
     github.com/project-readme-path: README.md
@@ -138,6 +188,16 @@ kind: Component
 metadata:
   name: jaeger
   description: Ortelius Jaeger Cluster
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://artifacthub.io/packages/helm/jaegertracing/jaeger
+      title: Artifact Hub
+      icon: dashboard
+    - url: https://www.jaegertracing.io/
+      title: Project Website
+      icon: dashboard
   annotations:
     github.com/project-slug: ortelius/ortelius-docs
     github.com/project-readme-path: README.md
@@ -162,6 +222,16 @@ kind: Component
 metadata:
   name: loki-stack
   description: Ortelius Loki-Stack Cluster
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://artifacthub.io/packages/helm/grafana/loki-stack
+      title: Artifact Hub
+      icon: dashboard
+    - url: https://grafana.com/oss/loki/
+      title: Project Website
+      icon: dashboard
   annotations:
     github.com/project-slug: ortelius/ortelius-docs
     github.com/project-readme-path: README.md
@@ -183,6 +253,16 @@ kind: Component
 metadata:
   name: opentelemetry-collector
   description: Ortelius Openelemetry Collector Cluster
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://artifacthub.io/packages/helm/opentelemetry-helm/opentelemetry-collector
+      title: Artifact Hub
+      icon: dashboard
+    - url: https://opentelemetry.io/
+      title: Project Website
+      icon: dashboard
   annotations:
     github.com/project-slug: ortelius/ortelius-docs
     github.com/project-readme-path: README.md
@@ -204,6 +284,13 @@ kind: Component
 metadata:
   name: ortelius-docs
   description: Ortelius Docs
+  links:
+    - url: https://github.com/ortelius/ortelius-docs
+      title: GitHub
+      icon: dashboard
+    - url: https://docs.ortelius.io/guides/
+      title: Project Website
+      icon: dashboard
   annotations:
     github.com/project-slug: ortelius/ortelius-docs
     github.com/project-readme-path: README.md
@@ -225,6 +312,13 @@ kind: Component
 metadata:
   name: ortelius-www
   description: Ortelius Website
+  links:
+    - url: https://github.com/ortelius/ortelius
+      title: GitHub
+      icon: dashboard
+    - url: https://ortelius.io/
+      title: Project Website
+      icon: dashboard
   annotations:
     github.com/project-slug: ortelius/ortelius-docs
     github.com/project-readme-path: README.md
@@ -246,6 +340,13 @@ kind: Component
 metadata:
   name: podtatohead-prod
   description: Ortelius Podtatohead Cluster
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://github.com/podtato-head/podtato-head
+      title: Project Website
+      icon: dashboard
   annotations:
     github.com/project-slug: ortelius/ortelius-docs
     github.com/project-readme-path: README.md
@@ -267,6 +368,16 @@ kind: Component
 metadata:
   name: postgresql
   description: Ortelius postgress SQL Cluster
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: http://artifacthub.io/packages/helm/bitnami/postgresql
+      title: Artifact Hub
+      icon: dashboard
+    - url: https://www.postgresql.org/
+      title: Project Website
+      icon: dashboard
   annotations:
     github.com/project-slug: ortelius/ortelius-docs
     github.com/project-readme-path: README.md
@@ -288,6 +399,16 @@ kind: Component
 metadata:
   name: external-dns
   description: Ortelius External DNS Cluster
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://artifacthub.io/packages/helm/bitnami/external-dns
+      title: Artifact Hub
+      icon: dashboard
+    - url: https://https://github.com/kubernetes-sigs/external-dns
+      title: Project Website
+      icon: dashboard
   annotations:
     github.com/project-slug: ortelius/ortelius-docs
     github.com/project-readme-path: README.md
@@ -309,6 +430,16 @@ kind: Component
 metadata:
   name: cert-manager
   description: Ortelius Cert Manager
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      title: Artifact Hub
+      icon: dashboard
+    - url: https://certmanager.io
+      title: Project Website
+      icon: dashboard
   annotations:
     github.com/project-slug: ortelius/ortelius-docs
     github.com/project-readme-path: README.md
@@ -325,3 +456,4 @@ spec:
   dependsOn:
     - component:default/argocd
 ---
+
