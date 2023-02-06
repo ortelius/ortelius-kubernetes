@@ -15,6 +15,7 @@ nav:
   - jaeger: jaeger.md
   - grafana: grafana.md
   - opentelemetry-collector: opentelemetry-collector.md
+  - podtatohead: podtatohead.md
 
 plugins:
   - techdocs-core
