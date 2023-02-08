@@ -1,0 +1,7 @@
+helmCharts:
+- name: argo-events
+  namespace: ci-cd
+  version: 2.1.2
+  repo: https://argoproj.github.io/argo-helm
+  releaseName: argo-events
+  includeCRDs: true
