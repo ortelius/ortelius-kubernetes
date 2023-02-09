@@ -1,6 +1,6 @@
 helmCharts:
 - name: argo-workflows
-  namespace: argo
+  namespace: ci-cd
   version: 0.22.10
   repo: https://argoproj.github.io/argo-helm
   releaseName: argo-workflows
