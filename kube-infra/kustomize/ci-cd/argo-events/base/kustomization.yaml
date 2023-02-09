@@ -5,3 +5,16 @@ helmCharts:
   repo: https://argoproj.github.io/argo-helm
   releaseName: argo-events
   includeCRDs: true
+  valuesInline:
+    global:
+      additionalLabels:
+        backstage.io/kubernetes-id: grafana
+        ortelius.io/repo: ortelius-kubernetes
+    controller:
+      metrics:
+        enabled: true
+      serviceMonitor:
+        enabled: true
+        namespace: "observability"
+        additionalLabels:
+          release: kube-prometheus-stack
