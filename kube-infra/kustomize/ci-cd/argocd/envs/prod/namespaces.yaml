@@ -87,3 +87,10 @@ metadata:
   annotations:
     keptn.sh/lifecycle-toolkit: "enabled"
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argo-events
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
+---

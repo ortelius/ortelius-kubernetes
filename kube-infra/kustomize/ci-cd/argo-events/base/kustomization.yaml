@@ -1,6 +1,6 @@
 helmCharts:
 - name: argo-events
-  namespace: ci-cd
+  namespace: argo-events
   version: 2.1.2
   repo: https://argoproj.github.io/argo-helm
   releaseName: argo-events

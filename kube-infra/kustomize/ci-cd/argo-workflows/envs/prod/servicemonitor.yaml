@@ -1,0 +1,25 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    backstage.io/kubernetes-id: argo-workflows
+    ortelius.io/repo: ortelius-kubernetes
+    app.kubernetes.io/component: workflow-controller
+    app.kubernetes.io/instance: argo-workflows
+    app.kubernetes.io/name: argo-workflows-workflow-controller
+    app.kubernetes.io/part-of: argo-workflows
+    release: kube-prometheus-stack
+  name: argo-workflows-workflow-controller
+  namespace: observability
+spec:
+  endpoints:
+  - interval: 30s
+    path: /metrics
+    port: metrics
+  namespaceSelector:
+    matchNames:
+    - ci-cd
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: argo-workflows
+      app.kubernetes.io/name: argo-workflows-workflow-controller
