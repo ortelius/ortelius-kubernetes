@@ -20,7 +20,7 @@ spec:
       paths:
       - backend:
           service:
-            name: argo-workflows-server
+            name: argo-server
             port:
               number: 2746
         path: /
