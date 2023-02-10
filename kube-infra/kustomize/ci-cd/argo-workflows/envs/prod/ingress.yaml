@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    nginx.ingress.kubernetes.io/ssl-passthrough: "false"
+  labels:
+    backstage.io/kubernetes-id: argo-workflows
+    ortelius.io/repo: ortelius-kubernetes
+    app.kubernetes.io/component: server
+    app.kubernetes.io/instance: argo-workflows
+    app.kubernetes.io/name: argo-workflows-server
+    app.kubernetes.io/part-of: argo-workflows
+  name: argo-workflows-server
+spec:
+  rules:
+  - host: canary.ortelius.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: argo-workflows-server
+            port:
+              number: 2746
+        path: /
+        pathType: Prefix
