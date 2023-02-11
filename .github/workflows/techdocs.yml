@@ -19,8 +19,7 @@ jobs:
       AWS_REGION: ${{ secrets.AWS_REGION }}
       ENTITY_NAMESPACE: 'default'
       ENTITY_KIND: 'Component'
-      ENTITY_NAME: 'argocd'
-     
+      ENTITY_NAME: 'podtatohead-prod'
 
     steps:
       - name: Checkout code

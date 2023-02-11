@@ -117,7 +117,17 @@ helmCharts:
               - name: production
                 url: ${ARGOCD_BASE_URL}
       techdocs:
-        builder: external
+        builder: 'external'
+        generator:
+          runIn: 'local'
+        publisher:
+          type: 'awsS3'
+          awsS3:
+            bucketName: 'ortelius-techdocs-dev'
+            region: ${AWS_DEFAULT_REGION}
+            credentials:
+              accessKeyId: ${AWS_ACCESS_KEY_ID}
+              secretAccessKey: ${AWS_ACCESS_KEY_SECRET}
       catalog:
         import:
           entityFilename: catalog-info.yaml
