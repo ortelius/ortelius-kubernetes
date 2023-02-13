@@ -31,7 +31,7 @@ metadata:
       title: Project Website
       icon: dashboard
   annotations:
-    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-slug: ortelius/platform
     github.com/project-readme-path: README.md
     backstage.io/kubernetes-id: ingress-nginx
     argocd/app-name: ingress-nginx
@@ -64,7 +64,7 @@ metadata:
       title: Project Website
       icon: dashboard
   annotations:
-    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-slug: ortelius/platform
     github.com/project-readme-path: README.md
     argocd/app-name: kube-prometheus-stack
     backstage.io/kubernetes-id: kube-prometheus-stack
@@ -98,7 +98,7 @@ metadata:
       title: Project Website
       icon: dashboard
   annotations:
-    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-slug: ortelius/platform
     github.com/project-readme-path: README.md
     argocd/app-name: argo-rollouts
     backstage.io/kubernetes-id: argo-rollouts
@@ -132,7 +132,7 @@ metadata:
       title: Project Website
       icon: dashboard
   annotations:
-    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-slug: ortelius/platform
     github.com/project-readme-path: README.md
     argocd/app-name: argocd
     backstage.io/kubernetes-id: argocd
@@ -165,7 +165,7 @@ metadata:
       title: Project Website
       icon: dashboard
   annotations:
-    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-slug: ortelius/platform
     github.com/project-readme-path: README.md
     argocd/app-name: backstage
     backstage.io/kubernetes-id: backstage
@@ -182,6 +182,7 @@ spec:
     - component:default/cert-manager
     - component:default/external-dns
     - component:default/ingress-nginx
+    - component:default/postgresql
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -199,7 +200,7 @@ metadata:
       title: Project Website
       icon: dashboard
   annotations:
-    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-slug: ortelius/platform
     github.com/project-readme-path: README.md
     argocd/app-name: jaeger
     backstage.io/kubernetes-id: jaeger
@@ -233,7 +234,7 @@ metadata:
       title: Project Website
       icon: dashboard
   annotations:
-    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-slug: ortelius/platform
     github.com/project-readme-path: README.md
     argocd/app-name: loki-stack
     backstage.io/kubernetes-id: loki-stack
@@ -264,7 +265,7 @@ metadata:
       title: Project Website
       icon: dashboard
   annotations:
-    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-slug: ortelius/platform
     github.com/project-readme-path: README.md
     argocd/app-name: opentelemetry-collector
     backstage.io/kubernetes-id: opentelemetry-collector
@@ -320,7 +321,7 @@ metadata:
       title: Project Website
       icon: dashboard
   annotations:
-    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-slug: ortelius/platform
     github.com/project-readme-path: README.md
     argocd/app-name: ortelius-www
     backstage.io/kubernetes-id: ortelius-www
@@ -348,7 +349,7 @@ metadata:
       title: Project Website
       icon: dashboard
   annotations:
-    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-slug: ortelius/platform
     github.com/project-readme-path: README.md
     argocd/app-name: podtatohead-prod
     backstage.io/kubernetes-id: podtatohead-prod
@@ -362,6 +363,9 @@ spec:
   lifecycle: production
   dependsOn:
     - component:default/argocd
+    - component:default/cert-manager
+    - component:default/external-dns
+    - component:default/ingress-nginx
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -379,7 +383,7 @@ metadata:
       title: Project Website
       icon: dashboard
   annotations:
-    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-slug: ortelius/platform
     github.com/project-readme-path: README.md
     argocd/app-name: postgresql
     backstage.io/kubernetes-id: postgresql
@@ -410,10 +414,10 @@ metadata:
       title: Project Website
       icon: dashboard
   annotations:
-    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-slug: ortelius/platform
     github.com/project-readme-path: README.md
-    argocd/app-name: postgresql
-    backstage.io/kubernetes-id: postgresql
+    argocd/app-name: external-dns
+    backstage.io/kubernetes-id: external-dns
     backstage.io/techdocs-ref: dir:.
   tags:
     - platform
@@ -441,10 +445,10 @@ metadata:
       title: Project Website
       icon: dashboard
   annotations:
-    github.com/project-slug: ortelius/ortelius-docs
+    github.com/project-slug: ortelius/platform
     github.com/project-readme-path: README.md
-    argocd/app-name: postgresql
-    backstage.io/kubernetes-id: postgresql
+    argocd/app-name: cert-manager
+    backstage.io/kubernetes-id: cert-manager
     backstage.io/techdocs-ref: dir:.
   tags:
     - platform
@@ -456,4 +460,3 @@ spec:
   dependsOn:
     - component:default/argocd
 ---
-

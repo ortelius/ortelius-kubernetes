@@ -1,9 +1,28 @@
 helmCharts:
 - name: opentelemetry-collector
   namespace: observability
-  version: 0.47.0
+  version: 0.48.1
   repo: https://open-telemetry.github.io/opentelemetry-helm-charts
   releaseName: opentelemetry-collector
   includeCRDs: false
   valuesInline:
     mode: deployment
+    podLabels:
+      backstage.io/kubernetes-id: cert-manager
+      basiq.io/repo: platform
+
+    podMonitor:
+      enabled: false
+      metricsEndpoints:
+        - port: metrics
+          interval: 300s
+      extraLabels:
+        release: kube-prometheus-stack
+
+    serviceMonitor:
+      enabled: true
+      metricsEndpoints:
+        - port: metrics
+          interval: 300s
+      extraLabels:
+        release: kube-prometheus-stack
