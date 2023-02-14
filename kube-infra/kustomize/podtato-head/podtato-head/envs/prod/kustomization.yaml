@@ -13,6 +13,9 @@ namespace: podtatohead-prod
 ## labels to be applied to all resources
 commonLabels:
   variant: prod
+  app.kubernetes.io/name: podtato-head
+  backstage.io/kubernetes-id: podtatohead-prod
+  ortelius.io/repo: ortelius-kubernetes
 
 ## strategic merge patches to be applied to resources
 patchesStrategicMerge:

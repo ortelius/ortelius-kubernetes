@@ -1,8 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: ortelius-podtatohead-prod
+  name: podtatohead-prod
   namespace: ci-cd
+  labels:
+    app.kubernetes.io/name: podtato-head
+    backstage.io/kubernetes-id: podtatohead-prod
+    ortelius.io/repo: ortelius-kubernetes
 spec:
   generators:
   - matrix:
@@ -31,6 +35,9 @@ spec:
         keptnService: podtatohead
         keptnStage: '{{cluster}}'
         keptnSequence: test
+        app.kubernetes.io/name: podtato-head
+        backstage.io/kubernetes-id: podtatohead-prod
+        ortelius.io/repo: ortelius-kubernetes
     spec:
       project: ortelius
       source:
