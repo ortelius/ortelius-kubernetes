@@ -339,37 +339,6 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: podtatohead-prod
-  description: Ortelius Podtatohead Cluster
-  links:
-    - url: https://github.com/ortelius/ortelius-kubernetes
-      title: GitHub
-      icon: dashboard
-    - url: https://github.com/podtato-head/podtato-head
-      title: Project Website
-      icon: dashboard
-  annotations:
-    github.com/project-slug: ortelius/platform
-    github.com/project-readme-path: README.md
-    argocd/app-name: podtatohead-prod
-    backstage.io/kubernetes-id: podtatohead-prod
-    backstage.io/techdocs-ref: dir:.
-  tags:
-    - platform
-spec:
-  type: service
-  owner: user:guest
-  system: Platform
-  lifecycle: production
-  dependsOn:
-    - component:default/argocd
-    - component:default/cert-manager
-    - component:default/external-dns
-    - component:default/ingress-nginx
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
   name: postgresql
   description: Ortelius postgress SQL Cluster
   links:

@@ -21,5 +21,5 @@ resources:
 
 commonLabels:
   app.kubernetes.io/name: podtato-head
-  backstage.io/kubernetes-id: ingress-nginx
+  backstage.io/kubernetes-id: podtatohead-prod
   ortelius.io/repo: ortelius-kubernetes
