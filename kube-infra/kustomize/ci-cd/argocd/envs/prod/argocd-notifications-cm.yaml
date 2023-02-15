@@ -3,6 +3,9 @@ kind: ConfigMap
 metadata:
   name: argocd-notifications-cm
   namespace: ci-cd
+  labels:
+    backstage.io/kubernetes-id: argocd
+    ortelius.io/repo: platform
 data:
   context: |
     argocdUrl: https://argocd.ortelius.io

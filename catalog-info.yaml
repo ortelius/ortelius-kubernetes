@@ -86,7 +86,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: argo-rollouts
-  description: Ortelius Argo Rollouts Cluster
+  description: Ortelius Argo Rollouts
   links:
     - url: https://github.com/ortelius/ortelius-kubernetes
       title: GitHub
@@ -120,7 +120,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: argocd
-  description: Ortelius Argo CD Cluster
+  description: Ortelius Argo CD Instance
   links:
     - url: https://github.com/ortelius/ortelius-kubernetes
       title: GitHub
@@ -153,7 +153,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: backstage
-  description: Ortelius Backstage Cluster
+  description: Ortelius Backstage Instance
   links:
     - url: https://github.com/ortelius/ortelius-kubernetes
       title: GitHub
@@ -188,7 +188,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: jaeger
-  description: Ortelius Jaeger Cluster
+  description: Ortelius Jaeger Instance
   links:
     - url: https://github.com/ortelius/ortelius-kubernetes
       title: GitHub
@@ -222,7 +222,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: loki-stack
-  description: Ortelius Loki-Stack Cluster
+  description: Ortelius Loki-Stack Instance
   links:
     - url: https://github.com/ortelius/ortelius-kubernetes
       title: GitHub
@@ -253,7 +253,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: opentelemetry-collector
-  description: Ortelius Openelemetry Collector Cluster
+  description: Ortelius Openelemetry Collector Instance
   links:
     - url: https://github.com/ortelius/ortelius-kubernetes
       title: GitHub
@@ -299,7 +299,8 @@ metadata:
     backstage.io/kubernetes-id: ortelius-docs
     backstage.io/techdocs-ref: dir:.
   tags:
-    - platform
+    - website
+    - documentation
 spec:
   type: service
   owner: user:guest
@@ -327,7 +328,7 @@ metadata:
     backstage.io/kubernetes-id: ortelius-www
     backstage.io/techdocs-ref: dir:.
   tags:
-    - platform
+    - website
 spec:
   type: service
   owner: user:guest
@@ -340,7 +341,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: postgresql
-  description: Ortelius postgress SQL Cluster
+  description: Ortelius postgress SQL Instance
   links:
     - url: https://github.com/ortelius/ortelius-kubernetes
       title: GitHub
@@ -371,7 +372,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: external-dns
-  description: Ortelius External DNS Cluster
+  description: Ortelius External DNS Instance
   links:
     - url: https://github.com/ortelius/ortelius-kubernetes
       title: GitHub

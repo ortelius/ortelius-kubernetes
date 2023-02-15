@@ -3,6 +3,9 @@ kind: ApplicationSet
 metadata:
   name: kube-infra-kustomize-setup
   namespace: ci-cd
+  labels:
+    backstage.io/kubernetes-id: argocd
+    ortelius.io/repo: platform
 spec:
   generators:
   - matrix:

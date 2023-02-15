@@ -1,8 +1,8 @@
 ![passing](https://github.com/ortelius/ortelius-kubernetes/actions/workflows/ci.yml/badge.svg) ![GitHub](https://img.shields.io/github/license/ortelius/ortelius-kubernetes)
 # ortelius-kubernetes
-This Project Is for The Ortelius Kubernetes manifests, helm charts, deployments etc
+This Project Is for The Ortelius Kubernetes manifests, helm charts, deployments etc used for exploring integrations with Ortelius such as Keptn and Backstage.  All documentation can be found in the Ortelius [Backstage Instance](https://backstage.ortelius.io).
 
-# Pre commit hook
+## Pre commit hook
 To make use of the pre commit hook please run the following command to enable it on your computer.
 ```bash
 pre-commit install

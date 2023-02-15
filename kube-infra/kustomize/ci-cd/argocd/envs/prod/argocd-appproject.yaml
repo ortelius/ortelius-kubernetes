@@ -5,6 +5,9 @@ metadata:
   namespace: ci-cd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  labels:
+    backstage.io/kubernetes-id: argocd
+    ortelius.io/repo: platform
 spec:
   description: Ortelius Project
   sourceRepos:
