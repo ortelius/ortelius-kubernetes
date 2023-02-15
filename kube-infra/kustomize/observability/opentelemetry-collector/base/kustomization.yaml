@@ -9,7 +9,7 @@ helmCharts:
     mode: deployment
     podLabels:
       backstage.io/kubernetes-id: cert-manager
-      basiq.io/repo: platform
+      ortelius.io/repo: platform
 
     podMonitor:
       enabled: false

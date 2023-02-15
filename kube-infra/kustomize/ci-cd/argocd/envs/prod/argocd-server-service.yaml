@@ -5,6 +5,8 @@ metadata:
     app.kubernetes.io/component: server
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/part-of: argocd
+    backstage.io/kubernetes-id: argocd
+    ortelius.io/repo: platform
   name: argocd-server
   namespace: ci-cd
 spec:

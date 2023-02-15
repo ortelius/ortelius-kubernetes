@@ -17,69 +17,7 @@ metadata:
     backstage.io/kubernetes-id: podtatohead-prod
     backstage.io/techdocs-ref: dir:.
   tags:
-    - platform
-spec:
-  type: service
-  owner: user:guest
-  system: Platform
-  lifecycle: production
-  dependsOn:
-    - component:default/argocd
-    - component:default/cert-manager
-    - component:default/external-dns
-    - component:default/ingress-nginx
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: podtatohead-prod
-  description: Podtato Head Entry
-  links:
-    - url: https://github.com/ortelius/ortelius-kubernetes
-      title: GitHub
-      icon: dashboard
-    - url: https://github.com/podtato-head/podtato-head
-      title: Project Website
-      icon: dashboard
-  annotations:
-    github.com/project-slug: ortelius/ortelius-kubernetes
-    github.com/project-readme-path: README.md
-    argocd/app-name: podtatohead-prod
-    backstage.io/kubernetes-id: podtatohead-prod
-    backstage.io/techdocs-ref: dir:.
-  tags:
-    - platform
-spec:
-  type: service
-  owner: user:guest
-  system: Platform
-  lifecycle: production
-  dependsOn:
-    - component:default/argocd
-    - component:default/cert-manager
-    - component:default/external-dns
-    - component:default/ingress-nginx
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: podtatohead-prod
-  description: Podtato Head Entry
-  links:
-    - url: https://github.com/ortelius/ortelius-kubernetes
-      title: GitHub
-      icon: dashboard
-    - url: https://github.com/podtato-head/podtato-head
-      title: Project Website
-      icon: dashboard
-  annotations:
-    github.com/project-slug: ortelius/ortelius-kubernetes
-    github.com/project-readme-path: README.md
-    argocd/app-name: podtatohead-prod
-    backstage.io/kubernetes-id: podtatohead-prod
-    backstage.io/techdocs-ref: dir:.
-  tags:
-    - platform
+    - body
 spec:
   type: service
   owner: user:guest
@@ -110,7 +48,8 @@ metadata:
     backstage.io/kubernetes-id: podtatohead-prod
     backstage.io/techdocs-ref: dir:.
   tags:
-    - platform
+    - body
+    - lower body
 spec:
   type: service
   owner: user:guest
@@ -119,3 +58,118 @@ spec:
   subcomponentOf:
     - component:default/podtatohead-prod
 ---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: podtatohead-right-arm
+  description: Podtato Head Right Arm
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://github.com/podtato-head/podtato-head
+      title: Project Website
+      icon: dashboard
+  annotations:
+    github.com/project-slug: ortelius/ortelius-kubernetes
+    github.com/project-readme-path: README.md
+    argocd/app-name: podtatohead-prod
+    backstage.io/kubernetes-id: podtatohead-prod
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - body
+    - upper body
+spec:
+  type: service
+  owner: user:guest
+  system: Platform
+  lifecycle: production
+  subcomponentOf:
+    - component:default/podtatohead-prod
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: podtatohead-left-leg
+  description: Podtato Head Left Leg
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://github.com/podtato-head/podtato-head
+      title: Project Website
+      icon: dashboard
+  annotations:
+    github.com/project-slug: ortelius/ortelius-kubernetes
+    github.com/project-readme-path: README.md
+    argocd/app-name: podtatohead-prod
+    backstage.io/kubernetes-id: podtatohead-prod
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - body
+    - lower body
+spec:
+  type: service
+  owner: user:guest
+  system: Platform
+  lifecycle: production
+  subcomponentOf:
+    - component:default/podtatohead-prod
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: podtatohead-right-leg
+  description: Podtato Head Right Leg
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://github.com/podtato-head/podtato-head
+      title: Project Website
+      icon: dashboard
+  annotations:
+    github.com/project-slug: ortelius/ortelius-kubernetes
+    github.com/project-readme-path: README.md
+    argocd/app-name: podtatohead-prod
+    backstage.io/kubernetes-id: podtatohead-prod
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - body
+    - upper body
+spec:
+  type: service
+  owner: user:guest
+  system: Platform
+  lifecycle: production
+  subcomponentOf:
+    - component:default/podtatohead-prod
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: podtatohead-hat
+  description: Podtato Head Hat
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: GitHub
+      icon: dashboard
+    - url: https://github.com/podtato-head/podtato-head
+      title: Project Website
+      icon: dashboard
+  annotations:
+    github.com/project-slug: ortelius/ortelius-kubernetes
+    github.com/project-readme-path: README.md
+    argocd/app-name: podtatohead-prod
+    backstage.io/kubernetes-id: podtatohead-prod
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - Accessories
+    - clothing
+spec:
+  type: service
+  owner: user:guest
+  system: Platform
+  lifecycle: production
+  subcomponentOf:
+    - component:default/podtatohead-prod

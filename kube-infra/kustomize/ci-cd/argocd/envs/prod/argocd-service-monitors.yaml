@@ -4,6 +4,8 @@ metadata:
   name: argocd-metrics
   labels:
     release: kube-prometheus-stack
+    backstage.io/kubernetes-id: argocd
+    ortelius.io/repo: platform
 spec:
   selector:
     matchLabels:
@@ -17,6 +19,8 @@ metadata:
   name: argocd-server-metrics
   labels:
     release: kube-prometheus-stack
+    backstage.io/kubernetes-id: argocd
+    ortelius.io/repo: platform
 spec:
   selector:
     matchLabels:
@@ -30,6 +34,8 @@ metadata:
   name: argocd-repo-server-metrics
   labels:
     release: kube-prometheus-stack
+    backstage.io/kubernetes-id: argocd
+    ortelius.io/repo: platform
 spec:
   selector:
     matchLabels:
@@ -43,6 +49,8 @@ metadata:
   name: argocd-applicationset-controller-metrics
   labels:
     release: kube-prometheus-stack
+    backstage.io/kubernetes-id: argocd
+    ortelius.io/repo: platform
 spec:
   selector:
     matchLabels:

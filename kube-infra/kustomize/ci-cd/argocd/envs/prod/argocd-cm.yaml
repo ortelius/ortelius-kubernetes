@@ -4,6 +4,8 @@ metadata:
   labels:
     app.kubernetes.io/name: argocd-cm
     app.kubernetes.io/part-of: argocd
+    backstage.io/kubernetes-id: argocd
+    ortelius.io/repo: platform
   name: argocd-cm
 data:
   accounts.keptn: $keptn.apiToken
