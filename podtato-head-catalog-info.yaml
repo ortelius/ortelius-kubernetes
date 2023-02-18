@@ -171,5 +171,3 @@ spec:
   owner: user:guest
   system: Platform
   lifecycle: production
-  subcomponentOf:
-    - component:default/podtatohead-prod
