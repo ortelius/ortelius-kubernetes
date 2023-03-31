@@ -1,11 +1,13 @@
 helmCharts:
 - name: external-secrets
   namespace: security
-  version: 0.6.1
+  version: 0.8.1
   repo: https://charts.external-secrets.io
   releaseName: external-secrets-operator
   includeCRDs: true
   valuesInline:
+    podLabels:
+      backstage.io/kubernetes-id: external-secrets
     certContoller:
       serviceMonitor:
         enabled: true

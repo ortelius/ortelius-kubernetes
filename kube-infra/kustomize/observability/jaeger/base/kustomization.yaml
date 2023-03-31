@@ -1,17 +1,33 @@
 helmCharts:
 - name: jaeger
   namespace: observability
-  version: 0.66.1
+  version: 0.69.1
   repo: https://jaegertracing.github.io/helm-charts
   releaseName: jaeger
   includeCRDs: true
   valuesInline:
+    nameOverride: "tracing"
     provisionDataStore:
       elasticsearch: true
     storage:
       type: elasticsearch
-    collector:
-      autoscaling:
-        enabled: true
     query:
       enabled: true
+      serviceMonitor:
+        enabled: true
+        additionalLabels:
+          release: kube-prometheus-stack
+    agent:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        additionalLabels:
+          release: kube-prometheus-stack
+    collector:
+      enabled: true
+      autoscaling:
+        enabled: true
+      serviceMonitor:
+        enabled: true
+        additionalLabels:
+          release: kube-prometheus-stack

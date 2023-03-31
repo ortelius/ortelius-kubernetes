@@ -1,7 +1,7 @@
 helmCharts:
 - name: argo-rollouts
   namespace: ci-cd
-  version: 2.22.2
+  version: 2.23.0
   repo: https://argoproj.github.io/argo-helm
   releaseName: argo-rollouts
   includeCRDs: true
