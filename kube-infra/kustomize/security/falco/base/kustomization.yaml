@@ -8,6 +8,11 @@ helmCharts:
   valuesInline:
     podlabels:
       backstage.io/kubernetes-id: falco
+    controller:
+      kind: daemon
+    driver:
+      enabled: true
+      kind: ebpf
     fakeEventGenerator:
       enabled: false
     falco:
@@ -18,19 +23,15 @@ helmCharts:
         url: http://falco-falcosidekick-ui:2802/
       grpc:
         enabled: true
-      programOutput:
+      grpc_output:
         enabled: true
-        program: mail -s "Falco Notification" bradmccoydev@gmail.com
-    ebpf:
-      enabled: true
     falcosidekick:
       enabled: true
-      replicaCount: 1
       webui:
-        enabled: true
+        enabled: false
       config:
         webhook:
-          address: https://webhook.site/8674e32b-0602-4d53-ba7a-726521b80a38
+          address: https://webhook.site/6043398c-a1b5-4051-bb4b-d8233c38c72d
     customRules:
       my-rules.yaml: |-
         - macro: greetings
@@ -48,16 +49,20 @@ helmCharts:
           priority: NOTICE
           tags: [dummy, process, demo]
 
-- name: falco-exporter
-  namespace: falco
-  version: 0.8.0
-  repo: https://falcosecurity.github.io/charts
-  releaseName: falco-exporter
-  includeCRDs: true
-  valuesInline:
-    serviceMonitor:
-      enabled: true
-    grafanaDashboard:
-      enabled: true
-      namespace: observability
-      prometheusDatasourceName: Prometheus
+# - name: falco-exporter
+#   namespace: falco
+#   version: 0.9.2
+#   repo: https://falcosecurity.github.io/charts
+#   releaseName: falco-exporter
+#   includeCRDs: true
+#   valuesInline:
+#     serviceMonitor:
+#       enabled: true
+#       additionalLabels:
+#         release: kube-prometheus-stack
+#       interval: "600s"
+#       scrapeTimeout: "30s"
+#     grafanaDashboard:
+#       enabled: true
+#       namespace: observability
+#       prometheusDatasourceName: Prometheus

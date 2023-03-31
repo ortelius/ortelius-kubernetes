@@ -19,7 +19,7 @@ spec:
           - path: kube-infra/kustomize/datastore/*
           - path: kube-infra/kustomize/catalog/*
           - path: kube-infra/kustomize/observability/*
-          #- path: kube-infra/kustomize/security/falco
+          - path: kube-infra/kustomize/security/falco
           #- path: kube-infra/kustomize/keptn-contrib/*
           #- path: kube-infra/kustomize/demo/*
         exclude:
