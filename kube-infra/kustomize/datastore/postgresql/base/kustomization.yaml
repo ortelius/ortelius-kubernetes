@@ -1,7 +1,7 @@
 helmCharts:
 - name: postgresql
   namespace: postgresql
-  version: 12.2.6
+  version: 12.3.2
   repo: https://charts.bitnami.com/bitnami
   releaseName: postgresql
   includeCRDs: true

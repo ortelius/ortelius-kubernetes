@@ -1,7 +1,7 @@
 helmCharts:
 - name: grafana
   namespace: observability
-  version: 6.52.4
+  version: 6.55.0
   repo: https://grafana.github.io/helm-charts
   releaseName: grafana
   includeCRDs: true

@@ -1,7 +1,7 @@
 helmCharts:
 - name: opentelemetry-collector
   namespace: observability
-  version: 0.51.2
+  version: 0.54.1
   repo: https://open-telemetry.github.io/opentelemetry-helm-charts
   releaseName: opentelemetry-collector
   includeCRDs: false
