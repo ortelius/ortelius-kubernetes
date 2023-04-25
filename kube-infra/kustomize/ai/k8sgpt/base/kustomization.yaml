@@ -1,0 +1,7 @@
+helmCharts:
+- name: k8sgpt-operator
+  namespace: k8sgpt
+  version: 0.0.2
+  repo: https://charts.k8sgpt.ai
+  releaseName: k8sgpt-operator
+  includeCRDs: true
