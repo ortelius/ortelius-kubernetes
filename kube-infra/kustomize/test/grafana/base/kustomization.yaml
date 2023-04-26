@@ -1,7 +1,7 @@
 helmCharts:
 - name: grafana
   namespace: observability
-  version: 6.50.5
+  version: 6.55.1
   repo: https://grafana.github.io/helm-charts
   releaseName: grafana
   includeCRDs: true
@@ -16,7 +16,7 @@ helmCharts:
 
     persistence:
       type: pvc
-      enabled: false
+      enabled: true
       accessModes:
         - ReadWriteOnce
       size: 10Gi
@@ -29,6 +29,7 @@ helmCharts:
       datasources.yaml:
         apiVersion: 1
         version: 1
+        # <bool> allow users to edit datasources from the UI.
         editable: true
         datasources:
           - name: Prometheus
@@ -52,16 +53,15 @@ helmCharts:
             type: loki
             uid: 4
             url: http://loki-stack.observability:3100
-            isDefault: false
 
     sidecar:
       dashboards:
-        enabled: "false"
+        enabled: "true"
         provider:
           allowUiUpdates: true
           disableDeletion: false
       alerts:
-        enabled: false
+        enabled: true
         label: grafana_alert
 
     dashboardProviders:
@@ -76,9 +76,20 @@ helmCharts:
          editable: true
          options:
            path: /var/lib/grafana/dashboards/default
+       - name: 'platform'
+         orgId: 1
+         folder: 'Platform'
+         type: file
+         disableDeletion: false
+         editable: false
+         options:
+           path: /var/lib/grafana/dashboards/platform
 
     dashboards:
       default:
+        ingress-nginx:
+          url: https://grafana.com/api/dashboards/9614/revisions/1/download
+      platform:
         ingress-nginx:
           url: https://grafana.com/api/dashboards/9614/revisions/1/download
 
@@ -88,6 +99,9 @@ helmCharts:
 
       server:
         root_url: https://grafana.ortelius.io
+
+      smtp:
+        enabled: false
 
     serviceMonitor:
       enabled: true

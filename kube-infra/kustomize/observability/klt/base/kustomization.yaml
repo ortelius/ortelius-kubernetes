@@ -1,0 +1,7 @@
+helmCharts:
+- name: klt
+  namespace: observability
+  version: 0.2.2
+  repo: https://charts.lifecycle.keptn.sh
+  releaseName: klt
+  includeCRDs: true
