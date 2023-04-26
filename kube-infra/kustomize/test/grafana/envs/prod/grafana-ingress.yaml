@@ -7,19 +7,18 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-passthrough: "false"
   name: grafana
   namespace: observability
+  labels:
+    backstage.io/kubernetes-id: grafana
+    basiq.io/repo: ortelius-kubernetes
 spec:
   rules:
     - host: grafana.ortelius.io
       http:
         paths:
-          - backend:
-              service:
-                name: grafana
-                port:
-                  number: 80
-            path: /
-            pathType: Prefix
-  tls:
-    - hosts:
-      - grafana.ortelius.io
-      secretName: grafana-tls-cert
+        - backend:
+            service:
+              name: grafana
+              port:
+                number: 80
+          path: /
+          pathType: Prefix
