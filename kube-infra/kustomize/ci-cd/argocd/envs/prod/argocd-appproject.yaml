@@ -14,9 +14,9 @@ spec:
   - '*'
   destinations:
   - namespace: '*'
-    server: aks-742d5c8e.hcp.centralus.azmk8s.io
+    server: aks-r13astrw.hcp.centralus.azmk8s.io
   - namespace: '*'
-    server: aks-742d5c8e.hcp.centralus.azmk8s.io:443
+    server: aks-r13astrw.hcp.centralus.azmk8s.io:443
   - namespace: '*'
     server: '*'
   clusterResourceWhitelist:

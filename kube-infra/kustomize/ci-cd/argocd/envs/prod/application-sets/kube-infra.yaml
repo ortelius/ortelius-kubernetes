@@ -23,11 +23,10 @@ spec:
           - path: kube-infra/kustomize/ai/k8sgpt
           #- path: kube-infra/kustomize/keptn-contrib/*
           #- path: kube-infra/kustomize/demo/*
-        exclude:
       - list:
           elements:
           - cluster: prod
-            url: https://aks-742d5c8e.hcp.centralus.azmk8s.io:443
+            url: https://aks-r13astrw.hcp.centralus.azmk8s.io:443
             values:
               CLIENT_ENVIRONMENT: prod
   template:

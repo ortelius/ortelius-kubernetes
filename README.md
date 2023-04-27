@@ -8,6 +8,11 @@ To make use of the pre commit hook please run the following command to enable it
 pre-commit install
 ```
 
+For admin credentials run the following command:
+```bash
+az aks get-credentials --admin  --resource-group gitops-prod --name gitops-usce-prod
+```
+
 ## Become a contributor
 
 1) Review the [Ortelius Contributor Guide](https://docs.ortelius.io/guides/contributorguide/)

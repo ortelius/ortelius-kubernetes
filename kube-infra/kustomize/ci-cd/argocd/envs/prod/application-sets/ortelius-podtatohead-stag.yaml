@@ -12,11 +12,10 @@ spec:
           revision: HEAD
           directories:
           - path: kube-infra/kustomize/podtato-head/*
-        exclude:
       - list:
           elements:
           - cluster: stag
-            url: https://aks-742d5c8e.hcp.centralus.azmk8s.io:443
+            url: https://aks-r13astrw.hcp.centralus.azmk8s.io:443
             values:
               CLIENT_ENVIRONMENT: stag
   template:
