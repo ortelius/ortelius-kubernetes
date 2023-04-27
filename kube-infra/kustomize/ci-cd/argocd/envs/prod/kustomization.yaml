@@ -17,13 +17,6 @@ patchesStrategicMerge:
 
 patches:
 - patch: |-
-    - op: add
-      path: /spec/template/spec/containers/0/command/-
-      value: --insecure
-  target:
-    kind: Deployment
-    labelSelector: app.kubernetes.io/name=argocd-server
-- patch: |-
     - op: replace
       path: /subjects/0/namespace
       value: ci-cd

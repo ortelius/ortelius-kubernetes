@@ -5,3 +5,6 @@ helmCharts:
   repo: https://charts.k8sgpt.ai
   releaseName: k8sgpt-operator
   includeCRDs: true
+  valuesInline:
+    serviceMonitor:
+      enabled: true

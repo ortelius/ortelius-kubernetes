@@ -13,6 +13,13 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: velero
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
   name: dns-infra
   annotations:
     keptn.sh/lifecycle-toolkit: "enabled"
@@ -34,42 +41,7 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: keptn-jes
-  annotations:
-    keptn.sh/lifecycle-toolkit: "enabled"
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: flux-system
-  annotations:
-    keptn.sh/lifecycle-toolkit: "enabled"
----
-apiVersion: v1
-kind: Namespace
-metadata:
   name: falco
-  annotations:
-    keptn.sh/lifecycle-toolkit: "enabled"
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: ortelius-docs
-  annotations:
-    keptn.sh/lifecycle-toolkit: "enabled"
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: ortelius-www
-  annotations:
-    keptn.sh/lifecycle-toolkit: "enabled"
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: ortelius
   annotations:
     keptn.sh/lifecycle-toolkit: "enabled"
 ---
@@ -91,6 +63,20 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: argo-events
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: flux-system
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: k8sgpt
   annotations:
     keptn.sh/lifecycle-toolkit: "enabled"
 ---
