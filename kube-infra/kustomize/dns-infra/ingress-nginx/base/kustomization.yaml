@@ -1,6 +1,6 @@
 helmCharts:
 - name: ingress-nginx
-  version: 4.6.0
+  version: 4.6.1
   repo: https://kubernetes.github.io/ingress-nginx
   releaseName: ingress-nginx
   namespace: dns-infra
@@ -39,19 +39,11 @@ helmCharts:
     rbac:
       create: true
 
-    service:
-      externalTrafficPolicy: Local
-
-    config:
-      use-forwarded-headers: "true"
-      enable-opentracing: "true"
-      jaeger-collector-host: jaeger-agent.observability.svc.cluster.local
-
-patches:
-- patch: |-
-    - op: add
-      path: /spec/template/spec/containers/0/args/-
-      value: --enable-ssl-passthrough
-  target:
-    kind: Deployment
-    labelSelector: app.kubernetes.io/name=ingress-nginx
+# patches:
+# - patch: |-
+#     - op: add
+#       path: /spec/template/spec/containers/0/args/-
+#       value: --enable-ssl-passthrough
+#   target:
+#     kind: Deployment
+#     labelSelector: app.kubernetes.io/name=ingress-nginx
