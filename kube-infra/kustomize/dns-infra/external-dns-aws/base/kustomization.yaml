@@ -6,24 +6,36 @@ helmCharts:
   namespace: dns-infra
   includeCRDs: true
   valuesInline:
+    commonLabels:
+      backstage.io/kubernetes-id: cert-manager
+      ortelius.io/repo: platform
+      ortelius.io/owner: devsecops
     policy: sync
     rbac:
       create: true
     registry: txt
     provider: aws
-    domainFilters:
-    - bradmccoy.io
-    extraEnv:
-    - name: AWS_ACCESS_KEY_ID
-      valueFrom:
-        secretKeyRef:
+    aws:
+      credentials:
+        accessKeyIDSecretRef:
           name: aws-dns-creds
           key: AWS_ACCESS_KEY
-    - name: AWS_SECRET_ACCESS_KEY
-      valueFrom:
-        secretKeyRef:
+        secretAccessKeySecretRef:
           name: aws-dns-creds
           key: AWS_SECRET_ACCESS_KEY
+    domainFilters:
+    - bradmccoy.io
+    # extraEnv:
+    # - name: AWS_ACCESS_KEY_ID
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: aws-dns-creds
+    #       key: AWS_ACCESS_KEY
+    # - name: AWS_SECRET_ACCESS_KEY
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: aws-dns-creds
+    #       key: AWS_SECRET_ACCESS_KEY
     txtOwnderId: Z10188742DW2Y8MKNEC3Q
     podSecurityContext:
       enabled: true
