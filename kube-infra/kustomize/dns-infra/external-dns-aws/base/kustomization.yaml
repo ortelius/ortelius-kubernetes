@@ -1,6 +1,6 @@
 helmCharts:
 - name: external-dns
-  version: 6.20.3
+  version: 6.18.0
   repo: https://charts.bitnami.com/bitnami
   releaseName: external-dns-aws
   namespace: dns-infra
@@ -10,6 +10,9 @@ helmCharts:
     rbac:
       create: true
     registry: txt
+    provider: aws
+    domainFilters:
+    - bradmccoy.io
     extraEnv:
     - name: AWS_ACCESS_KEY_ID
       valueFrom:
@@ -21,10 +24,7 @@ helmCharts:
         secretKeyRef:
           name: aws-dns-creds
           key: AWS_SECRET_ACCESS_KEY
-    provider: aws
-    domainFilters:
-    - bradmccoy.io
-    txtOwnderId: external-dns.bradmccoy.io
+    txtOwnderId: Z10188742DW2Y8MKNEC3Q
     podSecurityContext:
       enabled: true
       fsGroup: 65534
