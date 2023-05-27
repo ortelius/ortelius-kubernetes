@@ -15,12 +15,12 @@ spec:
           revision: HEAD
           directories:
           - path: kube-infra/kustomize/ci-cd/*
-          - path: kube-infra/kustomize/dns-infra/ingress-nginx
+          - path: kube-infra/kustomize/dns-infra/*
           - path: kube-infra/kustomize/datastore/*
           - path: kube-infra/kustomize/catalog/*
           - path: kube-infra/kustomize/observability/*
           - path: kube-infra/kustomize/security/falco
-          - path: kube-infra/kustomize/ai/k8sgpt
+          #- path: kube-infra/kustomize/ai/k8sgpt
           #- path: kube-infra/kustomize/keptn-contrib/*
           #- path: kube-infra/kustomize/demo/*
       - list:

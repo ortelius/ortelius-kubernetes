@@ -1,7 +1,7 @@
 helmCharts:
 - name: grafana
   namespace: observability
-  version: 6.56.6
+  version: 6.56.2
   repo: https://grafana.github.io/helm-charts
   releaseName: grafana
   includeCRDs: true
@@ -16,7 +16,7 @@ helmCharts:
 
     persistence:
       type: pvc
-      enabled: true
+      enabled: false
       accessModes:
         - ReadWriteOnce
       size: 10Gi
@@ -24,6 +24,8 @@ helmCharts:
     plugins:
       - grafana-clock-panel
       - grafana-piechart-panel
+      - cloudspout-button-panel
+      - grafana-github-datasource
 
     datasources:
       datasources.yaml:
@@ -63,6 +65,8 @@ helmCharts:
       alerts:
         enabled: true
         label: grafana_alert
+      datasources:
+        enabled: true
 
     dashboardProviders:
      dashboardproviders.yaml:

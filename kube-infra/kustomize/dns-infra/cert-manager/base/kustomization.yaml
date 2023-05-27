@@ -1,6 +1,6 @@
 helmCharts:
 - name: cert-manager
-  version: 1.11.0
+  version: 1.12.1
   namespace: dns-infra
   repo: https://charts.jetstack.io
   releaseName: cert-manager
@@ -8,3 +8,21 @@ helmCharts:
     installCRDs: true
     rbac:
       create: true
+    global:
+      commonLabels:
+        backstage.io/kubernetes-id: cert-manager
+        ortelius.io/repo: platform
+        ortelius.io/owner: devsecops
+    prometheus:
+      enabled: true
+      servicemonitor:
+        enabled: false
+        prometheusInstance: default
+        targetPort: 9402
+        path: /metrics
+        interval: 600s
+        scrapeTimeout: 30s
+        labels:
+          release: kube-prometheus-stack
+        annotations: {}
+        honorLabels: false
