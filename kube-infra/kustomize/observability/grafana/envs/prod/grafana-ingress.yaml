@@ -9,7 +9,7 @@ metadata:
   namespace: observability
   labels:
     backstage.io/kubernetes-id: grafana
-    basiq.io/repo: ortelius-kubernetes
+    o.io/repo: ortelius-kubernetes
 spec:
   rules:
     - host: grafana.ortelius.io

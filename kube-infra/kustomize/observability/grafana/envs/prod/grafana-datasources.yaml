@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-datasources
+  labels:
+    grafana_datasource: "1"
+    backstage.io/kubernetes-id: grafana
+    ortelius.io/repo: platform
+    ortelius.io/owner: devsecops
+data:
+  datasources.yaml: |-
+    apiVersion: 1
+    version: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        uid: 1
+        orgId: 1
+        editable: true
+        url: http://kube-prometheus-stack-prometheus.observability:9090
+        isDefault: true
+      - name: Alert Manager
+        type: alertmanager
+        uid: 2
+        orgId: 1
+        editable: true
+        url: http://kube-prometheus-stack-alertmanager.observability:9093
+        isDefault: false
+        jsonData:
+          implementation: prometheus
+      - name: Jaeger
+        type: jaeger
+        uid: 3
+        orgId: 1
+        editable: true
+        url: http://jaeger-tracing-query.observability.svc.cluster.local:80
+        isDefault: false
+      - name: Loki
+        type: loki
+        uid: 4
+        orgId: 1
+        editable: true
+        url: http://loki-stack.observability:3100
+        isDefault: false
+      - name: GitHub Repo Insights
+        type: grafana-github-datasource
+        uid: 5
+        orgId: 1
+        editable: true
+        jsonData:
+          owner: "ortelius"
+          organization: "ortelius"
+          repository: "ortelius-kubernetes"
+        secureJsonData:
+            accessToken: $__file{/etc/secrets/grafana_secrets/github-access-token}
+        isDefault: false
