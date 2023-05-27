@@ -1,6 +1,6 @@
 helmCharts:
 - name: external-dns
-  version: 6.15.0
+  version: 6.20.3
   repo: https://charts.bitnami.com/bitnami
   releaseName: external-dns-aws
   namespace: dns-infra
@@ -25,3 +25,14 @@ helmCharts:
     domainFilters:
     - bradmccoy.io
     txtOwnderId: external-dns.bradmccoy.io
+    podSecurityContext:
+      enabled: true
+      fsGroup: 65534
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        namespace: "observability"
+        labels:
+          release: kube-prometheus-stack
+        jobLabel: ""
