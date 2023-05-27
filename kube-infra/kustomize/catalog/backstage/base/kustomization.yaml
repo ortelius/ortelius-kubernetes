@@ -18,7 +18,10 @@ helmCharts:
           cert-manager.io/cluster-issuer: letsencrypt-development-aws
         hosts:
           - backstage.bradmccoy.io
-        tls: []
+        tls:
+        - hosts:
+          - backstage.bradmccoy.io
+          secretName: app-tls-cert
     backend:
       image:
         repository: ghcr.io/ortelius/backstage/backend
@@ -31,7 +34,10 @@ helmCharts:
           cert-manager.io/cluster-issuer: letsencrypt-development-aws
         hosts:
           - backstage-backend.bradmccoy.io
-        tls: []
+        tls:
+        - hosts:
+          - backstage.bradmccoy.io
+          secretName: backend-tls-cert
     psql:
       connectionString:
         secret: postgres-secrets
