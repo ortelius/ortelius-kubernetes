@@ -25,7 +25,7 @@ helmCharts:
                     - controller
               topologyKey: "kubernetes.io/hostname"
       metrics:
-        enabled: true
+        enabled: false
         serviceMonitor:
           enabled: true
           additionalLabels:

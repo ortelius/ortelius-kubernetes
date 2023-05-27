@@ -6,4 +6,5 @@ namespace: observability
 
 patches:
 - path: prometheuses-crd.yaml
+- path: prometheusagents-crd.yaml
 - path: prometheus.yaml
