@@ -14,7 +14,7 @@ spec:
           repoURL: https://github.com/ortelius/ortelius-kubernetes.git
           revision: HEAD
           directories:
-          - path: kube-infra/kustomize/ci-cd/*
+          - path: kube-infra/kustomize/ci-cd/argocd
           - path: kube-infra/kustomize/dns-infra/*
           - path: kube-infra/kustomize/datastore/*
           - path: kube-infra/kustomize/catalog/*
