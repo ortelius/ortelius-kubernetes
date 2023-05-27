@@ -1,6 +1,6 @@
 helmCharts:
 - name: external-dns
-  version: 6.18.0
+  version: 6.20.3kub
   repo: https://charts.bitnami.com/bitnami
   releaseName: external-dns-aws
   namespace: dns-infra
