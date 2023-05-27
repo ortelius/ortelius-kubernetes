@@ -1,0 +1,18 @@
+annotations:
+  artifacthub.io/categories: monitoring-logging
+  artifacthub.io/license: Apache-2.0
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/k8sgpt-ai/k8sgpt-operator/issues/new
+    - name: community
+      url: https://github.com/k8sgpt-ai/community
+apiVersion: v2
+appVersion: 0.0.16
+description: Automatic SRE Superpowers within your Kubernetes cluster
+maintainers:
+- email: noreply@k8sgpt.ai
+  name: The K8sGPT Authors
+  url: https://github.com/k8sgpt-ai/community
+name: k8sgpt-operator
+type: application
+version: 0.0.16
