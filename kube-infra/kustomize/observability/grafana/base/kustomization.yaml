@@ -55,6 +55,7 @@ helmCharts:
             type: loki
             uid: 4
             url: http://loki-stack.observability:3100
+            isDefault: false
 
     sidecar:
       dashboards:
