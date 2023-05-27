@@ -26,8 +26,4 @@ spec:
               number: 80
         path: /*
         pathType: Prefix
-    host: argocd.bradmccoy.io
-  tls:
-  - hosts:
-    - argocd.bradmccoy.io
-    secretName: argocd-tls-cert
+    host: argocd.ortelius.io
