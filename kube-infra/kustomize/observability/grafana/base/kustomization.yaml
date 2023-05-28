@@ -10,7 +10,7 @@ helmCharts:
       backstage.io/kubernetes-id: grafana
       ortelius.io/repo: ortelius-kubernetes
     admin:
-      existingSecret: "admin"
+      existingSecret: grafana-secrets
       userKey: admin-user
       passwordKey: admin-password
 
@@ -73,7 +73,7 @@ helmCharts:
         mountPath: /etc/secrets/grafana_secrets
         secretName: grafana-secrets
         readOnly: true
-        
+
     grafana.ini:
       log:
         level: debug
