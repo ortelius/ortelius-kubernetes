@@ -15,13 +15,10 @@ helmCharts:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: nginx
-          cert-manager.io/cluster-issuer: letsencrypt-development-aws
+          nginx.ingress.kubernetes.io/backend-protocol: HTTP
+          nginx.ingress.kubernetes.io/ssl-passthrough: "false"
         hosts:
-          - backstage.bradmccoy.io
-        tls:
-        - hosts:
-          - backstage.bradmccoy.io
-          secretName: app-tls-cert
+          - backstage.ortelius.io
     backend:
       image:
         repository: ghcr.io/ortelius/backstage/backend
@@ -31,13 +28,10 @@ helmCharts:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: nginx
-          cert-manager.io/cluster-issuer: letsencrypt-development-aws
+          nginx.ingress.kubernetes.io/backend-protocol: HTTP
+          nginx.ingress.kubernetes.io/ssl-passthrough: "false"
         hosts:
-          - backstage-backend.bradmccoy.io
-        tls:
-        - hosts:
-          - backstage.bradmccoy.io
-          secretName: backend-tls-cert
+          - backstage-backend.ortelius.io
     psql:
       connectionString:
         secret: postgres-secrets
@@ -51,7 +45,7 @@ helmCharts:
     appConfig:
       app:
         title: Ortelius Backstage
-        baseUrl: https://backstage.bradmccoy.io
+        baseUrl: https://backstage.ortelius.io
       organization:
         name: Ortelius Dev
       auth:
@@ -67,11 +61,11 @@ helmCharts:
                 apps:
                   - $include: github-app-credentials.yaml
       backend:
-        baseUrl: https://backstage-backend.bradmccoy.io
+        baseUrl: https://backstage-backend.ortelius.io
         listen:
           port: 7007
         cors:
-          origin: https://backstage.bradmccoy.io
+          origin: https://backstage.ortelius.io
           methods: [GET, POST, PUT, DELETE]
           credentials: true
         database:
