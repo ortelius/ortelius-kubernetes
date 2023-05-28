@@ -76,7 +76,14 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: k8sgpt
+  name: k8sgpt-operator
+  annotations:
+    keptn.sh/lifecycle-toolkit: "enabled"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cdevents
   annotations:
     keptn.sh/lifecycle-toolkit: "enabled"
 ---

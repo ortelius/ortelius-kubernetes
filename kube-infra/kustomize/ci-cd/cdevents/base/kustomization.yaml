@@ -9,3 +9,28 @@ helmCharts:
     image:
       repository: ghcr.io/bradmccoydev/cdevents-controller
       tag: latest
+
+- name: mongodb
+  version: 13.15.1
+  namespace: cdevents
+  repo: https://charts.bitnami.com/bitnami
+  releaseName: mongodb
+  valuesInline:
+    commonLabels:
+      backstage.io/kubernetes-id: mongodb
+      ortelius.io/repo: ortelius-kubernetes  
+    architecture: replicaset
+    replicaCount: 1
+    extraEnvVars:
+      - name: LOG_LEVEL
+        value: debug
+    global:
+      namespaceOverride: cdevents
+    auth:
+      enabled: true
+      rootUser: root
+      existingSecret: mongodb
+      usernames:
+        - cdevents
+      databases: 
+        - cdevents
