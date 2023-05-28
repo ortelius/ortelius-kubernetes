@@ -2,7 +2,7 @@ apiVersion: core.k8sgpt.ai/v1alpha1
 kind: K8sGPT
 metadata:
   name: k8sgpt-config
-  namespace: k8sgpt
+  namespace: k8sgpt-operator
 spec:
   model: gpt-3.5-turbo
   backend: openai
