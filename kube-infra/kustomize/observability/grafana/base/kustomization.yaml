@@ -68,6 +68,12 @@ helmCharts:
         ingress-nginx:
           url: https://grafana.com/api/dashboards/9614/revisions/1/download
 
+    extraSecretMounts:
+      - name: grafana-secrets
+        mountPath: /etc/secrets/grafana_secrets
+        secretName: grafana-secrets
+        readOnly: true
+        
     grafana.ini:
       log:
         level: debug
