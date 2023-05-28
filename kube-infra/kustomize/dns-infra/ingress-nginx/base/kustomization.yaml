@@ -10,8 +10,9 @@ helmCharts:
       backstage.io/kubernetes-id: ingress-nginx
       ortelius.io/repo: ortelius-kubernetes
     controller:
-      annotations:
-        service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
+      service:
+        annotations:
+          service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
