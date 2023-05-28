@@ -27,36 +27,6 @@ helmCharts:
       - cloudspout-button-panel
       - grafana-github-datasource
 
-    datasources:
-      datasources.yaml:
-        apiVersion: 1
-        version: 1
-        # <bool> allow users to edit datasources from the UI.
-        editable: true
-        datasources:
-          - name: Prometheus
-            type: prometheus
-            uid: 1
-            url: http://kube-prometheus-stack-prometheus.observability:9090
-            isDefault: true
-          - name: Alert Manager
-            type: alertmanager
-            uid: 2
-            url: http://kube-prometheus-stack-alertmanager.observability:9093
-            isDefault: false
-            jsonData:
-              implementation: prometheus
-          - name: Jaeger
-            type: jaeger
-            uid: 3
-            url: http://jaeger-tracing-query.observability.svc.cluster.local:80
-            isDefault: false
-          - name: Loki
-            type: loki
-            uid: 4
-            url: http://loki-stack.observability:3100
-            isDefault: false
-
     sidecar:
       dashboards:
         enabled: "true"
