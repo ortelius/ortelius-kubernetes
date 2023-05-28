@@ -1,0 +1,11 @@
+helmCharts:
+- name: cdevents-controller
+  version: 0.0.2
+  repo: https://bradmccoydev.github.io/cdevents-controller
+  releaseName: cdevents-controller
+  namespace: cdevents
+  includeCRDs: true
+  valuesInline:
+    image:
+      repository: ghcr.io/bradmccoydev/cdevents-controller
+      tag: latest

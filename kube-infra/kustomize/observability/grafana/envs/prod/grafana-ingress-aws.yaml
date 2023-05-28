@@ -3,8 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/backend-protocol: HTTP
-    nginx.ingress.kubernetes.io/ssl-passthrough: "false"
+    cert-manager.io/cluster-issuer: letsencrypt-development-aws
   name: grafana
   namespace: observability
   labels:
@@ -12,7 +11,7 @@ metadata:
     o.io/repo: ortelius-kubernetes
 spec:
   rules:
-    - host: grafana.ortelius.io
+    - host: grafana.bradmccoy.io
       http:
         paths:
         - backend:
