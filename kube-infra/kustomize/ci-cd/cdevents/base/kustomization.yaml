@@ -9,6 +9,20 @@ helmCharts:
     image:
       repository: ghcr.io/bradmccoydev/cdevents-controller
       tag: latest
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt-development-aws
+      hosts:
+        - host: cdevents.bradmccoy.io
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+       - secretName: cdevents-tls
+         hosts:
+           - cdevents.bradmccoy.io
 
 - name: mongodb
   version: 13.15.1
