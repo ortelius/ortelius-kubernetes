@@ -5,7 +5,7 @@ resources:
 - argocd-server-ingress.yaml
 - argocd-appproject.yaml
 - application-sets/kube-infra.yaml
-- application-sets/ortelius-podtatohead-prod.yaml
+- application-sets/k8sgpt.yaml
 - argocd-service-monitors.yaml
 
 namespace: ci-cd
