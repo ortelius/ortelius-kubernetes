@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: kube-infra-kustomize-setup
+  name: k8sgpt
   namespace: ci-cd
   labels:
     backstage.io/kubernetes-id: argocd
@@ -14,13 +14,7 @@ spec:
           repoURL: https://github.com/ortelius/ortelius-kubernetes.git
           revision: HEAD
           directories:
-          - path: kube-infra/kustomize/ci-cd/argocd
-          - path: kube-infra/kustomize/ci-cd/cdevents
-          - path: kube-infra/kustomize/dns-infra/*
-          - path: kube-infra/kustomize/datastore/*
-          - path: kube-infra/kustomize/catalog/*
-          - path: kube-infra/kustomize/observability/*
-          - path: kube-infra/kustomize/security/falco
+          - path: kube-infra/kustomize/ai/k8sgpt
       - list:
           elements:
           - cluster: prod
@@ -42,7 +36,7 @@ spec:
         server: '{{url}}'
       syncPolicy:
         automated:
-          prune: true
-          selfHeal: true
+          prune: false
+          selfHeal: false
         syncOptions:
         - CreateNamespace=true
