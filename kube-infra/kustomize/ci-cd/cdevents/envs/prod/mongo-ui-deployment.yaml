@@ -23,12 +23,12 @@ spec:
             - name: ME_CONFIG_MONGODB_ADMINUSERNAME
               valueFrom:
                 secretKeyRef:
-                  name: mongodb-secret
+                  name: mongodb
                   key: mongo-root-username
             - name: ME_CONFIG_MONGODB_ADMINPASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mongodb-secret
+                  name: mongodb
                   key: mongo-root-password
             - name: ME_CONFIG_MONGODB_SERVER
               value: mongodb-headless
