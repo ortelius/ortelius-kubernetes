@@ -1,0 +1,29 @@
+{{- if .Values.cache }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ template "cdevents-controller.fullname" . }}-cache-test-{{ randAlphaNum 5 | lower }}
+  labels:
+    {{- include "cdevents-controller.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+    sidecar.istio.io/inject: "false"
+    linkerd.io/inject: disabled
+    appmesh.k8s.aws/sidecarInjectorWebhook: disabled
+spec:
+  containers:
+    - name: curl
+      image: curlimages/curl:7.69.0
+      command:
+        - sh
+        - -c
+        - |
+          curl -sd 'data' ${cdevents-controller_SVC}/cache/test &&
+          curl -s ${cdevents-controller_SVC}/cache/test | grep data &&
+          curl -s -XDELETE ${cdevents-controller_SVC}/cache/test
+      env:
+      - name: cdevents-controller_SVC
+        value: "{{ template "cdevents-controller.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.externalPort }}"
+  restartPolicy: Never
+{{- end }}
