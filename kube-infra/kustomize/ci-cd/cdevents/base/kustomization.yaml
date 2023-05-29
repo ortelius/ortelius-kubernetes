@@ -1,6 +1,6 @@
 helmCharts:
 - name: cdevents-controller
-  version: 0.0.2
+  version: 0.0.3
   repo: https://bradmccoydev.github.io/cdevents-controller
   releaseName: cdevents-controller
   namespace: cdevents
