@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-development-aws
+  name: mongodb-ingress
+  labels:
+    backstage.io/kubernetes-id: cdevents
+    ortelius.io/repo: ortelius-kubernetes
+spec:
+  rules:
+    - host: mongodb.bradmccoy.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mongodb-express-service
+                port:
+                  number: 8081
