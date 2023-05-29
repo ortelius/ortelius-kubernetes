@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ template "cdevents-controller.fullname" . }}-jwt-test-{{ randAlphaNum 5 | lower }}
+  labels:
+    {{- include "cdevents-controller.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+    sidecar.istio.io/inject: "false"
+    linkerd.io/inject: disabled
+    appmesh.k8s.aws/sidecarInjectorWebhook: disabled
+spec:
+  containers:
+    - name: tools
+      image: giantswarm/tiny-tools
+      command:
+        - sh
+        - -c
+        - |
+          TOKEN=$(curl -sd 'test' ${cdevents-controller_SVC}/token | jq -r .token) &&
+          curl -sH "Authorization: Bearer ${TOKEN}" ${cdevents-controller_SVC}/token/validate | grep test
+      env:
+      - name: cdevents-controller_SVC
+        value: "{{ template "cdevents-controller.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.externalPort }}"
+  restartPolicy: Never
