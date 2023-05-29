@@ -21,7 +21,7 @@ spec:
             - containerPort: 8081
           env:
             - name: ME_CONFIG_MONGODB_ENABLE_ADMIN
-              value: "false"
+              value: "true"
             - name: ME_CONFIG_MONGODB_AUTH_DATABASE
               value: cdevents
             - name: ME_CONFIG_MONGODB_AUTH_USERNAME
@@ -33,7 +33,7 @@ spec:
                 secretKeyRef:
                   name: mongodb
                   key: mongodb-passwords
-            - name: ME_CONFIG_BASICAUTH_USERNAME
+            - name: ME_CONFIG_BASICAUTH_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mongodb
