@@ -8,7 +8,7 @@ helmCharts:
   valuesInline:
     image:
       repository: ghcr.io/bradmccoydev/cdevents-controller
-      tag: sha-e762c9c7
+      tag: sha-93ca2643
     ingress:
       enabled: true
       annotations:
