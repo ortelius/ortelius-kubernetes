@@ -42,7 +42,7 @@ helmCharts:
     global:
       namespaceOverride: cdevents
     auth:
-      enabled: true
+      enabled: false
       rootUser: root
       existingSecret: mongodb
       usernames:
