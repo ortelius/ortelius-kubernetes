@@ -1,6 +1,6 @@
 helmCharts:
 - name: cdevents-controller
-  version: 0.0.4
+  version: 0.0.5
   repo: https://bradmccoydev.github.io/cdevents-controller
   releaseName: cdevents-controller
   namespace: cdevents
@@ -9,7 +9,7 @@ helmCharts:
     logLevel: debug
     image:
       repository: ghcr.io/bradmccoydev/cdevents-controller
-      tag: sha-1674d7f2
+      tag: sha-f9802a70
     ingress:
       enabled: true
       annotations:
