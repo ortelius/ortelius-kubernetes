@@ -34,7 +34,7 @@ helmCharts:
     commonLabels:
       backstage.io/kubernetes-id: mongodb
       ortelius.io/repo: ortelius-kubernetes  
-    architecture: replicaset
+    architecture: standalone
     replicaCount: 1
     extraEnvVars:
       - name: LOG_LEVEL
