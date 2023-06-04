@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-development-aws
+  name: grafana
+  namespace: k8sgpt-operator-system
+  labels:
+    backstage.io/kubernetes-id: grafana
+    ortelius.io/repo: ortelius-kubernetes
+spec:
+  rules:
+    - host: grafana.bradmccoy.io
+      http:
+        paths:
+        - backend:
+            service:
+              name: wrongname
+              port:
+                number: 80
+          path: /
+          pathType: Prefix
