@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - ../../base
 - config.yaml
-namespace: k8sgpt-operator
+namespace: k8sgpt-operator-system
