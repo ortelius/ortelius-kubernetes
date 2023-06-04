@@ -1,6 +1,6 @@
 helmCharts:
 - name: k8sgpt-operator
-  namespace: k8sgpt-operator
+  namespace: k8sgpt-operator-system
   version: 0.0.16
   repo: https://charts.k8sgpt.ai
   releaseName: k8sgpt-operator
