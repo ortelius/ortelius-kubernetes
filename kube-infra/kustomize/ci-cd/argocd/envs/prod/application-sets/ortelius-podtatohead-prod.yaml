@@ -26,8 +26,8 @@ spec:
     metadata:
       name: 'podtatohead-{{cluster}}'
       annotations:
-        notifications.argoproj.io/subscribe.on-deployed.keptn: ""
-        notifications.argoproj.io/subscribe.on-out-of-sync-status.keptn: ""
+        notifications.argoproj.io/subscribe.on-deployed.github: ""
+        notifications.argoproj.io/subscribe.on-deployed.grafana: argoDeployed
         environment: '{{cluster}}'
       labels:
         keptnProject: ortelius
