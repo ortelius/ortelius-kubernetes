@@ -9,6 +9,9 @@ spec:
   noCache: false
   version: v0.3.0
   enableAI: true
+  extraOptions:
+    backstage:
+      enabled: true
   secret:
     name: k8sgpt-secret
     key: openai-api-key
