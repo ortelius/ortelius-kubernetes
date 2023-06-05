@@ -9,28 +9,84 @@ metadata:
 data:
   context: |
     argocdUrl: https://argocd.ortelius.io
-  service.webhook.keptn: |
-    url: https://keptn.ortelius.io/api/v1/event
+  service.grafana: |
+    apiUrl: http://grafana.observability.svc.cluster.local:80/api
+    apiKey: $grafana-api-key
+  service.webhook.cdevent: |
+    url: http://cdevents-controller.cdevents.svc.cluster.local:9898/api/cdevent/1
     headers:
-    - name: x-token
-      value: $keptn-x-token
     - name: Content-Type
       value: application/json
-  template.keptn-deployed-remove-me: |
+  service.github: |
+    appID: 272231
+    installationID: 32207229
+    privateKey: $github-privateKey
+  template.app-deployed: |
+    message: |
+      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} Application {{.app.metadata.name}} is now running new version of deployments manifests.
+    github:
+      status:
+        state: success
+        label: "continuous-delivery/{{.app.metadata.name}}"
+        targetURL: "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true"
+    slack:
+      attachments: |
+        [{
+          "title": "{{ .app.metadata.name}}",
+          "title_link":"{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
+          "color": "#18be52",
+          "fields": [
+          {
+            "title": "Sync Status",
+            "value": "{{.app.status.sync.status}}",
+            "short": true
+          },
+          {
+            "title": "Repository",
+            "value": "{{.app.spec.source.repoURL}}",
+            "short": true
+          },
+          {
+            "title": "Revision",
+            "value": "{{.app.status.sync.revision}}",
+            "short": true
+          }
+          {{range $index, $c := .app.status.conditions}}
+          {{if not $index}},{{end}}
+          {{if $index}},{{end}}
+          {
+            "title": "{{$c.type}}",
+            "value": "{{$c.message}}",
+            "short": true
+          }
+          {{end}}
+          ]
+        }]
     webhook:
-      keptn:
+      cdevent:
         method: POST
         body: |
           {
-            "data": {
-              "project": "{{.app.metadata.labels.keptnProject}}",
-              "service": "{{.app.metadata.labels.keptnService}}",
-              "stage": "{{.app.metadata.labels.keptnStage}}"
+            "context": {
+              "version": "0.4.0-draft",
+              "id": {{.app.status.sync.revision}},
+              "source": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
+              "type": "dev.cdevents.pipelinerun.finished.0.1.1",
+              "timestamp": "2023-05-31T14:27:05.315384Z"
             },
-            "source": "argocd",
-            "specversion": "1.0",
-            "type": "sh.keptn.event.{{.app.metadata.labels.keptnStage}}.{{.app.metadata.labels.keptnSequence}}.triggered"
+            "subject": {
+              "id": {{.app.status.sync.revision}},
+              "source": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
+              "type": "pipelineRun",
+              "content": {
+                "pipelineName": {{.app.metadata.name}},
+                "url": {{.app.metadata.annotations.externalURI}}
+                "repoUrl": {{.app.spec.source.repoURL}},
+                "outcome": {{.app.status.sync.status}},
+                "errors": ""
+              }
+            }
           }
   trigger.on-deployed: |
-    - when: app.status.sync.status == 'Synced' and app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
-      send: [keptn-deployed]
+    - when: app.status.sync.status == 'Synced' and app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy' and app.metadata.name == 'cloudwatch-exporter'
+      send: [app-deployed]
