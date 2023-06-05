@@ -4,6 +4,6 @@ resources:
 - ../../base
 - grafana-datasources.yaml
 - grafana-ingress.yaml
-- dashboards-k8sgpt.yaml
+- dashboards/k8sgpt.yaml
 
 namespace: observability
