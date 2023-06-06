@@ -430,3 +430,64 @@ spec:
   dependsOn:
     - component:default/argocd
 ---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: k8sgpt
+  description: K8SGPT
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: Deployment Location GitHub
+      icon: dashboard
+    - url: https://github.com/k8sgpt-ai/k8sgpt-operator
+      title: K8sGPT Project Github
+      icon: dashboard
+    - url: https://k8sgpt.ai/
+      title: Project Website
+      icon: dashboard
+  annotations:
+    github.com/project-slug: ortelius/ortelius-kubernetes
+    github.com/project-readme-path: README.md
+    argocd/app-name: k8sgpt
+    backstage.io/kubernetes-id: k8sgpt
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - platform
+spec:
+  type: service
+  owner: user:guest
+  system: Platform
+  lifecycle: production
+  dependsOn:
+    - component:default/argocd
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: podtatohead-prod
+  description: Podtato Head
+  links:
+    - url: https://github.com/ortelius/ortelius-kubernetes
+      title: Deployment Location GitHub
+      icon: dashboard
+    - url: https://github.com/podtato-head/podtato-head
+      title: Podtato Head Project Github
+      icon: dashboard
+    - url: https://podtatohead.ortelius.io
+      title: Project Website
+      icon: dashboard
+  annotations:
+    github.com/project-slug: ortelius/ortelius-kubernetes
+    github.com/project-readme-path: README.md
+    argocd/app-name: podtatohead-prod
+    backstage.io/kubernetes-id: podtatohead-prod
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - platform
+spec:
+  type: service
+  owner: user:guest
+  system: Platform
+  lifecycle: production
+  dependsOn:
+    - component:default/argocd
