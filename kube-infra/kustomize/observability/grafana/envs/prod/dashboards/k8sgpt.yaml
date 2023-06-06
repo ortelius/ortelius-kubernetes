@@ -16,9 +16,11 @@ data:
             "name": "Annotations & Alerts",
             "target": {
               "limit": 100,
-              "matchAny": false,
-              "tags": [],
-              "type": "dashboard"
+              "matchAny": true,
+              "tags": [
+                "argoDeployed"
+              ],
+              "type": "tags"
             },
             "type": "dashboard"
           },
@@ -227,6 +229,115 @@ data:
           ],
           "title": "Sincronizaciones de ArgoCD",
           "type": "state-timeline"
+        },
+        {
+          "datasource": {
+            "type": "grafana-github-datasource",
+            "uid": "5"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [],
+              "thresholds": {
+                "mode": "percentage",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "orange",
+                    "value": 70
+                  },
+                  {
+                    "color": "red",
+                    "value": 85
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 5,
+            "x": 16,
+            "y": 0
+          },
+          "id": 15,
+          "options": {
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [],
+              "fields": "",
+              "values": true
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true
+          },
+          "pluginVersion": "9.5.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "grafana-github-datasource",
+                "uid": "5"
+              },
+              "hide": false,
+              "options": {
+                "timeField": 2
+              },
+              "owner": "ortelius",
+              "queryType": "Pull_Requests",
+              "refId": "A",
+              "repository": "ortelius-kubernetes"
+            }
+          ],
+          "title": "Despliegues de ArgoCD",
+          "transformations": [
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "author_company": true,
+                  "author_email": true,
+                  "author_login": true,
+                  "closed": true,
+                  "closed_at": true,
+                  "created_at": true,
+                  "is_draft": true,
+                  "locked": true,
+                  "mergeable": true,
+                  "merged_at": true,
+                  "number": true,
+                  "open_time": true,
+                  "state": true,
+                  "title": true,
+                  "updated_at": true,
+                  "url": true
+                },
+                "indexByName": {},
+                "renameByName": {}
+              }
+            },
+            {
+              "id": "groupBy",
+              "options": {
+                "fields": {
+                  "merged": {
+                    "aggregations": [
+                      "distinctCount"
+                    ],
+                    "operation": "aggregate"
+                  },
+                  "repository": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  }
+                }
+              }
+            }
+          ],
+          "type": "gauge"
         },
         {
           "datasource": {
@@ -541,7 +652,7 @@ data:
       "timezone": "",
       "title": "K8sGPT Overview",
       "uid": "U82QyO8Vz",
-      "version": 8,
+      "version": 11,
       "weekStart": ""
     }
 kind: ConfigMap

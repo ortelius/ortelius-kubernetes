@@ -9,9 +9,9 @@ helmCharts:
     logLevel: info
     image:
       repository: ghcr.io/bradmccoydev/cdevents-controller
-      tag: sha-01050bf5
+      tag: sha-b23befac
     ingress:
-      enabled: false
+      enabled: true
       annotations:
         kubernetes.io/ingress.class: nginx
         nginx.ingress.kubernetes.io/backend-protocol: HTTP
