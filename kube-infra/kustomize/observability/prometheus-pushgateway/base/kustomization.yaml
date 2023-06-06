@@ -1,0 +1,22 @@
+helmCharts:
+- name: prometheus-pushgateway
+  namespace: observability
+  version: 2.2.0
+  repo: https://prometheus-community.github.io/helm-charts
+  releaseName: prometheus-pushgateway
+  includeCRDs: true
+  valuesInline:
+    podLabels:
+      backstage.io/kubernetes-id: prometheus-pushgateway
+      ortelius.io/repo: ortelius-kubernetes
+    persistentVolume:
+      enabled: true
+      accessModes:
+        - ReadWriteOnce
+      size: 2Gi
+      storageClassName: default
+    serviceMonitor:
+      enabled: true
+      namespace: observability
+      additionalLabels:
+        release: kube-prometheus-stack
