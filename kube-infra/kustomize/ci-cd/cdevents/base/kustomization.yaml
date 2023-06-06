@@ -1,29 +1,26 @@
 helmCharts:
 - name: cdevents-controller
-  version: 0.0.5
+  version: 0.0.6
   repo: https://bradmccoydev.github.io/cdevents-controller
   releaseName: cdevents-controller
   namespace: cdevents
   includeCRDs: true
   valuesInline:
-    logLevel: debug
+    logLevel: error
     image:
       repository: ghcr.io/bradmccoydev/cdevents-controller
-      tag: sha-f9802a70
+      tag: sha-01050bf5
     ingress:
       enabled: false
       annotations:
         kubernetes.io/ingress.class: nginx
-        cert-manager.io/cluster-issuer: letsencrypt-development-aws
+        nginx.ingress.kubernetes.io/backend-protocol: HTTP
+        nginx.ingress.kubernetes.io/ssl-passthrough: "false"
       hosts:
-        - host: cdevents.bradmccoy.io
+        - host: canary.ortelius.io
           paths:
-            - path: /
+            - path: /*
               pathType: Prefix
-      tls:
-       - secretName: cdevents-tls
-         hosts:
-           - cdevents.bradmccoy.io
 
 - name: mongodb
   version: 13.15.1
