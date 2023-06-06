@@ -6,7 +6,7 @@ helmCharts:
   namespace: cdevents
   includeCRDs: true
   valuesInline:
-    logLevel: error
+    logLevel: info
     image:
       repository: ghcr.io/bradmccoydev/cdevents-controller
       tag: sha-01050bf5
