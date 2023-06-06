@@ -18,7 +18,7 @@ spec:
         paths:
           - backend:
               service:
-                name: jaeger-query
+                name: jaeger-tracing-query
                 port:
                   number: 80
             path: /
