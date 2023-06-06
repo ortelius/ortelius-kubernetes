@@ -98,6 +98,10 @@ helmCharts:
                 authProvider: 'serviceAccount'
                 skipTLSVerify: true
                 skipMetricsLookup: true
+                customResources:
+                  - group: 'core.k8sgpt.ai'
+                    apiVersion: 'v1alpha1'
+                    plural: 'results'
       proxy:
         '/argocd/api':
           target: ${ARGOCD_BASE_URL}/api/v1/
