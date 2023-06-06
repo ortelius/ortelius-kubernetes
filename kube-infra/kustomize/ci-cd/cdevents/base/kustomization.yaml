@@ -19,7 +19,7 @@ helmCharts:
       hosts:
         - host: canary.ortelius.io
           paths:
-            - path: /*
+            - path: /
               pathType: Prefix
 
 - name: mongodb
