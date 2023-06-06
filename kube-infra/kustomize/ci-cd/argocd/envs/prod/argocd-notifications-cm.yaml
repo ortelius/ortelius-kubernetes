@@ -88,5 +88,5 @@ data:
             }
           }
   trigger.on-deployed: |
-    - when: app.status.sync.status == 'Synced' and app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy' and app.metadata.name == 'cloudwatch-exporter'
+    - when: app.status.sync.status == 'Synced' and app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
       send: [app-deployed]
